@@ -36,7 +36,6 @@ import org.geysermc.geyser.inventory.GeyserItemStack;
 import org.geysermc.geyser.item.Items;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.session.cache.tags.ItemTag;
-import org.geysermc.geyser.session.cache.tags.Tag;
 import org.geysermc.geyser.util.InteractionResult;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.Pose;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.type.BooleanEntityMetadata;
@@ -100,7 +99,7 @@ public class GoatEntity extends AnimalEntity {
 
     @Override
     @Nullable
-    protected Tag getFoodTag() {
+    protected ItemTag getFoodTag() {
         return ItemTag.GOAT_FOOD;
     }
 }

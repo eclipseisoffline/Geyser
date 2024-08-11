@@ -30,7 +30,6 @@ import org.cloudburstmc.math.vector.Vector3f;
 import org.geysermc.geyser.entity.EntityDefinition;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.session.cache.tags.ItemTag;
-import org.geysermc.geyser.session.cache.tags.Tag;
 
 import java.util.UUID;
 
@@ -42,7 +41,7 @@ public class ChickenEntity extends AnimalEntity {
 
     @Override
     @Nullable
-    protected Tag getFoodTag() {
+    protected ItemTag getFoodTag() {
         return ItemTag.CHICKEN_FOOD;
     }
 }

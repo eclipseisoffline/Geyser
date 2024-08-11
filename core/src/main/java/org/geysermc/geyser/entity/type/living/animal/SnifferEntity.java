@@ -37,7 +37,6 @@ import org.geysermc.geyser.entity.EntityDefinitions;
 import org.geysermc.geyser.entity.type.Tickable;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.session.cache.tags.ItemTag;
-import org.geysermc.geyser.session.cache.tags.Tag;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.Pose;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.SnifferState;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.type.ObjectEntityMetadata;
@@ -74,7 +73,7 @@ public class SnifferEntity extends AnimalEntity implements Tickable {
 
     @Override
     @Nullable
-    protected Tag getFoodTag() {
+    protected ItemTag getFoodTag() {
         return ItemTag.SNIFFER_FOOD;
     }
 

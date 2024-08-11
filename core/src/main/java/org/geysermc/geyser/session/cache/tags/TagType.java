@@ -26,12 +26,48 @@
 package org.geysermc.geyser.session.cache.tags;
 
 import net.kyori.adventure.key.Key;
-import org.geysermc.geyser.util.Ordered;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.geysermc.geyser.util.MinecraftKey;
 
-public record VanillaTag(TagRegistry registry, Key tag, int geyserId) implements Ordered, Tag {
+import java.util.Map;
 
-    @Override
-    public int ordinal() {
-        return geyserId;
+/**
+ * Lists registries that Geyser stores tags for.
+ * <p>
+ * When wanting to store tags from a new registry, add the registry here.
+ */
+public enum TagType {
+    BLOCK("block", BlockTag.REGISTRY),
+    ITEM("item", ItemTag.REGISTRY),
+    ENCHANTMENT("enchantment", EnchantmentTag.REGISTRY);
+
+    private final Key registryKey;
+    private final TagRegistry<?> registry;
+
+    TagType(String registryKey, TagRegistry<?> registry) {
+        this.registryKey = MinecraftKey.key(registryKey);
+        this.registry = registry;
+    }
+
+    public Map<Key, ? extends Tag> vanillaTags() {
+        return registry.vanillaTags();
+    }
+
+    public Tag tag(Key identifier) {
+        return registry.tag(identifier);
+    }
+
+    @Nullable
+    public static TagType fromKey(Key registryKey) {
+        for (TagType registry : TagType.values()) {
+            if (registry.registryKey.equals(registryKey)) {
+                return registry;
+            }
+        }
+        return null;
+    }
+
+    public static void init() {
+        // Causes the registries listed in the enum constants to be initialized early
     }
 }

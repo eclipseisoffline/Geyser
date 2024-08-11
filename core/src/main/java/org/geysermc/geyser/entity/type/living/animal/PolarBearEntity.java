@@ -29,7 +29,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.geysermc.geyser.entity.EntityDefinition;
 import org.geysermc.geyser.session.GeyserSession;
-import org.geysermc.geyser.session.cache.tags.Tag;
+import org.geysermc.geyser.session.cache.tags.ItemTag;
 
 import java.util.UUID;
 
@@ -41,7 +41,7 @@ public class PolarBearEntity extends AnimalEntity {
 
     @Override
     @Nullable
-    protected Tag getFoodTag() {
+    protected ItemTag getFoodTag() {
         return null;
     }
 }
