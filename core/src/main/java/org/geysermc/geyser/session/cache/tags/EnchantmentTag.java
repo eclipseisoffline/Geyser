@@ -74,8 +74,7 @@ public class EnchantmentTag extends Tag {
     public static final EnchantmentTag TRADES_SWAMP_SPECIAL = register("trades/swamp_special");
     public static final EnchantmentTag TRADES_TAIGA_SPECIAL = register("trades/taiga_special");
 
-
-    public EnchantmentTag(Key key) {
+    private EnchantmentTag(Key key) {
         super(key);
     }
 

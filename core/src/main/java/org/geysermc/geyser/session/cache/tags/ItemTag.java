@@ -188,7 +188,7 @@ public class ItemTag extends Tag {
     public static final ItemTag ENCHANTABLE_VANISHING = register("enchantable/vanishing");
     public static final ItemTag ENCHANTABLE_MACE = register("enchantable/mace");
 
-    public ItemTag(Key key) {
+    private ItemTag(Key key) {
         super(key);
     }
 
