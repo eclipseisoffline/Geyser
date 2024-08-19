@@ -25,57 +25,82 @@
 
 package org.geysermc.geyser.session.cache.tags;
 
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import net.kyori.adventure.key.Key;
 import org.geysermc.geyser.util.MinecraftKey;
+import org.geysermc.geyser.util.Ordered;
 
-/**
- * Lists vanilla enchantment tags.
- */
+import java.util.Map;
+
 @SuppressWarnings("unused")
-public final class EnchantmentTag {
-    public static final Tag TOOLTIP_ORDER = register("tooltip_order");
-    public static final Tag EXCLUSIVE_SET_ARMOR = register("exclusive_set/armor");
-    public static final Tag EXCLUSIVE_SET_BOOTS = register("exclusive_set/boots");
-    public static final Tag EXCLUSIVE_SET_BOW = register("exclusive_set/bow");
-    public static final Tag EXCLUSIVE_SET_CROSSBOW = register("exclusive_set/crossbow");
-    public static final Tag EXCLUSIVE_SET_DAMAGE = register("exclusive_set/damage");
-    public static final Tag EXCLUSIVE_SET_MINING = register("exclusive_set/mining");
-    public static final Tag EXCLUSIVE_SET_RIPTIDE = register("exclusive_set/riptide");
-    public static final Tag TRADEABLE = register("tradeable");
-    public static final Tag DOUBLE_TRADE_PRICE = register("double_trade_price");
-    public static final Tag IN_ENCHANTING_TABLE = register("in_enchanting_table");
-    public static final Tag ON_MOB_SPAWN_EQUIPMENT = register("on_mob_spawn_equipment");
-    public static final Tag ON_TRADED_EQUIPMENT = register("on_traded_equipment");
-    public static final Tag ON_RANDOM_LOOT = register("on_random_loot");
-    public static final Tag CURSE = register("curse");
-    public static final Tag SMELTS_LOOT = register("smelts_loot");
-    public static final Tag PREVENTS_BEE_SPAWNS_WHEN_MINING = register("prevents_bee_spawns_when_mining");
-    public static final Tag PREVENTS_DECORATED_POT_SHATTERING = register("prevents_decorated_pot_shattering");
-    public static final Tag PREVENTS_ICE_MELTING = register("prevents_ice_melting");
-    public static final Tag PREVENTS_INFESTED_SPAWNS = register("prevents_infested_spawns");
-    public static final Tag TREASURE = register("treasure");
-    public static final Tag NON_TREASURE = register("non_treasure");
-    public static final Tag TRADES_DESERT_COMMON = register("trades/desert_common");
-    public static final Tag TRADES_JUNGLE_COMMON = register("trades/jungle_common");
-    public static final Tag TRADES_PLAINS_COMMON = register("trades/plains_common");
-    public static final Tag TRADES_SAVANNA_COMMON = register("trades/savanna_common");
-    public static final Tag TRADES_SNOW_COMMON = register("trades/snow_common");
-    public static final Tag TRADES_SWAMP_COMMON = register("trades/swamp_common");
-    public static final Tag TRADES_TAIGA_COMMON = register("trades/taiga_common");
-    public static final Tag TRADES_DESERT_SPECIAL = register("trades/desert_special");
-    public static final Tag TRADES_JUNGLE_SPECIAL = register("trades/jungle_special");
-    public static final Tag TRADES_PLAINS_SPECIAL = register("trades/plains_special");
-    public static final Tag TRADES_SAVANNA_SPECIAL = register("trades/savanna_special");
-    public static final Tag TRADES_SNOW_SPECIAL = register("trades/snow_special");
-    public static final Tag TRADES_SWAMP_SPECIAL = register("trades/swamp_special");
-    public static final Tag TRADES_TAIGA_SPECIAL = register("trades/taiga_special");
+public class EnchantmentTag extends Tag {
+    public static final Map<Key, EnchantmentTag> TAGS = new Object2ObjectOpenHashMap<>();
+    public static final TagRegistry<EnchantmentTag> REGISTRY = new TagRegistry<>(TAGS, EnchantmentTag::new);
 
-    private EnchantmentTag() {}
+    public static final EnchantmentTag TOOLTIP_ORDER = register("tooltip_order");
+    public static final EnchantmentTag EXCLUSIVE_SET_ARMOR = register("exclusive_set/armor");
+    public static final EnchantmentTag EXCLUSIVE_SET_BOOTS = register("exclusive_set/boots");
+    public static final EnchantmentTag EXCLUSIVE_SET_BOW = register("exclusive_set/bow");
+    public static final EnchantmentTag EXCLUSIVE_SET_CROSSBOW = register("exclusive_set/crossbow");
+    public static final EnchantmentTag EXCLUSIVE_SET_DAMAGE = register("exclusive_set/damage");
+    public static final EnchantmentTag EXCLUSIVE_SET_MINING = register("exclusive_set/mining");
+    public static final EnchantmentTag EXCLUSIVE_SET_RIPTIDE = register("exclusive_set/riptide");
+    public static final EnchantmentTag TRADEABLE = register("tradeable");
+    public static final EnchantmentTag DOUBLE_TRADE_PRICE = register("double_trade_price");
+    public static final EnchantmentTag IN_ENCHANTING_TABLE = register("in_enchanting_table");
+    public static final EnchantmentTag ON_MOB_SPAWN_EQUIPMENT = register("on_mob_spawn_equipment");
+    public static final EnchantmentTag ON_TRADED_EQUIPMENT = register("on_traded_equipment");
+    public static final EnchantmentTag ON_RANDOM_LOOT = register("on_random_loot");
+    public static final EnchantmentTag CURSE = register("curse");
+    public static final EnchantmentTag SMELTS_LOOT = register("smelts_loot");
+    public static final EnchantmentTag PREVENTS_BEE_SPAWNS_WHEN_MINING = register("prevents_bee_spawns_when_mining");
+    public static final EnchantmentTag PREVENTS_DECORATED_POT_SHATTERING = register("prevents_decorated_pot_shattering");
+    public static final EnchantmentTag PREVENTS_ICE_MELTING = register("prevents_ice_melting");
+    public static final EnchantmentTag PREVENTS_INFESTED_SPAWNS = register("prevents_infested_spawns");
+    public static final EnchantmentTag TREASURE = register("treasure");
+    public static final EnchantmentTag NON_TREASURE = register("non_treasure");
+    public static final EnchantmentTag TRADES_DESERT_COMMON = register("trades/desert_common");
+    public static final EnchantmentTag TRADES_JUNGLE_COMMON = register("trades/jungle_common");
+    public static final EnchantmentTag TRADES_PLAINS_COMMON = register("trades/plains_common");
+    public static final EnchantmentTag TRADES_SAVANNA_COMMON = register("trades/savanna_common");
+    public static final EnchantmentTag TRADES_SNOW_COMMON = register("trades/snow_common");
+    public static final EnchantmentTag TRADES_SWAMP_COMMON = register("trades/swamp_common");
+    public static final EnchantmentTag TRADES_TAIGA_COMMON = register("trades/taiga_common");
+    public static final EnchantmentTag TRADES_DESERT_SPECIAL = register("trades/desert_special");
+    public static final EnchantmentTag TRADES_JUNGLE_SPECIAL = register("trades/jungle_special");
+    public static final EnchantmentTag TRADES_PLAINS_SPECIAL = register("trades/plains_special");
+    public static final EnchantmentTag TRADES_SAVANNA_SPECIAL = register("trades/savanna_special");
+    public static final EnchantmentTag TRADES_SNOW_SPECIAL = register("trades/snow_special");
+    public static final EnchantmentTag TRADES_SWAMP_SPECIAL = register("trades/swamp_special");
+    public static final EnchantmentTag TRADES_TAIGA_SPECIAL = register("trades/taiga_special");
 
-    private static Tag register(String name) {
-        return TagRegistry.ENCHANTMENT.registerVanillaTag(MinecraftKey.key(name));
+    private EnchantmentTag(Key key) {
+        super(key);
     }
 
-    public static void init() {
-        // no-op
+    @Override
+    public TagType registry() {
+        return TagType.BLOCK;
+    }
+
+    private static EnchantmentTag register(String name) {
+        Key key = MinecraftKey.key(name);
+        EnchantmentTag tag = new EnchantmentTag.Vanilla(key);
+        TAGS.put(key, tag);
+        return tag;
+    }
+
+    private static class Vanilla extends EnchantmentTag implements Ordered {
+        final int id;
+
+        Vanilla(Key key) {
+            super(key);
+            this.id = TAGS.size();
+        }
+
+        @Override
+        public int ordinal() {
+            return id;
+        }
     }
 }

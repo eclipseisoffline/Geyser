@@ -87,7 +87,7 @@ import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.session.PendingMicrosoftAuthentication;
 import org.geysermc.geyser.session.SessionManager;
 import org.geysermc.geyser.session.cache.RegistryCache;
-import org.geysermc.geyser.session.cache.tags.TagRegistry;
+import org.geysermc.geyser.session.cache.tags.TagType;
 import org.geysermc.geyser.skin.FloodgateSkinUploader;
 import org.geysermc.geyser.skin.ProvidedSkins;
 import org.geysermc.geyser.skin.SkinProvider;
@@ -235,7 +235,7 @@ public class GeyserImpl implements GeyserApi, EventRegistrar {
         /* Initialize registries */
         Registries.init();
         BlockRegistries.init();
-        TagRegistry.init();
+        TagType.init();
 
         RegistryCache.init();
 

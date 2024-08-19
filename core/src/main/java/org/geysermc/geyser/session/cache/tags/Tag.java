@@ -26,20 +26,26 @@
 package org.geysermc.geyser.session.cache.tags;
 
 import net.kyori.adventure.key.Key;
+import org.geysermc.geyser.util.Ordered;
 
 /**
  * A tag in any of the registries that are stored by Geyser.
- *
- * The recommended way to turn a tag key into a Tag is to use {@link Tag#createTag}.
- * This ensures a {@link VanillaTag} is used when the tag key is a vanilla one, which allows for faster lookup of the tag.
+ * <p>
+ * The recommended way to turn a tag key into a Tag is to use {@link TagType#tag(Key)}.
+ * This ensures a vanilla tag (implements {@link Ordered}) is used when
+ * the tag key is a vanilla one, which allows for faster lookup of the tag.
  */
-public interface Tag {
+public abstract class Tag {
 
-    TagRegistry registry();
+    private final Key key;
 
-    Key tag();
-
-    static Tag createTag(TagRegistry registry, Key tagKey) {
-        return registry.getVanillaTags().getOrDefault(tagKey, new NonVanillaTag(registry, tagKey));
+    public Tag(Key key) {
+        this.key = key;
     }
+
+    public Key tag() {
+        return key;
+    }
+
+    public abstract TagType registry();
 }

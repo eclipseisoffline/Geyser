@@ -33,7 +33,6 @@ import org.geysermc.geyser.entity.EntityDefinition;
 import org.geysermc.geyser.entity.type.Entity;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.session.cache.tags.ItemTag;
-import org.geysermc.geyser.session.cache.tags.Tag;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.Pose;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.type.IntEntityMetadata;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.type.ObjectEntityMetadata;
@@ -78,7 +77,7 @@ public class FrogEntity extends AnimalEntity {
 
     @Override
     @Nullable
-    protected Tag getFoodTag() {
+    protected ItemTag getFoodTag() {
         return ItemTag.FROG_FOOD;
     }
 }
