@@ -97,11 +97,13 @@ final class BedrockBlockActions {
                 GeyserItemStack item = session.getPlayerInventory().getItemInHand();
                 ItemMapping mapping = item.getMapping(session);
                 ItemDefinition customItem = mapping.isTool() ? CustomItemTranslator.getCustomItem(session, item.getAmount(), item.getComponents(), mapping) : null;
-                CustomBlockState blockStateOverride = BlockRegistries.CUSTOM_BLOCK_STATE_OVERRIDES.get(blockState);
                 SkullCache.Skull skull = session.getSkullCache().getSkulls().get(vector);
 
+                CustomBlockState blockStateOverride = BlockRegistries.CUSTOM_BLOCK_STATE_OVERRIDES.get(blockState);
+                CustomBlockState nonVanillaBlockStateOverride = BlockRegistries.NON_VANILLA_BLOCK_STATE_OVERRIDES.get(BlockRegistries.JAVA_ID_TO_NON_VANILLA_BLOCK_STATE.get(blockState));
+
                 session.setBlockBreakStartTime(0);
-                if (blockStateOverride != null || customItem != null || (skull != null && skull.getBlockDefinition() != null)) {
+                if (blockStateOverride != null || nonVanillaBlockStateOverride != null || customItem != null || (skull != null && skull.getBlockDefinition() != null)) {
                     session.setBlockBreakStartTime(System.currentTimeMillis());
                 }
                 startBreak.setData((int) (65535 / breakTime));
