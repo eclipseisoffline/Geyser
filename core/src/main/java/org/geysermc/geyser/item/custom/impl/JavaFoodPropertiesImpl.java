@@ -25,38 +25,45 @@
 
 package org.geysermc.geyser.item.custom.impl;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.geysermc.geyser.api.item.custom.v2.component.geyser.BlockPlacer;
-import org.geysermc.geyser.api.util.Identifier;
+import org.checkerframework.checker.index.qual.NonNegative;
+import org.geysermc.geyser.api.item.custom.v2.component.java.JavaFoodProperties;
 
-import java.util.Objects;
+public record JavaFoodPropertiesImpl(
+    int nutrition,
+    float saturation,
+    boolean canAlwaysEat
+) implements JavaFoodProperties {
 
-public record BlockPlacerImpl(
-    Identifier block,
-    boolean useBlockIcon
-) implements BlockPlacer {
-
-    public static class Builder implements BlockPlacer.Builder {
-        private Identifier block;
-        private boolean useBlockIcon;
+    @SuppressWarnings("ConstantValue") // must enforce api
+    public static class Builder implements JavaFoodProperties.Builder {
+        private int nutrition;
+        private float saturation;
+        private boolean canAlwaysEat;
 
         @Override
-        public Builder block(@NonNull Identifier block) {
-            Objects.requireNonNull(block, "block cannot be null");
-            this.block = block;
+        public JavaFoodProperties.Builder nutrition(@NonNegative int nutrition) {
+            if (nutrition < 0) throw new IllegalArgumentException("nutrition cannot be negative");
+            this.nutrition = nutrition;
             return this;
         }
 
         @Override
-        public Builder useBlockIcon(boolean useBlockIcon) {
-            this.useBlockIcon = useBlockIcon;
+        public JavaFoodProperties.Builder saturation(@NonNegative float saturation) {
+            if (saturation < 0) throw new IllegalArgumentException("saturation cannot be negative");
+            this.saturation = saturation;
             return this;
         }
 
         @Override
-        public BlockPlacer build() {
-            Objects.requireNonNull(block, "block cannot be null");
-            return new BlockPlacerImpl(block, useBlockIcon);
+        public JavaFoodProperties.Builder canAlwaysEat(boolean canAlwaysEat) {
+            this.canAlwaysEat = canAlwaysEat;
+            return this;
+        }
+
+        @Override
+        public JavaFoodProperties build() {
+            return new JavaFoodPropertiesImpl(nutrition, saturation, canAlwaysEat);
         }
     }
+
 }

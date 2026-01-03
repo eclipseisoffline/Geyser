@@ -39,7 +39,7 @@ import java.util.List;
  * if the item can destroy blocks when used in creative mode. For non-vanilla items, it is also important to set a default mining speed
  * and all the rules the tool has, to ensure proper block breaking. For vanilla-item overrides, Geyser is able to handle this automatically.
  */
-public interface ToolProperties {
+public interface JavaToolProperties {
 
     /**
      * A list of rules this tool has. A tool rule consists of a {@link Holders} of block identifiers, and the break speed for those blocks.
@@ -70,8 +70,8 @@ public interface ToolProperties {
      *
      * @return a new builder
      */
-    static Builder builder() {
-        return GeyserApi.api().provider(ToolProperties.Builder.class);
+    static @NonNull Builder builder() {
+        return GeyserApi.api().provider(JavaToolProperties.Builder.class);
     }
 
     /**
@@ -80,20 +80,20 @@ public interface ToolProperties {
      * @param canDestroyBlocksInCreative determines if the item will break blocks in creative mode
      * @return a tool properties component
      */
-    static ToolProperties of(boolean canDestroyBlocksInCreative) {
+    static @NonNull JavaToolProperties of(boolean canDestroyBlocksInCreative) {
         return builder().canDestroyBlocksInCreative(canDestroyBlocksInCreative).build();
     }
 
     /**
      * Builder for the tool properties component.
      */
-    interface Builder extends GenericBuilder<ToolProperties> {
+    interface Builder extends GenericBuilder<JavaToolProperties> {
 
         /**
          * Adds a rule to the tool. Vanilla-item overrides don't need any rules to be set.
          *
          * @param rule the rule to add
-         * @see ToolProperties#rules()
+         * @see JavaToolProperties#rules()
          * @return this builder
          */
         @This
@@ -103,7 +103,7 @@ public interface ToolProperties {
          * Sets the default mining speed of this tool. Vanilla-item overrides don't need a speed set.
          *
          * @param defaultMiningSpeed the default mining speed of this tool
-         * @see ToolProperties#defaultMiningSpeed()
+         * @see JavaToolProperties#defaultMiningSpeed()
          * @return this builder
          */
         @This
@@ -114,7 +114,7 @@ public interface ToolProperties {
          * creative mode.
          *
          * @param canDestroyBlocksInCreative determines if the item will break blocks in creative mode
-         * @see ToolProperties#canDestroyBlocksInCreative()
+         * @see JavaToolProperties#canDestroyBlocksInCreative()
          * @return this builder
          */
         @This
@@ -126,7 +126,7 @@ public interface ToolProperties {
          * @return the new component
          */
         @Override
-        ToolProperties build();
+        JavaToolProperties build();
     }
 
     /**
@@ -149,7 +149,7 @@ public interface ToolProperties {
          *
          * @return a new builder
          */
-        static Builder builder() {
+        static @NonNull Builder builder() {
             return GeyserApi.api().provider(Rule.Builder.class);
         }
 
@@ -160,7 +160,7 @@ public interface ToolProperties {
          * @param speed the speed to use when mining a block that matches this rule
          * @return a tool rule
          */
-        static Rule of(Holders blocks, @Positive float speed) {
+        static @NonNull Rule of(@NonNull Holders blocks, @Positive float speed) {
             return Rule.builder().blocks(blocks).speed(speed).build();
         }
 

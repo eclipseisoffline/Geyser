@@ -25,6 +25,7 @@
 
 package org.geysermc.geyser.api.item.custom.v2.component.java;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.common.returnsreceiver.qual.This;
 import org.checkerframework.common.value.qual.IntRange;
 import org.geysermc.geyser.api.GeyserApi;
@@ -35,7 +36,7 @@ import org.geysermc.geyser.api.util.GenericBuilder;
  *
  * <p>Currently, the {@code can_sprint} property is not supported on Bedrock.</p>
  */
-public interface UseEffects {
+public interface JavaUseEffects {
 
     /**
      * The speed multiplier to apply to the player while using the item. Defaults to 0.2.
@@ -49,7 +50,7 @@ public interface UseEffects {
      *
      * @return a new builder
      */
-    static Builder builder() {
+    static @NonNull Builder builder() {
         return GeyserApi.api().provider(Builder.class);
     }
 
@@ -59,7 +60,7 @@ public interface UseEffects {
      * @param speedMultiplier the speed multiplier to apply while using the item
      * @return the new use effects component.
      */
-    static UseEffects of(@IntRange(from = 0, to = 1) float speedMultiplier) {
+    static @NonNull JavaUseEffects of(@IntRange(from = 0, to = 1) float speedMultiplier) {
         return builder()
             .speedMultiplier(speedMultiplier)
             .build();
@@ -68,7 +69,7 @@ public interface UseEffects {
     /**
      * Builder for the use effects component.
      */
-    interface Builder extends GenericBuilder<UseEffects> {
+    interface Builder extends GenericBuilder<JavaUseEffects> {
 
         /**
          * Sets the speed multiplier to apply while using the item.
@@ -85,6 +86,6 @@ public interface UseEffects {
          * @return the new component
          */
         @Override
-        UseEffects build();
+        JavaUseEffects build();
     }
 }

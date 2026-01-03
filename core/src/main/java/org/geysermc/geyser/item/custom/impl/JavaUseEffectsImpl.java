@@ -25,8 +25,26 @@
 
 package org.geysermc.geyser.item.custom.impl;
 
-import org.geysermc.geyser.api.item.custom.v2.component.java.PiercingWeapon;
+import org.checkerframework.common.value.qual.IntRange;
+import org.geysermc.geyser.api.item.custom.v2.component.java.JavaUseEffects;
 
-public record PiercingWeaponImpl() implements PiercingWeapon {
-    public static final PiercingWeapon INSTANCE = new PiercingWeaponImpl();
+public record JavaUseEffectsImpl(@IntRange(from = 0, to = 1) float speedMultiplier) implements JavaUseEffects {
+
+    public static class Builder implements JavaUseEffects.Builder {
+        private float speedMultiplier = 0.2F;
+
+        @Override
+        public Builder speedMultiplier(@IntRange(from = 0, to = 1) float speedMultiplier) {
+            if (speedMultiplier < 0.0F || speedMultiplier > 1.0F) {
+                throw new IllegalArgumentException("speed multiplier must be between 0 and 1 (inclusive)");
+            }
+            this.speedMultiplier = speedMultiplier;
+            return this;
+        }
+
+        @Override
+        public JavaUseEffects build() {
+            return new JavaUseEffectsImpl(speedMultiplier);
+        }
+    }
 }

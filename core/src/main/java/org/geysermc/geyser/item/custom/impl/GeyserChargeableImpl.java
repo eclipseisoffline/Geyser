@@ -27,26 +27,26 @@ package org.geysermc.geyser.item.custom.impl;
 
 import org.checkerframework.checker.index.qual.NonNegative;
 import org.checkerframework.checker.nullness.qual.NonNull;
-import org.geysermc.geyser.api.item.custom.v2.component.geyser.Chargeable;
+import org.geysermc.geyser.api.item.custom.v2.component.geyser.GeyserChargeable;
 import org.geysermc.geyser.api.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public record ChargeableImpl(
+public record GeyserChargeableImpl(
     @NonNegative float maxDrawDuration,
     boolean chargeOnDraw,
     @NonNull List<@NonNull Identifier> ammunition
-) implements Chargeable {
+) implements GeyserChargeable {
 
-    public static class Builder implements Chargeable.Builder {
+    public static class Builder implements GeyserChargeable.Builder {
         private float maxDrawDuration;
         private boolean chargeOnDraw;
         private final List<Identifier> ammunition = new ArrayList<>();
 
         @Override
-        public Chargeable.Builder maxDrawDuration(@NonNegative float maxDrawDuration) {
+        public GeyserChargeable.Builder maxDrawDuration(@NonNegative float maxDrawDuration) {
             if (maxDrawDuration < 0) {
                 throw new IllegalArgumentException("maxDrawDuration must be positive");
             }
@@ -55,13 +55,13 @@ public record ChargeableImpl(
         }
 
         @Override
-        public Chargeable.Builder chargeOnDraw(boolean chargeOnDraw) {
+        public GeyserChargeable.Builder chargeOnDraw(boolean chargeOnDraw) {
             this.chargeOnDraw = chargeOnDraw;
             return this;
         }
 
         @Override
-        public Chargeable.Builder ammunition(@NonNull Identifier ammunition) {
+        public GeyserChargeable.Builder ammunition(@NonNull Identifier ammunition) {
             Objects.requireNonNull(ammunition, "ammunition cannot be null");
             if (this.ammunition.contains(ammunition)) {
                 throw new IllegalArgumentException("duplicate ammunition " + ammunition);
@@ -71,9 +71,9 @@ public record ChargeableImpl(
         }
 
         @Override
-        public Chargeable build() {
+        public GeyserChargeable build() {
             Objects.requireNonNull(ammunition, "ammunition cannot be null");
-            return new ChargeableImpl(maxDrawDuration, chargeOnDraw, List.copyOf(ammunition));
+            return new GeyserChargeableImpl(maxDrawDuration, chargeOnDraw, List.copyOf(ammunition));
         }
     }
 }

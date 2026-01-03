@@ -27,22 +27,22 @@ package org.geysermc.geyser.registry.mappings.components.readers;
 
 import com.google.gson.JsonElement;
 import org.checkerframework.checker.nullness.qual.NonNull;
-import org.geysermc.geyser.api.item.custom.v2.component.java.ItemDataComponents;
-import org.geysermc.geyser.api.item.custom.v2.component.java.SwingAnimation;
-import org.geysermc.geyser.item.custom.impl.SwingAnimationImpl;
+import org.geysermc.geyser.api.item.custom.v2.component.java.JavaItemDataComponents;
+import org.geysermc.geyser.api.item.custom.v2.component.java.JavaSwingAnimation;
+import org.geysermc.geyser.item.custom.impl.JavaSwingAnimationImpl;
 import org.geysermc.geyser.item.exception.InvalidCustomMappingsFileException;
 import org.geysermc.geyser.registry.mappings.components.DataComponentReader;
 import org.geysermc.geyser.registry.mappings.util.MappingsUtil;
 import org.geysermc.geyser.registry.mappings.util.NodeReader;
 
-public class SwingAnimationReader extends DataComponentReader<SwingAnimation> {
+public class SwingAnimationReader extends DataComponentReader<JavaSwingAnimation> {
 
     public SwingAnimationReader() {
-        super(ItemDataComponents.SWING_ANIMATION);
+        super(JavaItemDataComponents.SWING_ANIMATION);
     }
 
     @Override
-    protected SwingAnimation readDataComponent(@NonNull JsonElement element, String... context) throws InvalidCustomMappingsFileException {
-        return new SwingAnimationImpl(MappingsUtil.readOrDefault(element, "duration", NodeReader.POSITIVE_INT, 6, context));
+    protected JavaSwingAnimation readDataComponent(@NonNull JsonElement element, String... context) throws InvalidCustomMappingsFileException {
+        return new JavaSwingAnimationImpl(MappingsUtil.readOrDefault(element, "duration", NodeReader.POSITIVE_INT, 6, context));
     }
 }

@@ -35,7 +35,7 @@ import org.geysermc.geyser.api.util.GenericBuilder;
 /**
  * The kinetic weapon component is used to specify a spear-like attack when the item is in use.
  */
-public interface KineticWeapon {
+public interface JavaKineticWeapon {
 
     /**
      * The minimum use time, in ticks, required for the weapon to be active. Defaults to 0.
@@ -56,7 +56,7 @@ public interface KineticWeapon {
      *
      * @return a new builder
      */
-    static Builder builder() {
+    static @NonNull Builder builder() {
         return GeyserApi.api().provider(Builder.class);
     }
 
@@ -68,7 +68,7 @@ public interface KineticWeapon {
      * @see Condition#maxDurationTicks()
      * @return the new {@link Condition}
      */
-    static Condition condition(@NonNegative int maxDurationTicks) {
+    static @NonNull Condition condition(@NonNegative int maxDurationTicks) {
         return condition(maxDurationTicks, 0.0F, 0.0F);
     }
 
@@ -84,7 +84,7 @@ public interface KineticWeapon {
      * @see Condition#minRelativeSpeed()
      * @return the new {@link Condition}
      */
-    static Condition condition(@NonNegative int maxDurationTicks, float minSpeed, float minRelativeSpeed) {
+    static @NonNull Condition condition(@NonNegative int maxDurationTicks, float minSpeed, float minRelativeSpeed) {
         return Condition.builder(maxDurationTicks)
             .minSpeed(minSpeed)
             .minRelativeSpeed(minRelativeSpeed)
@@ -94,13 +94,13 @@ public interface KineticWeapon {
     /**
      * Builder for the kinetic weapon component.
      */
-    interface Builder extends GenericBuilder<KineticWeapon> {
+    interface Builder extends GenericBuilder<JavaKineticWeapon> {
 
         /**
          * Sets the minimum use time, in ticks, required for the weapon to be active.
          *
          * @param delayTicks the minimum use time, in ticks, required for the weapon to be active
-         * @see KineticWeapon#delayTicks()
+         * @see JavaKineticWeapon#delayTicks()
          * @return this builder
          */
         @This
@@ -118,7 +118,7 @@ public interface KineticWeapon {
          * Sets the condition to dismount the target.
          *
          * @param dismountConditions the condition to dismount the target
-         * @see KineticWeapon#dismountConditions()
+         * @see JavaKineticWeapon#dismountConditions()
          * @return this builder
          */
         @This
@@ -130,16 +130,16 @@ public interface KineticWeapon {
          * @return the new component
          */
         @Override
-        KineticWeapon build();
+        JavaKineticWeapon build();
     }
 
     /**
-     * A condition used during the attack of a {@link KineticWeapon}/
+     * A condition used during the attack of a {@link JavaKineticWeapon}/
      */
     interface Condition {
 
         /**
-         * The time in ticks after which the condition is no longer checked (and thus always fails), starting once {@link KineticWeapon#delayTicks()} has passed.
+         * The time in ticks after which the condition is no longer checked (and thus always fails), starting once {@link JavaKineticWeapon#delayTicks()} has passed.
          *
          * @return the time in ticks after which the condition is no longer checked
          */
@@ -167,7 +167,7 @@ public interface KineticWeapon {
          * @see Condition#maxDurationTicks()
          * @return a new builder
          */
-        static Builder builder(@NonNegative int maxDurationTicks) {
+        static @NonNull Builder builder(@NonNegative int maxDurationTicks) {
             return GeyserApi.api().provider(Builder.class, maxDurationTicks);
         }
 

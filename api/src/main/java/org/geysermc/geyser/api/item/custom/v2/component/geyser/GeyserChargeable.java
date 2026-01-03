@@ -40,7 +40,7 @@ import java.util.List;
  * charges on being drawn, and the ammunition that can be
  * used by the item.
  */
-public interface Chargeable {
+public interface GeyserChargeable {
 
     /**
      * The maximum draw duration determines how long the weapon
@@ -74,20 +74,20 @@ public interface Chargeable {
      *
      * @return a new builder
      */
-    static Builder builder() {
-        return GeyserApi.api().provider(Chargeable.Builder.class);
+    static @NonNull Builder builder() {
+        return GeyserApi.api().provider(GeyserChargeable.Builder.class);
     }
 
     /**
      * Builder for the chargeable component.
      */
-    interface Builder extends GenericBuilder<Chargeable> {
+    interface Builder extends GenericBuilder<GeyserChargeable> {
 
         /**
          * Sets the maximum draw duration before the item is released.
          *
          * @param maxDrawDuration the non-negative maximum charging duration
-         * @see Chargeable#maxDrawDuration()
+         * @see GeyserChargeable#maxDrawDuration()
          * @return this builder
          */
         @This
@@ -97,7 +97,7 @@ public interface Chargeable {
          * Sets whether the item is charged when drawing.
          *
          * @param chargeOnDraw whether drawing charges the item
-         * @see Chargeable#chargeOnDraw()
+         * @see GeyserChargeable#chargeOnDraw()
          * @return this builder
          */
         @This
@@ -108,7 +108,7 @@ public interface Chargeable {
          * This will throw when trying to add an item that was already added.
          *
          * @param ammunition the Bedrock item identifier of possible ammunition
-         * @see Chargeable#ammunition()
+         * @see GeyserChargeable#ammunition()
          * @return this builder
          */
         @This
@@ -120,6 +120,6 @@ public interface Chargeable {
          * @return the new component
          */
         @Override
-        Chargeable build();
+        GeyserChargeable build();
     }
 }

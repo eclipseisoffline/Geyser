@@ -25,67 +25,66 @@
 
 package org.geysermc.geyser.api.item.custom.v2.component.java;
 
-import org.checkerframework.checker.index.qual.Positive;
+import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.common.returnsreceiver.qual.This;
 import org.geysermc.geyser.api.GeyserApi;
 import org.geysermc.geyser.api.util.GenericBuilder;
+import org.geysermc.geyser.api.util.Holders;
 
 /**
- * The swing animation component is used to specify the swing animation to play when attacking or interacting using the item.
- *
- * <p>Currently, only the duration property is supported on Bedrock.</p>
+ * The repairable component determines which other items can be used
+ * to repair the item.
  */
-public interface SwingAnimation {
+public interface JavaRepairable {
 
     /**
-     * The duration of the swing animation, in ticks. Defaults to 6.
+     * The {@link Holders} of item identifiers that can be used to repair the item.
      *
-     * @return the duration of the swing animation, in ticks
+     * @return the {@link Holders} of item identifiers
      */
-    @Positive int duration();
+    @NonNull Holders items();
 
     /**
-     * Creates a builder for the swing animation component.
+     * Creates a builder for the repairable component.
      *
      * @return a new builder
      */
-    static Builder builder() {
-        return GeyserApi.api().provider(Builder.class);
+    static @NonNull Builder builder() {
+        return GeyserApi.api().provider(JavaRepairable.Builder.class);
     }
 
     /**
-     * Creates a swing animation component.
+     * Creates a repairable component.
      *
-     * @param duration the duration of the swing animation, in ticks
-     * @return the new swing animation component.
+     * @param items the {@link Holders} of the items that
+     *      can repair the item
+     * @return the repairable component
      */
-    static SwingAnimation of(@Positive int duration) {
-        return builder()
-            .duration(duration)
-            .build();
+    static @NonNull JavaRepairable of(@NonNull Holders items) {
+        return JavaRepairable.builder().items(items).build();
     }
 
     /**
-     * Builder for the swing animation component.
+     * Builder for the repairable component.
      */
-    interface Builder extends GenericBuilder<SwingAnimation> {
+    interface Builder extends GenericBuilder<JavaRepairable> {
 
         /**
-         * Sets the duration of the swing animation, in ticks.
+         * Sets the {@link Holders} of item identifiers that can be used to repair the item.
          *
-         * @param duration the duration of the swing animation, in ticks
-         * @see SwingAnimation#duration()
+         * @param items the {@link Holders} of item identifiers that can be used to repair the item
+         * @see JavaRepairable#items()
          * @return this builder
          */
         @This
-        Builder duration(@Positive int duration);
+        Builder items(@NonNull Holders items);
 
         /**
-         * Creates the swing animation component.
+         * Creates the repairable component.
          *
          * @return the new component
          */
         @Override
-        SwingAnimation build();
+        JavaRepairable build();
     }
 }

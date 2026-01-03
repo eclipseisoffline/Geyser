@@ -25,77 +25,68 @@
 
 package org.geysermc.geyser.api.item.custom.v2.component.java;
 
+import org.checkerframework.checker.index.qual.Positive;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.common.returnsreceiver.qual.This;
 import org.geysermc.geyser.api.GeyserApi;
 import org.geysermc.geyser.api.util.GenericBuilder;
 
 /**
- * The equippable component is used to mark an item as equippable.
- * Bedrock allows specifying the slot where an item can be worn.
+ * The swing animation component is used to specify the swing animation to play when attacking or interacting using the item.
+ *
+ * <p>Currently, only the duration property is supported on Bedrock.</p>
  */
-public interface Equippable {
+public interface JavaSwingAnimation {
 
     /**
-     * The equipment slot where this item
-     * can be worn.
+     * The duration of the swing animation, in ticks. Defaults to 6.
      *
-     * @return the equipment slot
+     * @return the duration of the swing animation, in ticks
      */
-    @NonNull EquipmentSlot slot();
+    @Positive int duration();
 
     /**
-     * Creates a builder for the equippable component.
+     * Creates a builder for the swing animation component.
      *
      * @return a new builder
      */
-    static Builder builder() {
-        return GeyserApi.api().provider(Equippable.Builder.class);
+    static @NonNull Builder builder() {
+        return GeyserApi.api().provider(Builder.class);
     }
 
     /**
-     * Creates an equippable component for an equipment slot.
+     * Creates a swing animation component.
      *
-     * @param slot the slot in which the item can be equipped
-     * @return the Equippable component
+     * @param duration the duration of the swing animation, in ticks
+     * @return the new swing animation component.
      */
-    static Equippable of(EquipmentSlot slot) {
-        return builder().slot(slot).build();
+    static @NonNull JavaSwingAnimation of(@Positive int duration) {
+        return builder()
+            .duration(duration)
+            .build();
     }
 
     /**
-     * Builder for the equippable component
+     * Builder for the swing animation component.
      */
-    interface Builder extends GenericBuilder<Equippable> {
+    interface Builder extends GenericBuilder<JavaSwingAnimation> {
 
         /**
-         * The equipment slot where the item can be equipped
-         * 
-         * @param slot the equipment slot
-         * @see Equippable#slot()
+         * Sets the duration of the swing animation, in ticks.
+         *
+         * @param duration the duration of the swing animation, in ticks
+         * @see JavaSwingAnimation#duration()
          * @return this builder
          */
         @This
-        Builder slot(@NonNull EquipmentSlot slot);
+        Builder duration(@Positive int duration);
 
         /**
-         * Creates the equippable component.
+         * Creates the swing animation component.
          *
          * @return the new component
          */
         @Override
-        Equippable build();
-    }
-
-    /**
-     * The slot in which the equipment can be worn.
-     */
-    enum EquipmentSlot {
-        HEAD,
-        CHEST,
-        LEGS,
-        FEET,
-        BODY,
-        SADDLE
+        JavaSwingAnimation build();
     }
 }

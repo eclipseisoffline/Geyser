@@ -26,13 +26,13 @@
 package org.geysermc.geyser.item.custom.impl;
 
 import org.checkerframework.common.value.qual.IntRange;
-import org.geysermc.geyser.api.item.custom.v2.component.java.AttackRange;
+import org.geysermc.geyser.api.item.custom.v2.component.java.JavaAttackRange;
 
-public record AttackRangeImpl(@IntRange(from = 0, to = 64) float minReach, @IntRange(from = 0, to = 64) float maxReach,
+public record JavaAttackRangeImpl(@IntRange(from = 0, to = 64) float minReach, @IntRange(from = 0, to = 64) float maxReach,
                               @IntRange(from = 0, to = 64) float minCreativeReach, @IntRange(from = 0, to = 64) float maxCreativeReach,
-                              @IntRange(from = 0, to = 1) float hitboxMargin) implements AttackRange {
+                              @IntRange(from = 0, to = 1) float hitboxMargin) implements JavaAttackRange {
 
-    public static class Builder implements AttackRange.Builder {
+    public static class Builder implements JavaAttackRange.Builder {
         private float minReach = 0.0F;
         private float maxReach = 3.0F;
         private float minCreativeReach = 0.0F;
@@ -73,8 +73,8 @@ public record AttackRangeImpl(@IntRange(from = 0, to = 64) float minReach, @IntR
         }
 
         @Override
-        public AttackRange build() {
-            return new AttackRangeImpl(minReach, maxReach, minCreativeReach, maxCreativeReach, hitboxMargin);
+        public JavaAttackRange build() {
+            return new JavaAttackRangeImpl(minReach, maxReach, minCreativeReach, maxCreativeReach, hitboxMargin);
         }
 
         private static float validateReachArgument(float reach) {

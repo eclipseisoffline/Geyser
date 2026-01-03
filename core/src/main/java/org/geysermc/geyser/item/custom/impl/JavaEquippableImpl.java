@@ -25,34 +25,29 @@
 
 package org.geysermc.geyser.item.custom.impl;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
-import org.geysermc.geyser.api.item.custom.v2.component.java.UseCooldown;
-import org.geysermc.geyser.api.util.Identifier;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.geysermc.geyser.api.item.custom.v2.component.java.JavaEquippable;
 
-public record UseCooldownImpl(
-    float seconds,
-    @Nullable Identifier cooldownGroup
-) implements UseCooldown {
+import java.util.Objects;
 
-    public static class Builder implements UseCooldown.Builder {
-        private Identifier cooldownGroup;
-        private float seconds;
+public record JavaEquippableImpl(
+    EquipmentSlot slot
+) implements JavaEquippable {
+
+    public static class Builder implements JavaEquippable.Builder {
+        private EquipmentSlot slot;
 
         @Override
-        public Builder cooldownGroup(@Nullable Identifier cooldownGroup) {
-            this.cooldownGroup = cooldownGroup;
+        public JavaEquippable.Builder slot(@NonNull EquipmentSlot slot) {
+            Objects.requireNonNull(slot, "slot cannot be null");
+            this.slot = slot;
             return this;
         }
 
         @Override
-        public Builder seconds(float seconds) {
-            this.seconds = seconds;
-            return this;
-        }
-
-        @Override
-        public UseCooldown build() {
-            return new UseCooldownImpl(seconds, cooldownGroup);
+        public JavaEquippable build() {
+            Objects.requireNonNull(slot, "slot cannot be null");
+            return new JavaEquippableImpl(slot);
         }
     }
 }

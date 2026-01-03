@@ -26,6 +26,7 @@
 package org.geysermc.geyser.api.item.custom.v2.component.java;
 
 import org.checkerframework.checker.index.qual.Positive;
+import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.checkerframework.common.returnsreceiver.qual.This;
 import org.geysermc.geyser.api.GeyserApi;
@@ -35,7 +36,7 @@ import org.geysermc.geyser.api.util.Identifier;
 /**
  * The use cooldown component is used to add an item use cooldown to items.
  */
-public interface UseCooldown {
+public interface JavaUseCooldown {
 
     /**
      * The duration of time in seconds items with a matching category will
@@ -60,21 +61,21 @@ public interface UseCooldown {
      *
      * @return a new builder
      */
-    static Builder builder() {
-        return GeyserApi.api().provider(UseCooldown.Builder.class);
+    static @NonNull Builder builder() {
+        return GeyserApi.api().provider(JavaUseCooldown.Builder.class);
     }
 
     /**
      * Builder for the use cooldown component.
      */
-    interface Builder extends GenericBuilder<UseCooldown> {
+    interface Builder extends GenericBuilder<JavaUseCooldown> {
 
         /**
          * Sets the duration in seconds in which the item
          * cannot be used again.
          *
          * @param seconds the cooldown time
-         * @see UseCooldown#seconds()
+         * @see JavaUseCooldown#seconds()
          * @return this builder
          */
         @This
@@ -87,7 +88,7 @@ public interface UseCooldown {
          * {@code null} results in the item identifier being specified instead.
          *
          * @param cooldownGroup the cooldown group identifier
-         * @see UseCooldown#cooldownGroup()
+         * @see JavaUseCooldown#cooldownGroup()
          * @return this builder
          */
         @This
@@ -99,6 +100,6 @@ public interface UseCooldown {
          * @return the new component
          */
         @Override
-        UseCooldown build();
+        JavaUseCooldown build();
     }
 }

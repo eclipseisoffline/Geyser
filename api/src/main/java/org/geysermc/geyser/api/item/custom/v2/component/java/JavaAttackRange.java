@@ -25,6 +25,7 @@
 
 package org.geysermc.geyser.api.item.custom.v2.component.java;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.common.returnsreceiver.qual.This;
 import org.checkerframework.common.value.qual.IntRange;
 import org.geysermc.geyser.api.GeyserApi;
@@ -33,9 +34,9 @@ import org.geysermc.geyser.api.util.GenericBuilder;
 /**
  * The attack range component is used to specify the
  * attack ranges of an item. Because of limitations on Bedrock, these only apply to items that also have
- * a {@link ItemDataComponents#KINETIC_WEAPON} or a {@link ItemDataComponents#PIERCING_WEAPON} component.
+ * a {@link JavaItemDataComponents#KINETIC_WEAPON} or a {@link JavaItemDataComponents#PIERCING_WEAPON} component.
  */
-public interface AttackRange {
+public interface JavaAttackRange {
 
     /**
      * The minimum distance in blocks from the user to the target for the user to be able to attack that target. Defaults to 0.
@@ -77,20 +78,20 @@ public interface AttackRange {
      *
      * @return a new builder
      */
-    static Builder builder() {
+    static @NonNull Builder builder() {
         return GeyserApi.api().provider(Builder.class);
     }
 
     /**
      * Builder for the attack range component.
      */
-    interface Builder extends GenericBuilder<AttackRange> {
+    interface Builder extends GenericBuilder<JavaAttackRange> {
 
         /**
          * Sets the minimum distance for attacks, in blocks.
          *
          * @param minReach the minimum distance for attacks, in blocks
-         * @see AttackRange#minReach()
+         * @see JavaAttackRange#minReach()
          * @return this builder
          */
         @This
@@ -100,7 +101,7 @@ public interface AttackRange {
          * Sets the maximum distance for attacks, in blocks.
          *
          * @param maxReach the maximum distance for attacks, in blocks
-         * @see AttackRange#maxReach()
+         * @see JavaAttackRange#maxReach()
          * @return this builder
          */
         @This
@@ -110,7 +111,7 @@ public interface AttackRange {
          * Sets the minimum distance for attacks made in creative mode, in blocks.
          *
          * @param minCreativeReach the minimum distance for attacks made in creative mode, in blocks
-         * @see AttackRange#minCreativeReach()
+         * @see JavaAttackRange#minCreativeReach()
          * @return this builder
          */
         @This
@@ -120,7 +121,7 @@ public interface AttackRange {
          * Sets the maximum distance for attacks made in creative mode, in blocks.
          *
          * @param maxCreativeReach the maximum distance for attacks made in creative mode, in blocks
-         * @see AttackRange#maxCreativeReach()
+         * @see JavaAttackRange#maxCreativeReach()
          * @return this builder
          */
         @This
@@ -130,7 +131,7 @@ public interface AttackRange {
          * Sets the margin applied to the target hitbox when attacking.
          *
          * @param hitboxMargin the margin applied to the target hitbox when attacking
-         * @see AttackRange#hitboxMargin()
+         * @see JavaAttackRange#hitboxMargin()
          * @return this builder
          */
         @This
@@ -142,6 +143,6 @@ public interface AttackRange {
          * @return the new component
          */
         @Override
-        AttackRange build();
+        JavaAttackRange build();
     }
 }

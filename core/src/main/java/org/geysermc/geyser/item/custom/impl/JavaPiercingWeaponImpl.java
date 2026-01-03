@@ -23,19 +23,10 @@
  * @link https://github.com/GeyserMC/Geyser
  */
 
-package org.geysermc.geyser.api.item.custom.v2.component.java;
+package org.geysermc.geyser.item.custom.impl;
 
-import org.geysermc.geyser.api.GeyserApi;
+import org.geysermc.geyser.api.item.custom.v2.component.java.JavaPiercingWeapon;
 
-/**
- * The piercing weapon component is used to specify a stab-like attack when using the item.
- */
-public interface PiercingWeapon {
-
-    /**
-     * @return the piercing weapon component
-     */
-    static PiercingWeapon instance() {
-        return GeyserApi.api().provider(PiercingWeapon.class);
-    }
+public record JavaPiercingWeaponImpl() implements JavaPiercingWeapon {
+    public static final JavaPiercingWeapon INSTANCE = new JavaPiercingWeaponImpl();
 }

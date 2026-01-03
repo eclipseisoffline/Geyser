@@ -23,28 +23,20 @@
  * @link https://github.com/GeyserMC/Geyser
  */
 
-package org.geysermc.geyser.item.custom.impl;
+package org.geysermc.geyser.api.item.custom.v2.component.java;
 
-import org.checkerframework.checker.index.qual.Positive;
-import org.geysermc.geyser.api.item.custom.v2.component.java.SwingAnimation;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.geysermc.geyser.api.GeyserApi;
 
-public record SwingAnimationImpl(@Positive int duration) implements SwingAnimation {
+/**
+ * The piercing weapon component is used to specify a stab-like attack when using the item.
+ */
+public interface JavaPiercingWeapon {
 
-    public static class Builder implements SwingAnimation.Builder {
-        private int duration = 6;
-
-        @Override
-        public Builder duration(int duration) {
-            if (duration <= 0) {
-                throw new IllegalArgumentException("duration must be positive");
-            }
-            this.duration = duration;
-            return this;
-        }
-
-        @Override
-        public SwingAnimation build() {
-            return new SwingAnimationImpl(duration);
-        }
+    /**
+     * @return the piercing weapon component
+     */
+    static @NonNull JavaPiercingWeapon instance() {
+        return GeyserApi.api().provider(JavaPiercingWeapon.class);
     }
 }

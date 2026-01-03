@@ -25,6 +25,7 @@
 
 package org.geysermc.geyser.api.item.custom.v2.component.geyser;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.common.returnsreceiver.qual.This;
 import org.geysermc.geyser.api.GeyserApi;
 import org.geysermc.geyser.api.util.GenericBuilder;
@@ -36,7 +37,7 @@ import org.geysermc.geyser.api.util.GenericBuilder;
  *
  * <p>The component also allows specifying whether bedrock clients should display a swing animation when throwing the item. This defaults to true.</p>
  */
-public interface ThrowableComponent {
+public interface GeyserThrowableComponent {
 
     /**
      * Whether bedrock clients should display a swing animation when throwing the item. Defaults to true.
@@ -50,8 +51,8 @@ public interface ThrowableComponent {
      *
      * @return a new builder
      */
-    static Builder builder() {
-        return GeyserApi.api().provider(ThrowableComponent.Builder.class);
+    static @NonNull Builder builder() {
+        return GeyserApi.api().provider(GeyserThrowableComponent.Builder.class);
     }
 
     /**
@@ -60,20 +61,20 @@ public interface ThrowableComponent {
      * @param doSwingAnimation whether bedrock clients should display a swing animation when throwing the item
      * @return a throwable component
      */
-    static ThrowableComponent of(boolean doSwingAnimation) {
+    static @NonNull GeyserThrowableComponent of(boolean doSwingAnimation) {
         return builder().doSwingAnimation(doSwingAnimation).build();
     }
 
     /**
      * Builder for the throwable component.
      */
-    interface Builder extends GenericBuilder<ThrowableComponent> {
+    interface Builder extends GenericBuilder<GeyserThrowableComponent> {
 
         /**
          * Sets whether bedrock clients should display a swing animation when throwing the item.
          *
          * @param doSwingAnimation whether bedrock clients should display a swing animation when throwing the item
-         * @see ThrowableComponent#doSwingAnimation()
+         * @see GeyserThrowableComponent#doSwingAnimation()
          * @return this builder
          */
         @This
@@ -85,6 +86,6 @@ public interface ThrowableComponent {
          * @return the new component
          */
         @Override
-        ThrowableComponent build();
+        GeyserThrowableComponent build();
     }
 }

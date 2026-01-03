@@ -27,11 +27,11 @@ package org.geysermc.geyser.item.custom.impl;
 
 import org.checkerframework.checker.index.qual.NonNegative;
 import org.checkerframework.checker.nullness.qual.Nullable;
-import org.geysermc.geyser.api.item.custom.v2.component.java.KineticWeapon;
+import org.geysermc.geyser.api.item.custom.v2.component.java.JavaKineticWeapon;
 
-public record KineticWeaponImpl(@NonNegative int delayTicks, @Nullable Condition dismountConditions) implements KineticWeapon {
+public record JavaKineticWeaponImpl(@NonNegative int delayTicks, @Nullable Condition dismountConditions) implements JavaKineticWeapon {
 
-    public static class Builder implements KineticWeapon.Builder {
+    public static class Builder implements JavaKineticWeapon.Builder {
         private int delayTicks = 0;
         private Condition dismountConditions = null;
 
@@ -51,8 +51,8 @@ public record KineticWeaponImpl(@NonNegative int delayTicks, @Nullable Condition
         }
 
         @Override
-        public KineticWeapon build() {
-            return new KineticWeaponImpl(delayTicks, dismountConditions);
+        public JavaKineticWeapon build() {
+            return new JavaKineticWeaponImpl(delayTicks, dismountConditions);
         }
     }
 

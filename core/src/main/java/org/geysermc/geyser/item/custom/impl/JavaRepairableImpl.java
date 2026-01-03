@@ -25,23 +25,28 @@
 
 package org.geysermc.geyser.item.custom.impl;
 
-import org.checkerframework.common.returnsreceiver.qual.This;
-import org.geysermc.geyser.api.item.custom.v2.component.geyser.ThrowableComponent;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.geysermc.geyser.api.item.custom.v2.component.java.JavaRepairable;
+import org.geysermc.geyser.api.util.Holders;
 
-public record ThrowableComponentImpl(boolean doSwingAnimation) implements ThrowableComponent {
+import java.util.Objects;
 
-    public static class Builder implements ThrowableComponent.Builder {
-        private boolean doSwingAnimation = true;
+public record JavaRepairableImpl(@NonNull Holders items) implements JavaRepairable {
+
+    public static class Builder implements JavaRepairable.Builder {
+        private Holders items;
 
         @Override
-        public ThrowableComponent.@This Builder doSwingAnimation(boolean doSwingAnimation) {
-            this.doSwingAnimation = doSwingAnimation;
+        public Builder items(@NonNull Holders items) {
+            Objects.requireNonNull(items, "items cannot be null");
+            this.items = items;
             return this;
         }
 
         @Override
-        public ThrowableComponent build() {
-            return new ThrowableComponentImpl(doSwingAnimation);
+        public JavaRepairable build() {
+            Objects.requireNonNull(items, "items cannot be null");
+            return new JavaRepairableImpl(items);
         }
     }
 }

@@ -35,7 +35,7 @@ import org.geysermc.geyser.api.util.Identifier;
  * Allows modifying items so these can place blocks or take on the
  * icon of the block they place.
  */
-public interface BlockPlacer {
+public interface GeyserBlockPlacer {
 
     /**
      * The block placed by the item, used by the
@@ -60,8 +60,8 @@ public interface BlockPlacer {
      *
      * @return a new builder
      */
-    static Builder builder() {
-        return GeyserApi.api().provider(BlockPlacer.Builder.class);
+    static @NonNull Builder builder() {
+        return GeyserApi.api().provider(GeyserBlockPlacer.Builder.class);
     }
 
     /**
@@ -71,14 +71,14 @@ public interface BlockPlacer {
      * @param useBlockIcon whether to use the 3d block rendering for the item icon
      * @return the block placer component
      */
-    static BlockPlacer of(Identifier block, boolean useBlockIcon) {
-        return BlockPlacer.builder().block(block).useBlockIcon(useBlockIcon).build();
+    static @NonNull GeyserBlockPlacer of(@NonNull Identifier block, boolean useBlockIcon) {
+        return GeyserBlockPlacer.builder().block(block).useBlockIcon(useBlockIcon).build();
     }
 
     /**
      * Builder for the block placer component.
      */
-    interface Builder extends GenericBuilder<BlockPlacer> {
+    interface Builder extends GenericBuilder<GeyserBlockPlacer> {
 
         /**
          * The identifier of the block to place.
@@ -86,7 +86,7 @@ public interface BlockPlacer {
          * known to the Bedrock client.
          *
          * @param block the identifier of the block
-         * @see BlockPlacer#block()
+         * @see GeyserBlockPlacer#block()
          * @return this builder
          */
         @This
@@ -97,7 +97,7 @@ public interface BlockPlacer {
          * Block items have a 3d-generated block icon.
          *
          * @param useBlockIcon whether to use the block icon
-         * @see BlockPlacer#useBlockIcon()
+         * @see GeyserBlockPlacer#useBlockIcon()
          * @return this builder
          */
         @This
@@ -109,6 +109,6 @@ public interface BlockPlacer {
          * @return the new component
          */
         @Override
-        BlockPlacer build();
+        GeyserBlockPlacer build();
     }
 }

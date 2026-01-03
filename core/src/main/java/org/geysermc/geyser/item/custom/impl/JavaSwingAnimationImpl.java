@@ -25,29 +25,26 @@
 
 package org.geysermc.geyser.item.custom.impl;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.geysermc.geyser.api.item.custom.v2.component.java.Equippable;
+import org.checkerframework.checker.index.qual.Positive;
+import org.geysermc.geyser.api.item.custom.v2.component.java.JavaSwingAnimation;
 
-import java.util.Objects;
+public record JavaSwingAnimationImpl(@Positive int duration) implements JavaSwingAnimation {
 
-public record EquippableImpl(
-    EquipmentSlot slot
-) implements Equippable {
-
-    public static class Builder implements Equippable.Builder {
-        private EquipmentSlot slot;
+    public static class Builder implements JavaSwingAnimation.Builder {
+        private int duration = 6;
 
         @Override
-        public Equippable.Builder slot(@NonNull EquipmentSlot slot) {
-            Objects.requireNonNull(slot, "slot cannot be null");
-            this.slot = slot;
+        public Builder duration(int duration) {
+            if (duration <= 0) {
+                throw new IllegalArgumentException("duration must be positive");
+            }
+            this.duration = duration;
             return this;
         }
 
         @Override
-        public Equippable build() {
-            Objects.requireNonNull(slot, "slot cannot be null");
-            return new EquippableImpl(slot);
+        public JavaSwingAnimation build() {
+            return new JavaSwingAnimationImpl(duration);
         }
     }
 }

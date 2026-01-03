@@ -50,9 +50,9 @@ public interface GeyserDataComponent {
      * Marks this item as chargeable, meaning an item functions as a bow or a crossbow.
      * A list of bedrock item identifiers can be given as ammunition.
      *
-     * @see Chargeable
+     * @see GeyserChargeable
      */
-    DataComponent<Chargeable> CHARGEABLE = createGeyser("chargeable");
+    DataComponent<GeyserChargeable> CHARGEABLE = createGeyser("chargeable");
 
     /**
      * Places a visual indicator (=tooltip) of the item's attack damage. Must be at or above 0.
@@ -64,22 +64,22 @@ public interface GeyserDataComponent {
     /**
      * Indicates which block the item should place and whether it should replace the original item for that block.
      *
-     * @see BlockPlacer
+     * @see GeyserBlockPlacer
      */
-    DataComponent<BlockPlacer> BLOCK_PLACER = createGeyser("block_placer");
+    DataComponent<GeyserBlockPlacer> BLOCK_PLACER = createGeyser("block_placer");
 
     /**
      * Marks the item as throwable, meaning it can be thrown continuously by holding down the use button, and also
      * allows specifying if the client should display a swing animation when the item is thrown.
      *
-     * @see ThrowableComponent
+     * @see GeyserThrowableComponent
      */
-    DataComponent<ThrowableComponent> THROWABLE = createGeyser("throwable");
+    DataComponent<GeyserThrowableComponent> THROWABLE = createGeyser("throwable");
 
     /**
      * Marks the item as a projectile, meaning it can be used as ammunition in the chargeable component.
      *
-     * @see Chargeable#ammunition()
+     * @see GeyserChargeable#ammunition()
      */
     DataComponent<Unit> PROJECTILE = createGeyser("projectile");
 

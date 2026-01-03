@@ -36,7 +36,7 @@ import org.geysermc.geyser.api.util.GenericBuilder;
  * an item as consumable. Further, it allows specifying
  * the consume duration and animation to play when consuming.
  */
-public interface Consumable {
+public interface JavaConsumable {
 
     /**
      * The seconds it takes to consume the item.
@@ -58,8 +58,8 @@ public interface Consumable {
      *
      * @return a new builder
      */
-    static Builder builder() {
-        return GeyserApi.api().provider(Consumable.Builder.class);
+    static @NonNull Builder builder() {
+        return GeyserApi.api().provider(JavaConsumable.Builder.class);
     }
 
     /**
@@ -69,8 +69,8 @@ public interface Consumable {
      * @param animation the animation to play when consuming
      * @return the consumable component
      */
-    static Consumable of(float consumeSeconds, Animation animation) {
-        return Consumable.builder().consumeSeconds(consumeSeconds).animation(animation).build();
+    static @NonNull JavaConsumable of(float consumeSeconds, Animation animation) {
+        return JavaConsumable.builder().consumeSeconds(consumeSeconds).animation(animation).build();
     }
 
     /**
@@ -120,13 +120,13 @@ public interface Consumable {
     /**
      * Builder for the consumable component.
      */
-    interface Builder extends GenericBuilder<Consumable> {
+    interface Builder extends GenericBuilder<JavaConsumable> {
         /**
          * Sets the time in seconds that consumption takes. This also
          * determines the animation length.
          *
          * @param consumeSeconds the seconds it takes to consume the item
-         * @see Consumable#consumeSeconds()
+         * @see JavaConsumable#consumeSeconds()
          * @return this builder
          */
         @This
@@ -138,7 +138,7 @@ public interface Consumable {
          * do not work correctly.
          *
          * @param animation the animation to play
-         * @see Consumable#animation()
+         * @see JavaConsumable#animation()
          * @return this builder
          */
         @This
@@ -150,6 +150,6 @@ public interface Consumable {
          * @return the new component
          */
         @Override
-        Consumable build();
+        JavaConsumable build();
     }
 }

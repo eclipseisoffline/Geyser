@@ -26,6 +26,7 @@
 package org.geysermc.geyser.api.item.custom.v2.component.java;
 
 import org.checkerframework.checker.index.qual.NonNegative;
+import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.common.returnsreceiver.qual.This;
 import org.geysermc.geyser.api.GeyserApi;
 import org.geysermc.geyser.api.util.GenericBuilder;
@@ -35,7 +36,7 @@ import org.geysermc.geyser.api.util.GenericBuilder;
  * for consumable items. This includes setting the nutrition and
  * saturation values, and whether the item can always be eaten.
  */
-public interface FoodProperties {
+public interface JavaFoodProperties {
 
     /**
      * The nutrition of the item. Defaults to {@code 0}.
@@ -65,8 +66,8 @@ public interface FoodProperties {
      *
      * @return a new builder
      */
-    static Builder builder() {
-        return GeyserApi.api().provider(FoodProperties.Builder.class);
+    static @NonNull Builder builder() {
+        return GeyserApi.api().provider(JavaFoodProperties.Builder.class);
     }
 
     /**
@@ -77,20 +78,20 @@ public interface FoodProperties {
      * @param canAlwaysEat whether the item can always be eaten
      * @return the food properties component
      */
-    static FoodProperties of(int nutrition, float saturation, boolean canAlwaysEat) {
-        return FoodProperties.builder().nutrition(nutrition).saturation(saturation).canAlwaysEat(canAlwaysEat).build();
+    static @NonNull JavaFoodProperties of(int nutrition, float saturation, boolean canAlwaysEat) {
+        return JavaFoodProperties.builder().nutrition(nutrition).saturation(saturation).canAlwaysEat(canAlwaysEat).build();
     }
 
     /**
      * Builder for the food properties component.
      */
-    interface Builder extends GenericBuilder<FoodProperties> {
+    interface Builder extends GenericBuilder<JavaFoodProperties> {
 
         /**
          * Sets the nutrition of the item which is added to the hunger bar.
          *
          * @param nutrition the nutrition of the item.
-         * @see FoodProperties#nutrition()
+         * @see JavaFoodProperties#nutrition()
          * @return this builder
          */
         @This
@@ -100,7 +101,7 @@ public interface FoodProperties {
          * Sets the saturation of the item.
          * 
          * @param saturation the saturation of the item
-         * @see FoodProperties#saturation()
+         * @see JavaFoodProperties#saturation()
          * @return this builder
          */
         @This
@@ -111,7 +112,7 @@ public interface FoodProperties {
          * even when the hunger bar is full.
          *
          * @param canAlwaysEat whether the item can always be eaten
-         * @see FoodProperties#canAlwaysEat()
+         * @see JavaFoodProperties#canAlwaysEat()
          * @return this builder
          */
         @This
@@ -123,6 +124,6 @@ public interface FoodProperties {
          * @return the new component
          */
         @Override
-        FoodProperties build();
+        JavaFoodProperties build();
     }
 }

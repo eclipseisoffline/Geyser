@@ -25,40 +25,34 @@
 
 package org.geysermc.geyser.item.custom.impl;
 
-import org.checkerframework.checker.index.qual.Positive;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.geysermc.geyser.api.item.custom.v2.component.java.Consumable;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.geysermc.geyser.api.item.custom.v2.component.java.JavaUseCooldown;
+import org.geysermc.geyser.api.util.Identifier;
 
-import java.util.Objects;
+public record JavaUseCooldownImpl(
+    float seconds,
+    @Nullable Identifier cooldownGroup
+) implements JavaUseCooldown {
 
-public record ConsumableImpl(
-    float consumeSeconds,
-    @NonNull Animation animation
-) implements Consumable {
-
-    public static class Builder implements Consumable.Builder {
-        private float consumeSeconds = 1.6F;
-        private Animation animation = Animation.EAT;
+    public static class Builder implements JavaUseCooldown.Builder {
+        private Identifier cooldownGroup;
+        private float seconds;
 
         @Override
-        public Builder consumeSeconds(@Positive float consumeSeconds) {
-            if (consumeSeconds <= 0.0F) {
-                throw new IllegalArgumentException("consume seconds must be above 0");
-            }
-            this.consumeSeconds = consumeSeconds;
+        public Builder cooldownGroup(@Nullable Identifier cooldownGroup) {
+            this.cooldownGroup = cooldownGroup;
             return this;
         }
 
         @Override
-        public Builder animation(@NonNull Animation animation) {
-            Objects.requireNonNull(animation, "animation cannot be null");
-            this.animation = animation;
+        public Builder seconds(float seconds) {
+            this.seconds = seconds;
             return this;
         }
 
         @Override
-        public Consumable build() {
-            return new ConsumableImpl(consumeSeconds, animation);
+        public JavaUseCooldown build() {
+            return new JavaUseCooldownImpl(seconds, cooldownGroup);
         }
     }
 }

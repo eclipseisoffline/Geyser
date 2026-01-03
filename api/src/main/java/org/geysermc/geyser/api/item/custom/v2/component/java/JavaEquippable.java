@@ -29,62 +29,73 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.common.returnsreceiver.qual.This;
 import org.geysermc.geyser.api.GeyserApi;
 import org.geysermc.geyser.api.util.GenericBuilder;
-import org.geysermc.geyser.api.util.Holders;
 
 /**
- * The repairable component determines which other items can be used
- * to repair the item.
+ * The equippable component is used to mark an item as equippable.
+ * Bedrock allows specifying the slot where an item can be worn.
  */
-public interface Repairable {
+public interface JavaEquippable {
 
     /**
-     * The {@link Holders} of item identifiers that can be used to repair the item.
+     * The equipment slot where this item
+     * can be worn.
      *
-     * @return the {@link Holders} of item identifiers
+     * @return the equipment slot
      */
-    @NonNull Holders items();
+    @NonNull EquipmentSlot slot();
 
     /**
-     * Creates a builder for the repairable component.
+     * Creates a builder for the equippable component.
      *
      * @return a new builder
      */
-    static Builder builder() {
-        return GeyserApi.api().provider(Repairable.Builder.class);
+    static @NonNull Builder builder() {
+        return GeyserApi.api().provider(JavaEquippable.Builder.class);
     }
 
     /**
-     * Creates a repairable component.
+     * Creates an equippable component for an equipment slot.
      *
-     * @param items the {@link Holders} of the items that
-     *      can repair the item
-     * @return the repairable component
+     * @param slot the slot in which the item can be equipped
+     * @return the Equippable component
      */
-    static Repairable of(Holders items) {
-        return Repairable.builder().items(items).build();
+    static @NonNull JavaEquippable of(EquipmentSlot slot) {
+        return builder().slot(slot).build();
     }
 
     /**
-     * Builder for the repairable component.
+     * Builder for the equippable component
      */
-    interface Builder extends GenericBuilder<Repairable> {
+    interface Builder extends GenericBuilder<JavaEquippable> {
 
         /**
-         * Sets the {@link Holders} of item identifiers that can be used to repair the item.
-         *
-         * @param items the {@link Holders} of item identifiers that can be used to repair the item
-         * @see Repairable#items()
+         * The equipment slot where the item can be equipped
+         * 
+         * @param slot the equipment slot
+         * @see JavaEquippable#slot()
          * @return this builder
          */
         @This
-        Builder items(@NonNull Holders items);
+        Builder slot(@NonNull EquipmentSlot slot);
 
         /**
-         * Creates the repairable component.
+         * Creates the equippable component.
          *
          * @return the new component
          */
         @Override
-        Repairable build();
+        JavaEquippable build();
+    }
+
+    /**
+     * The slot in which the equipment can be worn.
+     */
+    enum EquipmentSlot {
+        HEAD,
+        CHEST,
+        LEGS,
+        FEET,
+        BODY,
+        SADDLE
     }
 }
