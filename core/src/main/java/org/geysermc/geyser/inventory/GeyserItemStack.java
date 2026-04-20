@@ -59,9 +59,10 @@ import java.util.function.Supplier;
 
 @Data
 public class GeyserItemStack {
-    public static final GeyserItemStack EMPTY = new GeyserItemStack(null, Items.AIR_ID, 0, null); // session can be null because air is a vanilla item
+    public static final int EMPTY_ID = -1;
+    public static final GeyserItemStack EMPTY = new GeyserItemStack(null, -1, 0, null); // TODO session null
 
-    @Nullable
+    @Deprecated(forRemoval = true)
     private final GeyserSession session;
     private final int javaId;
     private int amount;
@@ -75,11 +76,11 @@ public class GeyserItemStack {
     @EqualsAndHashCode.Exclude
     private RegistryEntryData<Item> item;
 
-    private GeyserItemStack(@Nullable GeyserSession session, int javaId, int amount, DataComponents components) {
+    private GeyserItemStack(GeyserSession session, int javaId, int amount, DataComponents components) {
         this(session, javaId, amount, components, 1, null);
     }
 
-    private GeyserItemStack(@Nullable GeyserSession session, int javaId, int amount, DataComponents components, int netId, BundleCache.BundleData bundleData) {
+    private GeyserItemStack(GeyserSession session, int javaId, int amount, DataComponents components, int netId, BundleCache.BundleData bundleData) {
         this.session = session;
         this.javaId = javaId;
         this.amount = amount;
@@ -88,19 +89,19 @@ public class GeyserItemStack {
         this.bundleData = bundleData;
     }
 
-    public static @NonNull GeyserItemStack of(@Nullable GeyserSession session, int javaId, int amount) {
+    public static @NonNull GeyserItemStack of(GeyserSession session, int javaId, int amount) {
         return of(session, javaId, amount, null);
     }
 
-    public static @NonNull GeyserItemStack of(@Nullable GeyserSession session, int javaId, int amount, @Nullable DataComponents components) {
+    public static @NonNull GeyserItemStack of(GeyserSession session, int javaId, int amount, @Nullable DataComponents components) {
         return new GeyserItemStack(session, javaId, amount, components);
     }
 
-    public static @NonNull GeyserItemStack from(@Nullable GeyserSession session, @Nullable ItemStack itemStack) {
+    public static @NonNull GeyserItemStack from(GeyserSession session, @Nullable ItemStack itemStack) {
         return itemStack == null ? EMPTY : new GeyserItemStack(session, itemStack.getId(), itemStack.getAmount(), itemStack.getDataComponentsPatch());
     }
 
-    public static @NonNull GeyserItemStack from(@Nullable GeyserSession session, @NonNull SlotDisplay slotDisplay) {
+    public static @NonNull GeyserItemStack from(GeyserSession session, @NonNull SlotDisplay slotDisplay) {
         return switch (slotDisplay) {
             case EmptySlotDisplay ignored -> GeyserItemStack.EMPTY;
             case ItemSlotDisplay(int itemId) -> GeyserItemStack.of(session, itemId, 1);
@@ -318,7 +319,7 @@ public class GeyserItemStack {
     }
 
     public boolean isEmpty() {
-        return amount <= 0 || javaId == Items.AIR_ID;
+        return javaId == EMPTY_ID;
     }
 
     public GeyserItemStack copy() {

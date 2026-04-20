@@ -37,6 +37,7 @@ import org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponen
 
 import java.util.List;
 
+@Deprecated(forRemoval = true)
 public class ComponentCache {
     private final GeyserSession session;
     private final Reference2ObjectMap<NonVanillaItem, DataComponents> resolvedComponents = new Reference2ObjectOpenHashMap<>();

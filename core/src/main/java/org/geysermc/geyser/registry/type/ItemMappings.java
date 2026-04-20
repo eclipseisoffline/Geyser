@@ -73,7 +73,6 @@ public class ItemMappings implements DefinitionRegistry<ItemDefinition> {
     Set<Item> javaOnlyItems;
 
     List<ItemDefinition> buckets;
-    List<ItemDefinition> boats;
     Int2ObjectMap<String> customIdMappings;
     // the item definition runtime id that is actually for the block
     // that has the block definition with a 0 runtime id

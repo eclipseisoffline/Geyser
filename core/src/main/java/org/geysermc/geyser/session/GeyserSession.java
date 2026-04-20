@@ -289,6 +289,7 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
     private final BookEditCache bookEditCache;
     private final BundleCache bundleCache;
     private final ChunkCache chunkCache;
+    @Deprecated(forRemoval = true)
     private final ComponentCache componentCache;
     private final EntityCache entityCache;
     private final EntityEffectCache effectCache;
