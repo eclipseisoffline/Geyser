@@ -28,6 +28,7 @@ package org.geysermc.geyser.util;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.inventory.GeyserItemStack;
 import org.geysermc.geyser.inventory.item.BedrockEnchantment;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.item.Items;
 import org.geysermc.geyser.item.enchantment.Enchantment;
 import org.geysermc.geyser.item.enchantment.EnchantmentComponent;
@@ -88,8 +89,8 @@ public final class ItemUtils {
     /**
      * @return the correct Bedrock durability for this item.
      */
-    public static int getCorrectBedrockDurability(Item item, int original) {
-        if (item == Items.FISHING_ROD) {
+    public static int getCorrectBedrockDurability(GeyserItemStack item, int original) {
+        if (item.is(ItemIds.FISHING_ROD)) {
             // Java durability: 64
             // Bedrock durability : 384
             // 384 / 64 = 6

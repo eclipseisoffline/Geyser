@@ -32,7 +32,7 @@ import org.geysermc.geyser.api.predicate.context.item.ChargedProjectile;
 import org.geysermc.geyser.api.predicate.context.item.ItemPredicateContext;
 import org.geysermc.geyser.api.util.Identifier;
 import org.geysermc.geyser.inventory.GeyserItemStack;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.item.custom.impl.predicates.GeyserChargedProjectile;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.session.cache.registry.JavaRegistries;
@@ -170,7 +170,8 @@ public record GeyserItemPredicateContext(Supplier<Identifier> dimensionSupplier,
         });
 
         Supplier<List<ChargedProjectile>> chargedProjectiles = Suppliers.memoize(() -> components.getOrDefault(DataComponentTypes.CHARGED_PROJECTILES, List.of()).stream()
-            .map(GeyserItemPredicateContext::stackToProjectile).toList());
+            .map(stack -> stackToProjectile(session, stack))
+            .toList());
 
         Supplier<List<Identifier>> componentList = Suppliers.memoize(() -> components.getDataComponents().keySet().stream()
             .map(type -> MinecraftKey.keyToIdentifier(type.getKey())).toList());
@@ -185,8 +186,8 @@ public record GeyserItemPredicateContext(Supplier<Identifier> dimensionSupplier,
             bundleFullness, trimMaterial, chargedProjectiles, componentList, flags, strings, floats);
     }
 
-    private static ChargedProjectile stackToProjectile(ItemStack stack) {
-        return stack.getId() == Items.FIREWORK_ROCKET.javaId()
+    private static ChargedProjectile stackToProjectile(GeyserSession session, ItemStack stack) {
+        return stack.getId() == JavaRegistries.ITEM.networkId(session, ItemIds.FIREWORK_ROCKET)
             ? new GeyserChargedProjectile(ChargedProjectile.ChargeType.ROCKET, stack.getAmount())
             : new GeyserChargedProjectile(ChargedProjectile.ChargeType.ARROW, stack.getAmount());
     }

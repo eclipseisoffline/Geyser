@@ -1112,7 +1112,7 @@ public abstract class InventoryTranslator<Type extends Inventory> {
             int durability = 0;
             Integer damage = itemStack.getComponent(DataComponentTypes.DAMAGE);
             if (damage != null) {
-                durability = ItemUtils.getCorrectBedrockDurability(itemStack.asItem(), damage);
+                durability = ItemUtils.getCorrectBedrockDurability(itemStack, damage);
             }
 
             itemEntry = new ItemStackResponseSlot((byte) bedrockSlot, (byte) bedrockSlot, (byte) itemStack.getAmount(), itemStack.getNetId(), "", durability, "");

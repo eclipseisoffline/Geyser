@@ -30,10 +30,9 @@ import net.kyori.adventure.key.Key;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.entity.type.living.animal.TemperatureVariantAnimal;
 import org.geysermc.geyser.inventory.GeyserItemStack;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.session.cache.registry.JavaRegistries;
-import org.geysermc.mcprotocollib.protocol.data.game.Holder;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.EntityMetadata;
 import org.geysermc.mcprotocollib.protocol.data.game.item.ItemStack;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponentTypes;
@@ -46,7 +45,7 @@ public class ThrowableEggEntity extends ThrowableItemEntity {
 
     public ThrowableEggEntity(EntitySpawnContext context) {
         super(context);
-        itemStack = GeyserItemStack.of(session, Items.EGG.javaId(), 1);
+        itemStack = GeyserItemStack.of(session, JavaRegistries.ITEM.networkId(context.session(), ItemIds.EGG), 1);
     }
 
     @Override

@@ -68,7 +68,7 @@ public class ShulkerBoxItem extends BlockItem {
         List<NbtMap> itemsList = new ArrayList<>();
         for (int slot = 0; slot < contents.size(); slot++) {
             Optional<ItemStack> optionalItem = contents.get(slot);
-            if (optionalItem.isEmpty() || optionalItem.get().getId() == Items.AIR_ID) {
+            if (optionalItem.isEmpty()) {
                 continue;
             }
             ItemStack item = optionalItem.get();

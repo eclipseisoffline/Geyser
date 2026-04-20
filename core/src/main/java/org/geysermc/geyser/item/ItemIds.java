@@ -26,7 +26,10 @@
 package org.geysermc.geyser.item;
 
 import net.kyori.adventure.key.Key;
+import org.geysermc.geyser.session.GeyserSession;
+import org.geysermc.geyser.session.cache.registry.JavaRegistries;
 
+@SuppressWarnings("unused")
 public final class ItemIds {
     public static final Key AIR = Key.key("minecraft:air");
     public static final Key STONE = Key.key("minecraft:stone");
@@ -1536,4 +1539,8 @@ public final class ItemIds {
     public static final Key OMINOUS_BOTTLE = Key.key("minecraft:ominous_bottle");
 
     private ItemIds() {}
+
+    public static int air(GeyserSession session) {
+        return JavaRegistries.ITEM.networkId(session, AIR);
+    }
 }

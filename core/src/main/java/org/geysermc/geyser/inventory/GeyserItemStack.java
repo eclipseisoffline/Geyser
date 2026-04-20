@@ -35,6 +35,7 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.geysermc.geyser.GeyserImpl;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.item.Items;
 import org.geysermc.geyser.item.type.Item;
 import org.geysermc.geyser.registry.type.ItemMapping;
@@ -87,6 +88,35 @@ public class GeyserItemStack {
         this.components = components;
         this.netId = netId;
         this.bundleData = bundleData;
+    }
+
+    private GeyserItemStack(GeyserSession session, Key javaKey, int amount, DataComponents components) {
+        this(session, javaKey, amount, components, 1, null);
+    }
+
+    private GeyserItemStack(GeyserSession session, Key javaKey, int amount, DataComponents components, int netId, BundleCache.BundleData bundleData) {
+        this.item = JavaRegistries.ITEM.entry(session, javaKey).orElseThrow();
+        this.session = session;
+        this.javaId = item.id();
+        this.amount = amount;
+        this.components = components;
+        this.netId = netId;
+        this.bundleData = bundleData;
+    }
+
+    public static @NonNull GeyserItemStack of(GeyserSession session, Key javaKey) {
+        return of(session, javaKey, 1);
+    }
+
+    public static @NonNull GeyserItemStack of(GeyserSession session, Key javaKey, int amount) {
+        return of(session, javaKey, amount, null);
+    }
+
+    public static @NonNull GeyserItemStack of(GeyserSession session, Key javaKey, int amount, @Nullable DataComponents components) {
+        if (javaKey.equals(ItemIds.AIR) || amount <= 0) {
+            return EMPTY;
+        }
+        return new GeyserItemStack(session, javaKey, amount, components);
     }
 
     public static @NonNull GeyserItemStack of(GeyserSession session, int javaId, int amount) {

@@ -39,6 +39,7 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.recipe.RecipeDa
 import org.cloudburstmc.protocol.bedrock.data.inventory.descriptor.DefaultDescriptor;
 import org.cloudburstmc.protocol.bedrock.data.inventory.descriptor.ItemDescriptorWithCount;
 import org.cloudburstmc.protocol.bedrock.data.inventory.descriptor.ItemTagDescriptor;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.item.Items;
 import org.geysermc.geyser.item.type.BedrockRequiresTagItem;
 import org.geysermc.geyser.item.type.Item;
@@ -187,7 +188,7 @@ public class RecipeUtil {
     }
 
     private static ItemDescriptorWithCount fromItem(GeyserSession session, int item) {
-        if (item == Items.AIR_ID) {
+        if (item == ItemIds.air(session)) {
             return ItemDescriptorWithCount.EMPTY;
         }
         ItemMapping mapping = session.getItemMappings().getMapping(item);

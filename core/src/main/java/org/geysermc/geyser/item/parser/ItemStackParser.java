@@ -37,6 +37,7 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.inventory.item.DyeColor;
 import org.geysermc.geyser.inventory.item.Potion;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.item.Items;
 import org.geysermc.geyser.item.hashing.data.FireworkExplosionShape;
 import org.geysermc.geyser.item.type.Item;
@@ -93,17 +94,17 @@ public final class ItemStackParser {
         registerSimple(component, parsedClass, Function.identity());
     }
 
-    private static int javaItemIdentifierToNetworkId(String identifier) {
+    private static int javaItemIdentifierToNetworkId(GeyserSession session, String identifier) {
         if (identifier == null || identifier.isEmpty()) {
-            return Items.AIR_ID;
+            return ItemIds.air(session);
         }
 
-        Item item = Registries.JAVA_ITEM_IDENTIFIERS.get(identifier);
-        if (item == null) {
+        int id = JavaRegistries.ITEM.networkId(session, MinecraftKey.key(identifier));
+        if (id == -1) {
             GeyserImpl.getInstance().getLogger().warning("Received unknown item ID " + identifier + " whilst parsing NBT item stack!");
-            return Items.AIR_ID;
+            return ItemIds.air(session);
         }
-        return item.javaId();
+        return id;
     }
 
     private static ItemEnchantments parseEnchantments(GeyserSession session, NbtMap map) {
@@ -172,8 +173,8 @@ public final class ItemStackParser {
         });
         registerSimple(DataComponentTypes.ITEM_MODEL, String.class, MinecraftKey::key);
         registerSimple(DataComponentTypes.MAP_COLOR, Integer.class);
-        registerSimple(DataComponentTypes.POT_DECORATIONS, List.class, list -> list.stream()
-            .map(item -> javaItemIdentifierToNetworkId((String) item))
+        register(DataComponentTypes.POT_DECORATIONS, List.class, (session, list) -> list.stream()
+            .map(item -> javaItemIdentifierToNetworkId(session, (String) item))
             .toList());
         register(DataComponentTypes.POTION_CONTENTS, NbtMap.class, (session, map) -> {
             Potion potion = Potion.getByJavaIdentifier(map.getString("potion"));
@@ -236,18 +237,18 @@ public final class ItemStackParser {
 
     public static ItemStack parseItemStack(GeyserSession session, @Nullable NbtMap map) {
         if (map == null) {
-            return new ItemStack(Items.AIR_ID);
+            return new ItemStack(ItemIds.air(session));
         }
 
         try {
-            int id = javaItemIdentifierToNetworkId(map.getString("id"));
+            int id = javaItemIdentifierToNetworkId(session, map.getString("id"));
             int count = map.getInt("count");
             DataComponents patch = parseDataComponentPatch(session, map.getCompound("components"));
             return new ItemStack(id, count, patch);
         } catch (Exception exception) {
             GeyserImpl.getInstance().getLogger().error("Failed to parse item stack from NBT data!", exception);
         }
-        return new ItemStack(Items.AIR_ID);
+        return new ItemStack(ItemIds.air(session));
     }
 
     /**

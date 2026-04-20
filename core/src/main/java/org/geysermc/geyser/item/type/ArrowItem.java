@@ -29,7 +29,7 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.geysermc.geyser.inventory.GeyserItemStack;
 import org.geysermc.geyser.inventory.item.Potion;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.registry.type.ItemMapping;
 import org.geysermc.geyser.registry.type.ItemMappings;
 import org.geysermc.geyser.session.GeyserSession;
@@ -46,7 +46,7 @@ public class ArrowItem extends Item {
         Potion potion = Potion.getByTippedArrowDamage(itemData.getDamage());
         GeyserItemStack itemStack = super.translateToJava(session, itemData, mapping, mappings);
         if (potion != null) {
-            itemStack = Items.TIPPED_ARROW.newItemStack(session, itemStack.getAmount(), itemStack.getComponents());
+            itemStack = GeyserItemStack.of(session, ItemIds.TIPPED_ARROW, itemStack.getAmount(), itemStack.getComponents());
             PotionContents contents = potion.toComponent();
             itemStack.getOrCreateComponents().put(DataComponentTypes.POTION_CONTENTS, contents);
         }
