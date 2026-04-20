@@ -42,6 +42,7 @@ import org.geysermc.geyser.api.block.custom.CustomBlockData;
 import org.geysermc.geyser.entity.attribute.GeyserAttributeType;
 import org.geysermc.geyser.inventory.GeyserItemStack;
 import org.geysermc.geyser.inventory.item.Potion;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.item.Items;
 import org.geysermc.geyser.item.TooltipOptions;
 import org.geysermc.geyser.item.components.Rarity;
@@ -115,8 +116,8 @@ public final class ItemTranslator {
         SLOT_NAMES.put(ItemAttributeModifiers.EquipmentSlotGroup.BODY, "body");
     }
 
-    private final static List<Item> GLINT_PRESENT = List.of(Items.ENCHANTED_GOLDEN_APPLE, Items.EXPERIENCE_BOTTLE, Items.WRITTEN_BOOK,
-        Items.NETHER_STAR, Items.ENCHANTED_BOOK, Items.END_CRYSTAL);
+    private final static List<Key> GLINT_PRESENT = List.of(ItemIds.ENCHANTED_GOLDEN_APPLE, ItemIds.EXPERIENCE_BOTTLE, ItemIds.WRITTEN_BOOK,
+        ItemIds.NETHER_STAR, ItemIds.ENCHANTED_BOOK, ItemIds.END_CRYSTAL);
 
     private ItemTranslator() {
     }
@@ -217,7 +218,7 @@ public final class ItemTranslator {
         }
 
         // Add enchantment override. We can't remove it - enchantments would stop showing - but we can add it.
-        if (components.getOrDefault(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, false) && !GLINT_PRESENT.contains(javaItem)) {
+        if (components.getOrDefault(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, false) && !GLINT_PRESENT.contains(javaItem.javaKey())) {
             NbtMapBuilder nbtMapBuilder = nbtBuilder.getOrCreateNbt();
             nbtMapBuilder.putIfAbsent("ench", NbtList.EMPTY);
         }
@@ -235,7 +236,7 @@ public final class ItemTranslator {
             }
         }
 
-        if (bedrockItem.getJavaItem().equals(Items.PLAYER_HEAD)) {
+        if (bedrockItem.getJavaItem().is(ItemIds.PLAYER_HEAD)) {
             translatePlayerHead(session, components.get(DataComponentTypes.PROFILE), builder);
         }
 
@@ -529,7 +530,7 @@ public final class ItemTranslator {
             itemDefinition = session.getItemMappings().getCustomBlockItemDefinitions().get(customBlockData);
         }
 
-        if (mapping.getJavaItem().equals(Items.PLAYER_HEAD)) {
+        if (mapping.getJavaItem().is(ItemIds.PLAYER_HEAD)) {
             CustomSkull customSkull = getCustomSkull(itemStack.getComponent(DataComponentTypes.PROFILE));
             if (customSkull != null) {
                 itemDefinition = session.getItemMappings().getCustomBlockItemDefinitions().get(customSkull.getCustomBlockData());

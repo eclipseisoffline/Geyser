@@ -27,9 +27,9 @@ package org.geysermc.geyser.inventory.item;
 
 import lombok.Getter;
 import lombok.experimental.Accessors;
+import net.kyori.adventure.key.Key;
 import org.checkerframework.checker.nullness.qual.NonNull;
-import org.geysermc.geyser.item.Items;
-import org.geysermc.geyser.item.type.Item;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.registry.type.ItemMapping;
 
 import java.util.Map;
@@ -51,24 +51,24 @@ public class StoredItemMappings {
     private final ItemMapping writableBook;
     private final ItemMapping writtenBook;
 
-    public StoredItemMappings(Map<Item, ItemMapping> itemMappings) {
-        this.barrier = load(itemMappings, Items.BARRIER);
-        this.compass = load(itemMappings, Items.COMPASS);
-        this.glassBottle = load(itemMappings, Items.GLASS_BOTTLE);
-        this.milkBucket = load(itemMappings, Items.MILK_BUCKET);
-        this.powderSnowBucket = load(itemMappings, Items.POWDER_SNOW_BUCKET);
-        this.totem = load(itemMappings, Items.TOTEM_OF_UNDYING);
-        this.upgradeTemplate = load(itemMappings, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE);
-        this.wheat = load(itemMappings, Items.WHEAT);
-        this.writableBook = load(itemMappings, Items.WRITABLE_BOOK);
-        this.writtenBook = load(itemMappings, Items.WRITTEN_BOOK);
+    public StoredItemMappings(Map<Key, ItemMapping> itemMappings) {
+        this.barrier = load(itemMappings, ItemIds.BARRIER);
+        this.compass = load(itemMappings, ItemIds.COMPASS);
+        this.glassBottle = load(itemMappings, ItemIds.GLASS_BOTTLE);
+        this.milkBucket = load(itemMappings, ItemIds.MILK_BUCKET);
+        this.powderSnowBucket = load(itemMappings, ItemIds.POWDER_SNOW_BUCKET);
+        this.totem = load(itemMappings, ItemIds.TOTEM_OF_UNDYING);
+        this.upgradeTemplate = load(itemMappings, ItemIds.NETHERITE_UPGRADE_SMITHING_TEMPLATE);
+        this.wheat = load(itemMappings, ItemIds.WHEAT);
+        this.writableBook = load(itemMappings, ItemIds.WRITABLE_BOOK);
+        this.writtenBook = load(itemMappings, ItemIds.WRITTEN_BOOK);
     }
 
     @NonNull
-    private ItemMapping load(Map<Item, ItemMapping> itemMappings, Item item) {
+    private ItemMapping load(Map<Key, ItemMapping> itemMappings, Key item) {
         ItemMapping mapping = itemMappings.get(item);
         if (mapping == null) {
-            throw new RuntimeException("Could not find item " + item.javaIdentifier());
+            throw new RuntimeException("Could not find item " + item);
         }
 
         return mapping;

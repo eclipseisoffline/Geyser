@@ -43,7 +43,7 @@ import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.block.custom.CustomBlockData;
 import org.geysermc.geyser.inventory.GeyserItemStack;
 import org.geysermc.geyser.inventory.item.StoredItemMappings;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.item.type.Item;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.session.cache.registry.JavaRegistries;
@@ -169,7 +169,7 @@ public class ItemMappings implements DefinitionRegistry<ItemDefinition> {
                 } else {
                     if (!(mapping.getBedrockData() == data.getDamage() ||
                             // Make exceptions for items whose damage values can vary
-                            (mapping.getJavaItem().ignoreDamage() || mapping.getJavaItem() == Items.SUSPICIOUS_STEW))) {
+                            (mapping.getJavaItem().ignoreDamage() || mapping.getJavaItem().is(ItemIds.SUSPICIOUS_STEW)))) {
                         continue;
                     }
                 }

@@ -336,7 +336,7 @@ public class GeyserItemStack {
 
     public RegistryEntryData<Item> asItemEntry() {
         if (isEmpty()) {
-            return Items.AIR;
+            return Items.AIR_ENTRY;
         }
         if (item == null) {
             return (item = JavaRegistries.ITEM.entry(session, javaId).orElseThrow());

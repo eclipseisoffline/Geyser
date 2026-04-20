@@ -32,7 +32,6 @@ import org.cloudburstmc.nbt.NbtType;
 import org.cloudburstmc.protocol.bedrock.data.definitions.ItemDefinition;
 import org.geysermc.geyser.inventory.GeyserItemStack;
 import org.geysermc.geyser.inventory.item.Potion;
-import org.geysermc.geyser.item.Items;
 import org.geysermc.geyser.item.TooltipOptions;
 import org.geysermc.geyser.level.block.type.Block;
 import org.geysermc.geyser.registry.type.ItemMapping;

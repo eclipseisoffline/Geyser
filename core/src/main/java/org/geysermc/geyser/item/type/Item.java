@@ -112,6 +112,10 @@ public class Item {
         return session.getTagCache().is(set, JavaRegistries.ITEM, javaId);
     }
 
+    public boolean is(Key key) {
+        return javaIdentifier.equals(key);
+    }
+
     /**
      * Returns an unmodifiable {@link DataComponents} view containing known data components.
      * Optionally, additional components can be provided to replace (or add to)

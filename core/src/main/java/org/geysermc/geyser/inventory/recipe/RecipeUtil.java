@@ -40,7 +40,6 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.descriptor.DefaultDescri
 import org.cloudburstmc.protocol.bedrock.data.inventory.descriptor.ItemDescriptorWithCount;
 import org.cloudburstmc.protocol.bedrock.data.inventory.descriptor.ItemTagDescriptor;
 import org.geysermc.geyser.item.ItemIds;
-import org.geysermc.geyser.item.Items;
 import org.geysermc.geyser.item.type.BedrockRequiresTagItem;
 import org.geysermc.geyser.item.type.Item;
 import org.geysermc.geyser.registry.Registries;

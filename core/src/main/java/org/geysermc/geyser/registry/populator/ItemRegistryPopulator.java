@@ -233,7 +233,7 @@ public class ItemRegistryPopulator {
 
             List<ItemMapping> mappings = new ObjectArrayList<>();
             // Temporary mapping to create stored items
-            Map<Item, ItemMapping> javaItemToMapping = new Object2ObjectOpenHashMap<>();
+            Map<Key, ItemMapping> javaItemToMapping = new Object2ObjectOpenHashMap<>();
 
             List<CreativeItemData> creativeItems = new ArrayList<>();
             Set<String> noBlockDefinitions = new ObjectOpenHashSet<>();
@@ -570,7 +570,7 @@ public class ItemRegistryPopulator {
                 }
 
                 mappings.add(mapping);
-                javaItemToMapping.put(javaItem, mapping);
+                javaItemToMapping.put(javaItem.javaKey(), mapping);
             }
 
             // Add the light block level since it doesn't exist on java but we need it for item conversion

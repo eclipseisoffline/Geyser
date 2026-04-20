@@ -58,6 +58,7 @@ import org.geysermc.geyser.item.type.WritableBookItem;
 import org.geysermc.geyser.item.type.WrittenBookItem;
 import org.geysermc.geyser.level.block.Blocks;
 import org.geysermc.geyser.registry.Registries;
+import org.geysermc.geyser.session.cache.registry.RegistryEntryData;
 
 import static org.geysermc.geyser.item.type.Item.builder;
 
@@ -1574,6 +1575,7 @@ public final class Items {
     public static final Item OMINOUS_BOTTLE = register(new OminousBottleItem("ominous_bottle", builder()));
 
     public static final int AIR_ID = AIR.javaId();
+    public static final RegistryEntryData<Item> AIR_ENTRY = new RegistryEntryData<>(AIR_ID, ItemIds.AIR, AIR);
 
     private static <T extends Item> T register(T item) {
         return register(item, Registries.JAVA_ITEMS.get().size());
