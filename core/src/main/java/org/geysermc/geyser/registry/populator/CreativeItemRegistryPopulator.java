@@ -61,7 +61,7 @@ public class CreativeItemRegistryPopulator {
             (identifier, data) -> identifier.equals("minecraft:empty_map") && data == 2
     );
 
-    static void readCreativeItemGroups(ItemRegistryPopulator.PaletteVersion palette, List<CreativeItemData> creativeItemData,
+    static void readCreativeItemGroups(ItemMappingsBuilder.PaletteVersion palette, List<CreativeItemData> creativeItemData,
                                        List<CreativeItemGroup> creativeItemGroups, Map<String, Integer> groupIndexMap, Map<CreativeItemCategory, Integer> lastCreativeItemGroup) {
         GeyserBootstrap bootstrap = GeyserImpl.getInstance().getBootstrap();
 
@@ -116,7 +116,7 @@ public class CreativeItemRegistryPopulator {
         }
     }
 
-    static void populate(ItemRegistryPopulator.PaletteVersion palette, Map<String, ItemDefinition> definitions, Map<String, GeyserMappingItem> items, BiConsumer<ItemData.Builder, Integer> itemConsumer) {
+    static void populate(ItemMappingsBuilder.PaletteVersion palette, Map<String, ItemDefinition> definitions, Map<String, GeyserMappingItem> items, BiConsumer<ItemData.Builder, Integer> itemConsumer) {
         GeyserBootstrap bootstrap = GeyserImpl.getInstance().getBootstrap();
 
         // Load creative items

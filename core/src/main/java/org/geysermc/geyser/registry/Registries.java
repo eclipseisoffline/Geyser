@@ -49,7 +49,6 @@ import org.geysermc.geyser.registry.loader.SoundEventsRegistryLoader;
 import org.geysermc.geyser.registry.loader.SoundRegistryLoader;
 import org.geysermc.geyser.registry.loader.SoundTranslatorRegistryLoader;
 import org.geysermc.geyser.registry.populator.DataComponentRegistryPopulator;
-import org.geysermc.geyser.registry.populator.ItemRegistryPopulator;
 import org.geysermc.geyser.registry.populator.PacketRegistryPopulator;
 import org.geysermc.geyser.registry.populator.TagRegistryPopulator;
 import org.geysermc.geyser.registry.provider.ProviderSupplier;
@@ -155,6 +154,7 @@ public final class Registries {
      * A versioned registry which holds {@link ItemMappings} for each version. These item mappings contain
      * primarily Bedrock version-specific data.
      */
+    @Deprecated(forRemoval = true)
     public static final VersionedRegistry<ItemMappings> ITEMS = VersionedRegistry.create(RegistryLoaders.empty(Int2ObjectOpenHashMap::new));
 
     /**
@@ -166,6 +166,7 @@ public final class Registries {
     /**
      * A registry holding all the potion mixes.
      */
+    @Deprecated(forRemoval = true)
     public static final VersionedDeferredRegistry<Set<PotionMixData>> POTION_MIXES = VersionedDeferredRegistry.create(VersionedRegistry::create, PotionMixRegistryLoader::new);
 
     /**
@@ -235,7 +236,6 @@ public final class Registries {
     public static void populate() {
         PacketRegistryPopulator.populate();
         DataComponentRegistryPopulator.populate();
-        ItemRegistryPopulator.populate();
         TagRegistryPopulator.populate();
 
         // potion mixes depend on other registries
