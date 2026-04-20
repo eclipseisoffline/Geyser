@@ -73,7 +73,7 @@ public class ItemMappings implements DefinitionRegistry<ItemDefinition> {
     Int2ObjectMap<ItemDefinition> itemDefinitions;
 
     StoredItemMappings storedItems;
-    Set<Item> javaOnlyItems;
+    Set<Key> javaOnlyItems;
 
     List<ItemDefinition> buckets;
     Int2ObjectMap<String> customIdMappings;
@@ -173,7 +173,7 @@ public class ItemMappings implements DefinitionRegistry<ItemDefinition> {
                         continue;
                     }
                 }
-                if (!this.javaOnlyItems.contains(mapping.getJavaItem())) {
+                if (!this.javaOnlyItems.contains(mapping.getJavaItem().javaKey())) {
                     // From a Bedrock item data, we aren't getting one of these items
                     return mapping;
                 }

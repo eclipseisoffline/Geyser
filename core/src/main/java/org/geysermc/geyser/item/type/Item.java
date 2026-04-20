@@ -79,11 +79,12 @@ public class Item {
         this.attackDamage = builder.attackDamage;
     }
 
-    // TODO maybe deprecate?
+    @Deprecated(forRemoval = true)
     public String javaIdentifier() {
         return javaIdentifier.asString();
     }
 
+    @Deprecated(forRemoval = true)
     public Key javaKey() {
         return javaIdentifier;
     }

@@ -70,6 +70,7 @@ import org.geysermc.geyser.api.util.CreativeCategory;
 import org.geysermc.geyser.api.util.Identifier;
 import org.geysermc.geyser.inventory.item.StoredItemMappings;
 import org.geysermc.geyser.item.GeyserCustomMappingData;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.item.Items;
 import org.geysermc.geyser.item.TooltipOptions;
 import org.geysermc.geyser.item.custom.GeyserCustomItemDefinition;
@@ -79,7 +80,6 @@ import org.geysermc.geyser.item.type.BlockItem;
 import org.geysermc.geyser.item.type.Item;
 import org.geysermc.geyser.level.block.property.Properties;
 import org.geysermc.geyser.registry.BlockRegistries;
-import org.geysermc.geyser.registry.Registries;
 import org.geysermc.geyser.registry.type.BlockMappings;
 import org.geysermc.geyser.registry.type.GeyserBedrockBlock;
 import org.geysermc.geyser.registry.type.GeyserMappingItem;
@@ -88,6 +88,7 @@ import org.geysermc.geyser.registry.type.ItemMappings;
 import org.geysermc.geyser.registry.type.NonVanillaItemRegistration;
 import org.geysermc.geyser.registry.type.PaletteItem;
 import org.geysermc.geyser.session.GeyserSession;
+import org.geysermc.geyser.session.cache.registry.JavaRegistries;
 import org.geysermc.geyser.translator.item.BedrockItemBuilder;
 import org.geysermc.geyser.util.JsonUtils;
 import org.geysermc.geyser.util.MinecraftKey;
@@ -113,9 +114,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ItemMappingsBuilder {
     private static final boolean customItemsAllowed = GeyserImpl.getInstance().config().gameplay().enableCustomContent();
     private static final List<PaletteVersion> paletteVersions = new ArrayList<>(3);
-    private static Map<String, GeyserMappingItem> vanillaItems;
+    private static Map<Key, GeyserMappingItem> vanillaItems;
 
-    record PaletteVersion(String version, int protocolVersion, Map<Item, Item> javaOnlyItems, Remapper remapper,
+    record PaletteVersion(String version, int protocolVersion, Map<Key, Key> javaOnlyItems, Remapper remapper,
                           List<PaletteItem> itemEntries, NbtMap vanillaComponents) {
 
         public PaletteVersion(GeyserBootstrap bootstrap, String version, int protocolVersion) {
@@ -123,7 +124,7 @@ public class ItemMappingsBuilder {
                 loadItemEntries(bootstrap, version), loadVanillaComponents(bootstrap, version));
         }
 
-        public PaletteVersion(GeyserBootstrap bootstrap, String version, int protocolVersion, Map<Item, Item> javaOnlyItems) {
+        public PaletteVersion(GeyserBootstrap bootstrap, String version, int protocolVersion, Map<Key, Key> javaOnlyItems) {
             this(version, protocolVersion, javaOnlyItems, (item, mapping) -> mapping,
                 loadItemEntries(bootstrap, version), loadVanillaComponents(bootstrap, version));
         }
@@ -157,7 +158,7 @@ public class ItemMappingsBuilder {
     @FunctionalInterface
     interface Remapper {
         @NonNull
-        GeyserMappingItem remap(Item item, GeyserMappingItem mapping);
+        GeyserMappingItem remap(Key item, GeyserMappingItem mapping);
     }
 
     private static PaletteVersion getPalette(int protocolVersion) {
@@ -172,7 +173,7 @@ public class ItemMappingsBuilder {
     public static void init() {
         GeyserBootstrap bootstrap = GeyserImpl.getInstance().getBootstrap();
 
-        Map<Item, Item> dandelion = Map.of(Items.GOLDEN_DANDELION, Items.DANDELION);
+        Map<Key, Key> dandelion = Map.of(ItemIds.GOLDEN_DANDELION, ItemIds.DANDELION);
 
         paletteVersions.add(new PaletteVersion(bootstrap, "1_21_130", Bedrock_v898.CODEC.getProtocolVersion(), dandelion));
         paletteVersions.add(new PaletteVersion(bootstrap, "1_26_0", Bedrock_v924.CODEC.getProtocolVersion(), dandelion));
@@ -181,6 +182,7 @@ public class ItemMappingsBuilder {
         Type mappingItemsType = new TypeToken<Map<String, GeyserMappingItem>>() { }.getType();
         try (InputStream stream = bootstrap.getResourceOrThrow("mappings/items.json")) {
             // Load item mappings from Java Edition to Bedrock Edition
+            // FIXME Key key
             vanillaItems = Collections.unmodifiableMap(JsonUtils.fromJson(stream, mappingItemsType));
         } catch (Exception e) {
             throw new AssertionError("Unable to load Java runtime item IDs", e);
@@ -193,7 +195,7 @@ public class ItemMappingsBuilder {
         Multimap<Identifier, CustomItemDefinition> customItems = MultimapBuilder.hashKeys().arrayListValues().build();
         Multimap<Identifier, NonVanillaCustomItemDefinition> nonVanillaCustomItems = MultimapBuilder.hashKeys().arrayListValues().build();
 
-        Map<String, GeyserMappingItem> items = new Object2ObjectOpenHashMap<>(vanillaItems);
+        Map<Key, GeyserMappingItem> items = new Object2ObjectOpenHashMap<>(vanillaItems);
         if (customItemsAllowed) {
             // FIXME API BREAKAGE + EXPOSE SESSION IN API
             CustomItemRegistryPopulator.populate(items, customItems, nonVanillaCustomItems);
@@ -261,7 +263,7 @@ public class ItemMappingsBuilder {
         noBlockDefinitions.add("minecraft:structure_void");
 
         AtomicInteger creativeNetId = new AtomicInteger();
-        CreativeItemRegistryPopulator.populate(palette, definitions, vanillaItems, (itemBuilder, groupId) -> {
+        CreativeItemRegistryPopulator.populate(palette, definitions, items, (itemBuilder, groupId) -> {
             ItemData item = itemBuilder.netId(creativeNetId.incrementAndGet()).build();
             creativeItems.add(new CreativeItemData(item, item.getNetId(), groupId));
 
@@ -292,11 +294,10 @@ public class ItemMappingsBuilder {
 
         BlockMappings blockMappings = BlockRegistries.BLOCKS.forVersion(palette.protocolVersion());
 
-        Set<Item> javaOnlyItems = new ObjectOpenHashSet<>();
-        Collections.addAll(javaOnlyItems, Items.SPECTRAL_ARROW, Items.DEBUG_STICK,
-                Items.KNOWLEDGE_BOOK, Items.TIPPED_ARROW);
+        Set<Key> javaOnlyItems = new ObjectOpenHashSet<>();
+        Collections.addAll(javaOnlyItems, ItemIds.SPECTRAL_ARROW, ItemIds.DEBUG_STICK, ItemIds.KNOWLEDGE_BOOK, ItemIds.TIPPED_ARROW);
         if (!customItemsAllowed) {
-            javaOnlyItems.add(Items.FURNACE_MINECART);
+            javaOnlyItems.add(ItemIds.FURNACE_MINECART);
         }
         // Java-only items for this version
         javaOnlyItems.addAll(palette.javaOnlyItems().keySet());
@@ -304,18 +305,20 @@ public class ItemMappingsBuilder {
         Int2ObjectMap<String> customIdMappings = new Int2ObjectOpenHashMap<>();
         Set<Identifier> registeredCustomItems = new ObjectOpenHashSet<>(); // This is used to check for duplicate item names
 
-        for (Map.Entry<String, GeyserMappingItem> entry : vanillaItems.entrySet()) {
-            Item javaItem = Registries.JAVA_ITEM_IDENTIFIERS.get(entry.getKey());
+        for (Map.Entry<Key, GeyserMappingItem> itemMappingEntry : items.entrySet()) {
+            Key javaItemKey = itemMappingEntry.getKey();
+            Item javaItem = JavaRegistries.ITEM.value(session, javaItemKey);
             if (javaItem == null) {
-                throw new RuntimeException("Extra item in mappings? " + entry.getKey());
+                throw new RuntimeException("Extra item in mappings? " + javaItemKey);
             }
             GeyserMappingItem mappingItem;
-            Item replacementItem = palette.javaOnlyItems().get(javaItem);
+            Key replacementItem = palette.javaOnlyItems().get(javaItemKey);
+
             if (replacementItem != null) {
-                mappingItem = vanillaItems.get(replacementItem.javaIdentifier()); // java only item, a java id fallback has been provided
+                mappingItem = items.get(replacementItem); // java only item, a java id fallback has been provided
             } else {
                 // check if any mapping changes need to be made on this version
-                mappingItem = palette.remapper().remap(javaItem, entry.getValue());
+                mappingItem = palette.remapper().remap(javaItemKey, itemMappingEntry.getValue());
             }
 
             if (customItemsAllowed && javaItem == Items.FURNACE_MINECART) {
@@ -331,7 +334,7 @@ public class ItemMappingsBuilder {
             }
 
             BlockDefinition bedrockBlock = null;
-            Integer firstBlockRuntimeId = entry.getValue().getFirstBlockRuntimeId();
+            Integer firstBlockRuntimeId = itemMappingEntry.getValue().getFirstBlockRuntimeId();
             BlockDefinition customBlockItemOverride = null;
             if (firstBlockRuntimeId != null) {
                 BlockDefinition blockOverride = bedrockBlockIdOverrides.get(bedrockIdentifier);
@@ -356,7 +359,7 @@ public class ItemMappingsBuilder {
                     int aValidBedrockBlockId = blacklistedIdentifiers.getOrDefault(bedrockIdentifier, customBlockItemOverride != null ? customBlockItemOverride.getRuntimeId() : -1);
                     if (aValidBedrockBlockId == -1 && customBlockItemOverride == null) {
                         // Fallback
-                        if (!noBlockDefinitions.contains(entry.getValue().getBedrockIdentifier())) {
+                        if (!noBlockDefinitions.contains(itemMappingEntry.getValue().getBedrockIdentifier())) {
                             bedrockBlock = blockMappings.getBedrockBlock(firstBlockRuntimeId);
                         }
                     } else {
@@ -370,7 +373,7 @@ public class ItemMappingsBuilder {
                         boolean firstPass = true;
                         // Block states are all grouped together. In the mappings, we store the first block runtime ID in order,
                         // and the last, if relevant. We then iterate over all those values and get their Bedrock equivalents
-                        int lastBlockRuntimeId = entry.getValue().getLastBlockRuntimeId() == null ? firstBlockRuntimeId : entry.getValue().getLastBlockRuntimeId();
+                        int lastBlockRuntimeId = itemMappingEntry.getValue().getLastBlockRuntimeId() == null ? firstBlockRuntimeId : itemMappingEntry.getValue().getLastBlockRuntimeId();
                         for (int i = firstBlockRuntimeId; i <= lastBlockRuntimeId; i++) {
                             GeyserBedrockBlock bedrockBlockRuntimeId = blockMappings.getVanillaBedrockBlock(i);
                             NbtMap blockTag = bedrockBlockRuntimeId.getState();
@@ -432,7 +435,7 @@ public class ItemMappingsBuilder {
                                 }
                             }
                             if (bedrockBlock == null) {
-                                throw new RuntimeException("Could not find a block match for " + entry.getKey());
+                                throw new RuntimeException("Could not find a block match for " + javaItemKey);
                             }
                         }
 
@@ -514,16 +517,16 @@ public class ItemMappingsBuilder {
                 mappingBuilder = mappingBuilder.toolType(mappingItem.getToolType().intern());
             }
 
-            if (javaOnlyItems.contains(javaItem)) {
+            if (javaOnlyItems.contains(javaItemKey)) {
                 // These items don't exist on Bedrock, so set up a variable that indicates they should have custom names
-                mappingBuilder = mappingBuilder.translationString((javaItem instanceof BlockItem ? "block." : "item.") + entry.getKey().replace(":", "."));
-                GeyserImpl.getInstance().getLogger().debug("Adding " + entry.getKey() + " as an item that needs to be translated.");
+                mappingBuilder = mappingBuilder.translationString((javaItem instanceof BlockItem ? "block." : "item.") + javaItemKey.asString().replace(":", "."));
+                GeyserImpl.getInstance().getLogger().debug("Adding " + javaItemKey + " as an item that needs to be translated.");
             }
 
             // Add the custom item properties, if applicable
             boolean containsOldMappings = false;
             SortedSetMultimap<Key, GeyserCustomMappingData> customItemDefinitions;
-            Collection<CustomItemDefinition> customItemsToLoad = customItems.get(Identifier.of(javaItem.javaIdentifier()));
+            Collection<CustomItemDefinition> customItemsToLoad = customItems.get(MinecraftKey.keyToIdentifier(javaItemKey));
             if (customItemsAllowed && !customItemsToLoad.isEmpty()) {
                 customItemDefinitions = MultimapBuilder.hashKeys(customItemsToLoad.size()).treeSetValues(new CustomItemDefinitionComparator()).build();
 
@@ -578,12 +581,12 @@ public class ItemMappingsBuilder {
 
             ItemMapping mapping = mappingBuilder.build();
 
-            if (javaItem.javaIdentifier().contains("bucket") && !javaItem.javaIdentifier().contains("milk")) {
+            if (javaItemKey.asString().contains("bucket") && !javaItemKey.asString().contains("milk")) {
                 buckets.add(definition);
             }
 
             mappings.add(mapping);
-            javaItemToMapping.put(javaItem.javaKey(), mapping);
+            javaItemToMapping.put(javaItemKey, mapping);
         }
 
         // Add the light block level since it doesn't exist on java but we need it for item conversion

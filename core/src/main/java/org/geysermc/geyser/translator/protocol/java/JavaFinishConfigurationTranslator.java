@@ -28,6 +28,7 @@ package org.geysermc.geyser.translator.protocol.java;
 import org.cloudburstmc.protocol.bedrock.packet.CraftingDataPacket;
 import org.cloudburstmc.protocol.bedrock.packet.PlayerListPacket;
 import org.geysermc.geyser.registry.Registries;
+import org.geysermc.geyser.registry.populator.ItemMappingsBuilder;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
 import org.geysermc.geyser.translator.protocol.Translator;
@@ -83,6 +84,7 @@ public class JavaFinishConfigurationTranslator extends PacketTranslator<Clientbo
         session.getWorldCache().resetScoreboard();
 
         session.getRegistryCache().finish();
+        session.setItemMappings(ItemMappingsBuilder.createItemMappings(session));
         // Resolve API components from non-vanilla registered items that required registry data to map to MCPL components
         session.getComponentCache().resolveComponents();
     }

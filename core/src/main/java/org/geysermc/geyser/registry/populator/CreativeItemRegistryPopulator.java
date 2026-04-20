@@ -28,6 +28,7 @@ package org.geysermc.geyser.registry.populator;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import net.kyori.adventure.key.Key;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.nbt.NbtMapBuilder;
@@ -39,11 +40,13 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.CreativeItemGroup;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.geysermc.geyser.GeyserBootstrap;
 import org.geysermc.geyser.GeyserImpl;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.registry.BlockRegistries;
 import org.geysermc.geyser.registry.type.BlockMappings;
 import org.geysermc.geyser.registry.type.GeyserBedrockBlock;
 import org.geysermc.geyser.util.JsonUtils;
 import org.geysermc.geyser.registry.type.GeyserMappingItem;
+import org.geysermc.geyser.util.MinecraftKey;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -116,7 +119,7 @@ public class CreativeItemRegistryPopulator {
         }
     }
 
-    static void populate(ItemMappingsBuilder.PaletteVersion palette, Map<String, ItemDefinition> definitions, Map<String, GeyserMappingItem> items, BiConsumer<ItemData.Builder, Integer> itemConsumer) {
+    static void populate(ItemMappingsBuilder.PaletteVersion palette, Map<String, ItemDefinition> definitions, Map<Key, GeyserMappingItem> items, BiConsumer<ItemData.Builder, Integer> itemConsumer) {
         GeyserBootstrap bootstrap = GeyserImpl.getInstance().getBootstrap();
 
         // Load creative items
@@ -141,25 +144,25 @@ public class CreativeItemRegistryPopulator {
         }
     }
 
-    private static ItemData.@Nullable Builder createItemData(JsonObject itemNode, Map<String, GeyserMappingItem> items, BlockMappings blockMappings, Map<String, ItemDefinition> definitions) {
+    private static ItemData.@Nullable Builder createItemData(JsonObject itemNode, Map<Key, GeyserMappingItem> items, BlockMappings blockMappings, Map<String, ItemDefinition> definitions) {
         int count = 1;
         int damage = 0;
         NbtMap tag = null;
 
-        String identifier = itemNode.get("id").getAsString();
+        Key item = MinecraftKey.key(itemNode.get("id").getAsString());
         for (BiPredicate<String, Integer> predicate : JAVA_ONLY_ITEM_FILTER) {
-            if (predicate.test(identifier, damage)) {
+            if (predicate.test(item.asString(), damage)) {
                 return null;
             }
         }
 
         // Attempt to remove items that do not exist in Java (1.21.50 has 1.21.4 items, that don't exist on 1.21.2)
         // we still add the lodestone compass - we're going to translate it.
-        if (!items.containsKey(identifier) && !identifier.equals("minecraft:lodestone_compass")) {
+        if (!items.containsKey(item) && !item.equals(ItemIds.LODESTONE)) {
             // bedrock identifier not found, let's make sure it's not just different
             boolean found = false;
             for (var mapping : items.values()) {
-                if (mapping.getBedrockIdentifier().equals(identifier)) {
+                if (mapping.getBedrockIdentifier().equals(item.asString())) {
                     found = true;
                     break;
                 }
@@ -216,9 +219,9 @@ public class CreativeItemRegistryPopulator {
             }
         }
 
-        ItemDefinition definition = definitions.get(identifier);
+        ItemDefinition definition = definitions.get(item);
         if (definition == null) {
-            GeyserImpl.getInstance().getLogger().debug("Unknown item definition with identifier " + identifier + " when loading creative items!");
+            GeyserImpl.getInstance().getLogger().debug("Unknown item definition with identifier " + item + " when loading creative items!");
             return null;
         }
 

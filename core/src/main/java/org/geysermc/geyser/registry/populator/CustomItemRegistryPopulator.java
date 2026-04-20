@@ -108,7 +108,7 @@ public class CustomItemRegistryPopulator {
     private static final AttackRange DEFAULT_ATTACK_RANGE = new AttackRange(0.0F, 3.0F, 0.0F, 5.0F, 0.3F, 1.0F);
     private static final UseEffects DEFAULT_USE_EFFECTS = new UseEffects(false, true, 0.2F);
 
-    public static void populate(Map<String, GeyserMappingItem> items, Multimap<Identifier, CustomItemDefinition> customItems,
+    public static void populate(Map<Key, GeyserMappingItem> items, Multimap<Identifier, CustomItemDefinition> customItems,
                                 Multimap<Identifier, NonVanillaCustomItemDefinition> nonVanillaCustomItems) {
         MappingsConfigReader mappingsConfigReader = new MappingsConfigReader();
         // Load custom items from mappings files
@@ -191,8 +191,8 @@ public class CustomItemRegistryPopulator {
     }
 
     private static void validateVanillaOverride(Identifier vanillaIdentifier, CustomItemDefinition item, Multimap<Identifier, CustomItemDefinition> registered,
-                                                Map<String, GeyserMappingItem> mappings) throws CustomItemDefinitionRegisterException {
-        if (!mappings.containsKey(vanillaIdentifier.toString())) {
+                                                Map<Key, GeyserMappingItem> mappings) throws CustomItemDefinitionRegisterException {
+        if (!mappings.containsKey(MinecraftKey.identifierToKey(vanillaIdentifier))) {
             throw new CustomItemDefinitionRegisterException("unknown Java item " + vanillaIdentifier);
         }
         Identifier bedrockIdentifier = item.bedrockIdentifier();

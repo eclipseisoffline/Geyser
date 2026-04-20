@@ -394,7 +394,7 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
     private BlockMappings blockMappings;
 
     /**
-     * Stores the item translations for this specific version.
+     * Stores the item translations for this specific session.
      */
     @Setter
     private ItemMappings itemMappings;
