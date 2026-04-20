@@ -25,6 +25,7 @@
 
 package org.geysermc.geyser.inventory.recipe;
 
+import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 import org.cloudburstmc.protocol.bedrock.data.TrimMaterial;
 import org.cloudburstmc.protocol.bedrock.data.TrimPattern;
@@ -37,6 +38,7 @@ import org.geysermc.geyser.registry.type.ItemMapping;
 import org.geysermc.geyser.session.cache.registry.RegistryEntryContext;
 import org.geysermc.geyser.text.ChatColor;
 import org.geysermc.geyser.translator.text.MessageTranslator;
+import org.geysermc.geyser.util.MinecraftKey;
 import org.geysermc.mcprotocollib.protocol.data.game.Holder;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.ArmorTrim;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponentTypes;
@@ -90,15 +92,10 @@ public final class TrimRecipe {
         String key = context.id().asMinimalString();
 
         // Not ideal, Java edition also gives us a translatable description... Bedrock wants the template item
-        String identifier = context.id().asString() + "_armor_trim_smithing_template";
+        Key identifier = MinecraftKey.key(context.id().asString() + "_armor_trim_smithing_template");
         ItemMapping itemMapping = ItemMapping.AIR;
         if (context.session().isPresent()) {
-            itemMapping = context.session().get().getItemMappings().getMapping(identifier);
-            if (itemMapping == null) {
-                // This should never happen so not sure what to do here.
-                GeyserImpl.getInstance().getLogger().debug("Unable to found trim pattern item for pattern " + context.id());
-                itemMapping = ItemMapping.AIR;
-            }
+            itemMapping = context.session().get().getItemMappings().getMapping(context.session().get(), identifier);
         }
         return new TrimPattern(itemMapping.getBedrockIdentifier(), key);
     }

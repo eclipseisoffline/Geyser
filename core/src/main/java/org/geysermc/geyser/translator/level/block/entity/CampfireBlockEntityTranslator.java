@@ -32,6 +32,7 @@ import org.geysermc.geyser.level.block.type.BlockState;
 import org.geysermc.geyser.registry.type.ItemMapping;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.item.BedrockItemBuilder;
+import org.geysermc.geyser.util.MinecraftKey;
 import org.geysermc.mcprotocollib.protocol.data.game.level.block.BlockEntityType;
 
 import java.util.List;
@@ -50,10 +51,7 @@ public class CampfireBlockEntityTranslator extends BlockEntityTranslator {
     }
 
     protected NbtMap getItem(GeyserSession session, NbtMap tag) {
-        ItemMapping mapping = session.getItemMappings().getMapping(tag.getString("id"));
-        if (mapping == null) {
-            mapping = ItemMapping.AIR;
-        }
+        ItemMapping mapping = session.getItemMappings().getMapping(session, MinecraftKey.key(tag.getString("id")));
         NbtMapBuilder tagBuilder = BedrockItemBuilder.createItemNbt(mapping, tag.getInt("count"), mapping.getBedrockData());
         return tagBuilder.build();
     }

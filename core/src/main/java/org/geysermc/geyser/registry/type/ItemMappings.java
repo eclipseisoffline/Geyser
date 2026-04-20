@@ -30,6 +30,7 @@ import it.unimi.dsi.fastutil.ints.IntSet;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import lombok.Builder;
 import lombok.Value;
+import net.kyori.adventure.key.Key;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.definitions.BlockDefinition;
@@ -44,6 +45,8 @@ import org.geysermc.geyser.inventory.GeyserItemStack;
 import org.geysermc.geyser.inventory.item.StoredItemMappings;
 import org.geysermc.geyser.item.Items;
 import org.geysermc.geyser.item.type.Item;
+import org.geysermc.geyser.session.GeyserSession;
+import org.geysermc.geyser.session.cache.registry.JavaRegistries;
 import org.geysermc.mcprotocollib.protocol.data.game.item.ItemStack;
 
 import java.util.List;
@@ -55,7 +58,7 @@ import java.util.WeakHashMap;
 @Value
 public class ItemMappings implements DefinitionRegistry<ItemDefinition> {
 
-    Map<String, ItemMapping> cachedJavaMappings = new WeakHashMap<>();
+    Map<Key, ItemMapping> cachedJavaMappings = new WeakHashMap<>();
 
     ItemMapping[] items;
 
@@ -126,19 +129,12 @@ public class ItemMappings implements DefinitionRegistry<ItemDefinition> {
      * Gets an {@link ItemMapping} from the given Minecraft: Java Edition
      * block state identifier.
      *
-     * @param javaIdentifier the block state identifier
+     * @param javaIdentifier the item identifier
      * @return an item entry from the given java edition identifier
      */
-    @Nullable
-    public ItemMapping getMapping(String javaIdentifier) {
-        return this.cachedJavaMappings.computeIfAbsent(javaIdentifier, key -> {
-            for (ItemMapping mapping : this.items) {
-                if (mapping.getJavaItem().javaIdentifier().equals(key)) {
-                    return mapping;
-                }
-            }
-            return null;
-        });
+    @NonNull
+    public ItemMapping getMapping(GeyserSession session, Key javaIdentifier) {
+        return this.cachedJavaMappings.computeIfAbsent(javaIdentifier, key -> getMapping(JavaRegistries.ITEM.networkId(session, key)));
     }
 
     /**

@@ -25,14 +25,16 @@
 
 package org.geysermc.geyser.translator.level.block.entity;
 
+import net.kyori.adventure.key.Key;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.nbt.NbtMapBuilder;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.level.block.property.Properties;
 import org.geysermc.geyser.level.block.type.BlockState;
 import org.geysermc.geyser.registry.type.ItemMapping;
 import org.geysermc.geyser.session.GeyserSession;
+import org.geysermc.geyser.util.MinecraftKey;
 import org.geysermc.mcprotocollib.protocol.data.game.level.block.BlockEntityType;
 
 @BlockEntity(type = BlockEntityType.BRUSHABLE_BLOCK)
@@ -53,15 +55,12 @@ public class BrushableBlockEntityTranslator extends BlockEntityTranslator implem
             return;
         }
 
-        String id = itemTag.getString("id");
-        if (Items.AIR.javaIdentifier().equals(id)) {
+        Key id = MinecraftKey.key(itemTag.getString("id"));
+        if (ItemIds.AIR.equals(id)) {
             return; // server sends air when the block contains nothing
         }
 
-        ItemMapping mapping = session.getItemMappings().getMapping(id);
-        if (mapping == null) {
-            return;
-        }
+        ItemMapping mapping = session.getItemMappings().getMapping(session, id);
         NbtMapBuilder itemBuilder = NbtMap.builder()
             .putString("Name", mapping.getBedrockIdentifier())
             .putByte("Count", (byte) itemTag.getInt("count"));
