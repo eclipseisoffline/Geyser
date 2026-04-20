@@ -156,10 +156,10 @@ public class JavaRegistries {
     private record HardcodedLookup<T>(List<RegistryEntryData<T>> registry, RegistryNetworkMapper<T> networkMapper, RegistryObjectIdentifierMapper<T> objectIdentifierMapper,
                                       RegistryIdentifierObjectMapper<T> identifierObjectMapper) implements JavaRegistryKey.RegistryLookup<T> {
 
-        private static <T> HardcodedLookup create(List<T> registry, RegistryNetworkMapper<T> networkMapper, RegistryObjectIdentifierMapper<T> objectIdentifierMapper,
+        private static <T> HardcodedLookup<T> create(List<T> registry, RegistryNetworkMapper<T> networkMapper, RegistryObjectIdentifierMapper<T> objectIdentifierMapper,
                                                   RegistryIdentifierObjectMapper<T> identifierObjectMapper) {
-            return new HardcodedLookup(registry.stream()
-                .map(entry -> new RegistryEntryData<>(networkMapper.get(entry), objectIdentifierMapper.get(entry), entry))
+            return new HardcodedLookup<>(registry.stream()
+                .map(entry -> (RegistryEntryData<T>) new RegistryEntryData.Loaded<>(networkMapper.get(entry), objectIdentifierMapper.get(entry), entry))
                 .toList(), networkMapper, objectIdentifierMapper, identifierObjectMapper);
         }
 

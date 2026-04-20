@@ -160,7 +160,7 @@ public abstract class Dialog {
     }
 
     public static Dialog readDialog(RegistryEntryContext context) {
-        return readDialogFromNbt(context.session(), context.data(), context::getNetworkId);
+        return readDialogFromNbt(context.session(), context.data(), dialog -> JavaRegistries.DIALOG.networkId(context.registries(), dialog));
     }
 
     public static Dialog readDialogFromNbt(Optional<GeyserSession> session, NbtMap map, IdGetter idGetter) {

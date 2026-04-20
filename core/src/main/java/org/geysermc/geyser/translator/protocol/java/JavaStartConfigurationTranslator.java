@@ -48,5 +48,8 @@ public class JavaStartConfigurationTranslator extends PacketTranslator<Clientbou
         session.hasAcceptedCodeOfConduct(false);
 
         ChunkUtils.sendEmptyChunks(session, session.getPlayerEntity().position().toInt(), session.getServerRenderDistance(), false);
+
+        // Clear stored data driven registries
+        session.getRegistryCache().clear();
     }
 }

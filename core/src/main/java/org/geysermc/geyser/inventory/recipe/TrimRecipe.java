@@ -67,7 +67,7 @@ public final class TrimRecipe {
         String legacy = MessageTranslator.convertMessage(Component.space().style(description.style()));
         String color = legacy.isBlank() ? ChatColor.WHITE : legacy.substring(2).trim();
 
-        int networkId = context.getNetworkId(context.id());
+        int networkId = context.networkId();
         ItemMapping trimItem = null;
         if (context.session().isPresent()) {
             for (Holder<ArmorTrim.TrimMaterial> provider : materialProviders().keySet()) {

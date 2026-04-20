@@ -44,6 +44,6 @@ public class GameTestJavaRegistryProvider implements JavaRegistryProvider {
     @Override
     public <T> JavaRegistry<T> registry(JavaRegistryKey<T> registryKey) {
         //noinspection unchecked
-        return (JavaRegistry<T>) registryCache.computeIfAbsent(registryKey, key -> new GameTestJavaRegistry<>(registries, key));
+        return (JavaRegistry<T>) registryCache.computeIfAbsent(registryKey, key -> new GameTestJavaRegistry<>(registries, this, key));
     }
 }

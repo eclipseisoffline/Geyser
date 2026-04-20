@@ -1575,7 +1575,7 @@ public final class Items {
     public static final Item OMINOUS_BOTTLE = register(new OminousBottleItem("ominous_bottle", builder()));
 
     public static final int AIR_ID = AIR.javaId();
-    public static final RegistryEntryData<Item> AIR_ENTRY = new RegistryEntryData<>(AIR_ID, ItemIds.AIR, AIR);
+    public static final RegistryEntryData<Item> AIR_ENTRY = new RegistryEntryData.Loaded<>(AIR_ID, ItemIds.AIR, AIR);
 
     private static <T extends Item> T register(T item) {
         return register(item, Registries.JAVA_ITEMS.get().size());

@@ -37,6 +37,7 @@ import org.cloudburstmc.nbt.NbtMap;
 import org.geysermc.geyser.session.cache.RegistryCache;
 import org.geysermc.geyser.session.cache.registry.JavaRegistry;
 import org.geysermc.geyser.session.cache.registry.JavaRegistryKey;
+import org.geysermc.geyser.session.cache.registry.JavaRegistryProvider;
 import org.geysermc.geyser.session.cache.registry.RegistryEntryContext;
 import org.geysermc.geyser.session.cache.registry.RegistryEntryData;
 import org.geysermc.mcprotocollib.protocol.data.game.RegistryEntry;
@@ -50,9 +51,9 @@ import java.util.function.ToIntFunction;
 public class GameTestJavaRegistry<T> implements JavaRegistry<T> {
     private final List<RegistryEntryData<T>> entries;
 
-    public GameTestJavaRegistry(RegistryAccess registries, JavaRegistryKey<T> registryKey) {
-        Registry<?> registry = registries.lookupOrThrow(geyserKeyToMojangKey(registryKey));
-        entries = convertRegistryData(registryKey, registries, registry);
+    public GameTestJavaRegistry(RegistryAccess mojangRegistries, JavaRegistryProvider geyserRegistries, JavaRegistryKey<T> registryKey) {
+        Registry<?> registry = mojangRegistries.lookupOrThrow(geyserKeyToMojangKey(registryKey));
+        entries = convertRegistryData(registryKey, mojangRegistries, geyserRegistries, registry);
     }
 
     @Override
@@ -60,8 +61,9 @@ public class GameTestJavaRegistry<T> implements JavaRegistry<T> {
         return entries;
     }
 
-    private static <Mojang, Geyser> List<RegistryEntryData<Geyser>> convertRegistryData(JavaRegistryKey<Geyser> registryKey, RegistryAccess registries, Registry<Mojang> registry) {
-        DynamicOps<Object> nbtOps = registries.createSerializationContext(CloudburstNbtOps.INSTANCE);
+    private static <Mojang, Geyser> List<RegistryEntryData<Geyser>> convertRegistryData(JavaRegistryKey<Geyser> registryKey, RegistryAccess mojangRegistries,
+                                                                                        JavaRegistryProvider geyserRegistries, Registry<Mojang> registry) {
+        DynamicOps<Object> nbtOps = mojangRegistries.createSerializationContext(CloudburstNbtOps.INSTANCE);
         Codec<Mojang> codec = getSyncedRegistryData(registry.key()).elementCodec();
         //noinspection unchecked
         RegistryCache.RegistryReader<Geyser> reader = (RegistryCache.RegistryReader<Geyser>) RegistryCache.READERS.get(registryKey);
@@ -72,8 +74,8 @@ public class GameTestJavaRegistry<T> implements JavaRegistry<T> {
             int id = registry.getIdOrThrow(entry);
             Key key = identifierToKey(Objects.requireNonNull(registry.getKey(entry)));
             NbtMap encoded = (NbtMap) codec.encodeStart(nbtOps, entry).getOrThrow();
-            Geyser mapped = reader.read(new RegistryEntryContext(new RegistryEntry(key, encoded), keyIdFunction, Optional.empty()));
-            entries.add(new RegistryEntryData<>(id, key, mapped));
+            Geyser mapped = reader.read(new RegistryEntryContext(new RegistryEntry(key, encoded), id, geyserRegistries, Optional.empty()));
+            entries.add(new RegistryEntryData.Loaded<>(id, key, mapped));
         }
         return List.copyOf(entries);
     }

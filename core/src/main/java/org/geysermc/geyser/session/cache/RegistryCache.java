@@ -25,8 +25,6 @@
 
 package org.geysermc.geyser.session.cache;
 
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
 import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
 import net.kyori.adventure.key.Key;
@@ -65,6 +63,7 @@ import org.geysermc.mcprotocollib.protocol.packet.configuration.clientbound.Clie
 import org.jetbrains.annotations.VisibleForTesting;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -130,34 +129,14 @@ public final class RegistryCache implements JavaRegistryProvider {
 
     private final GeyserSession session;
     private final Reference2ObjectMap<JavaRegistryKey<?>, SimpleJavaRegistry<?>> registries;
+    private final Reference2ObjectMap<JavaRegistryKey, List<RegistryEntry>> registriesToParse;
 
     public RegistryCache(GeyserSession session) {
         this.session = session;
         this.registries = new Reference2ObjectOpenHashMap<>(READERS.size());
+        this.registriesToParse = new Reference2ObjectOpenHashMap<>();
         for (JavaRegistryKey<?> registry : READERS.keySet()) {
             registries.put(registry, new SimpleJavaRegistry<>());
-        }
-    }
-
-    /**
-     * Loads a registry in, if we are tracking it.
-     */
-    public void load(ClientboundRegistryDataPacket packet) {
-        // Java generic mess - we're sure we're putting the current readers for the correct registry types in the READERS map, so we use raw objects here to let it compile
-        JavaRegistryKey registryKey = JavaRegistries.fromKey(packet.getRegistry());
-        if (registryKey != null) {
-            RegistryReader reader = READERS.get(registryKey);
-            if (reader != null) {
-                try {
-                    readRegistry(session, registryKey, registries.get(registryKey), reader, packet.getEntries());
-                } catch (Exception exception) {
-                    GeyserImpl.getInstance().getLogger().error("Failed parsing registry entries for " + registryKey + "!", exception);
-                }
-            } else {
-                throw new IllegalStateException("Expected reader for registry " + registryKey);
-            }
-        } else {
-            GeyserImpl.getInstance().getLogger().debug("Ignoring registry of type " + packet.getRegistry());
         }
     }
 
@@ -169,18 +148,51 @@ public final class RegistryCache implements JavaRegistryProvider {
         return (JavaRegistry<T>) registries.get(registryKey);
     }
 
-    private static <T> void readRegistry(GeyserSession session, JavaRegistryKey<T> registryKey, SimpleJavaRegistry<T> registry,
+    /**
+     * Loads a registry in, if we are tracking it.
+     */
+    public void load(ClientboundRegistryDataPacket packet) {
+        JavaRegistryKey<?> registryKey = JavaRegistries.fromKey(packet.getRegistry());
+        if (registryKey != null) {
+            registriesToParse.put(registryKey, packet.getEntries());
+            List<RegistryEntryData<?>> preloadedEntries = new ArrayList<>();
+            List<RegistryEntry> entries = packet.getEntries();
+            for (int i = 0; i < entries.size(); i++) {
+                preloadedEntries.add(new RegistryEntryData.Preload<>(i, entries.get(i).getId()));
+            }
+            ((SimpleJavaRegistry) registries.get(registryKey)).reset(preloadedEntries);
+        } else {
+            GeyserImpl.getInstance().getLogger().debug("Ignoring registry of type " + packet.getRegistry());
+        }
+    }
+
+    public void finish() {
+        // Java generic mess - we're sure we're putting the current readers for the correct registry types in the READERS map, so we use raw objects here to let it compile
+        for (Map.Entry<JavaRegistryKey, List<RegistryEntry>> registry : registriesToParse.entrySet()) {
+            RegistryReader reader = READERS.get(registry.getKey());
+            if (reader != null) {
+                try {
+                    readRegistry(session, registry.getKey(), registries.get(registry.getKey()), reader, registry.getValue());
+                } catch (Exception exception) {
+                    GeyserImpl.getInstance().getLogger().error("Failed parsing registry entries for " + registry.getKey() + "!", exception);
+                }
+            } else {
+                throw new IllegalStateException("Expected reader for registry " + registry.getKey());
+            }
+        }
+        registriesToParse.clear();
+    }
+
+    public void clear() {
+        registries.values().forEach(registry -> registry.reset(List.of()));
+    }
+
+    private <T> void readRegistry(GeyserSession session, JavaRegistryKey<T> registryKey, SimpleJavaRegistry<T> registry,
                                          RegistryReader<T> reader, List<RegistryEntry> entries) {
         Map<Key, NbtMap> localRegistry = null;
 
         // Clear each local cache every time a new registry entry is given to us
         // (e.g. proxy server switches, reconfiguring)
-
-        // Store each of the entries resource location IDs and their respective network ID, used for the key -> ID map in RegistryEntryContext
-        Object2IntMap<Key> entryIdMap = new Object2IntOpenHashMap<>();
-        for (int i = 0; i < entries.size(); i++) {
-            entryIdMap.put(entries.get(i).getId(), i);
-        }
 
         List<RegistryEntryData<T>> builder = new ArrayList<>(entries.size());
         for (int i = 0; i < entries.size(); i++) {
@@ -193,16 +205,16 @@ public final class RegistryCache implements JavaRegistryProvider {
                 entry = new RegistryEntry(entry.getId(), localRegistry.get(entry.getId()));
             }
 
-            RegistryEntryContext context = new RegistryEntryContext(entry, key -> entryIdMap.getOrDefault(key, -1), Optional.of(session));
+            RegistryEntryContext context = new RegistryEntryContext(entry, i, this, Optional.of(session));
             // This is what Geyser wants to keep as a value for this registry.
             T cacheEntry = reader.read(context);
             if (cacheEntry == null) {
                 // Registry readers should never return null, rather return a default value
                 throw new IllegalStateException("Registry reader returned null for an entry!");
             }
-            builder.add(i, new RegistryEntryData<>(i, entry.getId(), cacheEntry));
+            builder.add(i, new RegistryEntryData.Loaded<>(i, entry.getId(), cacheEntry));
         }
-        registry.reset(builder);
+        registry.reset(Collections.unmodifiableList(builder));
     }
 
     /**

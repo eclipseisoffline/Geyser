@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 GeyserMC. http://geysermc.org
+ * Copyright (c) 2026 GeyserMC. http://geysermc.org
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,5 +27,21 @@ package org.geysermc.geyser.session.cache.registry;
 
 import net.kyori.adventure.key.Key;
 
-public record RegistryEntryData<T>(int id, Key key, T data) {
+public interface RegistryEntryData<T> {
+
+    int id();
+
+    Key key();
+
+    T data();
+
+    record Preload<T>(int id, Key key) implements RegistryEntryData<T> {
+
+        @Override
+        public T data() {
+            throw new IllegalStateException("Cannot access registry data during registry loading");
+        }
+    }
+
+    record Loaded<T>(int id, Key key, T data) implements RegistryEntryData<T> {}
 }
