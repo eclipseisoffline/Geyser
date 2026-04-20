@@ -131,15 +131,27 @@ public record JavaRegistryKey<T>(Key registryKey, RegistryLookup<T> lookup) {
         return entry(registries, key).map(RegistryEntryData::data).orElse(null);
     }
 
-    private Optional<RegistryEntryData<T>> entry(JavaRegistryProvider registries, T object) {
+    public Optional<RegistryEntryData<T>> entry(GeyserSession session, T object) {
+        return entry(session.getRegistryCache(), object);
+    }
+
+    public Optional<RegistryEntryData<T>> entry(JavaRegistryProvider registries, T object) {
         return lookup.entry(registries, this, object);
     }
 
-    private Optional<RegistryEntryData<T>> entry(JavaRegistryProvider registries, int networkId) {
+    public Optional<RegistryEntryData<T>> entry(GeyserSession session, int networkId) {
+        return entry(session.getRegistryCache(), networkId);
+    }
+
+    public Optional<RegistryEntryData<T>> entry(JavaRegistryProvider registries, int networkId) {
         return lookup.entry(registries, this, networkId);
     }
 
-    private Optional<RegistryEntryData<T>> entry(JavaRegistryProvider registries, Key key) {
+    public Optional<RegistryEntryData<T>> entry(GeyserSession session, Key key) {
+        return entry(session.getRegistryCache(), key);
+    }
+
+    public Optional<RegistryEntryData<T>> entry(JavaRegistryProvider registries, Key key) {
         return lookup.entry(registries, this, key);
     }
 

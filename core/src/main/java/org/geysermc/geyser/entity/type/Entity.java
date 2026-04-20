@@ -55,8 +55,8 @@ import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.entity.type.living.MobEntity;
 import org.geysermc.geyser.entity.type.player.PlayerEntity;
 import org.geysermc.geyser.entity.vehicle.ClientVehicle;
-import org.geysermc.geyser.item.Items;
-import org.geysermc.geyser.item.type.Item;
+import org.geysermc.geyser.inventory.GeyserItemStack;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.level.physics.BoundingBox;
 import org.geysermc.geyser.scoreboard.Team;
 import org.geysermc.geyser.session.GeyserSession;
@@ -766,7 +766,7 @@ public class Entity implements GeyserEntity {
                 // Note this might be client side. Has yet to be an issue though, as of Java 1.21.
                 return InteractiveTag.REMOVE_LEASH;
             }
-            if (session.getPlayerInventory().getItemInHand(hand).is(Items.LEAD) && leashable.canBeLeashed()) {
+            if (session.getPlayerInventory().getItemInHand(hand).is(ItemIds.LEAD) && leashable.canBeLeashed()) {
                 // We shall leash
                 return InteractiveTag.LEASH;
             }
@@ -780,8 +780,8 @@ public class Entity implements GeyserEntity {
      * to ensure packet parity as well as functionality parity (such as sound effect responses).
      */
     public InteractionResult interact(Hand hand) {
-        Item itemInHand = session.getPlayerInventory().getItemInHand(hand).asItem();
-        if (itemInHand == Items.SHEARS) {
+        GeyserItemStack itemInHand = session.getPlayerInventory().getItemInHand(hand);
+        if (itemInHand.is(ItemIds.SHEARS)) {
             if (hasLeashesToDrop()) {
                 return InteractionResult.SUCCESS;
             }
@@ -795,8 +795,7 @@ public class Entity implements GeyserEntity {
                 // Has yet to be an issue though, as of Java 1.21.
                 return InteractionResult.SUCCESS;
             }
-            if (session.getPlayerInventory().getItemInHand(hand).is(Items.LEAD)
-                && !(session.getEntityCache().getEntityByGeyserId(leashable.leashHolderBedrockId()) instanceof PlayerEntity)) {
+            if (itemInHand.is(ItemIds.LEAD) && !(session.getEntityCache().getEntityByGeyserId(leashable.leashHolderBedrockId()) instanceof PlayerEntity)) {
                 // We shall leash
                 return InteractionResult.SUCCESS;
             }

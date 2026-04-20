@@ -36,7 +36,7 @@ import org.geysermc.geyser.entity.EntityDefinitions;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.entity.type.LivingEntity;
 import org.geysermc.geyser.inventory.GeyserItemStack;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.scoreboard.Team;
 import org.geysermc.geyser.util.InteractionResult;
 import org.geysermc.geyser.util.MathUtils;
@@ -250,7 +250,7 @@ public class ArmorStandEntity extends LivingEntity {
 
     @Override
     public InteractionResult interactAt(Hand hand) {
-        if (!isMarker && !session.getPlayerInventory().getItemInHand(hand).is(Items.NAME_TAG)) {
+        if (!isMarker && !session.getPlayerInventory().getItemInHand(hand).is(ItemIds.NAME_TAG)) {
             // Java Edition returns SUCCESS if in spectator mode, but this is overridden with an earlier check on the client
             return InteractionResult.CONSUME;
         } else {

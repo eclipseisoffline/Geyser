@@ -49,7 +49,7 @@ import org.geysermc.geyser.entity.type.living.animal.ArmadilloEntity;
 import org.geysermc.geyser.entity.type.living.monster.CreakingEntity;
 import org.geysermc.geyser.entity.type.living.monster.WardenEntity;
 import org.geysermc.geyser.entity.type.player.SessionPlayerEntity;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.item.ItemTranslator;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
@@ -174,7 +174,7 @@ public class JavaEntityEventTranslator extends PacketTranslator<ClientboundEntit
             case TOTEM_OF_UNDYING_MAKE_SOUND:
                 // Bedrock will not play the spinning animation without the item in the hand o.o
                 // Fixes https://github.com/GeyserMC/Geyser/issues/2446
-                boolean totemItemWorkaround = !session.getPlayerInventory().isHolding(Items.TOTEM_OF_UNDYING);
+                boolean totemItemWorkaround = !session.getPlayerInventory().isHolding(ItemIds.TOTEM_OF_UNDYING);
                 if (totemItemWorkaround) {
                     InventoryContentPacket offhandPacket = new InventoryContentPacket();
                     offhandPacket.setContainerId(ContainerId.OFFHAND);

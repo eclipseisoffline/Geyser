@@ -31,7 +31,7 @@ import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.inventory.GeyserItemStack;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.item.type.DyeItem;
 import org.geysermc.geyser.item.type.Item;
 import org.geysermc.geyser.session.cache.tags.ItemTag;
@@ -64,7 +64,7 @@ public class SheepEntity extends AnimalEntity {
     @NonNull
     @Override
     protected InteractiveTag testMobInteraction(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
-        if (itemInHand.is(Items.SHEARS)) {
+        if (itemInHand.is(ItemIds.SHEARS)) {
             return InteractiveTag.SHEAR;
         } else {
             InteractiveTag tag = super.testMobInteraction(hand, itemInHand);
@@ -82,7 +82,7 @@ public class SheepEntity extends AnimalEntity {
     @NonNull
     @Override
     protected InteractionResult mobInteract(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
-        if (itemInHand.is(Items.SHEARS)) {
+        if (itemInHand.is(ItemIds.SHEARS)) {
             return InteractionResult.CONSUME;
         } else {
             InteractionResult superResult = super.mobInteract(hand, itemInHand);

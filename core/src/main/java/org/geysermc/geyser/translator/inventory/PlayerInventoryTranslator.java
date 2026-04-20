@@ -53,7 +53,7 @@ import org.geysermc.geyser.inventory.GeyserItemStack;
 import org.geysermc.geyser.inventory.Inventory;
 import org.geysermc.geyser.inventory.PlayerInventory;
 import org.geysermc.geyser.inventory.SlotType;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.skin.FakeHeadProvider;
 import org.geysermc.geyser.text.GeyserLocale;
@@ -108,7 +108,7 @@ public class PlayerInventoryTranslator extends InventoryTranslator<PlayerInvento
         for (int i = 5; i < 9; i++) {
             GeyserItemStack item = inventory.getItem(i);
             contents[i - 5] = item.getItemData(session);
-            if (i == 5 && item.is(Items.PLAYER_HEAD) && item.hasNonBaseComponents()) {
+            if (i == 5 && item.is(ItemIds.PLAYER_HEAD) && item.hasNonBaseComponents()) {
                 FakeHeadProvider.setHead(session, session.getPlayerEntity(), item.getComponent(DataComponentTypes.PROFILE));
             }
         }
@@ -151,7 +151,7 @@ public class PlayerInventoryTranslator extends InventoryTranslator<PlayerInvento
 
         if (slot == 5) {
             // Check for custom skull
-            if (javaItem.is(Items.PLAYER_HEAD) && javaItem.hasNonBaseComponents()) {
+            if (javaItem.is(ItemIds.PLAYER_HEAD) && javaItem.hasNonBaseComponents()) {
                 FakeHeadProvider.setHead(session, session.getPlayerEntity(), javaItem.getComponent(DataComponentTypes.PROFILE));
             } else {
                 FakeHeadProvider.restoreOriginalSkin(session, session.getPlayerEntity());
@@ -282,7 +282,7 @@ public class PlayerInventoryTranslator extends InventoryTranslator<PlayerInvento
                     if (destSlot == 5) {
                         // only set the head if the destination is the head slot
                         GeyserItemStack javaItem = inventory.getItem(sourceSlot);
-                        if (javaItem.is(Items.PLAYER_HEAD) && javaItem.hasNonBaseComponents()) {
+                        if (javaItem.is(ItemIds.PLAYER_HEAD) && javaItem.hasNonBaseComponents()) {
                             FakeHeadProvider.setHead(session, session.getPlayerEntity(), javaItem.getComponent(DataComponentTypes.PROFILE));
                         }
                     } else if (sourceSlot == 5) {

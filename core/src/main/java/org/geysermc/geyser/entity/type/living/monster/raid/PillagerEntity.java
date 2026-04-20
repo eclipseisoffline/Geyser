@@ -29,7 +29,7 @@ import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.inventory.GeyserItemStack;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.type.BooleanEntityMetadata;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponentTypes;
 
@@ -64,9 +64,9 @@ public class PillagerEntity extends AbstractIllagerEntity {
      */
     protected void updateCrossbow() {
         GeyserItemStack activeCrossbow = null;
-        if (getMainHandItem().is(Items.CROSSBOW)) {
+        if (getMainHandItem().is(ItemIds.CROSSBOW)) {
             activeCrossbow = getMainHandItem();
-        } else if (getOffHandItem().is(Items.CROSSBOW)) {
+        } else if (getOffHandItem().is(ItemIds.CROSSBOW)) {
             activeCrossbow = getOffHandItem();
         }
 

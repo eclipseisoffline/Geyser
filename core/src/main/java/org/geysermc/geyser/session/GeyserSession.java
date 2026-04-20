@@ -149,7 +149,7 @@ import org.geysermc.geyser.inventory.PlayerInventory;
 import org.geysermc.geyser.inventory.recipe.GeyserRecipe;
 import org.geysermc.geyser.inventory.recipe.GeyserSmithingRecipe;
 import org.geysermc.geyser.inventory.recipe.GeyserStonecutterData;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.item.type.BlockItem;
 import org.geysermc.geyser.level.BedrockDimension;
 import org.geysermc.geyser.level.JavaDimension;
@@ -1528,9 +1528,9 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
             return false;
         }
 
-        if (playerInventoryHolder.inventory().getItemInHand().is(Items.SHIELD)) {
+        if (playerInventoryHolder.inventory().getItemInHand().is(ItemIds.SHIELD)) {
             useItem(Hand.MAIN_HAND);
-        } else if (playerInventoryHolder.inventory().getOffhand().is(Items.SHIELD)) {
+        } else if (playerInventoryHolder.inventory().getOffhand().is(ItemIds.SHIELD)) {
             useItem(Hand.OFF_HAND);
         } else {
             // No blocking

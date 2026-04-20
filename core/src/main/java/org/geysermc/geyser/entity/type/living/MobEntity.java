@@ -32,7 +32,7 @@ import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.entity.type.Leashable;
 import org.geysermc.geyser.entity.type.LivingEntity;
 import org.geysermc.geyser.inventory.GeyserItemStack;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.item.enchantment.EnchantmentComponent;
 import org.geysermc.geyser.item.type.SpawnEggItem;
 import org.geysermc.geyser.util.InteractionResult;
@@ -81,7 +81,7 @@ public class MobEntity extends LivingEntity implements Leashable {
             return InteractiveTag.REMOVE_LEASH;
         } else {
             GeyserItemStack itemStack = session.getPlayerInventory().getItemInHand(hand);
-            if (itemStack.is(Items.NAME_TAG)) {
+            if (itemStack.is(ItemIds.NAME_TAG)) {
                 InteractionResult result = checkInteractWithNameTag(itemStack);
                 if (result.consumesAction()) {
                     return InteractiveTag.NAME;
@@ -133,7 +133,7 @@ public class MobEntity extends LivingEntity implements Leashable {
     }
 
     private InteractionResult checkPriorityInteractions(GeyserItemStack itemInHand) {
-        if (itemInHand.is(Items.NAME_TAG)) {
+        if (itemInHand.is(ItemIds.NAME_TAG)) {
             InteractionResult result = checkInteractWithNameTag(itemInHand);
             if (result.consumesAction()) {
                 return result;

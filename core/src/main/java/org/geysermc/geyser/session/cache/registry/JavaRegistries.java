@@ -29,7 +29,6 @@ import net.kyori.adventure.key.Key;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.TrimMaterial;
 import org.cloudburstmc.protocol.bedrock.data.TrimPattern;
-import org.geysermc.geyser.api.util.Unit;
 import org.geysermc.geyser.entity.type.living.animal.FrogEntity;
 import org.geysermc.geyser.entity.type.living.animal.TemperatureVariantAnimal;
 import org.geysermc.geyser.entity.type.living.animal.nautilus.ZombieNautilusEntity;
@@ -55,7 +54,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -120,7 +118,7 @@ public class JavaRegistries {
 
     private static <T> JavaRegistryKey<T> createHardcoded(String key, List<T> registry, RegistryNetworkMapper<T> networkSerializer,
                                                           RegistryObjectIdentifierMapper<T> objectIdentifierMapper, RegistryIdentifierObjectMapper<T> identifierObjectMapper) {
-        return create(key, new HardcodedLookup<>(registry, networkSerializer, objectIdentifierMapper, identifierObjectMapper));
+        return create(key, HardcodedLookup.create(registry, networkSerializer, objectIdentifierMapper, identifierObjectMapper));
     }
 
     private static <T> JavaRegistryKey<T> create(String key) {
@@ -155,26 +153,29 @@ public class JavaRegistries {
         Optional<T> get(Key key);
     }
 
-    private record HardcodedLookup<T>(List<T> registry, RegistryNetworkMapper<T> networkMapper, RegistryObjectIdentifierMapper<T> objectIdentifierMapper,
+    private record HardcodedLookup<T>(List<RegistryEntryData<T>> registry, RegistryNetworkMapper<T> networkMapper, RegistryObjectIdentifierMapper<T> objectIdentifierMapper,
                                       RegistryIdentifierObjectMapper<T> identifierObjectMapper) implements JavaRegistryKey.RegistryLookup<T> {
+
+        private static <T> HardcodedLookup create(List<T> registry, RegistryNetworkMapper<T> networkMapper, RegistryObjectIdentifierMapper<T> objectIdentifierMapper,
+                                                  RegistryIdentifierObjectMapper<T> identifierObjectMapper) {
+            return new HardcodedLookup(registry.stream()
+                .map(entry -> new RegistryEntryData<>(networkMapper.get(entry), objectIdentifierMapper.get(entry), entry))
+                .toList(), networkMapper, objectIdentifierMapper, identifierObjectMapper);
+        }
 
         @Override
         public Optional<RegistryEntryData<T>> entry(JavaRegistryProvider registries, JavaRegistryKey<T> registryKey, int networkId) {
-            return Optional.ofNullable(registry.get(networkId))
-                .map(value -> new RegistryEntryData<>(networkId, Objects.requireNonNull(objectIdentifierMapper.get(value)), value));
+            return Optional.ofNullable(registry.get(networkId));
         }
 
         @Override
         public Optional<RegistryEntryData<T>> entry(JavaRegistryProvider registries, JavaRegistryKey<T> registryKey, Key key) {
-            Optional<T> object = identifierObjectMapper.get(key);
-            return object.map(value -> new RegistryEntryData<>(networkMapper.get(value), key, value));
+            return registry.stream().filter(entry -> entry.key().equals(key)).findFirst();
         }
 
         @Override
         public Optional<RegistryEntryData<T>> entry(JavaRegistryProvider registries, JavaRegistryKey<T> registryKey, T object) {
-            int id = networkMapper.get(object);
-            return Optional.ofNullable(registry.get(id))
-                .map(value -> new RegistryEntryData<>(id, Objects.requireNonNull(objectIdentifierMapper.get(value)), value));
+            return registry.stream().filter(entry -> entry.data().equals(object)).findFirst();
         }
     }
 

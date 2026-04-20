@@ -31,7 +31,7 @@ import org.geysermc.geyser.entity.properties.type.EnumProperty;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.impl.IdentifierImpl;
 import org.geysermc.geyser.inventory.GeyserItemStack;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.session.cache.tags.ItemTag;
 import org.geysermc.geyser.util.InteractionResult;
 import org.geysermc.geyser.util.InteractiveTag;
@@ -83,9 +83,9 @@ public class CopperGolemEntity extends GolemEntity {
     protected @NonNull InteractiveTag testMobInteraction(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
         if (itemInHand.isEmpty() && !getMainHandItem().isEmpty()) {
             return InteractiveTag.DROP_ITEM;
-        } else if (itemInHand.is(Items.SHEARS) && canBeSheared()) {
+        } else if (itemInHand.is(ItemIds.SHEARS) && canBeSheared()) {
             return InteractiveTag.SHEAR;
-        } else if (itemInHand.is(Items.HONEYCOMB)) {
+        } else if (itemInHand.is(ItemIds.HONEYCOMB)) {
             return InteractiveTag.WAX_ON;
         } else if (itemInHand.is(session, ItemTag.AXES)) {
             // There is no way of knowing if the copper golem is waxed or not,
@@ -98,7 +98,7 @@ public class CopperGolemEntity extends GolemEntity {
 
     @Override
     protected @NonNull InteractionResult mobInteract(@NonNull Hand usedHand, @NonNull GeyserItemStack itemInHand) {
-        if ((itemInHand.isEmpty() && !getMainHandItem().isEmpty()) || (itemInHand.is(Items.SHEARS) && canBeSheared())) {
+        if ((itemInHand.isEmpty() && !getMainHandItem().isEmpty()) || (itemInHand.is(ItemIds.SHEARS) && canBeSheared())) {
             return InteractionResult.SUCCESS;
         }
 
@@ -114,7 +114,7 @@ public class CopperGolemEntity extends GolemEntity {
         super.setSaddle(stack);
 
         // Equipment on Java, entity property on bedrock
-        HAS_FLOWER_PROPERTY.apply(propertyManager, stack.is(Items.POPPY));
+        HAS_FLOWER_PROPERTY.apply(propertyManager, stack.is(ItemIds.POPPY));
         updateBedrockEntityProperties();
     }
 

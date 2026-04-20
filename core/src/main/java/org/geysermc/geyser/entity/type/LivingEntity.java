@@ -28,6 +28,7 @@ package org.geysermc.geyser.entity.type;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.math.GenericMath;
@@ -48,8 +49,7 @@ import org.geysermc.geyser.entity.type.living.animal.HappyGhastEntity;
 import org.geysermc.geyser.entity.vehicle.ClientVehicle;
 import org.geysermc.geyser.entity.vehicle.HappyGhastVehicleComponent;
 import org.geysermc.geyser.inventory.GeyserItemStack;
-import org.geysermc.geyser.item.Items;
-import org.geysermc.geyser.item.type.Item;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.level.EffectType;
 import org.geysermc.geyser.scoreboard.Team;
 import org.geysermc.geyser.session.GeyserSession;
@@ -133,7 +133,7 @@ public class LivingEntity extends Entity implements Tickable {
         return getItemInSlot(EquipmentSlot.OFF_HAND);
     }
 
-    public boolean isHolding(Item item) {
+    public boolean isHolding(Key item) {
         return getMainHandItem().is(item) || getOffHandItem().is(item);
     }
 
@@ -331,9 +331,9 @@ public class LivingEntity extends Entity implements Tickable {
 
     protected boolean hasShield(boolean offhand) {
         if (offhand) {
-            return getOffHandItem().is(Items.SHIELD);
+            return getOffHandItem().is(ItemIds.SHIELD);
         } else {
-            return getMainHandItem().is(Items.SHIELD);
+            return getMainHandItem().is(ItemIds.SHIELD);
         }
     }
 
@@ -392,7 +392,7 @@ public class LivingEntity extends Entity implements Tickable {
     @Override
     public InteractionResult interact(Hand hand) {
         GeyserItemStack itemStack = session.getPlayerInventory().getItemInHand(hand);
-        if (itemStack.is(Items.NAME_TAG)) {
+        if (itemStack.is(ItemIds.NAME_TAG)) {
             InteractionResult result = checkInteractWithNameTag(itemStack);
             if (result.consumesAction()) {
                 return result;

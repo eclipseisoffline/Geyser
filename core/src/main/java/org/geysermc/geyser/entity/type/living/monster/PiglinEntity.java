@@ -33,7 +33,7 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.cloudburstmc.protocol.bedrock.packet.MobEquipmentPacket;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.inventory.GeyserItemStack;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.session.cache.tags.ItemTag;
 import org.geysermc.geyser.util.InteractionResult;
 import org.geysermc.geyser.util.InteractiveTag;
@@ -67,9 +67,9 @@ public class PiglinEntity extends BasePiglinEntity {
 
     @Override
     public void setHand(GeyserItemStack stack) {
-        boolean toCrossbow = stack != null && stack.is(Items.CROSSBOW);
+        boolean toCrossbow = stack != null && stack.is(ItemIds.CROSSBOW);
 
-        if (toCrossbow ^ getMainHandItem().is(Items.CROSSBOW)) { // If switching to/from crossbow
+        if (toCrossbow ^ getMainHandItem().is(ItemIds.CROSSBOW)) { // If switching to/from crossbow
             dirtyMetadata.put(EntityDataTypes.BLOCK, session.getBlockMappings().getDefinition(toCrossbow ? 0 : 1));
             dirtyMetadata.put(EntityDataTypes.CHARGE_AMOUNT, (byte) 0);
             setFlag(EntityFlag.CHARGED, false);
@@ -94,7 +94,7 @@ public class PiglinEntity extends BasePiglinEntity {
     public void updateMainHand() {
         super.updateMainHand();
 
-        if (getMainHandItem().is(Items.CROSSBOW)) {
+        if (getMainHandItem().is(ItemIds.CROSSBOW)) {
             if (getMainHandItem().getComponent(DataComponentTypes.CHARGED_PROJECTILES) != null) {
                 dirtyMetadata.put(EntityDataTypes.CHARGE_AMOUNT, Byte.MAX_VALUE);
                 setFlag(EntityFlag.CHARGING, false);
@@ -142,6 +142,6 @@ public class PiglinEntity extends BasePiglinEntity {
     }
 
     private boolean canGiveGoldTo(@NonNull GeyserItemStack itemInHand) {
-        return !getFlag(EntityFlag.BABY) && itemInHand.is(Items.GOLD_INGOT) && !getFlag(EntityFlag.ADMIRING);
+        return !getFlag(EntityFlag.BABY) && itemInHand.is(ItemIds.GOLD_INGOT) && !getFlag(EntityFlag.ADMIRING);
     }
 }

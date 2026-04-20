@@ -30,7 +30,7 @@ import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.inventory.GeyserItemStack;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.util.InteractionResult;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.player.Hand;
 
@@ -50,7 +50,7 @@ public class IronGolemEntity extends GolemEntity {
     @NonNull
     @Override
     protected InteractionResult mobInteract(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
-        if (itemInHand.is(Items.IRON_INGOT)) {
+        if (itemInHand.is(ItemIds.IRON_INGOT)) {
             if (health < maxHealth) {
                 // Healing the iron golem
                 return InteractionResult.SUCCESS;

@@ -29,7 +29,7 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.inventory.GeyserItemStack;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 
 public class ChestedHorseEntity extends AbstractHorseEntity {
 
@@ -50,7 +50,7 @@ public class ChestedHorseEntity extends AbstractHorseEntity {
 
     @Override
     protected boolean testForChest(@NonNull GeyserItemStack itemInHand) {
-        return itemInHand.is(Items.CHEST) && !getFlag(EntityFlag.CHESTED);
+        return itemInHand.is(ItemIds.CHEST) && !getFlag(EntityFlag.CHESTED);
     }
 
     @Override

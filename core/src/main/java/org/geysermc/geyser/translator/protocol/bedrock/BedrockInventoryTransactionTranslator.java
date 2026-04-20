@@ -51,7 +51,7 @@ import org.geysermc.geyser.inventory.Inventory;
 import org.geysermc.geyser.inventory.PlayerInventory;
 import org.geysermc.geyser.inventory.click.Click;
 import org.geysermc.geyser.inventory.item.GeyserInstrument;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.item.hashing.DataComponentHashers;
 import org.geysermc.geyser.item.type.BlockItem;
 import org.geysermc.geyser.item.type.BoatItem;
@@ -287,13 +287,13 @@ public class BedrockInventoryTransactionTranslator extends PacketTranslator<Inve
                                 sequence);
                         session.sendDownstreamGamePacket(blockPacket);
 
-                        Item item = session.getPlayerInventory().getItemInHand().asItem();
+                        GeyserItemStack item = session.getPlayerInventory().getItemInHand();
                         if (packet.getItemInHand() != null) {
                             ItemDefinition definition = packet.getItemInHand().getDefinition();
                             // Otherwise boats will not be able to be placed in survival and buckets, lily pads, frogspawn, and glass bottles won't work on mobile
-                            if (item instanceof BoatItem || item == Items.LILY_PAD || item == Items.FROGSPAWN) {
+                            if (item.asItem() instanceof BoatItem || item.is(ItemIds.LILY_PAD) || item.is(ItemIds.FROGSPAWN)) {
                                 useItem(session, packet, blockState.javaId(), true);
-                            } else if (item == Items.GLASS_BOTTLE) {
+                            } else if (item.is(ItemIds.GLASS_BOTTLE)) {
                                 Block block = blockState.block();
                                 if (!session.isSneaking() && block instanceof CauldronBlock && block != Blocks.WATER_CAULDRON) {
                                     // ServerboundUseItemPacket is not sent for water cauldrons and glass bottles
@@ -365,7 +365,7 @@ public class BedrockInventoryTransactionTranslator extends PacketTranslator<Inve
                         }
 
                         // Handled when sneaking
-                        if (session.getPlayerInventory().getItemInHand().is(Items.SHIELD)) {
+                        if (session.getPlayerInventory().getItemInHand().is(ItemIds.SHIELD)) {
                             break;
                         }
 
@@ -383,7 +383,7 @@ public class BedrockInventoryTransactionTranslator extends PacketTranslator<Inve
                                 break;
                             } else if (packet.getItemInHand().getDefinition() == session.getItemMappings().getStoredItems().writtenBook().getBedrockDefinition()) {
                                 session.setCurrentBook(packet.getItemInHand());
-                            } else if (session.getPlayerInventory().getItemInHand().is(Items.GOAT_HORN)) {
+                            } else if (session.getPlayerInventory().getItemInHand().is(ItemIds.GOAT_HORN)) {
                                 // Temporary workaround while we don't have full item/block use tracking.
                                 if (!session.getWorldCache().hasCooldown(session.getPlayerInventory().getItemInHand())) {
                                     Holder<Instrument> component = session.getPlayerInventory()
@@ -432,7 +432,7 @@ public class BedrockInventoryTransactionTranslator extends PacketTranslator<Inve
                                     int armorSlot = slotData.getSlots()[0] + 5;
                                     if (armorSlot == 5) {
                                         GeyserItemStack armorSlotItem = playerInventory.getItem(armorSlot);
-                                        if (armorSlotItem.is(Items.PLAYER_HEAD)) {
+                                        if (armorSlotItem.is(ItemIds.PLAYER_HEAD)) {
                                             FakeHeadProvider.restoreOriginalSkin(session, session.getPlayerEntity());
                                         }
                                     }
@@ -575,7 +575,7 @@ public class BedrockInventoryTransactionTranslator extends PacketTranslator<Inve
         session.getPlayerInventoryHolder().updateSlot(heldItemSlot);
         GeyserItemStack itemStack = playerInventory.getItem(heldItemSlot);
         if (itemStack.getAmount() > 1) {
-            if (itemStack.is(Items.BUCKET) || itemStack.is(Items.GLASS_BOTTLE)) {
+            if (itemStack.is(ItemIds.BUCKET) || itemStack.is(ItemIds.GLASS_BOTTLE)) {
                 // Using a stack of buckets or glass bottles will result in an item being added to the first empty slot.
                 // We need to revert the item in case the interaction fails. The order goes from left to right in the
                 // hotbar. Then left to right and top to bottom in the inventory.

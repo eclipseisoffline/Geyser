@@ -42,7 +42,7 @@ import org.geysermc.geyser.entity.type.living.animal.AnimalEntity;
 import org.geysermc.geyser.entity.type.living.animal.HappyGhastEntity;
 import org.geysermc.geyser.entity.type.living.animal.horse.CamelEntity;
 import org.geysermc.geyser.inventory.GeyserItemStack;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.session.cache.registry.JavaRegistries;
 import org.geysermc.geyser.session.cache.tags.GeyserHolderSet;
@@ -272,14 +272,14 @@ public final class EntityUtils {
      * Determine if an action would result in a successful bucketing of the given entity.
      */
     public static boolean attemptToBucket(GeyserItemStack itemInHand) {
-        return itemInHand.is(Items.WATER_BUCKET);
+        return itemInHand.is(ItemIds.WATER_BUCKET);
     }
 
     /**
      * Attempt to determine the result of saddling the given entity.
      */
     public static InteractionResult attemptToSaddle(Entity entityToSaddle, GeyserItemStack itemInHand) {
-        if (itemInHand.is(Items.SADDLE)) {
+        if (itemInHand.is(ItemIds.SADDLE)) {
             if (!entityToSaddle.getFlag(EntityFlag.SADDLED) && !entityToSaddle.getFlag(EntityFlag.BABY)) {
                 // Saddle
                 return InteractionResult.SUCCESS;

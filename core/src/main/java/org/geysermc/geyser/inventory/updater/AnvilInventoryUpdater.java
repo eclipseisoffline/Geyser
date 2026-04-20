@@ -38,7 +38,7 @@ import org.geysermc.geyser.inventory.AnvilContainer;
 import org.geysermc.geyser.inventory.GeyserItemStack;
 import org.geysermc.geyser.inventory.Inventory;
 import org.geysermc.geyser.inventory.item.BedrockEnchantment;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.item.enchantment.Enchantment;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.session.cache.registry.JavaRegistries;
@@ -388,7 +388,7 @@ public class AnvilInventoryUpdater extends InventoryUpdater {
     }
 
     private boolean isEnchantedBook(GeyserItemStack itemStack) {
-        return itemStack.is(Items.ENCHANTED_BOOK);
+        return itemStack.is(ItemIds.ENCHANTED_BOOK);
     }
 
     private boolean isCombining(GeyserItemStack input, GeyserItemStack material) {

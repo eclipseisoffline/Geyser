@@ -27,9 +27,9 @@ package org.geysermc.geyser.inventory;
 
 import lombok.Getter;
 import lombok.Setter;
+import net.kyori.adventure.key.Key;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.GeyserImpl;
-import org.geysermc.geyser.item.type.Item;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.EquipmentSlot;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.player.Hand;
@@ -70,7 +70,7 @@ public class PlayerInventory extends Inventory {
      * @param item The item to look for
      * @return If the player is holding the item in either hand
      */
-    public boolean isHolding(@NonNull Item item) {
+    public boolean isHolding(@NonNull Key item) {
         return getItemInHand().is(item) || getOffhand().is(item);
     }
 

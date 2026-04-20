@@ -39,7 +39,7 @@ import org.geysermc.geyser.entity.vehicle.NautilusVehicleComponent;
 import org.geysermc.geyser.entity.vehicle.VehicleComponent;
 import org.geysermc.geyser.input.InputLocksFlag;
 import org.geysermc.geyser.inventory.GeyserItemStack;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.item.enchantment.EnchantmentComponent;
 import org.geysermc.geyser.item.type.Item;
 import org.geysermc.geyser.session.cache.tags.ItemTag;
@@ -89,7 +89,7 @@ public abstract class AbstractNautilusEntity extends TameableEntity implements C
             if (itemInHand.asItem().javaIdentifier().endsWith("_nautilus_armor") && getItemInSlot(EquipmentSlot.BODY).isEmpty() && !getFlag(EntityFlag.BABY)) {
                 return InteractiveTag.EQUIP_NAUTILUS_ARMOR;
             }
-            if (itemInHand.is(Items.SHEARS) && !getItemInSlot(EquipmentSlot.BODY).isEmpty()
+            if (itemInHand.is(ItemIds.SHEARS) && !getItemInSlot(EquipmentSlot.BODY).isEmpty()
                     && (!isCurseOfBinding || session.getGameMode().equals(GameMode.CREATIVE))) {
                 return InteractiveTag.REMOVE_NAUTILUS_ARMOR;
             }

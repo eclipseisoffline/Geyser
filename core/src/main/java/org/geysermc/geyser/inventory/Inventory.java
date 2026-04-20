@@ -34,7 +34,7 @@ import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.data.definitions.ItemDefinition;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.inventory.click.ClickPlan;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.item.ItemTranslator;
 import org.geysermc.mcprotocollib.protocol.data.game.inventory.ContainerType;
@@ -149,7 +149,7 @@ public abstract class Inventory {
         items[slot] = newItem;
 
         // Lodestone caching
-        if (newItem.is(Items.COMPASS)) {
+        if (newItem.is(ItemIds.COMPASS)) {
             var tracker = newItem.getComponent(DataComponentTypes.LODESTONE_TRACKER);
             if (tracker != null) {
                 session.getLodestoneCache().cacheInventoryItem(newItem, tracker);

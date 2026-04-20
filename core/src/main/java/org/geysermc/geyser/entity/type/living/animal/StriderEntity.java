@@ -38,7 +38,7 @@ import org.geysermc.geyser.entity.vehicle.BoostableVehicleComponent;
 import org.geysermc.geyser.entity.vehicle.ClientVehicle;
 import org.geysermc.geyser.entity.vehicle.VehicleComponent;
 import org.geysermc.geyser.inventory.GeyserItemStack;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.item.type.Item;
 import org.geysermc.geyser.session.cache.tags.ItemTag;
 import org.geysermc.geyser.session.cache.tags.Tag;
@@ -150,11 +150,11 @@ public class StriderEntity extends AnimalEntity implements Tickable, ClientVehic
         }
 
         if (player == session.getPlayerEntity()) {
-            if (session.getPlayerInventory().isHolding(Items.WARPED_FUNGUS_ON_A_STICK)) {
+            if (session.getPlayerInventory().isHolding(ItemIds.WARPED_FUNGUS_ON_A_STICK)) {
                 vehicleComponent.tickBoost();
             }
         } else { // getHand() for session player seems to always return air
-            if (player.isHolding(Items.WARPED_FUNGUS_ON_A_STICK)) {
+            if (player.isHolding(ItemIds.WARPED_FUNGUS_ON_A_STICK)) {
                 vehicleComponent.tickBoost();
             }
         }
@@ -185,7 +185,7 @@ public class StriderEntity extends AnimalEntity implements Tickable, ClientVehic
 
     @Override
     public boolean shouldSimulateMovement() {
-        return getPlayerPassenger() == session.getPlayerEntity() && session.getPlayerInventory().isHolding(Items.WARPED_FUNGUS_ON_A_STICK);
+        return getPlayerPassenger() == session.getPlayerEntity() && session.getPlayerInventory().isHolding(ItemIds.WARPED_FUNGUS_ON_A_STICK);
     }
 
     @Override

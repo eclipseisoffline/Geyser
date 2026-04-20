@@ -29,7 +29,7 @@ import org.geysermc.geyser.entity.type.Entity;
 import org.geysermc.geyser.entity.type.LivingEntity;
 import org.geysermc.geyser.entity.type.player.PlayerEntity;
 import org.geysermc.geyser.inventory.GeyserItemStack;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.skin.FakeHeadProvider;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
@@ -62,7 +62,7 @@ public class JavaSetEquipmentTranslator extends PacketTranslator<ClientboundSetE
             switch (equipment.getSlot()) {
                 case HELMET -> {
                     ResolvableProfile profile = stack.getComponent(DataComponentTypes.PROFILE);
-                    if (livingEntity instanceof PlayerEntity && stack.is(Items.PLAYER_HEAD) && profile != null) {
+                    if (livingEntity instanceof PlayerEntity && stack.is(ItemIds.PLAYER_HEAD) && profile != null) {
                         FakeHeadProvider.setHead(session, (PlayerEntity) livingEntity, profile);
                     } else {
                         FakeHeadProvider.restoreOriginalSkin(session, livingEntity);

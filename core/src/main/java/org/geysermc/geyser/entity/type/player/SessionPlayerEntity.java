@@ -46,7 +46,7 @@ import org.geysermc.geyser.entity.type.Entity;
 import org.geysermc.geyser.entity.type.LivingEntity;
 import org.geysermc.geyser.input.InputLocksFlag;
 import org.geysermc.geyser.inventory.GeyserItemStack;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.level.block.Blocks;
 import org.geysermc.geyser.level.block.property.Properties;
 import org.geysermc.geyser.level.block.type.BlockState;
@@ -343,9 +343,9 @@ public class SessionPlayerEntity extends PlayerEntity {
     protected boolean hasShield(boolean offhand) {
         // Must be overridden to point to the player's inventory cache
         if (offhand) {
-            return session.getPlayerInventory().getOffhand().is(Items.SHIELD);
+            return session.getPlayerInventory().getOffhand().is(ItemIds.SHIELD);
         } else {
-            return session.getPlayerInventory().getItemInHand().is(Items.SHIELD);
+            return session.getPlayerInventory().getItemInHand().is(ItemIds.SHIELD);
         }
     }
 
@@ -564,7 +564,7 @@ public class SessionPlayerEntity extends PlayerEntity {
             }
 
             // Bedrock will NOT allow flight when not wearing an elytra; even if it doesn't have a glider component
-            if (entry.getKey() == EquipmentSlot.CHESTPLATE && !entry.getValue().is(Items.ELYTRA)) {
+            if (entry.getKey() == EquipmentSlot.CHESTPLATE && !entry.getValue().is(ItemIds.ELYTRA)) {
                 return false;
             }
         }

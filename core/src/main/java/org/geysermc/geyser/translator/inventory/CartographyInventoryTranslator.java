@@ -28,9 +28,11 @@ package org.geysermc.geyser.translator.inventory;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerSlotType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.ItemStackRequestSlotData;
-import org.geysermc.geyser.inventory.*;
+import org.geysermc.geyser.inventory.BedrockContainerSlot;
+import org.geysermc.geyser.inventory.CartographyContainer;
+import org.geysermc.geyser.inventory.GeyserItemStack;
 import org.geysermc.geyser.inventory.updater.UIInventoryUpdater;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.level.block.Blocks;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.mcprotocollib.protocol.data.game.inventory.ContainerType;
@@ -46,11 +48,11 @@ public class CartographyInventoryTranslator extends AbstractBlockInventoryTransl
         if (javaDestinationSlot == 0) {
             // Bedrock Edition can use paper or an empty map in slot 0
             GeyserItemStack itemStack = javaSourceSlot == -1 ? session.getPlayerInventory().getCursor() : container.getItem(javaSourceSlot);
-            return itemStack.is(Items.PAPER) || itemStack.is(Items.MAP);
+            return itemStack.is(ItemIds.PAPER) || itemStack.is(ItemIds.MAP);
         } else if (javaDestinationSlot == 1) {
             // Bedrock Edition can use a compass to create locator maps, or use a filled map, in the ADDITIONAL slot
             GeyserItemStack itemStack = javaSourceSlot == -1 ? session.getPlayerInventory().getCursor() : container.getItem(javaSourceSlot);
-            return itemStack.is(Items.COMPASS) || itemStack.is(Items.FILLED_MAP);
+            return itemStack.is(ItemIds.COMPASS) || itemStack.is(ItemIds.FILLED_MAP);
         }
         return false;
     }

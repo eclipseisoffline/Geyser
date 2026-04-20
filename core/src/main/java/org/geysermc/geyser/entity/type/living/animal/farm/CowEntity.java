@@ -32,7 +32,7 @@ import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.entity.type.living.animal.TemperatureVariantAnimal;
 import org.geysermc.geyser.inventory.GeyserItemStack;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.item.type.Item;
 import org.geysermc.geyser.session.cache.registry.JavaRegistries;
 import org.geysermc.geyser.session.cache.registry.JavaRegistryKey;
@@ -51,7 +51,7 @@ public class CowEntity extends TemperatureVariantAnimal {
     @NonNull
     @Override
     protected InteractiveTag testMobInteraction(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
-        if (getFlag(EntityFlag.BABY) || !itemInHand.is(Items.BUCKET)) {
+        if (getFlag(EntityFlag.BABY) || !itemInHand.is(ItemIds.BUCKET)) {
             return super.testMobInteraction(hand, itemInHand);
         }
 
@@ -61,7 +61,7 @@ public class CowEntity extends TemperatureVariantAnimal {
     @NonNull
     @Override
     protected InteractionResult mobInteract(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
-        if (getFlag(EntityFlag.BABY) || !itemInHand.is(Items.BUCKET)) {
+        if (getFlag(EntityFlag.BABY) || !itemInHand.is(ItemIds.BUCKET)) {
             return super.mobInteract(hand, itemInHand);
         }
 

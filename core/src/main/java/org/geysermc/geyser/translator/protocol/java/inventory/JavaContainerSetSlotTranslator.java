@@ -36,7 +36,7 @@ import org.geysermc.geyser.inventory.InventoryHolder;
 import org.geysermc.geyser.inventory.recipe.GeyserRecipe;
 import org.geysermc.geyser.inventory.recipe.GeyserShapedRecipe;
 import org.geysermc.geyser.inventory.recipe.GeyserSmithingRecipe;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.inventory.SmithingInventoryTranslator;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
@@ -215,7 +215,7 @@ public class JavaContainerSetSlotTranslator extends PacketTranslator<Clientbound
         Inventory inventory = holder.inventory();
         session.setContainerOutputFuture(session.scheduleInEventLoop(() -> {
             GeyserItemStack template = inventory.getItem(SmithingInventoryTranslator.TEMPLATE);
-            if (!template.is(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE)) {
+            if (!template.is(ItemIds.NETHERITE_UPGRADE_SMITHING_TEMPLATE)) {
                 // Technically we should probably also do this for custom items, but last I checked Bedrock doesn't even support that.
                 return;
             }

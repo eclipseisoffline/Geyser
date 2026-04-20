@@ -44,7 +44,7 @@ import org.geysermc.geyser.entity.vehicle.HorseVehicleComponent;
 import org.geysermc.geyser.entity.vehicle.VehicleComponent;
 import org.geysermc.geyser.input.InputLocksFlag;
 import org.geysermc.geyser.inventory.GeyserItemStack;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.item.type.Item;
 import org.geysermc.geyser.session.cache.tags.ItemTag;
 import org.geysermc.geyser.session.cache.tags.Tag;
@@ -192,7 +192,7 @@ public class AbstractHorseEntity extends AnimalEntity implements ClientVehicle {
                 return InteractiveTag.ATTACH_CHEST;
             }
 
-            if (additionalTestForInventoryOpen(itemInHand) || !isBaby && !getFlag(EntityFlag.SADDLED) && itemInHand.is(Items.SADDLE)) {
+            if (additionalTestForInventoryOpen(itemInHand) || !isBaby && !getFlag(EntityFlag.SADDLED) && itemInHand.is(ItemIds.SADDLE)) {
                 // Will open the inventory to be saddled
                 return InteractiveTag.OPEN_CONTAINER;
             }
@@ -248,7 +248,7 @@ public class AbstractHorseEntity extends AnimalEntity implements ClientVehicle {
             }
 
             // Note: yes, this code triggers for llamas too. lol (as of Java Edition 1.18.1)
-            if (additionalTestForInventoryOpen(itemInHand) || (!isBaby && !getFlag(EntityFlag.SADDLED) && itemInHand.is(Items.SADDLE))) {
+            if (additionalTestForInventoryOpen(itemInHand) || (!isBaby && !getFlag(EntityFlag.SADDLED) && itemInHand.is(ItemIds.SADDLE))) {
                 // Will open the inventory to be saddled
                 return InteractionResult.SUCCESS;
             }
@@ -288,7 +288,7 @@ public class AbstractHorseEntity extends AnimalEntity implements ClientVehicle {
         } else if (!passengers.isEmpty()) {
             return testHorseInteraction(hand, itemInHand);
         } else {
-            if (itemInHand.is(Items.SADDLE)) {
+            if (itemInHand.is(ItemIds.SADDLE)) {
                 return InteractiveTag.OPEN_CONTAINER;
             }
 

@@ -66,7 +66,7 @@ import org.geysermc.geyser.inventory.click.ClickPlan;
 import org.geysermc.geyser.inventory.recipe.GeyserRecipe;
 import org.geysermc.geyser.inventory.recipe.GeyserShapedRecipe;
 import org.geysermc.geyser.inventory.recipe.GeyserShapelessRecipe;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.skin.FakeHeadProvider;
 import org.geysermc.geyser.translator.inventory.chest.DoubleChestInventoryTranslator;
@@ -329,7 +329,7 @@ public abstract class InventoryTranslator<Type extends Inventory> {
                         if (destSlot == 5) {
                             // only set the head if the destination is the head slot
                             GeyserItemStack javaItem = inventory.getItem(sourceSlot);
-                            if (javaItem.is(Items.PLAYER_HEAD) && javaItem.hasNonBaseComponents()) {
+                            if (javaItem.is(ItemIds.PLAYER_HEAD) && javaItem.hasNonBaseComponents()) {
                                 FakeHeadProvider.setHead(session, session.getPlayerEntity(), javaItem.getComponent(DataComponentTypes.PROFILE));
                             }
                         } else if (sourceSlot == 5) {
