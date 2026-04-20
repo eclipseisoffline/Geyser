@@ -71,7 +71,6 @@ import org.geysermc.geyser.api.util.Identifier;
 import org.geysermc.geyser.inventory.item.StoredItemMappings;
 import org.geysermc.geyser.item.GeyserCustomMappingData;
 import org.geysermc.geyser.item.ItemIds;
-import org.geysermc.geyser.item.Items;
 import org.geysermc.geyser.item.TooltipOptions;
 import org.geysermc.geyser.item.custom.GeyserCustomItemDefinition;
 import org.geysermc.geyser.item.custom.impl.predicates.GeyserRangeDispatchPredicate;
@@ -137,7 +136,6 @@ public class ItemMappingsBuilder {
         private static List<PaletteItem> loadItemEntries(GeyserBootstrap bootstrap, String version) {
             Type paletteEntriesType = new TypeToken<List<PaletteItem>>() { }.getType();
 
-            List<PaletteItem> itemEntries;
             try (InputStream stream = bootstrap.getResourceOrThrow(String.format("bedrock/runtime_item_states.%s.json", version))) {
                 return Collections.unmodifiableList(JsonUtils.fromJson(stream, paletteEntriesType));
             } catch (Exception e) {
@@ -146,7 +144,6 @@ public class ItemMappingsBuilder {
         }
 
         private static NbtMap loadVanillaComponents(GeyserBootstrap bootstrap, String version) {
-            NbtMap vanillaComponents;
             try (InputStream stream = bootstrap.getResourceOrThrow("bedrock/item_components.%s.nbt".formatted(version))) {
                 return (NbtMap) NbtUtils.createGZIPReader(stream, true, true).readTag();
             } catch (Exception e) {
@@ -321,7 +318,7 @@ public class ItemMappingsBuilder {
                 mappingItem = palette.remapper().remap(javaItemKey, itemMappingEntry.getValue());
             }
 
-            if (customItemsAllowed && javaItem == Items.FURNACE_MINECART) {
+            if (customItemsAllowed && javaItemKey.equals(ItemIds.FURNACE_MINECART)) {
                 // Will be added later
                 mappings.add(null);
                 continue;
@@ -599,7 +596,7 @@ public class ItemMappingsBuilder {
             }
 
             ItemMapping lightBlockEntry = ItemMapping.builder()
-                .javaItem(Items.LIGHT)
+                .javaItem(session.itemOrAir(ItemIds.LIGHT))
                 .bedrockIdentifier("minecraft:light_block_" + i)
                 .bedrockDefinition(lightBlock)
                 .bedrockData(0)
@@ -616,7 +613,7 @@ public class ItemMappingsBuilder {
 
         // Add the lodestone compass since it doesn't exist on java but we need it for item conversion
         ItemMapping lodestoneEntry = ItemMapping.builder()
-                .javaItem(Items.COMPASS)
+                .javaItem(session.itemOrAir(ItemIds.COMPASS))
                 .bedrockIdentifier("minecraft:lodestone_compass")
                 .bedrockDefinition(lodestoneCompass)
                 .bedrockData(0)
@@ -626,14 +623,16 @@ public class ItemMappingsBuilder {
 
         final IntSet nonVanillaCustomItemIds = new IntOpenHashSet();
         if (customItemsAllowed) {
-            // Add furnace minecart
-            int furnaceMinecartId = nextFreeBedrockId++;
-            ItemDefinition definition = new SimpleItemDefinition("geysermc:furnace_minecart", furnaceMinecartId, ItemVersion.DATA_DRIVEN, true, registerFurnaceMinecart(furnaceMinecartId));
-            definitions.put("geysermc:furnace_minecart", definition);
-            registry.put(definition.getRuntimeId(), definition);
+            int furnaceMinecartJavaId = JavaRegistries.ITEM.networkId(session, ItemIds.FURNACE_MINECART);
+            if (furnaceMinecartJavaId != -1) {
+                // Add furnace minecart
+                int furnaceMinecartBedrockId = nextFreeBedrockId++;
+                ItemDefinition definition = new SimpleItemDefinition("geysermc:furnace_minecart", furnaceMinecartBedrockId, ItemVersion.DATA_DRIVEN, true, registerFurnaceMinecart(furnaceMinecartBedrockId));
+                definitions.put("geysermc:furnace_minecart", definition);
+                registry.put(definition.getRuntimeId(), definition);
 
-            mappings.set(Items.FURNACE_MINECART.javaId(), ItemMapping.builder()
-                    .javaItem(Items.FURNACE_MINECART)
+                mappings.set(furnaceMinecartJavaId, ItemMapping.builder()
+                    .javaItem(session.itemOrAir(ItemIds.FURNACE_MINECART))
                     .bedrockIdentifier("geysermc:furnace_minecart")
                     .bedrockDefinition(definition)
                     .bedrockData(0)
@@ -641,12 +640,13 @@ public class ItemMappingsBuilder {
                     .customItemDefinitions(null) // TODO check for custom items with furnace minecart
                     .build());
 
-            creativeItems.add(new CreativeItemData(ItemData.builder()
-                .usingNetId(true)
-                .netId(creativeNetId.incrementAndGet())
-                .definition(definition)
-                .count(1)
-                .build(), creativeNetId.get(), getCreativeIndex("itemGroup.name.minecart", CreativeItemCategory.ITEMS, creativeGroupIds, lastCreativeGroupIds, creativeItemGroups)));
+                creativeItems.add(new CreativeItemData(ItemData.builder()
+                    .usingNetId(true)
+                    .netId(creativeNetId.incrementAndGet())
+                    .definition(definition)
+                    .count(1)
+                    .build(), creativeNetId.get(), getCreativeIndex("itemGroup.name.minecart", CreativeItemCategory.ITEMS, creativeGroupIds, lastCreativeGroupIds, creativeItemGroups)));
+            }
 
             // Register any completely custom items given to us
             IntSet registeredJavaIds = new IntOpenHashSet(); // Used to check for duplicate item java ids
@@ -745,9 +745,10 @@ public class ItemMappingsBuilder {
             NbtMap tag = null;
             if (itemData.getItem().getTag() != null) {
                 final DataComponents components = new DataComponents(new HashMap<>());
-                Items.FIREWORK_ROCKET.translateNbtToJava(null, itemData.getItem().getTag(), components, null);
+                Item fireworkRocket = session.itemOrAir(ItemIds.FIREWORK_ROCKET);
+                fireworkRocket.translateNbtToJava(null, itemData.getItem().getTag(), components, null);
                 final BedrockItemBuilder builder = new BedrockItemBuilder();
-                Items.FIREWORK_ROCKET.translateComponentsToBedrock(null, components, TooltipOptions.ALL_SHOWN, builder);
+                fireworkRocket.translateComponentsToBedrock(null, components, TooltipOptions.ALL_SHOWN, builder);
 
                 tag = builder.build();
             }

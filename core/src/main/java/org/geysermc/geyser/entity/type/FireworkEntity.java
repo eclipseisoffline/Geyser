@@ -29,7 +29,7 @@ import org.cloudburstmc.protocol.bedrock.data.MovementEffectType;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.packet.MovementEffectPacket;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
-import org.geysermc.geyser.item.Items;
+import org.geysermc.geyser.item.ItemIds;
 import org.geysermc.geyser.item.TooltipOptions;
 import org.geysermc.geyser.translator.item.BedrockItemBuilder;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.EntityMetadata;
@@ -60,7 +60,7 @@ public class FireworkEntity extends Entity {
         // Translate using item methods to get firework NBT for Bedrock
         BedrockItemBuilder builder = new BedrockItemBuilder();
         TooltipOptions tooltip = TooltipOptions.fromComponents(components);
-        Items.FIREWORK_ROCKET.translateComponentsToBedrock(session, components, tooltip, builder);
+        session.itemOrAir(ItemIds.FIREWORK_ROCKET).translateComponentsToBedrock(session, components, tooltip, builder);
         
         dirtyMetadata.put(EntityDataTypes.DISPLAY_FIREWORK, builder.build());
     }

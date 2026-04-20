@@ -150,7 +150,9 @@ import org.geysermc.geyser.inventory.recipe.GeyserRecipe;
 import org.geysermc.geyser.inventory.recipe.GeyserSmithingRecipe;
 import org.geysermc.geyser.inventory.recipe.GeyserStonecutterData;
 import org.geysermc.geyser.item.ItemIds;
+import org.geysermc.geyser.item.Items;
 import org.geysermc.geyser.item.type.BlockItem;
+import org.geysermc.geyser.item.type.Item;
 import org.geysermc.geyser.level.BedrockDimension;
 import org.geysermc.geyser.level.JavaDimension;
 import org.geysermc.geyser.level.physics.CollisionManager;
@@ -1486,6 +1488,14 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
         this.hasFishingRodCast = cast;
         int slot = getPlayerInventory().getOffsetForHotbar(getPlayerInventory().getHeldItemSlot());
         this.playerInventoryHolder.updateSlot(slot);
+    }
+
+    public Item itemOrAir(Key javaItemKey) {
+        Item item = JavaRegistries.ITEM.value(this, javaItemKey);
+        if (item == null) {
+            return Items.AIR;
+        }
+        return item;
     }
 
     /**

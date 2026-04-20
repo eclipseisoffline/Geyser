@@ -45,7 +45,7 @@ public class ThrowableEggEntity extends ThrowableItemEntity {
 
     public ThrowableEggEntity(EntitySpawnContext context) {
         super(context);
-        itemStack = GeyserItemStack.of(session, JavaRegistries.ITEM.networkId(context.session(), ItemIds.EGG), 1);
+        itemStack = GeyserItemStack.of(session, ItemIds.EGG);
     }
 
     @Override
