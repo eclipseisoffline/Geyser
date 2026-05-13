@@ -57,6 +57,7 @@ public class GeyserCustomItemDefinition implements CustomItemDefinition {
     private final @NonNull String displayName;
     private final @NonNull Identifier model;
     private final @NonNull String icon;
+    private final @NonNull String dyedIcon;
     private final @NonNull List<MinecraftPredicate<? super ItemPredicateContext>> predicates;
     private final PredicateStrategy predicateStrategy;
     private final int priority;
@@ -77,6 +78,9 @@ public class GeyserCustomItemDefinition implements CustomItemDefinition {
 
         String setIcon = builder.bedrockOptions.icon();
         icon = setIcon == null ? bedrockIdentifier().toString().replaceAll(":", ".").replaceAll("/", "_") : setIcon;
+
+        String setDyedIcon = builder.bedrockOptions.dyedIcon();
+        dyedIcon = setDyedIcon == null ? icon : setDyedIcon;
 
         this.predicates = List.copyOf(builder.predicates);
         this.predicateStrategy = builder.predicateStrategy;
@@ -107,6 +111,11 @@ public class GeyserCustomItemDefinition implements CustomItemDefinition {
     @Override
     public @NonNull String icon() {
         return icon;
+    }
+
+    @Override
+    public @NonNull String dyedIcon() {
+        return dyedIcon;
     }
 
     @Override

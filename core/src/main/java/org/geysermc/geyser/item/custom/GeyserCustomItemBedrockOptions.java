@@ -40,7 +40,7 @@ import java.util.Objects;
 import java.util.OptionalInt;
 import java.util.Set;
 
-public record GeyserCustomItemBedrockOptions(@Nullable String icon, boolean allowOffhand, boolean displayHandheld, int protectionValue,
+public record GeyserCustomItemBedrockOptions(@Nullable String icon, @Nullable String dyedIcon, boolean allowOffhand, boolean displayHandheld, int protectionValue,
                                              @NonNull CreativeCategory creativeCategory, @Nullable String creativeGroup, @NonNull Set<Identifier> tags,
                                              OptionalInt dyeable) implements CustomItemBedrockOptions {
 
@@ -58,6 +58,7 @@ public record GeyserCustomItemBedrockOptions(@Nullable String icon, boolean allo
 
     public static class Builder implements CustomItemBedrockOptions.Builder {
         private String icon = null;
+        private String dyedIcon = null;
         private boolean allowOffhand = true;
         private boolean displayHandheld = false;
         private int protectionValue = -1;
@@ -69,6 +70,12 @@ public record GeyserCustomItemBedrockOptions(@Nullable String icon, boolean allo
         @Override
         public Builder icon(@Nullable String icon) {
             this.icon = icon;
+            return this;
+        }
+
+        @Override
+        public Builder dyedIcon(@Nullable String dyedIcon) {
+            this.dyedIcon = dyedIcon;
             return this;
         }
 
@@ -130,7 +137,7 @@ public record GeyserCustomItemBedrockOptions(@Nullable String icon, boolean allo
 
         @Override
         public CustomItemBedrockOptions build() {
-            return new GeyserCustomItemBedrockOptions(icon, allowOffhand, displayHandheld, protectionValue,
+            return new GeyserCustomItemBedrockOptions(icon, dyedIcon, allowOffhand, displayHandheld, protectionValue,
                 creativeCategory, creativeGroup, Set.copyOf(tags), dyeableColor == null ? OptionalInt.empty() : OptionalInt.of(dyeableColor));
         }
     }
