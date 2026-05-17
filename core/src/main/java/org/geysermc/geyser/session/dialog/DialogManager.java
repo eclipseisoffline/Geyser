@@ -29,6 +29,7 @@ import lombok.Getter;
 import lombok.experimental.Accessors;
 import net.kyori.adventure.key.Key;
 import org.cloudburstmc.nbt.NbtMap;
+import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.mcprotocollib.protocol.data.game.Holder;
 
@@ -74,6 +75,7 @@ public class DialogManager {
     public void close() {
         if (open != null) {
             open = null;
+            GeyserImpl.getInstance().getLogger().info("closing current dialog!!!");
             // The form could already have been closed by now, but in the case it wasn't, close it anyway
             // This won't run a closing dialog action, because the manager already regards the dialog as closed
             session.closeForm();

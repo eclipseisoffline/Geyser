@@ -32,6 +32,7 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.cumulus.form.ModalForm;
 import org.geysermc.cumulus.form.SimpleForm;
+import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.session.dialog.action.DialogAction;
 import org.geysermc.geyser.session.dialog.input.ParsedInputs;
@@ -120,9 +121,15 @@ public class DialogHolder {
     public void runButton(Optional<DialogButton> button, @NonNull ParsedInputs inputs) {
         lastInputs = inputs;
         if (stillValid()) {
+            GeyserImpl.getInstance().getLogger().info("running button of dialog " + dialog.title());
             if (runAction(button, lastInputs)) {
+                GeyserImpl.getInstance().getLogger().info("running after action");
                 runAfterAction();
+            } else {
+                GeyserImpl.getInstance().getLogger().info("button didn't want us to close yet");
             }
+        } else {
+            GeyserImpl.getInstance().getLogger().info("tried to run button of dialog " + dialog.title() + " when it was invalid!");
         }
     }
 
@@ -193,15 +200,18 @@ public class DialogHolder {
         switch (dialog.afterAction()) {
             case NONE -> {
                 // If no new dialog was opened, reopen this one
+                GeyserImpl.getInstance().getLogger().info("restoring current dialog as requested per after action");
                 dialog.restoreForm(this, lastInputs);
             }
             case CLOSE -> {
                 // If no new dialog was opened, tell the manager this one is now closed
+                GeyserImpl.getInstance().getLogger().info("closing current dialog as requested per after action");
                 manager.close();
             }
             case WAIT_FOR_RESPONSE -> {
                 // If no new dialog was opened, open a form telling the user we're waiting on a response from the server
                 // This dialog is replaced with a similar form with a "back" button after 5 seconds, matching Java behaviour
+                GeyserImpl.getInstance().getLogger().info("waiting for next dialog as requested per after action");
                 responseWaitTime = System.currentTimeMillis();
                 sendBackButton = false;
                 waitForResponse();

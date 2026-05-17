@@ -1789,6 +1789,7 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
     private boolean doSendForm(@NonNull Form form) {
         // Close all currently open forms.
         if (formCache.hasFormOpen()) {
+            GeyserImpl.getInstance().getLogger().info("closing existing form before opening new one");
             closeForm();
         }
 
@@ -1797,6 +1798,7 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
 
         // Also close current inventories, otherwise the form will not show
         if (inventoryHolder != null) {
+            GeyserImpl.getInstance().getLogger().info("closing open inventory before opening form");
             // We'll open the form when the client confirms current inventory being closed
             InventoryUtils.sendJavaContainerClose(inventoryHolder);
             InventoryUtils.closeInventory(this, inventoryHolder, true);
@@ -1806,6 +1808,7 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
         // If we're waiting, the form will be sent when Bedrock confirms closing
         // If we don't wait, the client rejects the form as it is busy
         if (!isClosingInventory() && upstream.isInitialized()) {
+            GeyserImpl.getInstance().getLogger().info("sending form, presumably immediately");
             formCache.resendAllForms();
         }
 
