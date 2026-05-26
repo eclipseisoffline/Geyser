@@ -30,12 +30,18 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.GameTestInstance;
+import net.minecraft.network.syncher.EntityDataSerializer;
+import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EntityType;
+import org.geysermc.geyser.gametest.tests.EntityDataSerializerTest;
 import org.geysermc.geyser.gametest.tests.EntityMetadataTest;
+import org.geysermc.geyser.gametest.util.SynchedEntityDataDebugger;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public final  class GeyserGameTests {
     private static final List<EntityType<?>> UNSUPPORTED_ENTITY_TYPES = List.of(EntityType.BLOCK_DISPLAY, EntityType.ITEM_DISPLAY, EntityType.MARKER);
@@ -69,9 +75,22 @@ public final  class GeyserGameTests {
         }
     }
 
+    @SafeVarargs
+    private static <T> void registerEntityDataSerializerTest(HolderLookup.Provider registries, FabricDynamicRegistryProvider.Entries entries, EntityDataSerializer<T> serializer, T... cases) {
+        entries.add(createKey(GeyserGameTestTypes.ENTITY_DATA_SERIALIZER, SynchedEntityDataDebugger.findNameOfSerializer(serializer).toLowerCase(Locale.ROOT)),
+            new EntityDataSerializerTest<>(registries, true, serializer, Arrays.asList(cases)));
+    }
+
+    private static void registerEntityDataSerializerTests(HolderLookup.Provider registries, FabricDynamicRegistryProvider.Entries entries) {
+        registerEntityDataSerializerTest(registries, entries, EntityDataSerializers.BYTE, (byte) 0, (byte) 1, (byte) 2, (byte) -10, (byte) 100, (byte) 15, Byte.MIN_VALUE, Byte.MAX_VALUE);
+        registerEntityDataSerializerTest(registries, entries, EntityDataSerializers.INT, 15, -12, 5, 43, 10000, -1000000, Integer.MAX_VALUE, Integer.MIN_VALUE);
+        registerEntityDataSerializerTest(registries, entries, EntityDataSerializers.LONG, 46L, -67L, 200L, 35983959954L, -1238398482348L, Long.MAX_VALUE, Long.MIN_VALUE);
+    }
+
     public static void bootstrap(HolderLookup.Provider registries, FabricDynamicRegistryProvider.Entries entries) {
         registerEntityTypeTests(registries, entries);
         registerSingletonTest(registries, entries, GeyserGameTestTypes.REQUIRED_COMPONENTS_FOR_HASHING);
         registerSingletonTest(registries, entries, GeyserGameTestTypes.MINECRAFT_VERSION);
+        registerEntityDataSerializerTests(registries, entries);
     }
 }

@@ -32,6 +32,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.gametest.framework.GameTestInstance;
 import net.minecraft.resources.Identifier;
 import org.geysermc.geyser.gametest.tests.ComponentHashTestInstance;
+import org.geysermc.geyser.gametest.tests.EntityDataSerializerTest;
 import org.geysermc.geyser.gametest.tests.EntityMetadataTest;
 import org.geysermc.geyser.gametest.tests.MinecraftVersionTestInstance;
 import org.geysermc.geyser.gametest.tests.RequiredComponentsForHashingTestInstance;
@@ -41,6 +42,7 @@ public interface GeyserGameTestTypes {
     SingletonTestType REQUIRED_COMPONENTS_FOR_HASHING = createSingleton("required_components_for_hashing", RequiredComponentsForHashingTestInstance::new);
     Identifier ENTITY_METADATA = createKey("entity_metadata");
     SingletonTestType MINECRAFT_VERSION = createSingleton("minecraft_version", MinecraftVersionTestInstance::new);
+    Identifier ENTITY_DATA_SERIALIZER = createKey("entity_data_serializer");
 
     private static Identifier createKey(String name) {
         return Identifier.fromNamespaceAndPath("geyser", name);
@@ -63,6 +65,7 @@ public interface GeyserGameTestTypes {
         register(REQUIRED_COMPONENTS_FOR_HASHING, RequiredComponentsForHashingTestInstance.MAP_CODEC);
         register(ENTITY_METADATA, EntityMetadataTest.MAP_CODEC);
         register(MINECRAFT_VERSION, MinecraftVersionTestInstance.MAP_CODEC);
+        register(ENTITY_DATA_SERIALIZER, EntityDataSerializerTest.MAP_CODEC);
     }
 
     record SingletonTestType(Identifier type, Constructor constructor) {
