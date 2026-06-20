@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living.animal;
 
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.entity.properties.type.EnumProperty;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.impl.IdentifierImpl;
@@ -34,6 +33,7 @@ import org.geysermc.geyser.session.cache.tags.ItemTag;
 import org.geysermc.geyser.session.cache.tags.Tag;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.ArmadilloState;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.type.ObjectEntityMetadata;
+import org.jspecify.annotations.Nullable;
 
 import java.util.concurrent.TimeUnit;
 

@@ -25,13 +25,13 @@
 
 package org.geysermc.geyser.level;
 
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.geysermc.erosion.util.BlockPositionIterator;
 import org.geysermc.geyser.level.block.type.BlockState;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.player.GameMode;
 import org.geysermc.mcprotocollib.protocol.data.game.setting.Difficulty;
+import org.jspecify.annotations.Nullable;
 
 import java.util.List;
 import java.util.Locale;

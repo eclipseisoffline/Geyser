@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.extension.command;
 
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.command.Command;
 import org.geysermc.geyser.api.command.CommandExecutor;
 import org.geysermc.geyser.api.command.CommandSource;
@@ -38,6 +37,7 @@ import org.geysermc.geyser.session.GeyserSession;
 import org.incendo.cloud.CommandManager;
 import org.incendo.cloud.context.CommandContext;
 import org.incendo.cloud.description.CommandDescription;
+import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;

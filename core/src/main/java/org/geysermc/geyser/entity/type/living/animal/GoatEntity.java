@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living.animal;
 
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.SoundEvent;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
@@ -39,6 +38,7 @@ import org.geysermc.geyser.util.InteractionResult;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.Pose;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.type.BooleanEntityMetadata;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.player.Hand;
+import org.jspecify.annotations.Nullable;
 
 public class GoatEntity extends AnimalEntity {
     private static final float LONG_JUMPING_HEIGHT = 1.3f * 0.7f;

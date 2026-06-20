@@ -26,9 +26,9 @@
 package org.geysermc.geyser.event.type;
 
 import org.checkerframework.checker.index.qual.NonNegative;
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.BedrockPong;
 import org.geysermc.geyser.api.event.connection.GeyserBedrockPingEvent;
+import org.jspecify.annotations.Nullable;
 
 import java.net.InetSocketAddress;
 import java.util.Objects;

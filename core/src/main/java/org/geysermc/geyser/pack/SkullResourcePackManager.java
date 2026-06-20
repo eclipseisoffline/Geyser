@@ -27,7 +27,6 @@ package org.geysermc.geyser.pack;
 
 import it.unimi.dsi.fastutil.Pair;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.Constants;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.pack.ResourcePackManifest;
@@ -35,11 +34,16 @@ import org.geysermc.geyser.registry.BlockRegistries;
 import org.geysermc.geyser.registry.type.CustomSkull;
 import org.geysermc.geyser.skin.SkinProvider;
 import org.geysermc.geyser.util.FileUtils;
+import org.jspecify.annotations.Nullable;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;

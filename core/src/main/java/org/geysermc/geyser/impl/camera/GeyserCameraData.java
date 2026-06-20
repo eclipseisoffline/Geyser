@@ -26,7 +26,6 @@
 package org.geysermc.geyser.impl.camera;
 
 import lombok.Getter;
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.CameraShakeAction;
@@ -50,6 +49,7 @@ import org.geysermc.geyser.api.bedrock.camera.GuiElement;
 import org.geysermc.geyser.input.InputLocksFlag;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.player.GameMode;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Collections;
 import java.util.HashSet;

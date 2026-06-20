@@ -31,7 +31,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import net.kyori.adventure.key.Key;
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.inventory.item.DyeColor;
@@ -61,6 +60,7 @@ import org.geysermc.mcprotocollib.protocol.data.game.recipe.display.slot.OnlyWit
 import org.geysermc.mcprotocollib.protocol.data.game.recipe.display.slot.SlotDisplay;
 import org.geysermc.mcprotocollib.protocol.data.game.recipe.display.slot.TagSlotDisplay;
 import org.geysermc.mcprotocollib.protocol.data.game.recipe.display.slot.WithAnyPotionSlotDisplay;
+import org.jspecify.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.List;

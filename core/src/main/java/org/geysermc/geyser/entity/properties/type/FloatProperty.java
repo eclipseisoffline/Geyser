@@ -25,11 +25,11 @@
 
 package org.geysermc.geyser.entity.properties.type;
 
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.bedrock.data.entity.FloatEntityProperty;
 import org.geysermc.geyser.api.entity.property.type.GeyserFloatEntityProperty;
 import org.geysermc.geyser.api.util.Identifier;
+import org.jspecify.annotations.Nullable;
 
 public record FloatProperty(
     Identifier identifier,

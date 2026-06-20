@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living.animal.farm;
 
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
@@ -49,6 +48,7 @@ import org.geysermc.geyser.util.InteractiveTag;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.EquipmentSlot;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.type.IntEntityMetadata;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.player.Hand;
+import org.jspecify.annotations.Nullable;
 
 public class PigEntity extends TemperatureVariantAnimal implements Tickable, ClientVehicle {
     private final BoostableVehicleComponent<PigEntity> vehicleComponent = new BoostableVehicleComponent<>(this, 1.0f);

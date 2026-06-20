@@ -25,8 +25,6 @@
 
 package org.geysermc.geyser.translator.protocol.java;
 
-import org.geysermc.mcprotocollib.protocol.data.game.advancement.Advancement;
-import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.ClientboundUpdateAdvancementsPacket;
 import org.cloudburstmc.protocol.bedrock.packet.ToastRequestPacket;
 import org.geysermc.geyser.level.GeyserAdvancement;
 import org.geysermc.geyser.session.GeyserSession;
@@ -35,6 +33,8 @@ import org.geysermc.geyser.text.MinecraftLocale;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
 import org.geysermc.geyser.translator.protocol.Translator;
 import org.geysermc.geyser.translator.text.MessageTranslator;
+import org.geysermc.mcprotocollib.protocol.data.game.advancement.Advancement;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.ClientboundUpdateAdvancementsPacket;
 
 import java.util.Locale;
 

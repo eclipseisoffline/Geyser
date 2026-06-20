@@ -25,10 +25,10 @@
 
 package org.geysermc.geyser.inventory;
 
+import lombok.Getter;
+import org.cloudburstmc.protocol.bedrock.data.inventory.EnchantOptionData;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.mcprotocollib.protocol.data.game.inventory.ContainerType;
-import org.cloudburstmc.protocol.bedrock.data.inventory.EnchantOptionData;
-import lombok.Getter;
 
 @Getter
 public class EnchantingContainer extends Container {

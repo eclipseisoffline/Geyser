@@ -25,9 +25,6 @@
 
 package org.geysermc.geyser.translator.protocol.java.level;
 
-import org.geysermc.mcprotocollib.protocol.data.game.level.map.MapData;
-import org.geysermc.mcprotocollib.protocol.data.game.level.map.MapIcon;
-import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.level.ClientboundMapItemDataPacket;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.data.MapDecoration;
 import org.cloudburstmc.protocol.bedrock.data.MapTrackedObject;
@@ -37,6 +34,9 @@ import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
 import org.geysermc.geyser.translator.protocol.Translator;
 import org.geysermc.geyser.util.DimensionUtils;
+import org.geysermc.mcprotocollib.protocol.data.game.level.map.MapData;
+import org.geysermc.mcprotocollib.protocol.data.game.level.map.MapIcon;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.level.ClientboundMapItemDataPacket;
 
 @Translator(packet = ClientboundMapItemDataPacket.class)
 public class JavaMapItemDataTranslator extends PacketTranslator<ClientboundMapItemDataPacket> {

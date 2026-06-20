@@ -30,7 +30,6 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TranslatableComponent;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.nbt.NbtList;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.nbt.NbtMapBuilder;
@@ -75,6 +74,7 @@ import org.geysermc.mcprotocollib.protocol.data.game.item.component.MobEffectDet
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.MobEffectInstance;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.PotionContents;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.WrittenBookContent;
+import org.jspecify.annotations.Nullable;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

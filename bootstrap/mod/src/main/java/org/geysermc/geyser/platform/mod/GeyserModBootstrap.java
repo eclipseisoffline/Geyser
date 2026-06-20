@@ -29,7 +29,6 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import net.minecraft.server.MinecraftServer;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.FloodgateKeyLoader;
 import org.geysermc.geyser.GeyserBootstrap;
 import org.geysermc.geyser.GeyserImpl;
@@ -44,6 +43,7 @@ import org.geysermc.geyser.ping.IGeyserPingPassthrough;
 import org.geysermc.geyser.platform.mod.platform.GeyserModPlatform;
 import org.geysermc.geyser.platform.mod.world.GeyserModWorldManager;
 import org.geysermc.geyser.text.GeyserLocale;
+import org.jspecify.annotations.Nullable;
 
 import java.io.InputStream;
 import java.net.SocketAddress;

@@ -26,8 +26,12 @@
 package org.geysermc.floodgate.news;
 
 import com.google.gson.JsonObject;
+import org.geysermc.floodgate.news.data.AnnouncementData;
+import org.geysermc.floodgate.news.data.BuildSpecificData;
+import org.geysermc.floodgate.news.data.CheckAfterData;
+import org.geysermc.floodgate.news.data.ConfigSpecificData;
+import org.geysermc.floodgate.news.data.ItemData;
 import org.jspecify.annotations.Nullable;
-import org.geysermc.floodgate.news.data.*;
 
 import java.util.function.Function;
 

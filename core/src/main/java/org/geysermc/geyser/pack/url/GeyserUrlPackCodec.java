@@ -25,9 +25,6 @@
 
 package org.geysermc.geyser.pack.url;
 
-import java.io.IOException;
-import java.nio.channels.SeekableByteChannel;
-import java.util.Objects;
 import lombok.Getter;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.pack.PathPackCodec;
@@ -37,6 +34,10 @@ import org.geysermc.geyser.pack.ResourcePackHolder;
 import org.geysermc.geyser.registry.Registries;
 import org.geysermc.geyser.registry.loader.ResourcePackLoader;
 import org.geysermc.geyser.text.GeyserLocale;
+
+import java.io.IOException;
+import java.nio.channels.SeekableByteChannel;
+import java.util.Objects;
 
 public class GeyserUrlPackCodec extends UrlPackCodec {
     private final String url;

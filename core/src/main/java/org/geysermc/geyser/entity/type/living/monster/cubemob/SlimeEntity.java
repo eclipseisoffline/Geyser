@@ -26,8 +26,6 @@
 package org.geysermc.geyser.entity.type.living.monster.cubemob;
 
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
-import org.geysermc.geyser.entity.type.living.AgeableEntity;
-import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.type.IntEntityMetadata;
 
 public class SlimeEntity extends AbstractCubeEntity {
 

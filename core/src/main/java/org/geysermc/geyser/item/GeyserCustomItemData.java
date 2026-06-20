@@ -27,7 +27,6 @@ package org.geysermc.geyser.item;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.item.custom.CustomItemData;
 import org.geysermc.geyser.api.item.custom.CustomItemOptions;
@@ -40,6 +39,7 @@ import org.geysermc.geyser.api.util.CreativeCategory;
 import org.geysermc.geyser.api.util.Identifier;
 import org.geysermc.geyser.api.util.TriState;
 import org.geysermc.geyser.item.custom.GeyserCustomItemDefinition;
+import org.jspecify.annotations.Nullable;
 
 import java.util.HashSet;
 import java.util.Locale;

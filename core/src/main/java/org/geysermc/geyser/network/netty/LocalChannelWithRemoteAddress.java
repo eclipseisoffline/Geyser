@@ -27,7 +27,6 @@ package org.geysermc.geyser.network.netty;
 
 import io.netty.channel.local.LocalChannel;
 
-import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 
 /**

@@ -29,7 +29,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.item.custom.v2.CustomItemDefinition;
 import org.geysermc.geyser.api.util.Identifier;
@@ -37,6 +36,7 @@ import org.geysermc.geyser.registry.mappings.util.CustomBlockMapping;
 import org.geysermc.geyser.registry.mappings.versions.MappingsReader;
 import org.geysermc.geyser.registry.mappings.versions.MappingsReader_v1;
 import org.geysermc.geyser.registry.mappings.versions.MappingsReader_v2;
+import org.jspecify.annotations.Nullable;
 
 import java.io.FileReader;
 import java.io.IOException;

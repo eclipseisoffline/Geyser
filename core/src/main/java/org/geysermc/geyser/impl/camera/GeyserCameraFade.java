@@ -28,7 +28,7 @@ package org.geysermc.geyser.impl.camera;
 import org.checkerframework.common.value.qual.IntRange;
 import org.geysermc.geyser.api.bedrock.camera.CameraFade;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.Objects;
 
 public record GeyserCameraFade(

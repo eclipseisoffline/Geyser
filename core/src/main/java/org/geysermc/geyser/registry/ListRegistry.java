@@ -25,8 +25,8 @@
 
 package org.geysermc.geyser.registry;
 
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.registry.loader.RegistryLoader;
+import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collections;

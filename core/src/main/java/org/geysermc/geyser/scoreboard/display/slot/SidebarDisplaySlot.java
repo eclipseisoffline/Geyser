@@ -25,11 +25,6 @@
 
 package org.geysermc.geyser.scoreboard.display.slot;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 import org.cloudburstmc.protocol.bedrock.data.ScoreInfo;
 import org.geysermc.geyser.entity.type.player.PlayerEntity;
 import org.geysermc.geyser.scoreboard.Objective;
@@ -40,6 +35,12 @@ import org.geysermc.geyser.scoreboard.display.score.SidebarDisplayScore;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.text.ChatColor;
 import org.geysermc.mcprotocollib.protocol.data.game.scoreboard.ScoreboardPosition;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public final class SidebarDisplaySlot extends DisplaySlot {
     private static final int SCORE_DISPLAY_LIMIT = 15;

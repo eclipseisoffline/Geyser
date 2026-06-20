@@ -25,9 +25,6 @@
 
 package org.geysermc.geyser.translator.protocol.bedrock;
 
-import org.geysermc.geyser.util.MinecraftKey;
-import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.inventory.ServerboundSetJigsawBlockPacket;
-import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.level.ServerboundSignUpdatePacket;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.bedrock.packet.BlockEntityDataPacket;
@@ -35,7 +32,10 @@ import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
 import org.geysermc.geyser.translator.protocol.Translator;
 import org.geysermc.geyser.translator.text.MessageTranslator;
+import org.geysermc.geyser.util.MinecraftKey;
 import org.geysermc.geyser.util.SignUtils;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.inventory.ServerboundSetJigsawBlockPacket;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.level.ServerboundSignUpdatePacket;
 
 @Translator(packet = BlockEntityDataPacket.class)
 public class BedrockBlockEntityDataTranslator extends PacketTranslator<BlockEntityDataPacket> {

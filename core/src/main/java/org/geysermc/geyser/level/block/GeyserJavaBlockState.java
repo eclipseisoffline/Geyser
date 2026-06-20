@@ -1,9 +1,9 @@
 package org.geysermc.geyser.level.block;
 
 import org.checkerframework.checker.index.qual.NonNegative;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.block.custom.nonvanilla.JavaBlockState;
 import org.geysermc.geyser.api.block.custom.nonvanilla.JavaBoundingBox;
+import org.jspecify.annotations.Nullable;
 
 public class GeyserJavaBlockState implements JavaBlockState {
     String identifier;

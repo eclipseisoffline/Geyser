@@ -25,14 +25,14 @@
 
 package org.geysermc.geyser.translator.protocol.java.entity;
 
-import org.geysermc.geyser.level.EffectType;
-import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.entity.ClientboundRemoveMobEffectPacket;
 import org.cloudburstmc.protocol.bedrock.packet.MobEffectPacket;
 import org.geysermc.geyser.entity.type.Entity;
 import org.geysermc.geyser.entity.vehicle.ClientVehicle;
+import org.geysermc.geyser.level.EffectType;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
 import org.geysermc.geyser.translator.protocol.Translator;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.entity.ClientboundRemoveMobEffectPacket;
 
 @Translator(packet = ClientboundRemoveMobEffectPacket.class)
 public class JavaRemoveMobEffectTranslator extends PacketTranslator<ClientboundRemoveMobEffectPacket> {

@@ -25,8 +25,8 @@
 
 package org.geysermc.geyser.input;
 
-import lombok.RequiredArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 // This is taken from (https://gist.github.com/wan-adrian/e919b46be3889d865801eb8883407587) or (https://github.com/PowerNukkitX/PowerNukkitX/blob/master/src/main/java/cn/nukkit/network/protocol/types/ClientInputLocksFlag.java)
 @RequiredArgsConstructor

@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living.animal.nautilus;
 
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.math.TrigMath;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
@@ -51,6 +50,7 @@ import org.geysermc.mcprotocollib.protocol.data.game.entity.player.GameMode;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.player.Hand;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponentTypes;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.HolderSet;
+import org.jspecify.annotations.Nullable;
 
 public abstract class AbstractNautilusEntity extends TameableEntity implements ClientVehicle {
     private HolderSet repairableItems = null;

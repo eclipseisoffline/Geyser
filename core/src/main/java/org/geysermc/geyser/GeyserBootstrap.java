@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser;
 
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.util.PlatformType;
 import org.geysermc.geyser.command.CommandRegistry;
 import org.geysermc.geyser.configuration.ConfigLoader;
@@ -36,6 +35,7 @@ import org.geysermc.geyser.level.WorldManager;
 import org.geysermc.geyser.ping.IGeyserPingPassthrough;
 import org.geysermc.geyser.util.metrics.MetricsPlatform;
 import org.geysermc.geyser.util.metrics.ProvidedMetricsPlatform;
+import org.jspecify.annotations.Nullable;
 
 import java.io.InputStream;
 import java.net.SocketAddress;

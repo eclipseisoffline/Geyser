@@ -25,12 +25,12 @@
 
 package org.geysermc.geyser.extension;
 
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.extension.Extension;
 import org.geysermc.geyser.api.extension.ExtensionLoader;
 import org.geysermc.geyser.api.extension.ExtensionManager;
 import org.geysermc.geyser.text.GeyserLocale;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.Collections;

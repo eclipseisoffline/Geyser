@@ -26,7 +26,6 @@
 package org.geysermc.geyser.session.cache.registry;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import org.jspecify.annotations.NonNull;
 
 import java.util.Iterator;
 import java.util.List;

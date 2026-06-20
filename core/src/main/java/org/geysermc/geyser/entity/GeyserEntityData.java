@@ -26,14 +26,14 @@
 package org.geysermc.geyser.entity;
 
 import org.checkerframework.checker.index.qual.NonNegative;
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.packet.EmotePacket;
-import org.geysermc.geyser.input.InputLocksFlag;
 import org.geysermc.geyser.api.entity.EntityData;
 import org.geysermc.geyser.api.entity.type.GeyserEntity;
 import org.geysermc.geyser.api.entity.type.player.GeyserPlayerEntity;
 import org.geysermc.geyser.entity.type.Entity;
+import org.geysermc.geyser.input.InputLocksFlag;
 import org.geysermc.geyser.session.GeyserSession;
+import org.jspecify.annotations.Nullable;
 
 import java.util.HashSet;
 import java.util.Objects;

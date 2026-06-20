@@ -25,11 +25,11 @@
 
 package org.geysermc.geyser.entity.properties.type;
 
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.nbt.NbtType;
 import org.cloudburstmc.protocol.bedrock.data.entity.IntEntityProperty;
 import org.geysermc.geyser.api.util.Identifier;
+import org.jspecify.annotations.Nullable;
 
 import java.util.List;
 import java.util.regex.Pattern;

@@ -26,11 +26,11 @@
 package org.geysermc.geyser.erosion;
 
 import io.netty.channel.Channel;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.erosion.netty.NettyPacketSender;
 import org.geysermc.erosion.packet.ErosionPacketHandler;
 import org.geysermc.erosion.packet.geyserbound.GeyserboundHandshakePacket;
 import org.geysermc.geyser.session.GeyserSession;
+import org.jspecify.annotations.Nullable;
 
 public final class GeyserboundHandshakePacketHandler extends AbstractGeyserboundPacketHandler {
 

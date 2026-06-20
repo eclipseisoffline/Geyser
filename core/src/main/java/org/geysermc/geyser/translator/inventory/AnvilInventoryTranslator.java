@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.translator.inventory;
 
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerSlotType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.ItemStackRequest;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.ItemStackRequestSlotData;
@@ -39,6 +38,7 @@ import org.geysermc.geyser.inventory.updater.AnvilInventoryUpdater;
 import org.geysermc.geyser.level.block.Blocks;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.mcprotocollib.protocol.data.game.inventory.ContainerType;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Objects;
 

@@ -25,8 +25,13 @@
 
 package org.geysermc.geyser.inventory.click;
 
-import org.geysermc.mcprotocollib.protocol.data.game.inventory.*;
 import lombok.AllArgsConstructor;
+import org.geysermc.mcprotocollib.protocol.data.game.inventory.ClickItemAction;
+import org.geysermc.mcprotocollib.protocol.data.game.inventory.ContainerAction;
+import org.geysermc.mcprotocollib.protocol.data.game.inventory.ContainerActionType;
+import org.geysermc.mcprotocollib.protocol.data.game.inventory.DropItemAction;
+import org.geysermc.mcprotocollib.protocol.data.game.inventory.MoveToHotbarAction;
+import org.geysermc.mcprotocollib.protocol.data.game.inventory.ShiftClickItemAction;
 
 @AllArgsConstructor
 public enum Click {

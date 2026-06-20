@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.translator.inventory;
 
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.nbt.NbtMapBuilder;
@@ -45,6 +44,7 @@ import org.geysermc.geyser.registry.Registries;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.level.block.entity.BlockEntityTranslator;
 import org.geysermc.mcprotocollib.protocol.data.game.level.block.BlockEntityType;
+import org.jspecify.annotations.Nullable;
 
 public class ShulkerInventoryTranslator extends AbstractBlockInventoryTranslator<Container> {
     public ShulkerInventoryTranslator() {

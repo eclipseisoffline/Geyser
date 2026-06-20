@@ -25,11 +25,6 @@
 
 package org.geysermc.geyser.scoreboard.network.sidebar;
 
-import static org.geysermc.geyser.scoreboard.network.util.AssertUtils.assertNextPacket;
-import static org.geysermc.geyser.scoreboard.network.util.AssertUtils.assertNoNextPacket;
-import static org.geysermc.geyser.scoreboard.network.util.GeyserMockContextScoreboard.mockContextScoreboard;
-
-import java.util.List;
 import net.kyori.adventure.text.Component;
 import org.cloudburstmc.protocol.bedrock.data.ScoreInfo;
 import org.cloudburstmc.protocol.bedrock.packet.SetDisplayObjectivePacket;
@@ -51,6 +46,12 @@ import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.scoreboard.
 import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.scoreboard.ClientboundSetPlayerTeamPacket;
 import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.scoreboard.ClientboundSetScorePacket;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import static org.geysermc.geyser.scoreboard.network.util.AssertUtils.assertNextPacket;
+import static org.geysermc.geyser.scoreboard.network.util.AssertUtils.assertNoNextPacket;
+import static org.geysermc.geyser.scoreboard.network.util.GeyserMockContextScoreboard.mockContextScoreboard;
 
 public class OrderAndLimitSidebarScoreboardTests {
     @Test

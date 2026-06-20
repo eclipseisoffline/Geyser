@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.item.type;
 
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.geysermc.geyser.inventory.GeyserItemStack;
 import org.geysermc.geyser.registry.type.ItemMapping;
@@ -33,6 +32,7 @@ import org.geysermc.geyser.registry.type.ItemMappings;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponentTypes;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponents;
+import org.jspecify.annotations.Nullable;
 
 public class OminousBottleItem extends Item {
     public OminousBottleItem(String javaIdentifier, Builder builder) {

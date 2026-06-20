@@ -26,8 +26,8 @@
 package org.geysermc.geyser.session.cache.registry;
 
 import net.kyori.adventure.key.Key;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.session.GeyserSession;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Optional;
 

@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.util;
 
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.data.PlayerActionType;
@@ -35,11 +34,12 @@ import org.cloudburstmc.protocol.bedrock.packet.MobEffectPacket;
 import org.cloudburstmc.protocol.bedrock.packet.PlayerActionPacket;
 import org.cloudburstmc.protocol.bedrock.packet.StopSoundPacket;
 import org.geysermc.geyser.entity.type.Entity;
-import org.geysermc.geyser.level.EffectType;
 import org.geysermc.geyser.level.BedrockDimension;
+import org.geysermc.geyser.level.EffectType;
 import org.geysermc.geyser.level.JavaDimension;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.Effect;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Set;
 

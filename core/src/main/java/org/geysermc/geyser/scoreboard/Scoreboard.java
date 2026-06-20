@@ -28,7 +28,6 @@ package org.geysermc.geyser.scoreboard;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import lombok.Getter;
 import net.kyori.adventure.text.Component;
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.ScoreInfo;
 import org.cloudburstmc.protocol.bedrock.data.command.CommandEnumConstraint;
 import org.cloudburstmc.protocol.bedrock.packet.SetScorePacket;
@@ -45,6 +44,7 @@ import org.geysermc.mcprotocollib.protocol.data.game.scoreboard.NameTagVisibilit
 import org.geysermc.mcprotocollib.protocol.data.game.scoreboard.ScoreboardPosition;
 import org.geysermc.mcprotocollib.protocol.data.game.scoreboard.TeamColor;
 import org.jetbrains.annotations.Contract;
+import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collections;

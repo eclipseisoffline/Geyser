@@ -26,12 +26,12 @@
 package org.geysermc.geyser.inventory;
 
 import lombok.Getter;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.level.block.type.Block;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.inventory.InventoryTranslator;
 import org.geysermc.mcprotocollib.protocol.data.game.inventory.ContainerType;
 import org.jetbrains.annotations.Range;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Combination of {@link Inventory} and {@link PlayerInventory}

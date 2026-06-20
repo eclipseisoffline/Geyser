@@ -28,7 +28,6 @@ package org.geysermc.geyser.registry.populator;
 import com.google.gson.JsonObject;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMaps;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.GeyserBootstrap;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.event.lifecycle.GeyserDefineCustomSkullsEvent;
@@ -43,6 +42,7 @@ import org.geysermc.geyser.util.JsonUtils;
 import org.geysermc.mcprotocollib.auth.texture.Texture;
 import org.geysermc.mcprotocollib.auth.texture.TextureType;
 import org.geysermc.mcprotocollib.auth.util.TextureUrlChecker;
+import org.jspecify.annotations.Nullable;
 
 import java.io.File;
 import java.io.IOException;

@@ -26,10 +26,10 @@
 package org.geysermc.geyser.platform.mod.platform;
 
 import net.minecraft.server.MinecraftServer;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.util.PlatformType;
 import org.geysermc.geyser.dump.BootstrapDumpInfo;
 import org.geysermc.geyser.platform.mod.GeyserModBootstrap;
+import org.jspecify.annotations.Nullable;
 
 import java.io.InputStream;
 import java.nio.file.Path;

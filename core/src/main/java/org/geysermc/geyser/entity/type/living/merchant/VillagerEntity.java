@@ -26,7 +26,6 @@
 package org.geysermc.geyser.entity.type.living.merchant;
 
 import lombok.Getter;
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
@@ -38,6 +37,7 @@ import org.geysermc.geyser.level.block.type.BedBlock;
 import org.geysermc.geyser.level.block.type.BlockState;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.EntityMetadata;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.VillagerData;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Optional;
 

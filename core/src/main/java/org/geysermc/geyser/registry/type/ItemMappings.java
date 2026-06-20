@@ -30,7 +30,6 @@ import it.unimi.dsi.fastutil.ints.IntSet;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import lombok.Builder;
 import lombok.Value;
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.definitions.BlockDefinition;
 import org.cloudburstmc.protocol.bedrock.data.definitions.ItemDefinition;
 import org.cloudburstmc.protocol.bedrock.data.inventory.CreativeItemData;
@@ -44,6 +43,7 @@ import org.geysermc.geyser.inventory.item.StoredItemMappings;
 import org.geysermc.geyser.item.Items;
 import org.geysermc.geyser.item.type.Item;
 import org.geysermc.mcprotocollib.protocol.data.game.item.ItemStack;
+import org.jspecify.annotations.Nullable;
 
 import java.util.List;
 import java.util.Map;

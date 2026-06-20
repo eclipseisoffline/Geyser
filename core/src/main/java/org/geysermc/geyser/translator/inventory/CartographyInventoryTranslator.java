@@ -25,15 +25,17 @@
 
 package org.geysermc.geyser.translator.inventory;
 
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerSlotType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.ItemStackRequestSlotData;
-import org.geysermc.geyser.inventory.*;
+import org.geysermc.geyser.inventory.BedrockContainerSlot;
+import org.geysermc.geyser.inventory.CartographyContainer;
+import org.geysermc.geyser.inventory.GeyserItemStack;
 import org.geysermc.geyser.inventory.updater.UIInventoryUpdater;
 import org.geysermc.geyser.item.Items;
 import org.geysermc.geyser.level.block.Blocks;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.mcprotocollib.protocol.data.game.inventory.ContainerType;
+import org.jspecify.annotations.Nullable;
 
 public class CartographyInventoryTranslator extends AbstractBlockInventoryTranslator<CartographyContainer> {
     public CartographyInventoryTranslator() {

@@ -28,7 +28,6 @@ package org.geysermc.geyser.session.cache.tags;
 import it.unimi.dsi.fastutil.ints.IntArrays;
 import lombok.Data;
 import net.kyori.adventure.key.Key;
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.nbt.NbtMap;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.session.GeyserSession;
@@ -36,6 +35,7 @@ import org.geysermc.geyser.session.cache.TagCache;
 import org.geysermc.geyser.session.cache.registry.JavaRegistryKey;
 import org.geysermc.geyser.util.MinecraftKey;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.HolderSet;
+import org.jspecify.annotations.Nullable;
 
 import java.util.List;
 import java.util.Objects;

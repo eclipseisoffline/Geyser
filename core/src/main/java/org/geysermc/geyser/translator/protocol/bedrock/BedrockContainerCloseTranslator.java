@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.translator.protocol.bedrock;
 
-import java.util.concurrent.TimeUnit;
 import org.cloudburstmc.protocol.bedrock.packet.ContainerClosePacket;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.inventory.Inventory;
@@ -35,6 +34,8 @@ import org.geysermc.geyser.translator.inventory.MerchantInventoryTranslator;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
 import org.geysermc.geyser.translator.protocol.Translator;
 import org.geysermc.geyser.util.InventoryUtils;
+
+import java.util.concurrent.TimeUnit;
 
 @Translator(packet = ContainerClosePacket.class)
 public class BedrockContainerCloseTranslator extends PacketTranslator<ContainerClosePacket> {

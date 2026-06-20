@@ -28,7 +28,6 @@ package org.geysermc.geyser.translator.protocol.java;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.TranslatableComponent;
 import net.kyori.adventure.text.TranslationArgument;
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.bedrock.data.LevelEvent;
 import org.cloudburstmc.protocol.bedrock.packet.LevelEventGenericPacket;
@@ -40,6 +39,7 @@ import org.geysermc.geyser.translator.protocol.PacketTranslator;
 import org.geysermc.geyser.translator.protocol.Translator;
 import org.geysermc.geyser.translator.text.MessageTranslator;
 import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.ClientboundSystemChatPacket;
+import org.jspecify.annotations.Nullable;
 
 @Translator(packet = ClientboundSystemChatPacket.class)
 public class JavaSystemChatTranslator extends PacketTranslator<ClientboundSystemChatPacket> {

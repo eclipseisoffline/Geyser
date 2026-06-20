@@ -25,14 +25,14 @@
 
 package org.geysermc.geyser.session.cache.registry;
 
-import java.util.Optional;
-import java.util.function.ToIntFunction;
-
 import net.kyori.adventure.key.Key;
 import org.cloudburstmc.nbt.NbtMap;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.text.MessageTranslator;
 import org.geysermc.mcprotocollib.protocol.data.game.RegistryEntry;
+
+import java.util.Optional;
+import java.util.function.ToIntFunction;
 
 /**
  * Used to store context around a single registry entry when reading said entry's NBT.

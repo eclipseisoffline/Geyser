@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.item.custom;
 
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.item.custom.v2.component.ItemDataComponent;
 import org.geysermc.geyser.api.item.custom.v2.component.ItemDataComponentMap;
 import org.geysermc.geyser.api.item.custom.v2.component.geyser.GeyserItemDataComponents;
@@ -53,6 +52,7 @@ import org.geysermc.mcprotocollib.protocol.data.game.item.component.ToolData;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.UseCooldown;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.UseEffects;
 import org.geysermc.mcprotocollib.protocol.data.game.level.sound.BuiltinSound;
+import org.jspecify.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.List;

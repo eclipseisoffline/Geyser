@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.item.type;
 
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.geysermc.geyser.inventory.GeyserItemStack;
 import org.geysermc.geyser.item.TooltipOptions;
@@ -36,6 +35,7 @@ import org.geysermc.geyser.translator.item.BedrockItemBuilder;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponentTypes;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponents;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.LodestoneTracker;
+import org.jspecify.annotations.Nullable;
 
 public class CompassItem extends Item {
     public CompassItem(String javaIdentifier, Builder builder) {

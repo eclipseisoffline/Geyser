@@ -26,7 +26,6 @@
 package org.geysermc.geyser.entity.type.living.animal.horse;
 
 import lombok.Getter;
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.item.type.Item;
@@ -35,6 +34,7 @@ import org.geysermc.geyser.session.cache.tags.Tag;
 import org.geysermc.geyser.util.MathUtils;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.EquipmentSlot;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.type.IntEntityMetadata;
+import org.jspecify.annotations.Nullable;
 
 public class LlamaEntity extends ChestedHorseEntity {
     /**

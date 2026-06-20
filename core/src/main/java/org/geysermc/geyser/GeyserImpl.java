@@ -44,7 +44,6 @@ import org.bstats.charts.DrilldownPie;
 import org.bstats.charts.SimplePie;
 import org.bstats.charts.SingleLineChart;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.util.EncryptionUtils;
 import org.geysermc.api.Geyser;
 import org.geysermc.cumulus.form.Form;
@@ -107,6 +106,7 @@ import org.geysermc.geyser.util.NewsHandler;
 import org.geysermc.geyser.util.VersionCheckUtils;
 import org.geysermc.geyser.util.WebUtils;
 import org.geysermc.geyser.util.metrics.MetricsPlatform;
+import org.jspecify.annotations.Nullable;
 
 import java.io.File;
 import java.io.FileReader;

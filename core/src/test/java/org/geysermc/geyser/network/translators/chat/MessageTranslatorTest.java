@@ -25,13 +25,14 @@
 
 package org.geysermc.geyser.network.translators.chat;
 
-import java.util.HashMap;
-import java.util.Map;
 import org.geysermc.geyser.translator.text.MessageTranslator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class MessageTranslatorTest {

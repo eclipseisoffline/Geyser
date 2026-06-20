@@ -25,13 +25,13 @@
 
 package org.geysermc.geyser.translator.protocol.java.title;
 
-import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.title.ClientboundSetTitleTextPacket;
-import org.cloudburstmc.protocol.bedrock.packet.SetTitlePacket;
 import net.kyori.adventure.text.Component;
+import org.cloudburstmc.protocol.bedrock.packet.SetTitlePacket;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
 import org.geysermc.geyser.translator.protocol.Translator;
 import org.geysermc.geyser.translator.text.MessageTranslator;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.title.ClientboundSetTitleTextPacket;
 
 @Translator(packet = ClientboundSetTitleTextPacket.class)
 public class JavaSetTitleTextTranslator extends PacketTranslator<ClientboundSetTitleTextPacket> {

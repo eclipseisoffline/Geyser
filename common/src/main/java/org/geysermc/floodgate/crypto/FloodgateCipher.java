@@ -25,8 +25,8 @@
 
 package org.geysermc.floodgate.crypto;
 
-import org.jspecify.annotations.Nullable;
 import org.geysermc.floodgate.util.InvalidFormatException;
+import org.jspecify.annotations.Nullable;
 
 import java.security.Key;
 

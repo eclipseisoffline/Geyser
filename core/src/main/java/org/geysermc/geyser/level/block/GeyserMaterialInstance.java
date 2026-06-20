@@ -26,8 +26,8 @@
 package org.geysermc.geyser.level.block;
 
 import lombok.RequiredArgsConstructor;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.block.custom.component.MaterialInstance;
+import org.jspecify.annotations.Nullable;
 
 @RequiredArgsConstructor
 public class GeyserMaterialInstance implements MaterialInstance {

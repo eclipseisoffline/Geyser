@@ -25,11 +25,11 @@
 
 package org.geysermc.geyser.translator.level.event;
 
-import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.level.ClientboundLevelEventPacket;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.SoundEvent;
 import org.cloudburstmc.protocol.bedrock.packet.LevelSoundEventPacket;
 import org.geysermc.geyser.session.GeyserSession;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.level.ClientboundLevelEventPacket;
 
 public record SoundEventEventTranslator(SoundEvent soundEvent,
                                         String identifier, int extraData) implements LevelEventTranslator {

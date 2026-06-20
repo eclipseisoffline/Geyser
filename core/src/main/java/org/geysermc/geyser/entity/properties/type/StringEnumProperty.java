@@ -25,9 +25,9 @@
 
 package org.geysermc.geyser.entity.properties.type;
 
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.entity.property.type.GeyserStringEnumProperty;
 import org.geysermc.geyser.api.util.Identifier;
+import org.jspecify.annotations.Nullable;
 
 import java.util.List;
 

@@ -25,11 +25,11 @@
 
 package org.geysermc.geyser.pack.option;
 
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.pack.ResourcePack;
 import org.geysermc.geyser.api.pack.option.PriorityOption;
 import org.geysermc.geyser.api.pack.option.ResourcePackOption;
 import org.geysermc.geyser.pack.GeyserResourcePack;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.Collections;

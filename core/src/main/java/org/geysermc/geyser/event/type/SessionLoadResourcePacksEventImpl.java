@@ -28,7 +28,6 @@ package org.geysermc.geyser.event.type;
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import lombok.Getter;
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.packet.ResourcePackStackPacket;
 import org.cloudburstmc.protocol.bedrock.packet.ResourcePacksInfoPacket;
 import org.geysermc.geyser.GeyserImpl;
@@ -45,6 +44,7 @@ import org.geysermc.geyser.pack.option.OptionHolder;
 import org.geysermc.geyser.registry.Registries;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.util.GeyserIntegratedPackUtil;
+import org.jspecify.annotations.Nullable;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;

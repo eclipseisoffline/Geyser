@@ -26,8 +26,8 @@
 package org.geysermc.geyser.level.block;
 
 import lombok.RequiredArgsConstructor;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.block.custom.component.GeometryComponent;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Map;
 

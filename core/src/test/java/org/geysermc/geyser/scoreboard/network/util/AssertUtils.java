@@ -25,11 +25,12 @@
 
 package org.geysermc.geyser.scoreboard.network.util;
 
+import org.cloudburstmc.protocol.bedrock.packet.BedrockPacket;
+import org.junit.jupiter.api.Assertions;
+
 import java.util.Collections;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
-import org.cloudburstmc.protocol.bedrock.packet.BedrockPacket;
-import org.junit.jupiter.api.Assertions;
 
 public class AssertUtils {
     public static <T> void assertContextEquals(Supplier<? extends T> expected, T actual) {

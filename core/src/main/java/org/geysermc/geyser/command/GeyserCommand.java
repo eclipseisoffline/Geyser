@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.command;
 
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.event.lifecycle.GeyserRegisterPermissionsEvent;
 import org.geysermc.geyser.api.util.TriState;
 import org.geysermc.geyser.text.GeyserLocale;
@@ -34,6 +33,7 @@ import org.incendo.cloud.CommandManager;
 import org.incendo.cloud.context.CommandContext;
 import org.incendo.cloud.description.CommandDescription;
 import org.jetbrains.annotations.Contract;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Collections;
 import java.util.List;

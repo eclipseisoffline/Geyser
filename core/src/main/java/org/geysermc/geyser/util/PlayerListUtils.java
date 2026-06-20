@@ -32,7 +32,7 @@ import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.entity.type.player.AvatarEntity;
 import org.geysermc.geyser.session.GeyserSession;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.List;
 import java.util.UUID;
 

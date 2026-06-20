@@ -26,11 +26,11 @@
 package org.geysermc.geyser.item.custom.impl.predicates;
 
 import org.checkerframework.checker.index.qual.NonNegative;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.predicate.MinecraftPredicate;
 import org.geysermc.geyser.api.predicate.context.item.ItemPredicateContext;
 import org.geysermc.geyser.api.predicate.item.CustomModelDataPredicate;
 import org.geysermc.geyser.impl.GeyserCoreProvided;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Objects;
 

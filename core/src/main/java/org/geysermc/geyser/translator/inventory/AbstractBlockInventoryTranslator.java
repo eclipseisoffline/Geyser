@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.translator.inventory;
 
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerType;
 import org.geysermc.geyser.inventory.Container;
 import org.geysermc.geyser.inventory.Inventory;
@@ -35,6 +34,7 @@ import org.geysermc.geyser.inventory.updater.InventoryUpdater;
 import org.geysermc.geyser.level.block.type.Block;
 import org.geysermc.geyser.level.block.type.BlockState;
 import org.geysermc.geyser.session.GeyserSession;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Provided as a base for any inventory that requires a block for opening it

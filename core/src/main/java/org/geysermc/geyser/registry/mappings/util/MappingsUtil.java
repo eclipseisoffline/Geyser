@@ -28,8 +28,8 @@ package org.geysermc.geyser.registry.mappings.util;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonPrimitive;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.item.exception.InvalidCustomMappingsFileException;
+import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;

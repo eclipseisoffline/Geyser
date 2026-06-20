@@ -25,6 +25,21 @@
 
 package org.geysermc.geyser.translator.protocol.java.level;
 
+import org.cloudburstmc.protocol.bedrock.data.GameRuleData;
+import org.cloudburstmc.protocol.bedrock.data.entity.EntityEventType;
+import org.cloudburstmc.protocol.bedrock.packet.EntityEventPacket;
+import org.cloudburstmc.protocol.bedrock.packet.GameRulesChangedPacket;
+import org.cloudburstmc.protocol.bedrock.packet.MovePlayerPacket;
+import org.cloudburstmc.protocol.bedrock.packet.PlaySoundPacket;
+import org.cloudburstmc.protocol.bedrock.packet.SetPlayerGameTypePacket;
+import org.cloudburstmc.protocol.bedrock.packet.ShowCreditsPacket;
+import org.geysermc.geyser.entity.type.player.PlayerEntity;
+import org.geysermc.geyser.session.GeyserSession;
+import org.geysermc.geyser.text.MinecraftLocale;
+import org.geysermc.geyser.translator.inventory.PlayerInventoryTranslator;
+import org.geysermc.geyser.translator.protocol.PacketTranslator;
+import org.geysermc.geyser.translator.protocol.Translator;
+import org.geysermc.geyser.util.EntityUtils;
 import org.geysermc.mcprotocollib.protocol.data.game.ClientCommand;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.player.GameMode;
 import org.geysermc.mcprotocollib.protocol.data.game.level.notify.EnterCreditsValue;
@@ -33,16 +48,6 @@ import org.geysermc.mcprotocollib.protocol.data.game.level.notify.RespawnScreenV
 import org.geysermc.mcprotocollib.protocol.data.game.level.notify.ThunderStrengthValue;
 import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.level.ClientboundGameEventPacket;
 import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.ServerboundClientCommandPacket;
-import org.cloudburstmc.protocol.bedrock.data.GameRuleData;
-import org.cloudburstmc.protocol.bedrock.data.entity.EntityEventType;
-import org.cloudburstmc.protocol.bedrock.packet.*;
-import org.geysermc.geyser.entity.type.player.PlayerEntity;
-import org.geysermc.geyser.session.GeyserSession;
-import org.geysermc.geyser.text.MinecraftLocale;
-import org.geysermc.geyser.translator.inventory.PlayerInventoryTranslator;
-import org.geysermc.geyser.translator.protocol.PacketTranslator;
-import org.geysermc.geyser.translator.protocol.Translator;
-import org.geysermc.geyser.util.EntityUtils;
 
 @Translator(packet = ClientboundGameEventPacket.class)
 public class JavaGameEventTranslator extends PacketTranslator<ClientboundGameEventPacket> {

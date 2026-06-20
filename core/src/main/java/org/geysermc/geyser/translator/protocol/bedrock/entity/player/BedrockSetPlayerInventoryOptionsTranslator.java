@@ -25,15 +25,15 @@
 
 package org.geysermc.geyser.translator.protocol.bedrock.entity.player;
 
-import org.geysermc.mcprotocollib.protocol.data.game.entity.player.GameMode;
-import org.geysermc.mcprotocollib.protocol.data.game.inventory.CraftingBookStateType;
-import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.inventory.ServerboundRecipeBookChangeSettingsPacket;
 import org.cloudburstmc.protocol.bedrock.data.inventory.InventoryTabLeft;
 import org.cloudburstmc.protocol.bedrock.data.inventory.InventoryTabRight;
 import org.cloudburstmc.protocol.bedrock.packet.SetPlayerInventoryOptionsPacket;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
 import org.geysermc.geyser.translator.protocol.Translator;
+import org.geysermc.mcprotocollib.protocol.data.game.entity.player.GameMode;
+import org.geysermc.mcprotocollib.protocol.data.game.inventory.CraftingBookStateType;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.inventory.ServerboundRecipeBookChangeSettingsPacket;
 
 @Translator(packet = SetPlayerInventoryOptionsPacket.class)
 public class BedrockSetPlayerInventoryOptionsTranslator extends PacketTranslator<SetPlayerInventoryOptionsPacket> {

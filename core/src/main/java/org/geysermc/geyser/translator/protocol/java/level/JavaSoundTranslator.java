@@ -25,12 +25,12 @@
 
 package org.geysermc.geyser.translator.protocol.java.level;
 
-import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.level.ClientboundSoundPacket;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
 import org.geysermc.geyser.translator.protocol.Translator;
 import org.geysermc.geyser.util.SoundUtils;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.level.ClientboundSoundPacket;
 
 @Translator(packet = ClientboundSoundPacket.class)
 public class JavaSoundTranslator extends PacketTranslator<ClientboundSoundPacket> {

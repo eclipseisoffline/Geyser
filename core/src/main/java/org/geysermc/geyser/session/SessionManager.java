@@ -28,8 +28,8 @@ package org.geysermc.geyser.session;
 import com.google.common.collect.ImmutableList;
 import lombok.AccessLevel;
 import lombok.Getter;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.text.GeyserLocale;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.List;

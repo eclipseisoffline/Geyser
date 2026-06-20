@@ -32,7 +32,6 @@ import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.config.ListenerInfo;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.protocol.ProtocolConstants;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.FloodgateKeyLoader;
 import org.geysermc.geyser.GeyserBootstrap;
 import org.geysermc.geyser.GeyserImpl;
@@ -51,6 +50,7 @@ import org.geysermc.geyser.util.metrics.MetricsPlatform;
 import org.incendo.cloud.CommandManager;
 import org.incendo.cloud.bungee.BungeeCommandManager;
 import org.incendo.cloud.execution.ExecutionCoordinator;
+import org.jspecify.annotations.Nullable;
 
 import java.io.IOException;
 import java.lang.reflect.Field;

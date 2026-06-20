@@ -28,7 +28,6 @@ package org.geysermc.geyser.item.custom;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.checkerframework.checker.index.qual.NonNegative;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.item.custom.v2.CustomItemBedrockOptions;
 import org.geysermc.geyser.api.item.custom.v2.CustomItemDefinition;
 import org.geysermc.geyser.api.item.custom.v2.NonVanillaCustomItemDefinition;
@@ -37,6 +36,7 @@ import org.geysermc.geyser.api.predicate.MinecraftPredicate;
 import org.geysermc.geyser.api.predicate.PredicateStrategy;
 import org.geysermc.geyser.api.predicate.context.item.ItemPredicateContext;
 import org.geysermc.geyser.api.util.Identifier;
+import org.jspecify.annotations.Nullable;
 
 @EqualsAndHashCode(callSuper = true)
 @ToString

@@ -25,12 +25,12 @@
 
 package org.geysermc.geyser.impl.camera;
 
-import org.jspecify.annotations.Nullable;
 import org.checkerframework.common.value.qual.IntRange;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.geysermc.geyser.api.bedrock.camera.CameraEaseType;
 import org.geysermc.geyser.api.bedrock.camera.CameraFade;
 import org.geysermc.geyser.api.bedrock.camera.CameraPosition;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Objects;
 

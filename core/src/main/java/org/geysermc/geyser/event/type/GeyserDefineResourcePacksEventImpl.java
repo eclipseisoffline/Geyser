@@ -26,7 +26,6 @@
 package org.geysermc.geyser.event.type;
 
 import lombok.Getter;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.event.lifecycle.GeyserDefineResourcePacksEvent;
 import org.geysermc.geyser.api.pack.ResourcePack;
 import org.geysermc.geyser.api.pack.exception.ResourcePackException;
@@ -34,6 +33,7 @@ import org.geysermc.geyser.api.pack.option.ResourcePackOption;
 import org.geysermc.geyser.pack.GeyserResourcePack;
 import org.geysermc.geyser.pack.ResourcePackHolder;
 import org.geysermc.geyser.util.GeyserIntegratedPackUtil;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.List;

@@ -25,11 +25,11 @@
 
 package org.geysermc.geyser.item.custom;
 
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.item.custom.v2.CustomItemBedrockOptions;
 import org.geysermc.geyser.api.util.CreativeCategory;
 import org.geysermc.geyser.api.util.Identifier;
 import org.geysermc.geyser.registry.populator.custom.CustomItemContext;
+import org.jspecify.annotations.Nullable;
 
 import java.util.HashSet;
 import java.util.Objects;

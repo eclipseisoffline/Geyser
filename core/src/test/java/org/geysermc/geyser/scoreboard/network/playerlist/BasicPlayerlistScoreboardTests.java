@@ -25,11 +25,6 @@
 
 package org.geysermc.geyser.scoreboard.network.playerlist;
 
-import static org.geysermc.geyser.scoreboard.network.util.AssertUtils.assertNextPacket;
-import static org.geysermc.geyser.scoreboard.network.util.AssertUtils.assertNoNextPacket;
-import static org.geysermc.geyser.scoreboard.network.util.GeyserMockContextScoreboard.mockContextScoreboard;
-
-import java.util.List;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -47,6 +42,12 @@ import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.scoreboard.
 import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.scoreboard.ClientboundSetObjectivePacket;
 import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.scoreboard.ClientboundSetScorePacket;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import static org.geysermc.geyser.scoreboard.network.util.AssertUtils.assertNextPacket;
+import static org.geysermc.geyser.scoreboard.network.util.AssertUtils.assertNoNextPacket;
+import static org.geysermc.geyser.scoreboard.network.util.GeyserMockContextScoreboard.mockContextScoreboard;
 
 /*
 Identical to sidebar

@@ -26,7 +26,6 @@
 package org.geysermc.geyser.inventory.item;
 
 import net.kyori.adventure.key.Key;
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.nbt.NbtMap;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.session.cache.registry.JavaRegistries;
@@ -38,6 +37,7 @@ import org.geysermc.geyser.util.SoundUtils;
 import org.geysermc.mcprotocollib.protocol.data.game.Holder;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.Instrument;
 import org.geysermc.mcprotocollib.protocol.data.game.level.sound.BuiltinSound;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Locale;
 

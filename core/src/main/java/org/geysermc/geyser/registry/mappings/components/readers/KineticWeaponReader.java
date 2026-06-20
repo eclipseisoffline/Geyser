@@ -26,7 +26,6 @@
 package org.geysermc.geyser.registry.mappings.components.readers;
 
 import com.google.gson.JsonElement;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaItemDataComponents;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaKineticWeapon;
 import org.geysermc.geyser.item.custom.impl.JavaKineticWeaponImpl;
@@ -34,6 +33,7 @@ import org.geysermc.geyser.item.exception.InvalidCustomMappingsFileException;
 import org.geysermc.geyser.registry.mappings.components.DataComponentReader;
 import org.geysermc.geyser.registry.mappings.util.MappingsUtil;
 import org.geysermc.geyser.registry.mappings.util.NodeReader;
+import org.jspecify.annotations.Nullable;
 
 public class KineticWeaponReader extends DataComponentReader<JavaKineticWeapon> {
 

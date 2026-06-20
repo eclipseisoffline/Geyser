@@ -25,11 +25,11 @@
 
 package org.geysermc.geyser.translator.protocol.java.level;
 
-import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.level.ClientboundOpenSignEditorPacket;
 import org.cloudburstmc.protocol.bedrock.packet.OpenSignPacket;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
 import org.geysermc.geyser.translator.protocol.Translator;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.level.ClientboundOpenSignEditorPacket;
 
 @Translator(packet = ClientboundOpenSignEditorPacket.class)
 public class JavaOpenSignEditorTranslator extends PacketTranslator<ClientboundOpenSignEditorPacket> {

@@ -25,13 +25,13 @@
 
 package org.geysermc.geyser.command;
 
-import org.jspecify.annotations.Nullable;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.command.CommandSource;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.text.GeyserLocale;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import org.jspecify.annotations.Nullable;
 
 import java.util.UUID;
 

@@ -27,7 +27,6 @@ package org.geysermc.geyser.scoreboard.display.slot;
 
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.List;
 import org.cloudburstmc.nbt.NbtMapBuilder;
 import org.cloudburstmc.protocol.bedrock.data.ScoreInfo;
 import org.geysermc.geyser.entity.type.player.PlayerEntity;
@@ -44,6 +43,8 @@ import org.geysermc.mcprotocollib.protocol.data.game.chat.numbers.FixedFormat;
 import org.geysermc.mcprotocollib.protocol.data.game.chat.numbers.NumberFormat;
 import org.geysermc.mcprotocollib.protocol.data.game.chat.numbers.StyledFormat;
 import org.geysermc.mcprotocollib.protocol.data.game.scoreboard.ScoreboardPosition;
+
+import java.util.List;
 
 public class BelownameDisplaySlot extends DisplaySlot {
     private final Long2ObjectMap<BelownameDisplayScore> displayScores = new Long2ObjectOpenHashMap<>();

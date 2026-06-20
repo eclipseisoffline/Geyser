@@ -25,13 +25,13 @@
 
 package org.geysermc.geyser.inventory;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.inventory.CrafterInventoryTranslator;
 import org.geysermc.geyser.translator.inventory.InventoryTranslator;
 import org.geysermc.mcprotocollib.protocol.data.game.inventory.ContainerType;
-import lombok.Getter;
-import lombok.Setter;
-import org.geysermc.geyser.GeyserImpl;
 import org.jetbrains.annotations.Range;
 
 @Getter

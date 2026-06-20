@@ -26,8 +26,8 @@
 package org.geysermc.geyser.item.custom.impl;
 
 import org.checkerframework.checker.index.qual.NonNegative;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaKineticWeapon;
+import org.jspecify.annotations.Nullable;
 
 public record JavaKineticWeaponImpl(@NonNegative int delayTicks, @Nullable Condition dismountConditions) implements JavaKineticWeapon {
 

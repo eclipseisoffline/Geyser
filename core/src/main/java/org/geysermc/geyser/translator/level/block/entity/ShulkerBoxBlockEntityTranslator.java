@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.translator.level.block.entity;
 
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.nbt.NbtMapBuilder;
 import org.geysermc.geyser.level.block.property.Properties;
@@ -33,6 +32,7 @@ import org.geysermc.geyser.level.block.type.BlockState;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.inventory.ShulkerInventoryTranslator;
 import org.geysermc.mcprotocollib.protocol.data.game.level.block.BlockEntityType;
+import org.jspecify.annotations.Nullable;
 
 @BlockEntity(type = BlockEntityType.SHULKER_BOX)
 public class ShulkerBoxBlockEntityTranslator extends BlockEntityTranslator implements RequiresBlockState {

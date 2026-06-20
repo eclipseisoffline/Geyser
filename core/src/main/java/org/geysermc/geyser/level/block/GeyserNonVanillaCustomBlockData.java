@@ -25,11 +25,11 @@
 
 package org.geysermc.geyser.level.block;
 
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.block.custom.CustomBlockPermutation;
 import org.geysermc.geyser.api.block.custom.NonVanillaCustomBlockData;
 import org.geysermc.geyser.api.block.custom.component.CustomBlockComponents;
 import org.geysermc.geyser.api.util.CreativeCategory;
+import org.jspecify.annotations.Nullable;
 
 import java.util.List;
 

@@ -28,7 +28,6 @@ package org.geysermc.geyser.translator.inventory;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSet;
 import it.unimi.dsi.fastutil.ints.IntSets;
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerSlotType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.ItemStackRequest;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.ItemStackRequestSlotData;
@@ -46,10 +45,13 @@ import org.geysermc.geyser.util.InventoryUtils;
 import org.geysermc.geyser.util.thirdparty.Fraction;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponentTypes;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponents;
+import org.jspecify.annotations.Nullable;
 
 import java.util.List;
 
-import static org.geysermc.geyser.translator.inventory.InventoryTranslator.*;
+import static org.geysermc.geyser.translator.inventory.InventoryTranslator.acceptRequest;
+import static org.geysermc.geyser.translator.inventory.InventoryTranslator.isCursor;
+import static org.geysermc.geyser.translator.inventory.InventoryTranslator.rejectRequest;
 
 public final class BundleInventoryTranslator {
     /**

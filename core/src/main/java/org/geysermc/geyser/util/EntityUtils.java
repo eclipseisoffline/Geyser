@@ -26,7 +26,6 @@
 package org.geysermc.geyser.util;
 
 import net.kyori.adventure.key.Key;
-import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.GameType;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
@@ -51,6 +50,7 @@ import org.geysermc.mcprotocollib.protocol.data.game.entity.player.GameMode;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.player.Hand;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.type.EntityType;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.Equippable;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Locale;
 import java.util.UUID;

@@ -25,10 +25,10 @@
 
 package org.geysermc.geyser.entity.type.living.animal;
 
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.item.type.Item;
 import org.geysermc.geyser.session.cache.tags.Tag;
+import org.jspecify.annotations.Nullable;
 
 public class PolarBearEntity extends AnimalEntity {
 

@@ -25,9 +25,9 @@
 
 package org.geysermc.geyser.level.block.type;
 
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.level.block.property.Property;
 import org.geysermc.geyser.registry.BlockRegistries;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Locale;
 

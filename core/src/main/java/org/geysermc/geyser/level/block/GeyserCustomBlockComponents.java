@@ -30,10 +30,21 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMaps;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import lombok.Value;
+import org.geysermc.geyser.api.block.custom.component.BoxComponent;
+import org.geysermc.geyser.api.block.custom.component.CustomBlockComponents;
+import org.geysermc.geyser.api.block.custom.component.GeometryComponent;
+import org.geysermc.geyser.api.block.custom.component.MaterialInstance;
+import org.geysermc.geyser.api.block.custom.component.PlacementConditions;
+import org.geysermc.geyser.api.block.custom.component.TransformationComponent;
 import org.jspecify.annotations.Nullable;
-import org.geysermc.geyser.api.block.custom.component.*;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 
 @Value
 public class GeyserCustomBlockComponents implements CustomBlockComponents {

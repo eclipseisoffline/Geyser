@@ -26,9 +26,9 @@
 package org.geysermc.geyser;
 
 import net.kyori.adventure.text.Component;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.command.GeyserCommandSource;
 import org.geysermc.geyser.session.GeyserSession;
+import org.jspecify.annotations.Nullable;
 
 import java.util.UUID;
 

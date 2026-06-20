@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living.animal.farm;
 
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.entity.type.living.animal.TemperatureVariantAnimal;
 import org.geysermc.geyser.item.type.Item;
@@ -33,6 +32,7 @@ import org.geysermc.geyser.session.cache.registry.JavaRegistries;
 import org.geysermc.geyser.session.cache.registry.JavaRegistryKey;
 import org.geysermc.geyser.session.cache.tags.ItemTag;
 import org.geysermc.geyser.session.cache.tags.Tag;
+import org.jspecify.annotations.Nullable;
 
 public class ChickenEntity extends TemperatureVariantAnimal {
 

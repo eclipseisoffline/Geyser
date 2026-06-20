@@ -27,7 +27,6 @@ package org.geysermc.geyser.item;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.item.custom.CustomItemOptions;
 import org.geysermc.geyser.api.item.custom.CustomRenderOffsets;
 import org.geysermc.geyser.api.item.custom.NonVanillaCustomItemData;
@@ -42,6 +41,7 @@ import org.geysermc.geyser.api.item.custom.v2.component.java.JavaFoodProperties;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaItemDataComponents;
 import org.geysermc.geyser.api.util.CreativeCategory;
 import org.geysermc.geyser.api.util.Identifier;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Set;
 import java.util.stream.Collectors;

@@ -32,7 +32,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.config.Configurator;
 import org.apache.logging.log4j.io.IoBuilder;
-import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.GeyserLogger;
 import org.geysermc.geyser.command.GeyserCommandSource;
@@ -40,6 +39,7 @@ import org.geysermc.geyser.text.ChatColor;
 import org.jline.reader.Candidate;
 import org.jline.reader.LineReader;
 import org.jline.reader.LineReaderBuilder;
+import org.jspecify.annotations.Nullable;
 
 @Slf4j
 public class GeyserStandaloneLogger extends SimpleTerminalConsole implements GeyserLogger, GeyserCommandSource {
