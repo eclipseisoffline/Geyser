@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.pack.option;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.pack.ResourcePack;
 import org.geysermc.geyser.api.pack.option.PriorityOption;
 import org.geysermc.geyser.api.pack.option.ResourcePackOption;

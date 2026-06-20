@@ -26,7 +26,7 @@
 package org.geysermc.geyser.session.dialog.action;
 
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.nbt.NbtMapBuilder;
 import org.geysermc.geyser.session.GeyserSession;

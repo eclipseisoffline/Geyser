@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.impl.camera;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.checkerframework.common.value.qual.IntRange;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.geysermc.geyser.api.bedrock.camera.CameraEaseType;

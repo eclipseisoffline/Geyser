@@ -63,7 +63,6 @@ public class StoredItemMappings {
         this.writtenBook = load(itemMappings, Items.WRITTEN_BOOK);
     }
 
-    @NonNull
     private ItemMapping load(Map<Item, ItemMapping> itemMappings, Item item) {
         ItemMapping mapping = itemMappings.get(item);
         if (mapping == null) {

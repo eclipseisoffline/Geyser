@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.entity.type.living.animal;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.inventory.GeyserItemStack;
@@ -48,7 +48,6 @@ public class OcelotEntity extends AnimalEntity {
         return ItemTag.OCELOT_FOOD;
     }
 
-    @NonNull
     @Override
     protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (!getFlag(EntityFlag.TRUSTING) && canEat(itemInHand) && session.getPlayerEntity().position().distanceSquared(position) < 9f) {
@@ -59,7 +58,6 @@ public class OcelotEntity extends AnimalEntity {
         }
     }
 
-    @NonNull
     @Override
     protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (!getFlag(EntityFlag.TRUSTING) && canEat(itemInHand) && session.getPlayerEntity().position().distanceSquared(position) < 9f) {

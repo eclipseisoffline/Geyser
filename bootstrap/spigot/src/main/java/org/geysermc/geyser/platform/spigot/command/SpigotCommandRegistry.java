@@ -60,7 +60,6 @@ public class SpigotCommandRegistry extends CommandRegistry {
         this.commandMap = commandMap;
     }
 
-    @NonNull
     @Override
     public String description(String command, String locale) {
         // check if the command is /geyser or an extension command so that we can localize the description

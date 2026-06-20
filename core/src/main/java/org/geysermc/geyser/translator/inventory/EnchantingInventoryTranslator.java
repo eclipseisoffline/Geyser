@@ -26,7 +26,7 @@
 package org.geysermc.geyser.translator.inventory;
 
 import it.unimi.dsi.fastutil.ints.IntSets;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerSlotType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.EnchantOptionData;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.ItemStackRequest;

@@ -26,7 +26,7 @@
 package org.geysermc.geyser.level;
 
 import lombok.Getter;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.mcprotocollib.protocol.data.game.level.map.MapIconType;
 
 public enum BedrockMapIcon {

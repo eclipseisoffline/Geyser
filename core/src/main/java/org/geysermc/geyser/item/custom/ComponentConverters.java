@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.item.custom;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.item.custom.v2.component.ItemDataComponent;
 import org.geysermc.geyser.api.item.custom.v2.component.ItemDataComponentMap;
 import org.geysermc.geyser.api.item.custom.v2.component.geyser.GeyserItemDataComponents;

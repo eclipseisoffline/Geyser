@@ -32,7 +32,7 @@ import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.config.ListenerInfo;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.protocol.ProtocolConstants;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.FloodgateKeyLoader;
 import org.geysermc.geyser.GeyserBootstrap;
 import org.geysermc.geyser.GeyserImpl;
@@ -279,7 +279,6 @@ public class GeyserBungeePlugin extends Plugin implements GeyserBootstrap {
         return this.geyserInjector.getServerSocketAddress();
     }
 
-    @NonNull
     @Override
     public String getServerBindAddress() {
         return findCompatibleListener().map(InetSocketAddress::getHostString).orElse("");

@@ -28,7 +28,7 @@ package org.geysermc.geyser.entity.spawn;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.common.util.TriFunction;
 import org.geysermc.geyser.entity.EntityDefinition;

@@ -118,7 +118,6 @@ public class PiglinEntity extends BasePiglinEntity {
         super.updateOffHand();
     }
 
-    @NonNull
     @Override
     protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         InteractiveTag tag = super.testMobInteraction(hand, itemInHand);
@@ -129,7 +128,6 @@ public class PiglinEntity extends BasePiglinEntity {
         }
     }
 
-    @NonNull
     @Override
     protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         InteractionResult superResult = super.mobInteract(hand, itemInHand);

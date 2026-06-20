@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.translator.inventory;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerType;
 import org.geysermc.geyser.inventory.Container;
 import org.geysermc.geyser.inventory.Inventory;

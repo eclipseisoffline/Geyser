@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.entity.type.living.animal;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.math.TrigMath;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
@@ -117,7 +117,6 @@ public class HappyGhastEntity extends AnimalEntity implements ClientVehicle {
         updateBedrockEntityProperties();
     }
 
-    @NonNull
     @Override
     protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (this.isBaby()) {
@@ -146,7 +145,6 @@ public class HappyGhastEntity extends AnimalEntity implements ClientVehicle {
         }
     }
 
-    @NonNull
     @Override
     protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (this.isBaby()) {

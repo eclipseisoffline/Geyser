@@ -31,7 +31,7 @@ import com.google.common.cache.LoadingCache;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.skin.Cape;
 import org.geysermc.geyser.api.skin.Skin;

@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.level.block.type;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.level.block.property.Property;
 import org.geysermc.geyser.registry.BlockRegistries;
 
@@ -190,7 +190,6 @@ public final class BlockState {
      * @param javaId the Java block state ID to look up.
      * @return the corresponding block state, or air if the given ID wasn't registered and returned null.
      */
-    @NonNull
     public static BlockState of(int javaId) {
         return BlockRegistries.BLOCK_STATES.getOrDefault(javaId, BlockRegistries.BLOCK_STATES.get(Block.JAVA_AIR_ID));
     }

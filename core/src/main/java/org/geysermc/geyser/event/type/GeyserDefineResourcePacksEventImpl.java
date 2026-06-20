@@ -26,7 +26,7 @@
 package org.geysermc.geyser.event.type;
 
 import lombok.Getter;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.event.lifecycle.GeyserDefineResourcePacksEvent;
 import org.geysermc.geyser.api.pack.ResourcePack;
 import org.geysermc.geyser.api.pack.exception.ResourcePackException;

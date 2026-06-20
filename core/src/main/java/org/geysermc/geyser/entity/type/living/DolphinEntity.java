@@ -47,7 +47,6 @@ public class DolphinEntity extends AgeableWaterEntity {
         return 0.65f;
     }
 
-    @NonNull
     @Override
     protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (!itemInHand.isEmpty() && itemInHand.is(session, ItemTag.FISHES)) {
@@ -56,7 +55,6 @@ public class DolphinEntity extends AgeableWaterEntity {
         return super.testMobInteraction(hand, itemInHand);
     }
 
-    @NonNull
     @Override
     protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (!itemInHand.isEmpty() && itemInHand.is(session, ItemTag.FISHES)) {

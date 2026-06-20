@@ -26,7 +26,7 @@
 package org.geysermc.geyser.entity.type.living.animal.horse;
 
 import lombok.Getter;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.item.type.Item;

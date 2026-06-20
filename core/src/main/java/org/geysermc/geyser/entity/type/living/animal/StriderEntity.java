@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.entity.type.living.animal;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
@@ -103,7 +103,6 @@ public class StriderEntity extends AnimalEntity implements Tickable, ClientVehic
         return ItemTag.STRIDER_FOOD;
     }
 
-    @NonNull
     @Override
     protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (!canEat(itemInHand) && getFlag(EntityFlag.SADDLED) && passengers.isEmpty() && !session.isSneaking()) {
@@ -120,7 +119,6 @@ public class StriderEntity extends AnimalEntity implements Tickable, ClientVehic
         }
     }
 
-    @NonNull
     @Override
     protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (!canEat(itemInHand) && getFlag(EntityFlag.SADDLED) && passengers.isEmpty() && !session.isSneaking()) {

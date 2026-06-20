@@ -26,7 +26,7 @@
 package org.geysermc.geyser.item.custom;
 
 import com.google.common.base.Suppliers;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.predicate.context.item.ChargedProjectile;
 import org.geysermc.geyser.api.predicate.context.item.ItemPredicateContext;
 import org.geysermc.geyser.api.util.Identifier;

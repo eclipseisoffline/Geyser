@@ -62,7 +62,6 @@ public interface GeyserConfig {
 
     @Comment("The default locale if we don't have the one the client requested. If set to \"system\", the system's language will be used.")
     @DefaultString(GeyserLocale.SYSTEM_LOCALE)
-    @NonNull
     String defaultLocale();
 
     @Comment("Whether player IP addresses will be logged by the server.")
@@ -127,7 +126,6 @@ public interface GeyserConfig {
         @Comment("""
                 The IP address that Geyser will bind on to listen for incoming Bedrock connections.
                 Generally, you should only change this if you want to limit what IPs can connect to your server.""")
-        @NonNull
         @Override
         @DefaultString("0.0.0.0")
         @AsteriskSerializer.Asterisk
@@ -184,7 +182,6 @@ public interface GeyserConfig {
         @Comment("""
                 What type of authentication Bedrock players will be checked against when logging into the Java server.
                 Can be "floodgate" (see https://wiki.geysermc.org/floodgate/), "online", or "offline".""")
-        @NonNull
         @Override
         default AuthType authType() {
             return AuthType.ONLINE;

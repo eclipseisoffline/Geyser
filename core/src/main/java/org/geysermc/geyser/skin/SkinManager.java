@@ -27,7 +27,7 @@ package org.geysermc.geyser.skin;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.skin.ImageData;
 import org.cloudburstmc.protocol.bedrock.data.skin.SerializedSkin;
 import org.cloudburstmc.protocol.bedrock.packet.PlayerListPacket;

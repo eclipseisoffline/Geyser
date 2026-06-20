@@ -49,7 +49,7 @@ import net.raphimc.minecraftauth.util.MinecraftAuth4To5Migrator;
 import org.checkerframework.checker.index.qual.NonNegative;
 import org.checkerframework.checker.index.qual.Positive;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.checkerframework.common.value.qual.IntRange;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector2i;
@@ -281,7 +281,6 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
     @Setter
     private String token;
 
-    @NonNull
     @Setter
     private volatile AbstractGeyserboundPacketHandler erosionHandler;
 

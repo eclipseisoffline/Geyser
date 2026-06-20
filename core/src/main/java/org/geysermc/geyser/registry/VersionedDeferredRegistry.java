@@ -59,7 +59,6 @@ public class VersionedDeferredRegistry<V> extends AbstractMappedDeferredRegistry
      * @return the closest value for the specified version
      * @throws IllegalArgumentException if no values exist at or above the given version
      */
-    @NonNull
     public V forVersion(int version) {
         return backingRegistry().forVersion(version);
     }

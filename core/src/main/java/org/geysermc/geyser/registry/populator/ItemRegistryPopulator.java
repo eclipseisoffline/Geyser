@@ -143,7 +143,6 @@ public class ItemRegistryPopulator {
 
     @FunctionalInterface
     interface Remapper {
-        @NonNull
         GeyserMappingItem remap(Item item, GeyserMappingItem mapping);
     }
 

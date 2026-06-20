@@ -26,7 +26,7 @@
 package org.geysermc.floodgate.news;
 
 import com.google.gson.JsonArray;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 
 // {} is used for things that have to be filled in by the server,
 // {@} is for things that have to be filled in by us

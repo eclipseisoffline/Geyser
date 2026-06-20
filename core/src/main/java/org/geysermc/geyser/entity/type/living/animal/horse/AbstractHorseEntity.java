@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.entity.type.living.animal.horse;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.AttributeData;
@@ -154,13 +154,11 @@ public class AbstractHorseEntity extends AnimalEntity implements ClientVehicle {
         return ItemTag.HORSE_FOOD;
     }
 
-    @NonNull
     @Override
     protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         return testHorseInteraction(hand, itemInHand);
     }
 
-    @NonNull
     protected final InteractiveTag testHorseInteraction(Hand hand, GeyserItemStack itemInHand) {
         boolean isBaby = isBaby();
         if (!isBaby) {
@@ -204,13 +202,11 @@ public class AbstractHorseEntity extends AnimalEntity implements ClientVehicle {
         }
     }
 
-    @NonNull
     @Override
     protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         return mobHorseInteract(hand, itemInHand);
     }
 
-    @NonNull
     protected final InteractionResult mobHorseInteract(Hand hand, GeyserItemStack itemInHand) {
         boolean isBaby = isBaby();
         if (!isBaby) {

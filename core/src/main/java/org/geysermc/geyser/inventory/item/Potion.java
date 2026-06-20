@@ -26,7 +26,7 @@
 package org.geysermc.geyser.inventory.item;
 
 import lombok.Getter;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.PotionContents;
 
 import java.util.Collections;

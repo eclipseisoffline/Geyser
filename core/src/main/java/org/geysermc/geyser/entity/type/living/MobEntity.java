@@ -147,12 +147,10 @@ public class MobEntity extends LivingEntity implements Leashable {
         return InteractionResult.PASS;
     }
 
-    @NonNull
     protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         return InteractiveTag.NONE;
     }
 
-    @NonNull
     protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         return InteractionResult.PASS;
     }

@@ -26,7 +26,7 @@
 package org.geysermc.floodgate.news;
 
 import com.google.gson.JsonObject;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.floodgate.news.data.*;
 
 import java.util.function.Function;

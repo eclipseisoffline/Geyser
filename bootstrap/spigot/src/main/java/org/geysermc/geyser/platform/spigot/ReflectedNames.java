@@ -28,7 +28,7 @@ package org.geysermc.geyser.platform.spigot;
 import com.destroystokyo.paper.event.server.PaperServerListPingEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.event.server.ServerListPingEvent;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;

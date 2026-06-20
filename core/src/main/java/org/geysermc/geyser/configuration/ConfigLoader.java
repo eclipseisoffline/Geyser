@@ -26,7 +26,7 @@
 package org.geysermc.geyser.configuration;
 
 import com.google.common.annotations.VisibleForTesting;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.checkerframework.common.returnsreceiver.qual.This;
 import org.geysermc.geyser.GeyserBootstrap;
 import org.geysermc.geyser.GeyserImpl;

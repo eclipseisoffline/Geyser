@@ -26,7 +26,7 @@
 package org.geysermc.geyser.text;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrays;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.GeyserBootstrap;
 import org.geysermc.geyser.GeyserImpl;
 

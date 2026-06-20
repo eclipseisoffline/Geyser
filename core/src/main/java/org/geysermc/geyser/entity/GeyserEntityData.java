@@ -26,7 +26,7 @@
 package org.geysermc.geyser.entity;
 
 import org.checkerframework.checker.index.qual.NonNegative;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.packet.EmotePacket;
 import org.geysermc.geyser.input.InputLocksFlag;
 import org.geysermc.geyser.api.entity.EntityData;

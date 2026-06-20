@@ -26,7 +26,7 @@
 package org.geysermc.geyser.scoreboard.display.slot;
 
 import java.util.List;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.ScoreInfo;
 import org.cloudburstmc.protocol.bedrock.packet.RemoveObjectivePacket;
 import org.cloudburstmc.protocol.bedrock.packet.SetDisplayObjectivePacket;

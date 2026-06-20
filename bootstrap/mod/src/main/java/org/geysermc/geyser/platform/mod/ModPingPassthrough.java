@@ -39,7 +39,7 @@ import net.minecraft.network.protocol.status.ServerboundStatusRequestPacket;
 import net.minecraft.resources.RegistryOps;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerStatusPacketListenerImpl;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.GeyserLogger;
 import org.geysermc.geyser.ping.GeyserPingInfo;
 import org.geysermc.geyser.ping.IGeyserPingPassthrough;

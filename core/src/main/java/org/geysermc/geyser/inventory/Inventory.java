@@ -28,7 +28,7 @@ package org.geysermc.geyser.inventory;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.data.definitions.ItemDefinition;
 import org.geysermc.geyser.GeyserImpl;

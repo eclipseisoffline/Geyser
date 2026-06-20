@@ -28,7 +28,7 @@ package org.geysermc.geyser.session;
 import com.google.common.collect.ImmutableList;
 import lombok.AccessLevel;
 import lombok.Getter;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.text.GeyserLocale;
 
 import java.util.Collection;

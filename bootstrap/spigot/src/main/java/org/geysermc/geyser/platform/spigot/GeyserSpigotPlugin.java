@@ -445,7 +445,6 @@ public class GeyserSpigotPlugin extends JavaPlugin implements GeyserBootstrap {
         return false;
     }
 
-    @NonNull
     @Override
     public String getServerBindAddress() {
         return Bukkit.getIp();

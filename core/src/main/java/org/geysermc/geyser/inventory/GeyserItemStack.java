@@ -31,7 +31,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.inventory.item.DyeColor;
@@ -209,7 +209,6 @@ public class GeyserItemStack {
         return components != null;
     }
 
-    @NonNull
     public DataComponents getOrCreateComponents() {
         if (components == null) {
             return components = new DataComponents(new HashMap<>());

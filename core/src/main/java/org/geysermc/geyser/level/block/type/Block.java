@@ -28,7 +28,7 @@ package org.geysermc.geyser.level.block.type;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.data.definitions.BlockDefinition;
 import org.cloudburstmc.protocol.bedrock.packet.UpdateBlockPacket;
@@ -136,7 +136,6 @@ public class Block {
         return firstState;
     }
 
-    @NonNull
     public Key javaIdentifier() {
         return javaIdentifier;
     }
@@ -158,7 +157,6 @@ public class Block {
         return destroyTime;
     }
 
-    @NonNull
     public PistonBehavior pushReaction() {
         return this.pushReaction;
     }

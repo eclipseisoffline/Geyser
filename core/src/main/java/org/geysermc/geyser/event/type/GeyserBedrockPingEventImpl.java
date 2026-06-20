@@ -26,7 +26,7 @@
 package org.geysermc.geyser.event.type;
 
 import org.checkerframework.checker.index.qual.NonNegative;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.BedrockPong;
 import org.geysermc.geyser.api.event.connection.GeyserBedrockPingEvent;
 

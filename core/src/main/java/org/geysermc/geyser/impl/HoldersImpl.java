@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.impl;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.util.Holders;
 import org.geysermc.geyser.api.util.Identifier;
 import org.geysermc.geyser.session.cache.registry.JavaRegistryKey;

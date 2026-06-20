@@ -27,7 +27,7 @@ package org.geysermc.geyser.text;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.util.AssetUtils;
 import org.geysermc.geyser.util.FileUtils;

@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.item.type;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.geysermc.geyser.inventory.GeyserItemStack;
 import org.geysermc.geyser.item.TooltipOptions;

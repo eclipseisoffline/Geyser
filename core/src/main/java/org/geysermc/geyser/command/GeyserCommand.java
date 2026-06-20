@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.command;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.event.lifecycle.GeyserRegisterPermissionsEvent;
 import org.geysermc.geyser.api.util.TriState;
 import org.geysermc.geyser.text.GeyserLocale;
@@ -44,19 +44,16 @@ public abstract class GeyserCommand implements org.geysermc.geyser.api.command.C
     /**
      * The second literal of the command. Note: the first literal is {@link #rootCommand()}.
      */
-    @NonNull
     private final String name;
 
     /**
      * The description of the command - will attempt to be translated.
      */
-    @NonNull
     private final String description;
 
     /**
      * The permission node required to run the command, or blank if not required.
      */
-    @NonNull
     private final String permission;
 
     /**
@@ -114,19 +111,16 @@ public abstract class GeyserCommand implements org.geysermc.geyser.api.command.C
         this(name, description, permission, permissionDefault, false, false);
     }
 
-    @NonNull
     @Override
     public final String name() {
         return name;
     }
 
-    @NonNull
     @Override
     public final String description() {
         return description;
     }
 
-    @NonNull
     @Override
     public final String permission() {
         return permission;
@@ -147,7 +141,6 @@ public abstract class GeyserCommand implements org.geysermc.geyser.api.command.C
         return bedrockOnly;
     }
 
-    @NonNull
     @Override
     public final List<String> aliases() {
         return Collections.unmodifiableList(aliases);

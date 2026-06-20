@@ -27,7 +27,7 @@ package org.geysermc.geyser.scoreboard;
 
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.kyori.adventure.text.Component;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.entity.type.Entity;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.text.ChatColor;

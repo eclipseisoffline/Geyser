@@ -27,7 +27,7 @@ package org.geysermc.geyser.session.cache.waypoint;
 
 import it.unimi.dsi.fastutil.Pair;
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.LocatorBarWaypoint;

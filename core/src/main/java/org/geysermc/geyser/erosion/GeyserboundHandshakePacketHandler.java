@@ -26,7 +26,7 @@
 package org.geysermc.geyser.erosion;
 
 import io.netty.channel.Channel;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.erosion.netty.NettyPacketSender;
 import org.geysermc.erosion.packet.ErosionPacketHandler;
 import org.geysermc.erosion.packet.geyserbound.GeyserboundHandshakePacket;

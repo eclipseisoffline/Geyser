@@ -30,7 +30,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TranslatableComponent;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.nbt.NbtList;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.nbt.NbtMapBuilder;
@@ -153,7 +153,6 @@ public final class ItemTranslator {
         return translateToBedrock(session, Registries.JAVA_ITEMS.get().get(javaId), bedrockItem, count, components);
     }
 
-    @NonNull
     public static ItemData translateToBedrock(GeyserSession session, ItemStack stack) {
         if (InventoryUtils.isEmpty(stack)) {
             return ItemData.AIR;
@@ -169,7 +168,6 @@ public final class ItemTranslator {
                 .build();
     }
 
-    @NonNull
     public static ItemData translateToBedrock(GeyserSession session, GeyserItemStack stack) {
         if (stack.isEmpty()) {
             return ItemData.AIR;
@@ -530,7 +528,6 @@ public final class ItemTranslator {
     /**
      * Given an item stack, determine the Bedrock item definition that should be applied to Bedrock players.
      */
-    @NonNull
     public static ItemDefinition getBedrockItemDefinition(GeyserSession session, GeyserItemStack itemStack) {
         if (itemStack.isEmpty()) {
             return ItemDefinition.AIR;

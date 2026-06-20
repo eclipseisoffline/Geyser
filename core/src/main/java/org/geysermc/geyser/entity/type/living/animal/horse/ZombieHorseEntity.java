@@ -36,13 +36,11 @@ public class ZombieHorseEntity extends AbstractHorseEntity {
         super(context);
     }
 
-    @NonNull
     @Override
     protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         return testUndeadHorseInteraction(hand, itemInHand);
     }
 
-    @NonNull
     @Override
     protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         return undeadHorseInteract(hand, itemInHand);

@@ -29,7 +29,7 @@ import lombok.Getter;
 import lombok.experimental.Accessors;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.nbt.NbtType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
@@ -143,7 +143,6 @@ public class Item {
      * the items' base components.
      * To add data components, use {@link GeyserItemStack#getOrCreateComponents()}.
      */
-    @NonNull
     @UnmodifiableView
     public DataComponents gatherComponents(ResolvableComponentGetter resolvableGetter, @Nullable DataComponents others) {
         // Start with the base components that always exist
@@ -378,7 +377,6 @@ public class Item {
     /**
      * @return the block associated with this item, or air if nothing
      */
-    @NonNull
     public static Item byBlock(Block block) {
         return BLOCK_TO_ITEM.getOrDefault(block, Items.AIR);
     }

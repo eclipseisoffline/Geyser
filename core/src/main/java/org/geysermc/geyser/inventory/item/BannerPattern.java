@@ -27,7 +27,7 @@ package org.geysermc.geyser.inventory.item;
 
 import lombok.Getter;
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.util.MinecraftKey;
 
 import java.util.Locale;

@@ -37,7 +37,6 @@ public class TadpoleEntity extends AbstractFishEntity {
         super(context);
     }
 
-    @NonNull
     @Override
     protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (isFood(itemInHand)) {
@@ -46,7 +45,6 @@ public class TadpoleEntity extends AbstractFishEntity {
         return super.testMobInteraction(hand, itemInHand);
     }
 
-    @NonNull
     @Override
     protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (isFood(itemInHand)) {

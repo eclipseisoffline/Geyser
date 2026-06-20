@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.erosion;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.erosion.packet.geyserbound.*;
 import org.geysermc.geyser.session.GeyserSession;
 

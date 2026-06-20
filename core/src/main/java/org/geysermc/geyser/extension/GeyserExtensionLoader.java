@@ -405,25 +405,21 @@ public class GeyserExtensionLoader extends ExtensionLoader {
         this.extensionContainers.get(extension).enabled = enabled;
     }
 
-    @NonNull
     @Override
     protected Path dataFolder(Extension extension) {
         return this.extensionContainers.get(extension).dataFolder();
     }
 
-    @NonNull
     @Override
     protected ExtensionDescription description(Extension extension) {
         return this.extensionContainers.get(extension).description();
     }
 
-    @NonNull
     @Override
     protected ExtensionEventBus eventBus(Extension extension) {
         return this.extensionContainers.get(extension).eventBus();
     }
 
-    @NonNull
     @Override
     protected ExtensionLogger logger(Extension extension) {
         return this.extensionContainers.get(extension).logger();

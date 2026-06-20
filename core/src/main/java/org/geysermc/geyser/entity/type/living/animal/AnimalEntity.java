@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.entity.type.living.animal;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityEventType;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
@@ -56,7 +56,6 @@ public abstract class AnimalEntity extends AgeableEntity {
      */
     protected abstract @Nullable Tag<Item> getFoodTag();
 
-    @NonNull
     @Override
     protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (canEat(itemInHand)) {
@@ -65,7 +64,6 @@ public abstract class AnimalEntity extends AgeableEntity {
         return super.testMobInteraction(hand, itemInHand);
     }
 
-    @NonNull
     @Override
     protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (canEat(itemInHand)) {

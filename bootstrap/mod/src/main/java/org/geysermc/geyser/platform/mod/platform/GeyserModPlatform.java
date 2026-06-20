@@ -26,7 +26,7 @@
 package org.geysermc.geyser.platform.mod.platform;
 
 import net.minecraft.server.MinecraftServer;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.util.PlatformType;
 import org.geysermc.geyser.dump.BootstrapDumpInfo;
 import org.geysermc.geyser.platform.mod.GeyserModBootstrap;
@@ -45,7 +45,6 @@ public interface GeyserModPlatform {
      *
      * @return the platform type of the mod platform
      */
-    @NonNull
     PlatformType platformType();
 
     /**
@@ -53,7 +52,6 @@ public interface GeyserModPlatform {
      *
      * @return the config path of the mod platform
      */
-    @NonNull
     String configPath();
 
     /**
@@ -61,7 +59,6 @@ public interface GeyserModPlatform {
      *
      * @return the data folder of the mod platform
      */
-    @NonNull
     Path dataFolder(String modId);
 
     /**
@@ -70,7 +67,6 @@ public interface GeyserModPlatform {
      * @param server the server to get the dump info from
      * @return the dump info of the mod platform
      */
-    @NonNull
     BootstrapDumpInfo dumpInfo(MinecraftServer server);
 
     /**

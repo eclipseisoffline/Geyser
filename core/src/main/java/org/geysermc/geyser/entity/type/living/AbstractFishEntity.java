@@ -43,7 +43,6 @@ public class AbstractFishEntity extends WaterEntity {
         setFlag(EntityFlag.HAS_GRAVITY, false);
     }
 
-    @NonNull
     @Override
     protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (EntityUtils.attemptToBucket(itemInHand)) {

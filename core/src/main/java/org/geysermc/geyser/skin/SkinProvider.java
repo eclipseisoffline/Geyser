@@ -31,7 +31,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import it.unimi.dsi.fastutil.bytes.ByteArrays;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.skin.ImageData;
 import org.cloudburstmc.protocol.bedrock.data.skin.SerializedSkin;
 import org.geysermc.geyser.GeyserImpl;
@@ -237,7 +237,6 @@ public class SkinProvider {
     /**
      * Used as a fallback if an official Java cape doesn't exist for this user.
      */
-    @NonNull
     private static Cape getCachedBedrockCape(UUID uuid) {
         GeyserSession session = GeyserImpl.getInstance().connectionByUuid(uuid);
         if (session != null) {

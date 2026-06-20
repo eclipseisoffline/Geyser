@@ -38,7 +38,7 @@ import com.google.gson.annotations.SerializedName;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import lombok.Getter;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.floodgate.util.DeviceOs;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.GeyserApi;

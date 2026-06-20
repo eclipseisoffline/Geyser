@@ -55,7 +55,6 @@ public record GeyserExtensionDescription(String id,
     public static final Pattern NAME_PATTERN = Pattern.compile("^[A-Za-z_.-]+$");
     public static final Pattern API_VERSION_PATTERN = Pattern.compile("^\\d+\\.\\d+\\.\\d+$");
 
-    @NonNull
     public static GeyserExtensionDescription fromYaml(Reader reader) throws InvalidDescriptionException {
         Source source;
         try {
@@ -102,7 +101,6 @@ public record GeyserExtensionDescription(String id,
         return new GeyserExtensionDescription(id, name, main, humanApi, majorApi, minorApi, version, authors, dependencies);
     }
 
-    @NonNull
     private static String require(Supplier<String> supplier, String name) throws InvalidDescriptionException {
         String value = supplier.get();
         if (value == null) {

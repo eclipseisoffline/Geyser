@@ -46,7 +46,6 @@ public class IronGolemEntity extends GolemEntity {
         maxHealth = 100f;
     }
 
-    @NonNull
     @Override
     protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (itemInHand.is(Items.IRON_INGOT)) {

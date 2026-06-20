@@ -49,7 +49,6 @@ public class AllayEntity extends MobEntity {
         this.canDuplicate = entityMetadata.getPrimitiveValue();
     }
 
-    @NonNull
     @Override
     protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (this.canDuplicate && getFlag(EntityFlag.DANCING) && isDuplicationItem(itemInHand)) {
@@ -65,7 +64,6 @@ public class AllayEntity extends MobEntity {
         }
     }
 
-    @NonNull
     @Override
     protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (this.canDuplicate && getFlag(EntityFlag.DANCING) && isDuplicationItem(itemInHand)) {

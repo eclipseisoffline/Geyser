@@ -220,7 +220,6 @@ public class CommandRegistry implements EventRegistrar {
     /**
      * @return an immutable view of the root commands registered to this command registry
      */
-    @NonNull
     public Collection<String> rootCommands() {
         return cloud.rootCommands();
     }
@@ -313,7 +312,6 @@ public class CommandRegistry implements EventRegistrar {
      * @param locale the ideal locale that the description should be in
      * @return a description if found, otherwise an empty string. The locale is not guaranteed.
      */
-    @NonNull
     public String description(String command, String locale) {
         if (command.equals(DEFAULT_ROOT_COMMAND)) {
             return GeyserLocale.getPlayerLocaleString("geyser.command.root.geyser", locale);

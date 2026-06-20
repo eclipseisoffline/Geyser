@@ -31,7 +31,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.command.RemoteConsoleCommandSender;
 import org.bukkit.entity.Player;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.command.GeyserCommandSource;
 import org.geysermc.geyser.platform.spigot.PaperAdventure;
 import org.geysermc.geyser.text.GeyserLocale;

@@ -28,7 +28,7 @@ package org.geysermc.geyser.session.cache.tags;
 import it.unimi.dsi.fastutil.ints.IntArrays;
 import lombok.Data;
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.nbt.NbtMap;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.session.GeyserSession;

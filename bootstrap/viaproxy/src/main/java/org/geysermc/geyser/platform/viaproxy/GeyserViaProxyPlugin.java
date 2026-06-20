@@ -245,7 +245,6 @@ public class GeyserViaProxyPlugin extends ViaProxyPlugin implements GeyserBootst
         return PlatformType.VIAPROXY.platformName();
     }
 
-    @NonNull
     @Override
     public String getServerBindAddress() {
         if (ViaProxy.getConfig().getBindAddress() instanceof InetSocketAddress socketAddress) {

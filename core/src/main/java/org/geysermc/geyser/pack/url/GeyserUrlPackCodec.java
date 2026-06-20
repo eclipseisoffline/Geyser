@@ -73,7 +73,6 @@ public class GeyserUrlPackCodec extends UrlPackCodec {
     }
 
     @Override
-    @NonNull
     public GeyserResourcePack create() {
         return createBuilder().build();
     }

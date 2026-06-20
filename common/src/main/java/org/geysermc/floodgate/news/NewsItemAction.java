@@ -25,7 +25,7 @@
 
 package org.geysermc.floodgate.news;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 
 public enum NewsItemAction {
     ON_SERVER_STARTED,

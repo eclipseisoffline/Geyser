@@ -46,7 +46,6 @@ public class AbstractMerchantEntity extends AgeableEntity {
         return false;
     }
 
-    @NonNull
     @Override
     protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (!itemInHand.is(Items.VILLAGER_SPAWN_EGG)
@@ -59,7 +58,6 @@ public class AbstractMerchantEntity extends AgeableEntity {
         return super.testMobInteraction(hand, itemInHand);
     }
 
-    @NonNull
     @Override
     protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (!itemInHand.is(Items.VILLAGER_SPAWN_EGG)

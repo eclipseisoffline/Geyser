@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.util.PlatformType;
 import org.geysermc.geyser.command.CommandRegistry;
 import org.geysermc.geyser.configuration.ConfigLoader;
@@ -75,7 +75,6 @@ public interface GeyserBootstrap {
      *
      * @return the PlatformType this Geyser instance is running on.
      */
-    @NonNull
     PlatformType platformType();
 
     /**
@@ -193,7 +192,6 @@ public interface GeyserBootstrap {
     /**
      * @return the bind address being used by the Java server.
      */
-    @NonNull
     String getServerBindAddress();
 
     /**

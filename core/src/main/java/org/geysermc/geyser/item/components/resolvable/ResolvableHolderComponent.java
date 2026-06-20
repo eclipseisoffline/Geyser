@@ -27,7 +27,7 @@ package org.geysermc.geyser.item.components.resolvable;
 
 import com.google.gson.JsonObject;
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.session.cache.registry.JavaRegistries;
 import org.geysermc.geyser.session.cache.registry.JavaRegistryKey;
 import org.geysermc.geyser.session.cache.registry.JavaRegistryProvider;

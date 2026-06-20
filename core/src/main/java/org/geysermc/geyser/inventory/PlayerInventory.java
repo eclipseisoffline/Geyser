@@ -45,7 +45,6 @@ public class PlayerInventory extends Inventory {
     @Setter
     private int heldItemSlot;
 
-    @NonNull
     private GeyserItemStack cursor = GeyserItemStack.EMPTY;
 
     public PlayerInventory(GeyserSession session) {

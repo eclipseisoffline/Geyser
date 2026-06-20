@@ -26,7 +26,7 @@
 package org.geysermc.geyser.util;
 
 import net.kyori.adventure.util.HSVLike;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.inventory.item.DyeColor;
 
 import java.util.List;

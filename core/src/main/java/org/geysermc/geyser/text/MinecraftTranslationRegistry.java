@@ -26,7 +26,7 @@
 package org.geysermc.geyser.text;
 
 import net.kyori.adventure.text.renderer.TranslatableComponentRenderer;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 
 import java.text.MessageFormat;
 import java.util.Locale;

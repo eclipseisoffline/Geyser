@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.entity.type.living.animal.tameable;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.cloudburstmc.protocol.bedrock.packet.UpdateAttributesPacket;
@@ -150,7 +150,6 @@ public class WolfEntity extends TameableEntity implements VariantIntHolder {
         return !getFlag(EntityFlag.ANGRY);
     }
 
-    @NonNull
     @Override
     protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (getFlag(EntityFlag.ANGRY)) {
@@ -186,7 +185,6 @@ public class WolfEntity extends TameableEntity implements VariantIntHolder {
         return super.testMobInteraction(hand, itemInHand);
     }
 
-    @NonNull
     @Override
     protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (ownerBedrockId == session.getPlayerEntity().geyserId() || getFlag(EntityFlag.TAMED)

@@ -53,7 +53,6 @@ public class MooshroomEntity extends CowEntity {
         // There are no variants for mooshroom cows, so far
     }
 
-    @NonNull
     @Override
     protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (!isBaby()) {
@@ -68,7 +67,6 @@ public class MooshroomEntity extends CowEntity {
         return super.testMobInteraction(hand, itemInHand);
     }
 
-    @NonNull
     @Override
     protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         boolean isBaby = isBaby();

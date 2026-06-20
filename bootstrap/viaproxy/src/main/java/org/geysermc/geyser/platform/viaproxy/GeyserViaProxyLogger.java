@@ -26,7 +26,7 @@ package org.geysermc.geyser.platform.viaproxy;
 
 import net.raphimc.viaproxy.cli.ConsoleFormatter;
 import org.apache.logging.log4j.Logger;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.GeyserLogger;
 import org.geysermc.geyser.command.GeyserCommandSource;
 

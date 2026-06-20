@@ -65,7 +65,6 @@ public final class GeyserEventBus extends OwnedEventBusImpl<EventRegistrar, Even
     }
 
     @Override
-    @NonNull
     public <T extends Event> Set<? extends EventSubscriber<EventRegistrar, T>> subscribers(Class<T> eventClass) {
         return castGenericSet(super.subscribers(eventClass));
     }

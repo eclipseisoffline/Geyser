@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.entity.type.living.animal.tameable;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
@@ -110,7 +110,6 @@ public class CatEntity extends TameableEntity implements VariantIntHolder {
         return ItemTag.CAT_FOOD;
     }
 
-    @NonNull
     @Override
     protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         boolean tamed = getFlag(EntityFlag.TAMED);
@@ -122,7 +121,6 @@ public class CatEntity extends TameableEntity implements VariantIntHolder {
         }
     }
 
-    @NonNull
     @Override
     protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         boolean tamed = getFlag(EntityFlag.TAMED);

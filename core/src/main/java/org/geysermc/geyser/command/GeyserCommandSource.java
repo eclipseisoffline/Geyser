@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.command;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.command.CommandSource;
 import org.geysermc.geyser.session.GeyserSession;

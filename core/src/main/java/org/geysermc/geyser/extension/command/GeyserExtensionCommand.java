@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.extension.command;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.command.Command;
 import org.geysermc.geyser.api.command.CommandExecutor;
 import org.geysermc.geyser.api.command.CommandSource;
@@ -162,7 +162,6 @@ public abstract class GeyserExtensionCommand extends GeyserCommand {
             return this;
         }
 
-        @NonNull
         @Override
         public GeyserExtensionCommand build() {
             // These are captured in the anonymous lambda below and shouldn't change even if the builder does

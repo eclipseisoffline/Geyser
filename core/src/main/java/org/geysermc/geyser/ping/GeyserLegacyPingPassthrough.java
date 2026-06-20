@@ -29,7 +29,7 @@ import com.google.gson.JsonSyntaxException;
 import io.netty.handler.codec.haproxy.HAProxyCommand;
 import io.netty.handler.codec.haproxy.HAProxyProxiedProtocol;
 import io.netty.util.NetUtil;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.nbt.util.VarInts;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.network.GameProtocol;

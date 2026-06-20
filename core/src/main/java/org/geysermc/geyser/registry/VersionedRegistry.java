@@ -55,7 +55,6 @@ public class VersionedRegistry<V> extends AbstractMappedRegistry<Integer, V, Int
      * @return the closest value for the specified version
      * @throws IllegalArgumentException if no values exist at or above the given version
      */
-    @NonNull
     public V forVersion(int version) {
         Int2ObjectMap.Entry<V> current = null;
         for (Int2ObjectMap.Entry<V> entry : this.mappings.int2ObjectEntrySet()) {

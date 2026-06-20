@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.level;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.geysermc.erosion.util.BlockPositionIterator;
 import org.geysermc.geyser.level.block.type.BlockState;
@@ -47,12 +47,10 @@ import java.util.function.Consumer;
  */
 public abstract class WorldManager {
 
-    @NonNull
     public final BlockState blockAt(GeyserSession session, Vector3i vector) {
         return this.blockAt(session, vector.getX(), vector.getY(), vector.getZ());
     }
 
-    @NonNull
     public BlockState blockAt(GeyserSession session, int x, int y, int z) {
         return BlockState.of(this.getBlockAt(session, x, y, z));
     }

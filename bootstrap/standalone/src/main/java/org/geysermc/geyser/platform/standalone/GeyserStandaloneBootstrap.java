@@ -272,7 +272,6 @@ public class GeyserStandaloneBootstrap implements GeyserBootstrap {
         return PlatformType.STANDALONE.platformName();
     }
 
-    @NonNull
     @Override
     public String getServerBindAddress() {
         throw new IllegalStateException();

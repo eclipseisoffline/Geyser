@@ -27,7 +27,7 @@ package org.geysermc.geyser.level;
 
 import net.kyori.adventure.key.InvalidKeyException;
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.nbt.NbtMap;
 import org.geysermc.geyser.session.cache.registry.RegistryEntryContext;
 import org.geysermc.geyser.util.DimensionUtils;

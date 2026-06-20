@@ -114,7 +114,6 @@ public class GeyserCustomItemDefinition implements CustomItemDefinition {
     }
 
     @Override
-    @NonNull
     public PredicateStrategy predicateStrategy() {
         return predicateStrategy;
     }

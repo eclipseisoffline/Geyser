@@ -26,7 +26,7 @@
 package org.geysermc.geyser.level.block;
 
 import lombok.RequiredArgsConstructor;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.block.custom.component.MaterialInstance;
 
 @RequiredArgsConstructor

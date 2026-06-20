@@ -28,7 +28,7 @@ package org.geysermc.geyser.entity.vehicle;
 import it.unimi.dsi.fastutil.objects.ObjectDoublePair;
 import lombok.Getter;
 import lombok.Setter;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.math.TrigMath;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3d;

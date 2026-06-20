@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.entity.type.living.animal.nautilus;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.math.TrigMath;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
@@ -77,7 +77,6 @@ public abstract class AbstractNautilusEntity extends TameableEntity implements C
         repairableItems = stack.getComponent(DataComponentTypes.REPAIRABLE);
     }
 
-    @NonNull
     @Override
     protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (getFlag(EntityFlag.ANGRY)) {

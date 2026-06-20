@@ -28,7 +28,7 @@ package org.geysermc.geyser.registry.mappings.util;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonPrimitive;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.item.exception.InvalidCustomMappingsFileException;
 
 import java.util.ArrayList;

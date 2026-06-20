@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.extension;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.extension.Extension;
 import org.geysermc.geyser.api.extension.ExtensionLoader;
@@ -107,7 +107,6 @@ public class GeyserExtensionManager extends ExtensionManager {
         }
     }
 
-    @NonNull
     @Override
     public Collection<Extension> extensions() {
         return Collections.unmodifiableCollection(this.extensions.values());

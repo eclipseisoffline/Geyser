@@ -32,7 +32,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.server.ServerListPingEvent;
 import org.bukkit.util.CachedServerIcon;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.network.GameProtocol;
 import org.geysermc.geyser.ping.GeyserPingInfo;
 import org.geysermc.geyser.ping.IGeyserPingPassthrough;
@@ -75,7 +75,6 @@ public class GeyserSpigotPingPassthrough implements IGeyserPingPassthrough {
         public void setServerIcon(CachedServerIcon icon) throws IllegalArgumentException, UnsupportedOperationException {
         }
 
-        @NonNull
         @Override
         public Iterator<Player> iterator() throws UnsupportedOperationException {
             return Collections.emptyIterator();

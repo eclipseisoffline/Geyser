@@ -37,7 +37,7 @@ import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.plugin.PluginContainer;
 import com.velocitypowered.api.proxy.ProxyServer;
 import lombok.Getter;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.FloodgateKeyLoader;
 import org.geysermc.geyser.GeyserBootstrap;
 import org.geysermc.geyser.GeyserImpl;
@@ -241,7 +241,6 @@ public class GeyserVelocityPlugin implements GeyserBootstrap {
         return this.geyserInjector.getServerSocketAddress();
     }
 
-    @NonNull
     @Override
     public String getServerBindAddress() {
         return proxyServer.getBoundAddress().getHostString();

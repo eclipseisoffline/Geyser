@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.entity.properties.type;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.bedrock.data.entity.FloatEntityProperty;
 import org.geysermc.geyser.api.entity.property.type.GeyserFloatEntityProperty;

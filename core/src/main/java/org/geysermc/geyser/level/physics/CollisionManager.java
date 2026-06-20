@@ -28,7 +28,7 @@ package org.geysermc.geyser.level.physics;
 import lombok.Getter;
 import lombok.Setter;
 import net.kyori.adventure.util.TriState;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.math.GenericMath;
 import org.cloudburstmc.math.vector.Vector3d;
 import org.cloudburstmc.math.vector.Vector3f;

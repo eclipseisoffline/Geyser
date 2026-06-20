@@ -27,7 +27,7 @@ package org.geysermc.geyser.session.cache;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.math.vector.Vector3i;
 
 @Setter

@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.item.components.resolvable;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.item.type.Item;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponents;
 

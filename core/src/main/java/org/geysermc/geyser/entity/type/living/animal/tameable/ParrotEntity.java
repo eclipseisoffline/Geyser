@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.entity.type.living.animal.tameable;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.inventory.GeyserItemStack;
@@ -55,7 +55,6 @@ public class ParrotEntity extends TameableEntity {
         return item.is(session, ItemTag.PARROT_POISONOUS_FOOD);
     }
 
-    @NonNull
     @Override
     protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         boolean tame = getFlag(EntityFlag.TAMED);
@@ -70,7 +69,6 @@ public class ParrotEntity extends TameableEntity {
         return super.testMobInteraction(hand, itemInHand);
     }
 
-    @NonNull
     @Override
     protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         boolean tame = getFlag(EntityFlag.TAMED);

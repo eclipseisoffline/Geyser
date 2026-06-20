@@ -30,7 +30,7 @@ import it.unimi.dsi.fastutil.ints.IntSet;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import lombok.Builder;
 import lombok.Value;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.definitions.BlockDefinition;
 import org.cloudburstmc.protocol.bedrock.data.definitions.ItemDefinition;
 import org.cloudburstmc.protocol.bedrock.data.inventory.CreativeItemData;
@@ -100,7 +100,6 @@ public class ItemMappings implements DefinitionRegistry<ItemDefinition> {
      * @param itemStack the itemstack
      * @return an item entry from the given java edition item stack
      */
-    @NonNull
     public ItemMapping getMapping(ItemStack itemStack) {
         return this.getMapping(itemStack.getId());
     }
@@ -112,12 +111,10 @@ public class ItemMappings implements DefinitionRegistry<ItemDefinition> {
      * @param javaId the id
      * @return an item entry from the given java edition identifier
      */
-    @NonNull
     public ItemMapping getMapping(int javaId) {
         return javaId >= 0 && javaId < this.items.length ? this.items[javaId] : ItemMapping.AIR;
     }
 
-    @NonNull
     public ItemMapping getMapping(Item javaItem) {
         return getMapping(javaItem.javaId());
     }
@@ -147,7 +144,6 @@ public class ItemMappings implements DefinitionRegistry<ItemDefinition> {
      * @param data the item data
      * @return an item entry from the given item data
      */
-    @NonNull
     public ItemMapping getMapping(ItemData data) {
         ItemDefinition definition = data.getDefinition();
         if (ItemDefinition.AIR.equals(definition)) {

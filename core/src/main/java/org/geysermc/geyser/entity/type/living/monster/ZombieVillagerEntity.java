@@ -62,7 +62,6 @@ public class ZombieVillagerEntity extends ZombieEntity {
         return getFlag(EntityFlag.IS_TRANSFORMING) || super.isShaking();
     }
 
-    @NonNull
     @Override
     protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (itemInHand.is(Items.GOLDEN_APPLE)) {
@@ -72,7 +71,6 @@ public class ZombieVillagerEntity extends ZombieEntity {
         }
     }
 
-    @NonNull
     @Override
     protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (itemInHand.is(Items.GOLDEN_APPLE)) {

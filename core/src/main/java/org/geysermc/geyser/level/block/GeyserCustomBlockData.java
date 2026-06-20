@@ -27,7 +27,7 @@ package org.geysermc.geyser.level.block;
 
 import it.unimi.dsi.fastutil.objects.*;
 import lombok.RequiredArgsConstructor;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.Constants;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.block.custom.CustomBlockData;

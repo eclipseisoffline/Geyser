@@ -44,7 +44,7 @@ import org.bstats.charts.DrilldownPie;
 import org.bstats.charts.SimplePie;
 import org.bstats.charts.SingleLineChart;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.cloudburstmc.protocol.bedrock.util.EncryptionUtils;
 import org.geysermc.api.Geyser;
 import org.geysermc.cumulus.form.Form;
@@ -646,7 +646,6 @@ public class GeyserImpl implements GeyserApi, EventRegistrar {
     }
 
     @Override
-    @NonNull
     public GeyserExtensionManager extensionManager() {
         return this.extensionManager;
     }
@@ -654,7 +653,6 @@ public class GeyserImpl implements GeyserApi, EventRegistrar {
     /**
      * @return the current CommandRegistry in use. The instance may change over the lifecycle of the Geyser runtime.
      */
-    @NonNull
     public CommandRegistry commandRegistry() {
         return this.bootstrap.getCommandRegistry();
     }
@@ -670,36 +668,30 @@ public class GeyserImpl implements GeyserApi, EventRegistrar {
     }
 
     @Override
-    @NonNull
     public GeyserEventBus eventBus() {
         return this.eventBus;
     }
 
-    @NonNull
     public RemoteServer defaultRemoteServer() {
         return config().java();
     }
 
     @Override
-    @NonNull
     public BedrockListener bedrockListener() {
         return config().bedrock();
     }
 
     @Override
-    @NonNull
     public Path configDirectory() {
         return bootstrap.getConfigFolder();
     }
 
     @Override
-    @NonNull
     public Path packDirectory() {
         return bootstrap.getConfigFolder().resolve("packs");
     }
 
     @Override
-    @NonNull
     public PlatformType platformType() {
         return bootstrap.platformType();
     }

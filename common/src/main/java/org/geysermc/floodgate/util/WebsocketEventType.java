@@ -25,7 +25,7 @@
 
 package org.geysermc.floodgate.util;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 
 public enum WebsocketEventType {
     /**

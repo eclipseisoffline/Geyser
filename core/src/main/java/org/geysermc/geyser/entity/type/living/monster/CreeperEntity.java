@@ -58,7 +58,6 @@ public class CreeperEntity extends MonsterEntity {
         setFlag(EntityFlag.IGNITED, ignitedByFlintAndSteel);
     }
 
-    @NonNull
     @Override
     protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (itemInHand.is(session, ItemTag.CREEPER_IGNITERS)) {
@@ -68,7 +67,6 @@ public class CreeperEntity extends MonsterEntity {
         }
     }
 
-    @NonNull
     @Override
     protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (itemInHand.is(session, ItemTag.CREEPER_IGNITERS)) {

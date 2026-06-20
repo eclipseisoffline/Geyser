@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.entity.properties.type;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.api.entity.property.type.GeyserStringEnumProperty;
 import org.geysermc.geyser.api.util.Identifier;
 

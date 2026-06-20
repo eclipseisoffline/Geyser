@@ -29,7 +29,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.geysermc.geyser.adapters.WorldAdapter;
 import org.geysermc.geyser.adapters.paper.PaperAdapters;
 import org.geysermc.geyser.adapters.spigot.SpigotAdapters;
