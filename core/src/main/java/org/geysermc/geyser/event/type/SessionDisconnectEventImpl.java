@@ -27,7 +27,6 @@ package org.geysermc.geyser.event.type;
 
 import lombok.Getter;
 import net.kyori.adventure.text.Component;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.event.bedrock.SessionDisconnectEvent;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.text.MessageTranslator;
@@ -41,7 +40,7 @@ public class SessionDisconnectEventImpl extends SessionDisconnectEvent {
 
     private final Component reasonComponent;
 
-    public SessionDisconnectEventImpl(@NonNull GeyserSession session, Component reason) {
+    public SessionDisconnectEventImpl(GeyserSession session, Component reason) {
         super(session, MessageTranslator.convertToPlainText(reason, session.locale()));
         this.reasonComponent = reason;
     }

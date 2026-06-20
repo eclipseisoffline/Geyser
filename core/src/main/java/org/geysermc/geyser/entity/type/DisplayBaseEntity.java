@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.entity.type;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.util.EntityUtils;
@@ -35,7 +34,7 @@ import java.util.Objects;
 
 public class DisplayBaseEntity extends Entity {
 
-    private @NonNull Vector3f baseTranslation = Vector3f.ZERO;
+    private Vector3f baseTranslation = Vector3f.ZERO;
 
     public DisplayBaseEntity(EntitySpawnContext context) {
         super(context);

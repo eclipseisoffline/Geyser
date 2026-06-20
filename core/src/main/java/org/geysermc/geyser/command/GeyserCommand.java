@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.command;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.api.event.lifecycle.GeyserRegisterPermissionsEvent;
 import org.geysermc.geyser.api.util.TriState;
@@ -83,8 +82,8 @@ public abstract class GeyserCommand implements org.geysermc.geyser.api.command.C
      */
     protected List<String> aliases = Collections.emptyList();
 
-    public GeyserCommand(@NonNull String name, @NonNull String description,
-                         @NonNull String permission, @Nullable TriState permissionDefault,
+    public GeyserCommand(String name, String description,
+                         String permission, @Nullable TriState permissionDefault,
                          boolean playerOnly, boolean bedrockOnly) {
 
         if (name.isBlank()) {
@@ -111,7 +110,7 @@ public abstract class GeyserCommand implements org.geysermc.geyser.api.command.C
         this.bedrockOnly = bedrockOnly;
     }
 
-    public GeyserCommand(@NonNull String name, @NonNull String description, @NonNull String permission, @Nullable TriState permissionDefault) {
+    public GeyserCommand(String name, String description, String permission, @Nullable TriState permissionDefault) {
         this(name, description, permission, permissionDefault, false, false);
     }
 

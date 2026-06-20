@@ -26,7 +26,6 @@
 package org.geysermc.geyser.registry.mappings.components.readers;
 
 import com.google.gson.JsonElement;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaAttackRange;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaItemDataComponents;
 import org.geysermc.geyser.item.custom.impl.JavaAttackRangeImpl;
@@ -43,7 +42,7 @@ public class AttackRangeReader extends DataComponentReader<JavaAttackRange> {
     }
 
     @Override
-    protected JavaAttackRange readDataComponent(@NonNull JsonElement element, String... context) throws InvalidCustomMappingsFileException {
+    protected JavaAttackRange readDataComponent(JsonElement element, String... context) throws InvalidCustomMappingsFileException {
         return new JavaAttackRangeImpl(
             MappingsUtil.readOrDefault(element, "min_reach", REACH_READER, 0.0F, context),
             MappingsUtil.readOrDefault(element, "max_reach", REACH_READER, 3.0F, context),

@@ -29,7 +29,6 @@ import io.netty.channel.Channel;
 import io.netty.channel.DefaultEventLoopGroup;
 import io.netty.util.concurrent.DefaultThreadFactory;
 import lombok.Getter;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.netty.channel.raknet.config.RakChannelOption;
 import org.cloudburstmc.protocol.bedrock.BedrockPeer;
 import org.cloudburstmc.protocol.bedrock.BedrockServerSession;
@@ -59,7 +58,7 @@ public class GeyserServerInitializer extends BedrockServerInitializer {
     }
 
     @Override
-    public void initSession(@NonNull BedrockServerSession bedrockServerSession) {
+    public void initSession(BedrockServerSession bedrockServerSession) {
         try {
             bedrockServerSession.setLogging(this.geyser.config().debugMode());
             GeyserSession session = new GeyserSession(this.geyser, bedrockServerSession, this.eventLoopGroup.next());

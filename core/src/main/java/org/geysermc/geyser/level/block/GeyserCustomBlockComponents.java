@@ -30,7 +30,6 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMaps;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import lombok.Value;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.api.block.custom.component.*;
 
@@ -103,7 +102,7 @@ public class GeyserCustomBlockComponents implements CustomBlockComponents {
     }
 
     @Override
-    public @NonNull Set<BoxComponent> collisionBoxes() {
+    public Set<BoxComponent> collisionBoxes() {
         return Set.copyOf(collisionBoxes);
     }
 
@@ -118,7 +117,7 @@ public class GeyserCustomBlockComponents implements CustomBlockComponents {
     }
 
     @Override
-    public @NonNull Map<String, MaterialInstance> materialInstances() {
+    public Map<String, MaterialInstance> materialInstances() {
         return materialInstances;
     }
 
@@ -163,13 +162,13 @@ public class GeyserCustomBlockComponents implements CustomBlockComponents {
     }
 
     @Override
-    public @NonNull Set<String> tags() {
+    public Set<String> tags() {
         return tags;
     }
 
     public static class Builder implements CustomBlockComponents.Builder {
         protected BoxComponent selectionBox;
-        protected @NonNull Set<BoxComponent> collisionBoxes = new HashSet<>();
+        protected Set<BoxComponent> collisionBoxes = new HashSet<>();
         protected String displayName;
         protected GeometryComponent geometry;
         protected final Object2ObjectMap<String, MaterialInstance> materialInstances = new Object2ObjectOpenHashMap<>();
@@ -283,7 +282,7 @@ public class GeyserCustomBlockComponents implements CustomBlockComponents {
         }
 
         @Override
-        public Builder materialInstance(@NonNull String name, @NonNull MaterialInstance materialInstance) {
+        public Builder materialInstance(String name, MaterialInstance materialInstance) {
             this.materialInstances.put(name, materialInstance);
             return this;
         }

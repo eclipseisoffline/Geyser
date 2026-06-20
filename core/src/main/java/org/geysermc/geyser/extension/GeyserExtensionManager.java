@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.extension;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.extension.Extension;
@@ -52,12 +51,12 @@ public class GeyserExtensionManager extends ExtensionManager {
     }
 
     @Override
-    public Extension extension(@NonNull String id) {
+    public Extension extension(String id) {
         return this.extensions.get(id);
     }
 
     @Override
-    public void enable(@NonNull Extension extension) {
+    public void enable(Extension extension) {
         if (!extension.isEnabled()) {
             try {
                 this.enableExtension(extension);
@@ -69,7 +68,7 @@ public class GeyserExtensionManager extends ExtensionManager {
     }
 
     @Override
-    public void disable(@NonNull Extension extension) {
+    public void disable(Extension extension) {
         if (extension.isEnabled()) {
             try {
                 this.disableExtension(extension);
@@ -93,7 +92,7 @@ public class GeyserExtensionManager extends ExtensionManager {
         }
     }
 
-    private void disableExtension(@NonNull Extension extension) {
+    private void disableExtension(Extension extension) {
         if (extension.isEnabled()) {
             GeyserImpl.getInstance().eventBus().unregisterAll(extension);
 
@@ -120,7 +119,7 @@ public class GeyserExtensionManager extends ExtensionManager {
     }
 
     @Override
-    public void register(@NonNull Extension extension) {
+    public void register(Extension extension) {
         this.extensions.put(extension.description().id(), extension);
     }
 }

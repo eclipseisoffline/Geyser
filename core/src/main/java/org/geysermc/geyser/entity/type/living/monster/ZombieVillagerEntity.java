@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living.monster;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
@@ -65,7 +64,7 @@ public class ZombieVillagerEntity extends ZombieEntity {
 
     @NonNull
     @Override
-    protected InteractiveTag testMobInteraction(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (itemInHand.is(Items.GOLDEN_APPLE)) {
             return InteractiveTag.CURE;
         } else {
@@ -75,7 +74,7 @@ public class ZombieVillagerEntity extends ZombieEntity {
 
     @NonNull
     @Override
-    protected InteractionResult mobInteract(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (itemInHand.is(Items.GOLDEN_APPLE)) {
             // The client doesn't know if the entity has weakness as that's not usually sent over the network
             return InteractionResult.CONSUME;

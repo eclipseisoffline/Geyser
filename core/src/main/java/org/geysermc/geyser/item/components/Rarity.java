@@ -26,7 +26,6 @@
 package org.geysermc.geyser.item.components;
 
 import lombok.Getter;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 @Getter
 public enum Rarity {
@@ -45,7 +44,7 @@ public enum Rarity {
 
     private static final Rarity[] VALUES = values();
 
-    public static @NonNull Rarity fromId(Integer id) {
+    public static Rarity fromId(Integer id) {
         return VALUES.length > id ? VALUES[id] : VALUES[0];
     }
 }

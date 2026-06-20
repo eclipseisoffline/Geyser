@@ -26,7 +26,6 @@
 package org.geysermc.geyser.registry.mappings.components.readers;
 
 import com.google.gson.JsonElement;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaItemDataComponents;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaUseCooldown;
 import org.geysermc.geyser.api.util.Identifier;
@@ -43,7 +42,7 @@ public class UseCooldownReader extends DataComponentReader<JavaUseCooldown> {
     }
 
     @Override
-    protected JavaUseCooldown readDataComponent(@NonNull JsonElement element, String... context) throws InvalidCustomMappingsFileException {
+    protected JavaUseCooldown readDataComponent(JsonElement element, String... context) throws InvalidCustomMappingsFileException {
         float seconds = MappingsUtil.readOrThrow(element, "seconds", NodeReader.POSITIVE_DOUBLE.andThen(Double::floatValue), context);
         Identifier cooldownGroup = MappingsUtil.readOrDefault(element, "cooldown_group", NodeReader.IDENTIFIER, null, context);
 

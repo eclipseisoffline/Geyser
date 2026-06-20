@@ -30,7 +30,6 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSet;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.nbt.NbtMapBuilder;
 import org.cloudburstmc.nbt.NbtType;
@@ -129,7 +128,7 @@ public class CustomBlockRegistryPopulator {
         Set<String> customBlockIdentifiers = new ObjectOpenHashSet<>();
         GeyserImpl.getInstance().getEventBus().fire(new GeyserDefineCustomBlocksEvent() {
             @Override
-            public void register(@NonNull CustomBlockData customBlockData) {
+            public void register(CustomBlockData customBlockData) {
                 if (customBlockData.name().isEmpty()) {
                     throw new IllegalArgumentException("Custom block name must have at least 1 character.");
                 }
@@ -143,7 +142,7 @@ public class CustomBlockRegistryPopulator {
             }
 
             @Override
-            public void registerOverride(@NonNull String javaIdentifier, @NonNull CustomBlockState customBlockState) {
+            public void registerOverride(String javaIdentifier, CustomBlockState customBlockState) {
                 if (!CUSTOM_BLOCKS.contains(customBlockState.block())) {
                     throw new IllegalArgumentException("Custom block is unregistered. Name: " + customBlockState.name());
                 }
@@ -152,7 +151,7 @@ public class CustomBlockRegistryPopulator {
             }
 
             @Override
-            public void registerItemOverride(@NonNull String javaIdentifier, @NonNull CustomBlockData customBlockData) {
+            public void registerItemOverride(String javaIdentifier, CustomBlockData customBlockData) {
                 if (!CUSTOM_BLOCKS.contains(customBlockData)) {
                     throw new IllegalArgumentException("Custom block is unregistered. Name: " + customBlockData.name());
                 }
@@ -160,7 +159,7 @@ public class CustomBlockRegistryPopulator {
             }
 
             @Override
-            public void registerOverride(@NonNull JavaBlockState javaBlockState, @NonNull CustomBlockState customBlockState) {
+            public void registerOverride(JavaBlockState javaBlockState, CustomBlockState customBlockState) {
                 if (!CUSTOM_BLOCKS.contains(customBlockState.block())) {
                     throw new IllegalArgumentException("Custom block is unregistered. Name: " + customBlockState.name());
                 }

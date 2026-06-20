@@ -26,7 +26,6 @@
 package org.geysermc.geyser.registry.mappings.components.readers;
 
 import com.google.gson.JsonPrimitive;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.item.custom.v2.component.ItemDataComponent;
 import org.geysermc.geyser.item.exception.InvalidCustomMappingsFileException;
 import org.geysermc.geyser.registry.mappings.util.NodeReader;
@@ -46,7 +45,7 @@ public class IntComponentReader extends PrimitiveComponentReader<Integer> {
     }
 
     @Override
-    protected Integer readValue(@NonNull JsonPrimitive primitive, String... context) throws InvalidCustomMappingsFileException {
+    protected Integer readValue(JsonPrimitive primitive, String... context) throws InvalidCustomMappingsFileException {
         return NodeReader.boundedInt(minimum, maximum).read(primitive, "reading component", context);
     }
 }

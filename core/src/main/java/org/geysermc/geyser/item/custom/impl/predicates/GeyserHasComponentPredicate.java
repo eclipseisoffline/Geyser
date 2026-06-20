@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.item.custom.impl.predicates;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.predicate.MinecraftPredicate;
 import org.geysermc.geyser.api.predicate.context.item.ItemPredicateContext;
 import org.geysermc.geyser.api.predicate.item.HasComponentPredicate;
@@ -35,7 +34,7 @@ import org.geysermc.geyser.impl.GeyserCoreProvided;
 import java.util.Objects;
 
 @GeyserCoreProvided
-public record GeyserHasComponentPredicate(@NonNull Identifier component, boolean negated) implements HasComponentPredicate {
+public record GeyserHasComponentPredicate(Identifier component, boolean negated) implements HasComponentPredicate {
 
     public GeyserHasComponentPredicate {
         Objects.requireNonNull(component, "component identifier cannot be null");
@@ -47,7 +46,7 @@ public record GeyserHasComponentPredicate(@NonNull Identifier component, boolean
     }
 
     @Override
-    public @NonNull MinecraftPredicate<ItemPredicateContext> negate() {
+    public MinecraftPredicate<ItemPredicateContext> negate() {
         return new GeyserHasComponentPredicate(component, !negated);
     }
 }

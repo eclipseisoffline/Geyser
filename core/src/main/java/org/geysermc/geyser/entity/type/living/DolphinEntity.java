@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.inventory.GeyserItemStack;
 import org.geysermc.geyser.session.cache.tags.ItemTag;
@@ -50,7 +49,7 @@ public class DolphinEntity extends AgeableWaterEntity {
 
     @NonNull
     @Override
-    protected InteractiveTag testMobInteraction(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (!itemInHand.isEmpty() && itemInHand.is(session, ItemTag.FISHES)) {
             return InteractiveTag.FEED;
         }
@@ -59,7 +58,7 @@ public class DolphinEntity extends AgeableWaterEntity {
 
     @NonNull
     @Override
-    protected InteractionResult mobInteract(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (!itemInHand.isEmpty() && itemInHand.is(session, ItemTag.FISHES)) {
             // Feed
             return InteractionResult.SUCCESS;

@@ -32,7 +32,6 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import lombok.Getter;
 import lombok.Setter;
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.packet.SetTitlePacket;
@@ -54,7 +53,7 @@ public final class WorldCache {
     @Getter
     private final ScoreboardSession scoreboardSession;
     @Getter
-    private @NonNull Scoreboard scoreboard;
+    private Scoreboard scoreboard;
     @Getter
     @Setter
     private Difficulty difficulty = Difficulty.EASY;

@@ -31,7 +31,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import it.unimi.dsi.fastutil.bytes.ByteArrays;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.skin.ImageData;
 import org.cloudburstmc.protocol.bedrock.data.skin.SerializedSkin;
@@ -287,22 +286,22 @@ public class SkinProvider {
                         final EventSkinData eventSkinData = new EventSkinData(skinData);
                         GeyserImpl.getInstance().eventBus().fire(new SessionSkinApplyEvent(session, entity.getUsername(), entity.uuid(), data.isSlim(), isBedrock, skinData) {
                             @Override
-                            public @NonNull SkinData skinData() {
+                            public SkinData skinData() {
                                 return eventSkinData.skinData();
                             }
 
                             @Override
-                            public void skin(@NonNull Skin newSkin) {
+                            public void skin(Skin newSkin) {
                                 eventSkinData.skinData(new SkinData(Objects.requireNonNull(newSkin), eventSkinData.skinData().cape(), eventSkinData.skinData().geometry()));
                             }
 
                             @Override
-                            public void cape(@NonNull Cape newCape) {
+                            public void cape(Cape newCape) {
                                 eventSkinData.skinData(new SkinData(eventSkinData.skinData().skin(), Objects.requireNonNull(newCape), eventSkinData.skinData().geometry()));
                             }
 
                             @Override
-                            public void geometry(@NonNull SkinGeometry newGeometry) {
+                            public void geometry(SkinGeometry newGeometry) {
                                 eventSkinData.skinData(new SkinData(eventSkinData.skinData().skin(), eventSkinData.skinData().cape(), Objects.requireNonNull(newGeometry)));
                             }
                         });

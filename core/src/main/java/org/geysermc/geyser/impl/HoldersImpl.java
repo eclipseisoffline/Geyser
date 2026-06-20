@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.impl;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.api.util.Holders;
 import org.geysermc.geyser.api.util.Identifier;
@@ -38,7 +37,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public record HoldersImpl(@Nullable List<@NonNull Identifier> identifiers, @Nullable Identifier tag) implements Holders {
+public record HoldersImpl(@Nullable List<Identifier> identifiers, @Nullable Identifier tag) implements Holders {
 
     public HolderSet toHolderSet(JavaRegistryProvider registries, JavaRegistryKey<?> registry) {
         if (identifiers != null) {
@@ -55,7 +54,7 @@ public record HoldersImpl(@Nullable List<@NonNull Identifier> identifiers, @Null
         private Identifier tag;
 
         @Override
-        public Holders.Builder with(@NonNull Identifier identifier) {
+        public Holders.Builder with(Identifier identifier) {
             Objects.requireNonNull(identifier, "identifier cannot be null");
             if (tag != null) {
                 throw new IllegalArgumentException("holders uses a tag");
@@ -65,7 +64,7 @@ public record HoldersImpl(@Nullable List<@NonNull Identifier> identifiers, @Null
         }
 
         @Override
-        public Holders.Builder tag(@NonNull Identifier tag) {
+        public Holders.Builder tag(Identifier tag) {
             Objects.requireNonNull(tag, "tag cannot be null");
             if (!identifiers.isEmpty()) {
                 throw new IllegalArgumentException("holders uses a single identifier or a list thereof");

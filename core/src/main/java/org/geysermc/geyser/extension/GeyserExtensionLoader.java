@@ -28,7 +28,6 @@ package org.geysermc.geyser.extension;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import lombok.RequiredArgsConstructor;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.api.util.ApiVersion;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.GeyserLogger;
@@ -163,7 +162,7 @@ public class GeyserExtensionLoader extends ExtensionLoader {
     }
 
     @Override
-    protected void loadAllExtensions(@NonNull ExtensionManager extensionManager) {
+    protected void loadAllExtensions(ExtensionManager extensionManager) {
         GeyserLogger logger = GeyserImpl.getInstance().getLogger();
         try {
             if (Files.notExists(extensionsDirectory)) {
@@ -397,36 +396,36 @@ public class GeyserExtensionLoader extends ExtensionLoader {
     }
 
     @Override
-    protected boolean isEnabled(@NonNull Extension extension) {
+    protected boolean isEnabled(Extension extension) {
         return this.extensionContainers.get(extension).enabled;
     }
 
     @Override
-    protected void setEnabled(@NonNull Extension extension, boolean enabled) {
+    protected void setEnabled(Extension extension, boolean enabled) {
         this.extensionContainers.get(extension).enabled = enabled;
     }
 
     @NonNull
     @Override
-    protected Path dataFolder(@NonNull Extension extension) {
+    protected Path dataFolder(Extension extension) {
         return this.extensionContainers.get(extension).dataFolder();
     }
 
     @NonNull
     @Override
-    protected ExtensionDescription description(@NonNull Extension extension) {
+    protected ExtensionDescription description(Extension extension) {
         return this.extensionContainers.get(extension).description();
     }
 
     @NonNull
     @Override
-    protected ExtensionEventBus eventBus(@NonNull Extension extension) {
+    protected ExtensionEventBus eventBus(Extension extension) {
         return this.extensionContainers.get(extension).eventBus();
     }
 
     @NonNull
     @Override
-    protected ExtensionLogger logger(@NonNull Extension extension) {
+    protected ExtensionLogger logger(Extension extension) {
         return this.extensionContainers.get(extension).logger();
     }
 }

@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living.monster;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.protocol.bedrock.data.SoundEvent;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
@@ -61,7 +60,7 @@ public class CreeperEntity extends MonsterEntity {
 
     @NonNull
     @Override
-    protected InteractiveTag testMobInteraction(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (itemInHand.is(session, ItemTag.CREEPER_IGNITERS)) {
             return InteractiveTag.IGNITE_CREEPER;
         } else {
@@ -71,7 +70,7 @@ public class CreeperEntity extends MonsterEntity {
 
     @NonNull
     @Override
-    protected InteractionResult mobInteract(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (itemInHand.is(session, ItemTag.CREEPER_IGNITERS)) {
             // Ignite creeper - as of 1.19.3
             session.playSoundEvent(SoundEvent.IGNITE, bedrockPosition());

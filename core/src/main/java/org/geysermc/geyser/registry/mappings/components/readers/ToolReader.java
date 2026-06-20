@@ -26,7 +26,6 @@
 package org.geysermc.geyser.registry.mappings.components.readers;
 
 import com.google.gson.JsonElement;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaItemDataComponents;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaTool;
 import org.geysermc.geyser.item.custom.impl.JavaToolImpl;
@@ -44,7 +43,7 @@ public class ToolReader extends DataComponentReader<JavaTool> {
     }
 
     @Override
-    protected JavaTool readDataComponent(@NonNull JsonElement element, String... context) throws InvalidCustomMappingsFileException {
+    protected JavaTool readDataComponent(JsonElement element, String... context) throws InvalidCustomMappingsFileException {
         return new JavaToolImpl(List.of(), 0.0F, MappingsUtil.readOrDefault(element, "can_destroy_blocks_in_creative", NodeReader.BOOLEAN, true, context));
     }
 }

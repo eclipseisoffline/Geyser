@@ -28,7 +28,6 @@ package org.geysermc.geyser.registry.loader;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.event.lifecycle.GeyserLoadResourcePacksEvent;
 import org.geysermc.geyser.api.pack.PathPackCodec;
@@ -276,7 +275,7 @@ public class ResourcePackLoader implements RegistryLoader<Path, Map<UUID, Resour
         }
     }
 
-    public static CompletableFuture<@NonNull PathPackCodec> downloadPack(String url, boolean force) throws IllegalArgumentException {
+    public static CompletableFuture<PathPackCodec> downloadPack(String url, boolean force) throws IllegalArgumentException {
         return CompletableFuture.supplyAsync(() -> {
             Path path;
             try {

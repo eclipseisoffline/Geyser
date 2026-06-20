@@ -28,7 +28,6 @@ package org.geysermc.geyser.item.custom;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.checkerframework.checker.index.qual.NonNegative;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.api.item.custom.v2.CustomItemBedrockOptions;
 import org.geysermc.geyser.api.item.custom.v2.CustomItemDefinition;
@@ -43,7 +42,7 @@ import org.geysermc.geyser.api.util.Identifier;
 @ToString
 public class GeyserNonVanillaCustomItemDefinition extends GeyserCustomItemDefinition implements NonVanillaCustomItemDefinition {
 
-    private final @NonNull Identifier identifier;
+    private final Identifier identifier;
     private final int javaId;
     private final String translationString;
 
@@ -55,7 +54,7 @@ public class GeyserNonVanillaCustomItemDefinition extends GeyserCustomItemDefini
     }
 
     @Override
-    public @NonNull Identifier identifier() {
+    public Identifier identifier() {
         return identifier;
     }
 
@@ -75,14 +74,14 @@ public class GeyserNonVanillaCustomItemDefinition extends GeyserCustomItemDefini
 
         private String translationString;
 
-        public Builder(@NonNull Identifier identifier, @NonNull Identifier bedrockIdentifier, int javaId) {
+        public Builder(Identifier identifier, Identifier bedrockIdentifier, int javaId) {
             super(bedrockIdentifier, identifier); // TODO different models?
             this.identifier = identifier;
             this.javaId = javaId;
         }
 
         @Override
-        public NonVanillaCustomItemDefinition.Builder displayName(@NonNull String displayName) {
+        public NonVanillaCustomItemDefinition.Builder displayName(String displayName) {
             return (Builder) super.displayName(displayName);
         }
 
@@ -92,27 +91,27 @@ public class GeyserNonVanillaCustomItemDefinition extends GeyserCustomItemDefini
         }
 
         @Override
-        public NonVanillaCustomItemDefinition.Builder bedrockOptions(CustomItemBedrockOptions.@NonNull Builder options) {
+        public NonVanillaCustomItemDefinition.Builder bedrockOptions(CustomItemBedrockOptions.Builder options) {
             return (Builder) super.bedrockOptions(options);
         }
 
         @Override
-        public CustomItemDefinition.Builder predicate(@NonNull MinecraftPredicate<? super ItemPredicateContext> predicate) {
+        public CustomItemDefinition.Builder predicate(MinecraftPredicate<? super ItemPredicateContext> predicate) {
             throw new IllegalArgumentException("Predicates are not supported for non-vanilla custom item definitions");
         }
 
         @Override
-        public CustomItemDefinition.Builder predicateStrategy(@NonNull PredicateStrategy strategy) {
+        public CustomItemDefinition.Builder predicateStrategy(PredicateStrategy strategy) {
             throw new IllegalArgumentException("Predicates are not supported for non-vanilla custom item definitions");
         }
 
         @Override
-        public <T> NonVanillaCustomItemDefinition.Builder component(@NonNull ItemDataComponent<T> component, @NonNull T value) {
+        public <T> NonVanillaCustomItemDefinition.Builder component(ItemDataComponent<T> component, T value) {
             return (Builder) super.component(component, value);
         }
 
         @Override
-        public CustomItemDefinition.Builder removeComponent(@NonNull Identifier component) {
+        public CustomItemDefinition.Builder removeComponent(Identifier component) {
             throw new UnsupportedOperationException("Removing default item components is not supported for non-vanilla items");
         }
 

@@ -30,7 +30,6 @@ import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.item.custom.CustomRenderOffsets;
 import org.geysermc.geyser.api.item.custom.v2.CustomItemBedrockOptions;
 import org.geysermc.geyser.api.item.custom.v2.CustomItemDefinition;
@@ -53,16 +52,16 @@ import java.util.Set;
 @EqualsAndHashCode
 @ToString
 public class GeyserCustomItemDefinition implements CustomItemDefinition {
-    private final @NonNull Identifier bedrockIdentifier;
-    private final @NonNull String displayName;
-    private final @NonNull Identifier model;
-    private final @NonNull String icon;
-    private final @NonNull List<MinecraftPredicate<? super ItemPredicateContext>> predicates;
+    private final Identifier bedrockIdentifier;
+    private final String displayName;
+    private final Identifier model;
+    private final String icon;
+    private final List<MinecraftPredicate<? super ItemPredicateContext>> predicates;
     private final PredicateStrategy predicateStrategy;
     private final int priority;
-    private final @NonNull CustomItemBedrockOptions bedrockOptions;
-    private final @NonNull ItemDataComponentMap components;
-    private final @NonNull List<Identifier> removedComponents;
+    private final CustomItemBedrockOptions bedrockOptions;
+    private final ItemDataComponentMap components;
+    private final List<Identifier> removedComponents;
     @Getter
     private final CustomRenderOffsets renderOffsets;
     @Getter
@@ -90,27 +89,27 @@ public class GeyserCustomItemDefinition implements CustomItemDefinition {
     }
 
     @Override
-    public @NonNull Identifier bedrockIdentifier() {
+    public Identifier bedrockIdentifier() {
         return bedrockIdentifier;
     }
 
     @Override
-    public @NonNull String displayName() {
+    public String displayName() {
         return displayName;
     }
 
     @Override
-    public @NonNull Identifier model() {
+    public Identifier model() {
         return model;
     }
 
     @Override
-    public @NonNull String icon() {
+    public String icon() {
         return icon;
     }
 
     @Override
-    public @NonNull List<MinecraftPredicate<? super ItemPredicateContext>> predicates() {
+    public List<MinecraftPredicate<? super ItemPredicateContext>> predicates() {
         return predicates;
     }
 
@@ -126,17 +125,17 @@ public class GeyserCustomItemDefinition implements CustomItemDefinition {
     }
 
     @Override
-    public @NonNull CustomItemBedrockOptions bedrockOptions() {
+    public CustomItemBedrockOptions bedrockOptions() {
         return bedrockOptions;
     }
 
     @Override
-    public @NonNull ItemDataComponentMap components() {
+    public ItemDataComponentMap components() {
         return components;
     }
 
     @Override
-    public @NonNull List<Identifier> removedComponents() {
+    public List<Identifier> removedComponents() {
         return removedComponents;
     }
 
@@ -155,7 +154,7 @@ public class GeyserCustomItemDefinition implements CustomItemDefinition {
         private boolean isOldConvertedItem = false;
         private int textureSize = 16;
 
-        public Builder(@NonNull Identifier bedrockIdentifier, @NonNull Identifier model) {
+        public Builder(Identifier bedrockIdentifier, Identifier model) {
             Objects.requireNonNull(bedrockIdentifier, "bedrockIdentifier cannot be null");
             Objects.requireNonNull(model, "model cannot be null");
             this.bedrockIdentifier = bedrockIdentifier;
@@ -164,7 +163,7 @@ public class GeyserCustomItemDefinition implements CustomItemDefinition {
         }
 
         @Override
-        public CustomItemDefinition.Builder displayName(@NonNull String displayName) {
+        public CustomItemDefinition.Builder displayName(String displayName) {
             Objects.requireNonNull(displayName, "displayName cannot be null");
             this.displayName = displayName;
             return this;
@@ -177,14 +176,14 @@ public class GeyserCustomItemDefinition implements CustomItemDefinition {
         }
 
         @Override
-        public CustomItemDefinition.Builder bedrockOptions(CustomItemBedrockOptions.@NonNull Builder options) {
+        public CustomItemDefinition.Builder bedrockOptions(CustomItemBedrockOptions.Builder options) {
             Objects.requireNonNull(options, "options cannot be null");
             this.bedrockOptions = options.build();
             return this;
         }
 
         @Override
-        public CustomItemDefinition.Builder predicate(@NonNull MinecraftPredicate<? super ItemPredicateContext> predicate) {
+        public CustomItemDefinition.Builder predicate(MinecraftPredicate<? super ItemPredicateContext> predicate) {
             Objects.requireNonNull(predicate, "predicate cannot be null");
 
             boolean isApiProvided = AnnotationUtils.hasAnnotationRecursive(predicate.getClass(), GeyserProvided.class);
@@ -198,14 +197,14 @@ public class GeyserCustomItemDefinition implements CustomItemDefinition {
         }
 
         @Override
-        public CustomItemDefinition.Builder predicateStrategy(@NonNull PredicateStrategy strategy) {
+        public CustomItemDefinition.Builder predicateStrategy(PredicateStrategy strategy) {
             Objects.requireNonNull(strategy, "strategy cannot be null");
             predicateStrategy = strategy;
             return this;
         }
 
         @Override
-        public <T> CustomItemDefinition.Builder component(@NonNull ItemDataComponent<T> component, @NonNull T value) {
+        public <T> CustomItemDefinition.Builder component(ItemDataComponent<T> component, T value) {
             Objects.requireNonNull(component, "component cannot be null");
             Objects.requireNonNull(value, "value cannot be null");
             if (!(component instanceof ItemDataComponentImpl<T> dataComponent)) {
@@ -224,7 +223,7 @@ public class GeyserCustomItemDefinition implements CustomItemDefinition {
         }
 
         @Override
-        public CustomItemDefinition.Builder removeComponent(@NonNull Identifier component) {
+        public CustomItemDefinition.Builder removeComponent(Identifier component) {
             Objects.requireNonNull(component, "component cannot be null");
             if (components.keySet().stream().map(ItemDataComponent::identifier).anyMatch(identifier -> identifier.equals(component))) {
                 throw new IllegalArgumentException("Tried to remove earlier added component " + component);

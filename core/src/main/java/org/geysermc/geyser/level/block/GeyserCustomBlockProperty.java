@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.level.block;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.block.custom.property.CustomBlockProperty;
 import org.geysermc.geyser.api.block.custom.property.PropertyType;
 
@@ -39,6 +38,6 @@ import java.util.List;
  * @param values The values of the property
  * @param type The type of the property
  */
-public record GeyserCustomBlockProperty<T>(@NonNull String name, @NonNull List<T> values,
-                                           @NonNull PropertyType type) implements CustomBlockProperty<T> {
+public record GeyserCustomBlockProperty<T>(String name, List<T> values,
+                                           PropertyType type) implements CustomBlockProperty<T> {
 }

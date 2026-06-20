@@ -28,7 +28,6 @@ package org.geysermc.geyser.session.cache;
 import it.unimi.dsi.fastutil.ints.IntArrays;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.GeyserLogger;
 import org.geysermc.geyser.session.GeyserSession;
@@ -120,11 +119,11 @@ public final class TagCache {
     /**
      * Should only be used when the network ID of an element is already known. If not, prefer using the {@link TagCache#is(Tag, Object)} shorthand method.
      */
-    public boolean is(@NonNull Tag<?> tag, int id) {
+    public boolean is(Tag<?> tag, int id) {
         return contains(getRaw(tag), id);
     }
 
-    public <T> boolean is(@NonNull Tag<T> tag, @NonNull T object) {
+    public <T> boolean is(Tag<T> tag, T object) {
         return contains(getRaw(tag), tag.registry().networkId(session, object));
     }
 
@@ -133,7 +132,7 @@ public final class TagCache {
      *
      * @return true if the specified network ID is in the given {@link GeyserHolderSet}.
      */
-    public <T> boolean is(@NonNull GeyserHolderSet<T> holderSet, @Nullable T object) {
+    public <T> boolean is(GeyserHolderSet<T> holderSet, @Nullable T object) {
         if (object == null) {
             return false;
         }
@@ -143,7 +142,7 @@ public final class TagCache {
     /**
      * @return true if the specified network ID is in the given {@link HolderSet} set.
      */
-    public <T> boolean is(@Nullable HolderSet holderSet, @NonNull JavaRegistryKey<T> registry, int id) {
+    public <T> boolean is(@Nullable HolderSet holderSet, JavaRegistryKey<T> registry, int id) {
         if (holderSet == null) {
             return false;
         }
@@ -160,14 +159,14 @@ public final class TagCache {
         return contains(entries, id);
     }
 
-    public <T> List<T> get(@NonNull Tag<T> tag) {
+    public <T> List<T> get(Tag<T> tag) {
         return mapRawArray(session, getRaw(tag), tag.registry());
     }
 
     /**
      * @return the network IDs in the given tag. This can be an empty array.
      */
-    public int[] getRaw(@NonNull Tag<?> tag) {
+    public int[] getRaw(Tag<?> tag) {
         return this.tags.getOrDefault(tag, IntArrays.EMPTY_ARRAY);
     }
 

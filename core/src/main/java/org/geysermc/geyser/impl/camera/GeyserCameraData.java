@@ -26,7 +26,6 @@
 package org.geysermc.geyser.impl.camera;
 
 import lombok.Getter;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
@@ -107,7 +106,7 @@ public class GeyserCameraData implements CameraData {
     }
 
     @Override
-    public void forceCameraPerspective(@NonNull CameraPerspective perspective) {
+    public void forceCameraPerspective(CameraPerspective perspective) {
         Objects.requireNonNull(perspective, "perspective cannot be null!");
 
         if (perspective == cameraPerspective) {
@@ -134,7 +133,7 @@ public class GeyserCameraData implements CameraData {
     }
 
     @Override
-    public void sendCameraFade(@NonNull CameraFade fade) {
+    public void sendCameraFade(CameraFade fade) {
         Objects.requireNonNull(fade, "fade cannot be null!");
         CameraFadeInstruction fadeInstruction = new CameraFadeInstruction();
         fadeInstruction.setColor(fade.color());
@@ -152,7 +151,7 @@ public class GeyserCameraData implements CameraData {
     }
 
     @Override
-    public void sendCameraPosition(@NonNull CameraPosition movement) {
+    public void sendCameraPosition(CameraPosition movement) {
         Objects.requireNonNull(movement, "movement cannot be null!");
         this.cameraPerspective = CameraPerspective.FREE; // Movements only work with the free preset
         CameraSetInstruction setInstruction = new CameraSetInstruction();
@@ -195,7 +194,7 @@ public class GeyserCameraData implements CameraData {
     }
 
     @Override
-    public void shakeCamera(float intensity, float duration, @NonNull CameraShake type) {
+    public void shakeCamera(float intensity, float duration, CameraShake type) {
         Objects.requireNonNull(type, "camera shake type must be non null!");
         CameraShakePacket packet = new CameraShakePacket();
         packet.setIntensity(intensity);
@@ -238,13 +237,13 @@ public class GeyserCameraData implements CameraData {
     }
 
     @Override
-    public @NonNull Set<String> fogEffects() {
+    public Set<String> fogEffects() {
         // Use a copy so that sendFog/removeFog can be called while iterating the returned set (avoid CME)
         return Set.copyOf(this.appliedFog);
     }
 
     @Override
-    public boolean lockCamera(boolean lock, @NonNull UUID owner) {
+    public boolean lockCamera(boolean lock, UUID owner) {
         Objects.requireNonNull(owner, "owner cannot be null!");
         if (lock) {
             this.cameraLockOwners.add(owner);
@@ -302,13 +301,13 @@ public class GeyserCameraData implements CameraData {
     }
 
     @Override
-    public boolean isHudElementHidden(@NonNull GuiElement element) {
+    public boolean isHudElementHidden(GuiElement element) {
         Objects.requireNonNull(element);
         return this.hiddenHudElements.contains(element);
     }
 
     @Override
-    public @NonNull Set<GuiElement> hiddenElements() {
+    public Set<GuiElement> hiddenElements() {
         return Collections.unmodifiableSet(hiddenHudElements);
     }
 

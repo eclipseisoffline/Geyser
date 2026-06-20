@@ -27,7 +27,6 @@ package org.geysermc.geyser.extension;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.extension.ExtensionDescription;
 import org.geysermc.geyser.api.extension.exception.InvalidDescriptionException;
 import org.geysermc.geyser.text.GeyserLocale;
@@ -40,15 +39,15 @@ import java.util.*;
 import java.util.function.Supplier;
 import java.util.regex.Pattern;
 
-public record GeyserExtensionDescription(@NonNull String id,
-                                         @NonNull String name,
-                                         @NonNull String main,
+public record GeyserExtensionDescription(String id,
+                                         String name,
+                                         String main,
                                          int humanApiVersion,
                                          int majorApiVersion,
                                          int minorApiVersion,
-                                         @NonNull String version,
-                                         @NonNull List<String> authors,
-                                         @NonNull Map<String, Dependency> dependencies) implements ExtensionDescription {
+                                         String version,
+                                         List<String> authors,
+                                         Map<String, Dependency> dependencies) implements ExtensionDescription {
 
     private static final Yaml YAML = new Yaml(new CustomClassLoaderConstructor(Source.class.getClassLoader(), new LoaderOptions()));
 

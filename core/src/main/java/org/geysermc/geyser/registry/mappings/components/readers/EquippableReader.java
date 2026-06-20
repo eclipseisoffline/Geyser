@@ -26,7 +26,6 @@
 package org.geysermc.geyser.registry.mappings.components.readers;
 
 import com.google.gson.JsonElement;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaEquippable;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaItemDataComponents;
 import org.geysermc.geyser.item.custom.impl.JavaEquippableImpl;
@@ -42,7 +41,7 @@ public class EquippableReader extends DataComponentReader<JavaEquippable> {
     }
 
     @Override
-    protected JavaEquippable readDataComponent(@NonNull JsonElement element, String... context) throws InvalidCustomMappingsFileException {
+    protected JavaEquippable readDataComponent(JsonElement element, String... context) throws InvalidCustomMappingsFileException {
         JavaEquippable.EquipmentSlot slot = MappingsUtil.readOrThrow(element, "slot", NodeReader.EQUIPMENT_SLOT, context);
         return new JavaEquippableImpl(slot);
     }

@@ -119,7 +119,7 @@ public interface JavaRegistry<T> extends Iterable<RegistryEntryData<T>> {
     }
 
     @Override
-    default @NonNull Iterator<RegistryEntryData<T>> iterator() {
+    default Iterator<RegistryEntryData<T>> iterator() {
         return entries().iterator();
     }
 

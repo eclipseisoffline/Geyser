@@ -25,12 +25,11 @@
 
 package org.geysermc.geyser.registry.mappings.predicate;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.predicate.MinecraftPredicate;
 import org.geysermc.geyser.api.predicate.context.MinecraftPredicateContext;
 
 @FunctionalInterface
 public interface PredicateCreator<C extends MinecraftPredicateContext, D> {
 
-    MinecraftPredicate<C> create(@NonNull D data);
+    MinecraftPredicate<C> create(D data);
 }

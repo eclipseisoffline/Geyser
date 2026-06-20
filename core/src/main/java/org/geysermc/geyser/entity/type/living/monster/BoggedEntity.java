@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living.monster;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.inventory.GeyserItemStack;
@@ -48,7 +47,7 @@ public class BoggedEntity extends AbstractSkeletonEntity {
     }
 
     @Override
-    protected @NonNull InteractiveTag testMobInteraction(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (itemInHand.is(Items.SHEARS) && readyForShearing()) {
             return InteractiveTag.SHEAR;
         }
@@ -56,7 +55,7 @@ public class BoggedEntity extends AbstractSkeletonEntity {
     }
 
     @Override
-    protected @NonNull InteractionResult mobInteract(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (itemInHand.is(Items.SHEARS) && readyForShearing()) {
             return InteractionResult.SUCCESS;
         }

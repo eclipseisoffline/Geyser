@@ -30,7 +30,6 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TranslatableComponent;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.nbt.NbtList;
 import org.cloudburstmc.nbt.NbtMap;
@@ -145,7 +144,7 @@ public final class ItemTranslator {
         return itemStack.getItemStack();
     }
 
-    public static ItemData.@NonNull Builder translateToBedrock(GeyserSession session, int javaId, int count, DataComponents components) {
+    public static ItemData.Builder translateToBedrock(GeyserSession session, int javaId, int count, DataComponents components) {
         ItemMapping bedrockItem = session.getItemMappings().getMapping(javaId);
         if (bedrockItem == ItemMapping.AIR) {
             session.getGeyser().getLogger().debug("ItemMapping returned air: " + javaId);
@@ -171,7 +170,7 @@ public final class ItemTranslator {
     }
 
     @NonNull
-    public static ItemData translateToBedrock(GeyserSession session, @NonNull GeyserItemStack stack) {
+    public static ItemData translateToBedrock(GeyserSession session, GeyserItemStack stack) {
         if (stack.isEmpty()) {
             return ItemData.AIR;
         }
@@ -186,7 +185,7 @@ public final class ItemTranslator {
                 .build();
     }
 
-    public static ItemData.@NonNull Builder translateToBedrock(GeyserSession session, Item javaItem, ItemMapping bedrockItem, int count, @Nullable DataComponents customComponents) {
+    public static ItemData.Builder translateToBedrock(GeyserSession session, Item javaItem, ItemMapping bedrockItem, int count, @Nullable DataComponents customComponents) {
         BedrockItemBuilder nbtBuilder = new BedrockItemBuilder();
 
         // Populates default components that aren't sent over the network
@@ -532,7 +531,7 @@ public final class ItemTranslator {
      * Given an item stack, determine the Bedrock item definition that should be applied to Bedrock players.
      */
     @NonNull
-    public static ItemDefinition getBedrockItemDefinition(GeyserSession session, @NonNull GeyserItemStack itemStack) {
+    public static ItemDefinition getBedrockItemDefinition(GeyserSession session, GeyserItemStack itemStack) {
         if (itemStack.isEmpty()) {
             return ItemDefinition.AIR;
         }

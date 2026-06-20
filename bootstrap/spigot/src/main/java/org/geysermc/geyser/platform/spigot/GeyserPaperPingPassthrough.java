@@ -30,7 +30,6 @@ import com.destroystokyo.paper.network.StatusClient;
 import net.kyori.adventure.text.serializer.gson.GsonComponentSerializer;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Bukkit;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.network.GameProtocol;
 import org.geysermc.geyser.ping.GeyserPingInfo;
@@ -96,7 +95,7 @@ public final class GeyserPaperPingPassthrough implements IGeyserPingPassthrough 
 
     private record GeyserStatusClient(InetSocketAddress address) implements StatusClient {
         @Override
-        public @NonNull InetSocketAddress getAddress() {
+        public InetSocketAddress getAddress() {
             return address;
         }
 

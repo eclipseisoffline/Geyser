@@ -26,7 +26,6 @@
 package org.geysermc.geyser.item.custom.impl.predicates;
 
 import org.checkerframework.checker.index.qual.NonNegative;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.api.predicate.MinecraftPredicate;
 import org.geysermc.geyser.api.predicate.context.item.ItemPredicateContext;
@@ -53,7 +52,7 @@ public final class GeyserCustomModelDataPredicate {
         }
 
         @Override
-        public @NonNull MinecraftPredicate<ItemPredicateContext> negate() {
+        public MinecraftPredicate<ItemPredicateContext> negate() {
             return new GeyserFlagPredicate(index, !negated);
         }
     }
@@ -74,7 +73,7 @@ public final class GeyserCustomModelDataPredicate {
         }
 
         @Override
-        public @NonNull MinecraftPredicate<ItemPredicateContext> negate() {
+        public MinecraftPredicate<ItemPredicateContext> negate() {
             return new GeyserStringPredicate(string, index, !negated);
         }
     }

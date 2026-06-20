@@ -26,7 +26,6 @@
 package org.geysermc.geyser.item.custom.impl;
 
 import org.checkerframework.checker.index.qual.Positive;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaTool;
 import org.geysermc.geyser.api.util.Holders;
 
@@ -35,7 +34,7 @@ import java.util.List;
 import java.util.Objects;
 
 public record JavaToolImpl(
-    List<@NonNull Rule> rules,
+    List<Rule> rules,
     float defaultMiningSpeed,
     boolean canDestroyBlocksInCreative
 ) implements JavaTool {
@@ -46,7 +45,7 @@ public record JavaToolImpl(
         private boolean destroyBlocksInCreative = true;
 
         @Override
-        public JavaTool.Builder rule(@NonNull Rule rule) {
+        public JavaTool.Builder rule(Rule rule) {
             Objects.requireNonNull(rule, "rule cannot be null");
             if (this.rules.contains(rule)) {
                 throw new IllegalArgumentException("duplicate rule " + rule);
@@ -83,7 +82,7 @@ public record JavaToolImpl(
             private float speed;
 
             @Override
-            public Rule.Builder blocks(@NonNull Holders blocks) {
+            public Rule.Builder blocks(Holders blocks) {
                 Objects.requireNonNull(blocks, "holders cannot be null");
                 this.holders = blocks;
                 return this;

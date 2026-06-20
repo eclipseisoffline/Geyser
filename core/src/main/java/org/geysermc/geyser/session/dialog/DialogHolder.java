@@ -29,7 +29,6 @@ import lombok.Getter;
 import lombok.experimental.Accessors;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.cumulus.form.ModalForm;
 import org.geysermc.cumulus.form.SimpleForm;
 import org.geysermc.geyser.session.GeyserSession;
@@ -117,7 +116,7 @@ public class DialogHolder {
      * Checks if this dialog is still valid, and if so, runs the given button (if present) with the given inputs.
      * These inputs can be {@link ParsedInputs#EMPTY} when the dialog has no inputs, but can never be {@code null}. This method also runs the dialog's after action.
      */
-    public void runButton(Optional<DialogButton> button, @NonNull ParsedInputs inputs) {
+    public void runButton(Optional<DialogButton> button, ParsedInputs inputs) {
         lastInputs = inputs;
         if (stillValid()) {
             if (runAction(button, lastInputs)) {
@@ -243,7 +242,7 @@ public class DialogHolder {
      *
      * <p>This method assumes the dialog is still valid!</p>
      */
-    private boolean runAction(Optional<DialogButton> button, @NonNull ParsedInputs inputs) {
+    private boolean runAction(Optional<DialogButton> button, ParsedInputs inputs) {
         DialogAction action = button.flatMap(DialogButton::action).orElse(null);
         if (action != null) {
             // Ask the user for confirmation if the dialog wants to run an unknown command or a command that requires operator permissions

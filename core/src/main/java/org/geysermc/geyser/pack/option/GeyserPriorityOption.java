@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.pack.option;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.pack.ResourcePack;
 import org.geysermc.geyser.api.pack.exception.ResourcePackException;
 import org.geysermc.geyser.api.pack.option.PriorityOption;
@@ -35,17 +34,17 @@ import java.util.Objects;
 public record GeyserPriorityOption(int priority) implements PriorityOption {
 
     @Override
-    public @NonNull Type type() {
+    public Type type() {
         return Type.PRIORITY;
     }
 
     @Override
-    public @NonNull Integer value() {
+    public Integer value() {
         return priority;
     }
 
     @Override
-    public void validate(@NonNull ResourcePack pack) {
+    public void validate(ResourcePack pack) {
         Objects.requireNonNull(pack);
         if (priority < -100 || priority > 100) {
             throw new ResourcePackException(ResourcePackException.Cause.INVALID_PACK_OPTION,

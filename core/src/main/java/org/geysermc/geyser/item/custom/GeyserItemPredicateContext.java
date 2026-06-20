@@ -26,7 +26,6 @@
 package org.geysermc.geyser.item.custom;
 
 import com.google.common.base.Suppliers;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.api.predicate.context.item.ChargedProjectile;
 import org.geysermc.geyser.api.predicate.context.item.ItemPredicateContext;
@@ -98,12 +97,12 @@ public record GeyserItemPredicateContext(Supplier<Identifier> dimensionSupplier,
     }
 
     @Override
-    public @NonNull List<ChargedProjectile> chargedProjectiles() {
+    public List<ChargedProjectile> chargedProjectiles() {
         return chargedProjectilesSupplier.get();
     }
 
     @Override
-    public @NonNull List<Identifier> components() {
+    public List<Identifier> components() {
         return componentsSupplier.get();
     }
 

@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.item.custom.impl;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaEquippable;
 
 import java.util.Objects;
@@ -38,7 +37,7 @@ public record JavaEquippableImpl(
         private EquipmentSlot slot;
 
         @Override
-        public JavaEquippable.Builder slot(@NonNull EquipmentSlot slot) {
+        public JavaEquippable.Builder slot(EquipmentSlot slot) {
             Objects.requireNonNull(slot, "slot cannot be null");
             this.slot = slot;
             return this;

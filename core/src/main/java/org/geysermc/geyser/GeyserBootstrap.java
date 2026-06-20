@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.api.util.PlatformType;
 import org.geysermc.geyser.command.CommandRegistry;
@@ -164,7 +163,7 @@ public interface GeyserBootstrap {
     /**
      * @return  the name of the server platform Geyser is running on.
      */
-    @NonNull String getServerPlatform();
+    String getServerPlatform();
 
     /**
      * Get an InputStream for the given resource path.
@@ -183,7 +182,7 @@ public interface GeyserBootstrap {
      * @param resource Resource to get
      * @return InputStream of the given resource
      */
-    default @NonNull InputStream getResourceOrThrow(@NonNull String resource) {
+    default InputStream getResourceOrThrow(String resource) {
         InputStream stream = getResourceOrNull(resource);
         if (stream == null) {
             throw new AssertionError("Unable to find resource: " + resource);

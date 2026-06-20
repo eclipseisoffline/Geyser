@@ -31,7 +31,6 @@ import com.google.common.cache.LoadingCache;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.skin.Cape;
@@ -62,7 +61,7 @@ public class FakeHeadProvider {
             .maximumSize(10000)
             .build(new CacheLoader<>() {
                 @Override
-                public SkinData load(@NonNull FakeHeadEntry fakeHeadEntry) throws Exception {
+                public SkinData load(FakeHeadEntry fakeHeadEntry) throws Exception {
                     SkinData skinData = SkinProvider.getOrDefault(SkinProvider.requestSkinData(fakeHeadEntry.getEntity(), fakeHeadEntry.getSession()), null, 5);
 
                     if (skinData == null) {

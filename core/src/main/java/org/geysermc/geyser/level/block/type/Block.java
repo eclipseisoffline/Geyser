@@ -28,7 +28,6 @@ package org.geysermc.geyser.level.block.type;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.data.definitions.BlockDefinition;
@@ -64,7 +63,7 @@ public class Block {
     private final boolean requiresCorrectToolForDrops;
     private final @Nullable BlockEntityType blockEntityType;
     private final float destroyTime;
-    private final @NonNull PistonBehavior pushReaction;
+    private final PistonBehavior pushReaction;
     protected Item item = null;
     private int javaId = -1;
 

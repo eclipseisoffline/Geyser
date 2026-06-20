@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.configuration;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.Constants;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.network.AuthType;

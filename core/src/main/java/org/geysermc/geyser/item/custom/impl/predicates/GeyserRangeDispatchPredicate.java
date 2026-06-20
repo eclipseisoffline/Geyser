@@ -26,7 +26,6 @@
 package org.geysermc.geyser.item.custom.impl.predicates;
 
 import org.checkerframework.checker.index.qual.NonNegative;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.predicate.MinecraftPredicate;
 import org.geysermc.geyser.api.predicate.context.item.ItemPredicateContext;
 import org.geysermc.geyser.api.predicate.item.RangeDispatchPredicate;
@@ -37,10 +36,10 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 @GeyserCoreProvided
-public record GeyserRangeDispatchPredicate(@NonNull GeyserRangeDispatchProperty rangeProperty, double threshold, @NonNegative int index, boolean normalized, boolean negated) implements RangeDispatchPredicate {
+public record GeyserRangeDispatchPredicate(GeyserRangeDispatchProperty rangeProperty, double threshold, @NonNegative int index, boolean normalized, boolean negated) implements RangeDispatchPredicate {
 
     @Override
-    public @NonNull Property property() {
+    public Property property() {
         return Property.valueOf(rangeProperty.name());
     }
 
@@ -82,7 +81,7 @@ public record GeyserRangeDispatchPredicate(@NonNull GeyserRangeDispatchProperty 
     }
 
     @Override
-    public @NonNull MinecraftPredicate<ItemPredicateContext> negate() {
+    public MinecraftPredicate<ItemPredicateContext> negate() {
         return new GeyserRangeDispatchPredicate(rangeProperty, threshold, index, normalized, !negated);
     }
 

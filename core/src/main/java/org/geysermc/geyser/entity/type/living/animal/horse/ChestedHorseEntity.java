@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living.animal.horse;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.inventory.GeyserItemStack;
@@ -43,18 +42,18 @@ public class ChestedHorseEntity extends AbstractHorseEntity {
     }
 
     @Override
-    protected boolean testSaddle(@NonNull GeyserItemStack itemInHand) {
+    protected boolean testSaddle(GeyserItemStack itemInHand) {
         // Not checked here
         return false;
     }
 
     @Override
-    protected boolean testForChest(@NonNull GeyserItemStack itemInHand) {
+    protected boolean testForChest(GeyserItemStack itemInHand) {
         return itemInHand.is(Items.CHEST) && !getFlag(EntityFlag.CHESTED);
     }
 
     @Override
-    protected boolean additionalTestForInventoryOpen(@NonNull GeyserItemStack itemInHand) {
+    protected boolean additionalTestForInventoryOpen(GeyserItemStack itemInHand) {
         // Armor won't work on these
         return false;
     }

@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.translator.level.block.entity;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.nbt.NbtMap;
@@ -107,7 +106,7 @@ public class SpawnerBlockEntityTranslator extends BlockEntityTranslator {
         bedrockNbt.put("isMovable", (byte) 1);
     }
 
-    private static void translateSpawnData(@NonNull NbtMapBuilder builder, @Nullable NbtMap spawnData) {
+    private static void translateSpawnData(NbtMapBuilder builder, @Nullable NbtMap spawnData) {
         if (spawnData == null) {
             return;
         }

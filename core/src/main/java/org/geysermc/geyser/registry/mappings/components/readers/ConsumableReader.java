@@ -26,7 +26,6 @@
 package org.geysermc.geyser.registry.mappings.components.readers;
 
 import com.google.gson.JsonElement;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaConsumable;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaItemDataComponents;
 import org.geysermc.geyser.item.custom.impl.JavaConsumableImpl;
@@ -42,7 +41,7 @@ public class ConsumableReader extends DataComponentReader<JavaConsumable> {
     }
 
     @Override
-    protected JavaConsumable readDataComponent(@NonNull JsonElement element, String... context) throws InvalidCustomMappingsFileException {
+    protected JavaConsumable readDataComponent(JsonElement element, String... context) throws InvalidCustomMappingsFileException {
         float consumeSeconds = MappingsUtil.readOrDefault(element, "consume_seconds", NodeReader.POSITIVE_DOUBLE.andThen(Double::floatValue), 1.6F, context);
         JavaConsumable.Animation animation = MappingsUtil.readOrDefault(element, "animation", NodeReader.CONSUMABLE_ANIMATION, JavaConsumable.Animation.EAT, context);
 

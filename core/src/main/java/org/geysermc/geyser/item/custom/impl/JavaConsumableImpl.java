@@ -26,14 +26,13 @@
 package org.geysermc.geyser.item.custom.impl;
 
 import org.checkerframework.checker.index.qual.Positive;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaConsumable;
 
 import java.util.Objects;
 
 public record JavaConsumableImpl(
     float consumeSeconds,
-    @NonNull Animation animation
+    Animation animation
 ) implements JavaConsumable {
 
     public static class Builder implements JavaConsumable.Builder {
@@ -50,7 +49,7 @@ public record JavaConsumableImpl(
         }
 
         @Override
-        public Builder animation(@NonNull Animation animation) {
+        public Builder animation(Animation animation) {
             Objects.requireNonNull(animation, "animation cannot be null");
             this.animation = animation;
             return this;

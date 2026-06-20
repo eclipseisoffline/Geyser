@@ -31,7 +31,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.command.RemoteConsoleCommandSender;
 import org.bukkit.entity.Player;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.command.GeyserCommandSource;
 import org.geysermc.geyser.platform.spigot.PaperAdventure;
@@ -54,7 +53,7 @@ public class SpigotCommandSource implements GeyserCommandSource {
     }
 
     @Override
-    public void sendMessage(@NonNull String message) {
+    public void sendMessage(String message) {
         handle.sendMessage(message);
     }
 

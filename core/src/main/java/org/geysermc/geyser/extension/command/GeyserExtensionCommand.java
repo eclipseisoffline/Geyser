@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.extension.command;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.api.command.Command;
 import org.geysermc.geyser.api.command.CommandExecutor;
@@ -51,8 +50,8 @@ public abstract class GeyserExtensionCommand extends GeyserCommand {
     private final Extension extension;
     private final String rootCommand;
 
-    public GeyserExtensionCommand(@NonNull Extension extension, @NonNull String name, @NonNull String description,
-                                  @NonNull String permission, @Nullable TriState permissionDefault,
+    public GeyserExtensionCommand(Extension extension, String name, String description,
+                                  String permission, @Nullable TriState permissionDefault,
                                   boolean playerOnly, boolean bedrockOnly) {
 
         super(name, description, permission, permissionDefault, playerOnly, bedrockOnly);
@@ -74,11 +73,11 @@ public abstract class GeyserExtensionCommand extends GeyserCommand {
     }
 
     public static class Builder<T extends CommandSource> implements Command.Builder<T> {
-        @NonNull private final Extension extension;
+        private final Extension extension;
         @Nullable private Class<? extends T> sourceType;
         @Nullable private String name;
-        @NonNull private String description = "";
-        @NonNull private String permission = "";
+        private String description = "";
+        private String permission = "";
         @Nullable private TriState permissionDefault;
         @Nullable private List<String> aliases;
         private boolean suggestedOpOnly = false; // deprecated for removal
@@ -86,43 +85,43 @@ public abstract class GeyserExtensionCommand extends GeyserCommand {
         private boolean bedrockOnly = false;
         @Nullable private CommandExecutor<T> executor;
 
-        public Builder(@NonNull Extension extension) {
+        public Builder(Extension extension) {
             this.extension = Objects.requireNonNull(extension);
         }
 
         @Override
-        public Command.Builder<T> source(@NonNull Class<? extends T> sourceType) {
+        public Command.Builder<T> source(Class<? extends T> sourceType) {
             this.sourceType = Objects.requireNonNull(sourceType, "command source type");
             return this;
         }
 
         @Override
-        public Builder<T> name(@NonNull String name) {
+        public Builder<T> name(String name) {
             this.name = Objects.requireNonNull(name, "command name");
             return this;
         }
 
         @Override
-        public Builder<T> description(@NonNull String description) {
+        public Builder<T> description(String description) {
             this.description = Objects.requireNonNull(description, "command description");
             return this;
         }
 
         @Override
-        public Builder<T> permission(@NonNull String permission) {
+        public Builder<T> permission(String permission) {
             this.permission = Objects.requireNonNull(permission, "command permission");
             return this;
         }
 
         @Override
-        public Builder<T> permission(@NonNull String permission, @NonNull TriState defaultValue) {
+        public Builder<T> permission(String permission, TriState defaultValue) {
             this.permission = Objects.requireNonNull(permission, "command permission");
             this.permissionDefault = Objects.requireNonNull(defaultValue, "command permission defaultValue");
             return this;
         }
 
         @Override
-        public Builder<T> aliases(@NonNull List<String> aliases) {
+        public Builder<T> aliases(List<String> aliases) {
             this.aliases = Objects.requireNonNull(aliases, "command aliases");
             return this;
         }
@@ -158,7 +157,7 @@ public abstract class GeyserExtensionCommand extends GeyserCommand {
         }
 
         @Override
-        public Builder<T> executor(@NonNull CommandExecutor<T> executor) {
+        public Builder<T> executor(CommandExecutor<T> executor) {
             this.executor = Objects.requireNonNull(executor, "command executor");
             return this;
         }

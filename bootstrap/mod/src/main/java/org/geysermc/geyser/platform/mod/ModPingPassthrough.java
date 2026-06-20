@@ -95,7 +95,7 @@ public class ModPingPassthrough implements IGeyserPingPassthrough {
         }
 
         @Override
-        public void send(@NonNull Packet<?> packet, @Nullable ChannelFutureListener channelFutureListener, boolean bl) {
+        public void send(Packet<?> packet, @Nullable ChannelFutureListener channelFutureListener, boolean bl) {
             if (packet instanceof ClientboundStatusResponsePacket(ServerStatus serverStatus)) {
                 status = serverStatus;
             }

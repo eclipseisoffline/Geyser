@@ -43,7 +43,7 @@ public class SimpleJavaRegistry<T> implements JavaRegistry<T> {
     }
 
     @Override
-    public @NonNull Iterator<RegistryEntryData<T>> iterator() {
+    public Iterator<RegistryEntryData<T>> iterator() {
         return entries.iterator();
     }
 

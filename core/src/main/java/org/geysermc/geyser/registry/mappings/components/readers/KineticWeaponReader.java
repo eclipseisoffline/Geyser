@@ -26,7 +26,6 @@
 package org.geysermc.geyser.registry.mappings.components.readers;
 
 import com.google.gson.JsonElement;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaItemDataComponents;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaKineticWeapon;
@@ -43,14 +42,14 @@ public class KineticWeaponReader extends DataComponentReader<JavaKineticWeapon> 
     }
 
     @Override
-    protected JavaKineticWeapon readDataComponent(@NonNull JsonElement element, String... context) throws InvalidCustomMappingsFileException {
+    protected JavaKineticWeapon readDataComponent(JsonElement element, String... context) throws InvalidCustomMappingsFileException {
         return new JavaKineticWeaponImpl(
             MappingsUtil.readOrDefault(element, "delay_ticks", NodeReader.NON_NEGATIVE_INT, 0, context),
             readCondition(element, "dismount_conditions", context)
         );
     }
 
-    private static JavaKineticWeapon.@Nullable Condition readCondition(@NonNull JsonElement element, String name, String... context) throws InvalidCustomMappingsFileException {
+    private static JavaKineticWeapon.@Nullable Condition readCondition(JsonElement element, String name, String... context) throws InvalidCustomMappingsFileException {
         JsonElement condition = element.getAsJsonObject().get(name);
         if (condition == null) {
             return null;

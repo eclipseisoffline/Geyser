@@ -30,7 +30,6 @@ import net.kyori.adventure.text.serializer.bungeecord.BungeeComponentSerializer;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.command.GeyserCommandSource;
 import org.geysermc.geyser.text.GeyserLocale;
@@ -54,7 +53,7 @@ public class BungeeCommandSource implements GeyserCommandSource {
     }
 
     @Override
-    public void sendMessage(@NonNull String message) {
+    public void sendMessage(String message) {
         handle.sendMessage(TextComponent.fromLegacyText(message));
     }
 

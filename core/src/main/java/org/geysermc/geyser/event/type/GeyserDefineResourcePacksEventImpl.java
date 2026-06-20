@@ -26,7 +26,6 @@
 package org.geysermc.geyser.event.type;
 
 import lombok.Getter;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.api.event.lifecycle.GeyserDefineResourcePacksEvent;
 import org.geysermc.geyser.api.pack.ResourcePack;
@@ -52,12 +51,12 @@ public class GeyserDefineResourcePacksEventImpl extends GeyserDefineResourcePack
     }
 
     @Override
-    public @NonNull List<ResourcePack> resourcePacks() {
+    public List<ResourcePack> resourcePacks() {
         return packs.values().stream().map(ResourcePackHolder::resourcePack).toList();
     }
 
     @Override
-    public void register(@NonNull ResourcePack resourcePack, @Nullable ResourcePackOption<?>... options) {
+    public void register(ResourcePack resourcePack, @Nullable ResourcePackOption<?>... options) {
         Objects.requireNonNull(resourcePack, "resource pack must not be null!");
         if (!(resourcePack instanceof GeyserResourcePack pack)) {
             throw new ResourcePackException(ResourcePackException.Cause.UNKNOWN_IMPLEMENTATION);
@@ -76,7 +75,7 @@ public class GeyserDefineResourcePacksEventImpl extends GeyserDefineResourcePack
     }
 
     @Override
-    public void registerOptions(@NonNull UUID uuid, @NonNull ResourcePackOption<?>... options) {
+    public void registerOptions(UUID uuid, ResourcePackOption<?>... options) {
         Objects.requireNonNull(uuid);
         Objects.requireNonNull(options);
 
@@ -89,7 +88,7 @@ public class GeyserDefineResourcePacksEventImpl extends GeyserDefineResourcePack
     }
 
     @Override
-    public Collection<ResourcePackOption<?>> options(@NonNull UUID uuid) {
+    public Collection<ResourcePackOption<?>> options(UUID uuid) {
         Objects.requireNonNull(uuid);
         ResourcePackHolder packHolder = packs.get(uuid);
         if (packHolder == null) {
@@ -100,7 +99,7 @@ public class GeyserDefineResourcePacksEventImpl extends GeyserDefineResourcePack
     }
 
     @Override
-    public @Nullable ResourcePackOption<?> option(@NonNull UUID uuid, ResourcePackOption.@NonNull Type type) {
+    public @Nullable ResourcePackOption<?> option(UUID uuid, ResourcePackOption.Type type) {
         Objects.requireNonNull(uuid);
         Objects.requireNonNull(type);
 
@@ -113,11 +112,11 @@ public class GeyserDefineResourcePacksEventImpl extends GeyserDefineResourcePack
     }
 
     @Override
-    public void unregister(@NonNull UUID uuid) {
+    public void unregister(UUID uuid) {
         packs.remove(uuid);
     }
 
-    private void attemptRegisterOptions(@NonNull ResourcePackHolder holder, @Nullable ResourcePackOption<?>... options) {
+    private void attemptRegisterOptions(ResourcePackHolder holder, @Nullable ResourcePackOption<?>... options) {
         if (options == null) {
             return;
         }

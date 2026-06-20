@@ -39,7 +39,6 @@ import net.raphimc.minecraftauth.msa.model.MsaApplicationConfig;
 import net.raphimc.minecraftauth.msa.model.MsaDeviceCode;
 import net.raphimc.minecraftauth.msa.model.MsaToken;
 import net.raphimc.minecraftauth.msa.service.impl.DeviceCodeMsaAuthService;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.GeyserLogger;
 
@@ -66,19 +65,19 @@ public class PendingMicrosoftAuthentication {
         this.authentications = CacheBuilder.newBuilder()
                 .build(new CacheLoader<>() {
                     @Override
-                    public AuthenticationTask load(@NonNull String userKey) {
+                    public AuthenticationTask load(String userKey) {
                         return storeServerInformation ? new ProxyAuthenticationTask(userKey, timeoutSeconds)
                                 : new AuthenticationTask(userKey, timeoutSeconds);
                     }
                 });
     }
 
-    public AuthenticationTask getTask(@NonNull String userKey) {
+    public AuthenticationTask getTask(String userKey) {
         return authentications.getIfPresent(userKey);
     }
 
     @SneakyThrows(ExecutionException.class)
-    public AuthenticationTask getOrCreateTask(@NonNull String userKey) {
+    public AuthenticationTask getOrCreateTask(String userKey) {
         return authentications.get(userKey);
     }
 

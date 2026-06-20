@@ -29,7 +29,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandMap;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.command.CommandRegistry;
 import org.geysermc.geyser.command.GeyserCommandSource;
@@ -63,7 +62,7 @@ public class SpigotCommandRegistry extends CommandRegistry {
 
     @NonNull
     @Override
-    public String description(@NonNull String command, @NonNull String locale) {
+    public String description(String command, String locale) {
         // check if the command is /geyser or an extension command so that we can localize the description
         String description = super.description(command, locale);
         if (!description.isBlank()) {

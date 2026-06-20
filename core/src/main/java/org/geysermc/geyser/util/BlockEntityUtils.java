@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.util;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.bedrock.packet.BlockEntityDataPacket;
@@ -71,7 +70,7 @@ public class BlockEntityUtils {
          return Registries.BLOCK_ENTITIES.get(type);
     }
 
-    public static void updateBlockEntity(GeyserSession session, @NonNull NbtMap blockEntity, Vector3i position) {
+    public static void updateBlockEntity(GeyserSession session, NbtMap blockEntity, Vector3i position) {
         BlockEntityDataPacket blockEntityPacket = new BlockEntityDataPacket();
         blockEntityPacket.setBlockPosition(position);
         blockEntityPacket.setData(blockEntity);

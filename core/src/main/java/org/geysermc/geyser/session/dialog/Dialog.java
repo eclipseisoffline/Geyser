@@ -28,7 +28,6 @@ package org.geysermc.geyser.session.dialog;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.nbt.NbtType;
 import org.geysermc.cumulus.form.CustomForm;
@@ -146,7 +145,7 @@ public abstract class Dialog {
         holder.session().sendDialogForm(createForm(holder, Optional.empty()).build());
     }
 
-    public void restoreForm(DialogHolder holder, @NonNull ParsedInputs inputs) {
+    public void restoreForm(DialogHolder holder, ParsedInputs inputs) {
         holder.session().sendDialogForm(createForm(holder, Optional.of(inputs)).build());
     }
 

@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.inventory.GeyserItemStack;
@@ -49,7 +48,7 @@ public class SnowGolemEntity extends GolemEntity {
 
     @NonNull
     @Override
-    protected InteractiveTag testMobInteraction(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (itemInHand.is(Items.SHEARS) && isAlive() && !getFlag(EntityFlag.SHEARED)) {
             // Shearing the snow golem
             return InteractiveTag.SHEAR;
@@ -59,7 +58,7 @@ public class SnowGolemEntity extends GolemEntity {
 
     @NonNull
     @Override
-    protected InteractionResult mobInteract(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (itemInHand.is(Items.SHEARS) && isAlive() && !getFlag(EntityFlag.SHEARED)) {
             // Shearing the snow golem
             return InteractionResult.SUCCESS;

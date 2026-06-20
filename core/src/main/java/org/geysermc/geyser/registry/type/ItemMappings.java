@@ -30,7 +30,6 @@ import it.unimi.dsi.fastutil.ints.IntSet;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import lombok.Builder;
 import lombok.Value;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.definitions.BlockDefinition;
 import org.cloudburstmc.protocol.bedrock.data.definitions.ItemDefinition;
@@ -91,7 +90,7 @@ public class ItemMappings implements DefinitionRegistry<ItemDefinition> {
      * @param itemStack the itemstack
      * @return an item entry from the given item stack
      */
-    public ItemMapping getMapping(@NonNull GeyserItemStack itemStack) {
+    public ItemMapping getMapping(GeyserItemStack itemStack) {
         return this.getMapping(itemStack.getJavaId());
     }
 
@@ -102,7 +101,7 @@ public class ItemMappings implements DefinitionRegistry<ItemDefinition> {
      * @return an item entry from the given java edition item stack
      */
     @NonNull
-    public ItemMapping getMapping(@NonNull ItemStack itemStack) {
+    public ItemMapping getMapping(ItemStack itemStack) {
         return this.getMapping(itemStack.getId());
     }
 

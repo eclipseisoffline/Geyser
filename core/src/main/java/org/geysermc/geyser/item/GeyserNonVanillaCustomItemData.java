@@ -27,7 +27,6 @@ package org.geysermc.geyser.item;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.api.item.custom.CustomItemOptions;
 import org.geysermc.geyser.api.item.custom.CustomRenderOffsets;
@@ -96,7 +95,7 @@ public final class GeyserNonVanillaCustomItemData extends GeyserCustomItemData i
     }
 
     @Override
-    public @NonNull String identifier() {
+    public String identifier() {
         return identifier;
     }
 
@@ -261,12 +260,12 @@ public final class GeyserNonVanillaCustomItemData extends GeyserCustomItemData i
         private String block = null;
 
         @Override
-        public Builder name(@NonNull String name) {
+        public Builder name(String name) {
             return (Builder) super.name(name);
         }
 
         @Override
-        public Builder customItemOptions(@NonNull CustomItemOptions customItemOptions) {
+        public Builder customItemOptions(CustomItemOptions customItemOptions) {
             //Do nothing, as that value won't be read
             return this;
         }
@@ -282,12 +281,12 @@ public final class GeyserNonVanillaCustomItemData extends GeyserCustomItemData i
         }
 
         @Override
-        public Builder displayName(@NonNull String displayName) {
+        public Builder displayName(String displayName) {
             return (Builder) super.displayName(displayName);
         }
 
         @Override
-        public Builder icon(@NonNull String icon) {
+        public Builder icon(String icon) {
             return (Builder) super.icon(icon);
         }
 
@@ -307,7 +306,7 @@ public final class GeyserNonVanillaCustomItemData extends GeyserCustomItemData i
         }
 
         @Override
-        public Builder identifier(@NonNull String identifier) {
+        public Builder identifier(String identifier) {
             this.identifier = identifier;
             return this;
         }

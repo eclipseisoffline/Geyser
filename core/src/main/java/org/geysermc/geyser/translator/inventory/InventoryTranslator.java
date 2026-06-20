@@ -35,7 +35,6 @@ import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSet;
 import it.unimi.dsi.fastutil.ints.IntSortedSet;
 import lombok.AllArgsConstructor;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerSlotType;
@@ -145,7 +144,7 @@ public abstract class InventoryTranslator<Type extends Inventory> {
     /**
      * Whether a new inventory should be prepared - or if we can re-use the previous one.
      */
-    public boolean canReuseInventory(GeyserSession session, @NonNull Inventory inventory, @NonNull Inventory previous) {
+    public boolean canReuseInventory(GeyserSession session, Inventory inventory, Inventory previous) {
         // Filter for mismatches that require a new inventory.
         if (inventory.getContainerType() == null || previous.getContainerType() == null ||
             !Objects.equals(inventory.getContainerType(), previous.getContainerType()) ||

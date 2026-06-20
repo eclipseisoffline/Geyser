@@ -32,7 +32,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.pack.ResourcePackManifest;
 
 import java.lang.reflect.Type;
@@ -81,7 +80,7 @@ public record GeyserResourcePackManifest(
     public record Version(int major, int minor, int patch) implements ResourcePackManifest.Version {
 
         @Override
-        public @NonNull String toString() {
+        public String toString() {
             return major + "." + minor + "." + patch;
         }
 

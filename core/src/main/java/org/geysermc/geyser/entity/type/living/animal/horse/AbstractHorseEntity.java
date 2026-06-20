@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living.animal.horse;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
@@ -157,12 +156,12 @@ public class AbstractHorseEntity extends AnimalEntity implements ClientVehicle {
 
     @NonNull
     @Override
-    protected InteractiveTag testMobInteraction(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         return testHorseInteraction(hand, itemInHand);
     }
 
     @NonNull
-    protected final InteractiveTag testHorseInteraction(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected final InteractiveTag testHorseInteraction(Hand hand, GeyserItemStack itemInHand) {
         boolean isBaby = isBaby();
         if (!isBaby) {
             if (getFlag(EntityFlag.TAMED) && session.isSneaking()) {
@@ -207,12 +206,12 @@ public class AbstractHorseEntity extends AnimalEntity implements ClientVehicle {
 
     @NonNull
     @Override
-    protected InteractionResult mobInteract(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         return mobHorseInteract(hand, itemInHand);
     }
 
     @NonNull
-    protected final InteractionResult mobHorseInteract(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected final InteractionResult mobHorseInteract(Hand hand, GeyserItemStack itemInHand) {
         boolean isBaby = isBaby();
         if (!isBaby) {
             if (getFlag(EntityFlag.TAMED) && session.isSneaking()) {
@@ -263,22 +262,22 @@ public class AbstractHorseEntity extends AnimalEntity implements ClientVehicle {
         }
     }
 
-    protected boolean testSaddle(@NonNull GeyserItemStack itemInHand) {
+    protected boolean testSaddle(GeyserItemStack itemInHand) {
         return isAlive() && !getFlag(EntityFlag.BABY) && getFlag(EntityFlag.TAMED);
     }
 
-    protected boolean testForChest(@NonNull GeyserItemStack itemInHand) {
+    protected boolean testForChest(GeyserItemStack itemInHand) {
         return false;
     }
 
-    protected boolean additionalTestForInventoryOpen(@NonNull GeyserItemStack itemInHand) {
+    protected boolean additionalTestForInventoryOpen(GeyserItemStack itemInHand) {
         // TODO this doesn't seem right anymore... (as of Java 1.21.9)
         return itemInHand.asItem().javaIdentifier().endsWith("_horse_armor");
     }
 
     /* Just a place to stuff common code for the undead variants without having duplicate code */
 
-    protected final InteractiveTag testUndeadHorseInteraction(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected final InteractiveTag testUndeadHorseInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (!getFlag(EntityFlag.TAMED)) {
             return InteractiveTag.NONE;
         } else if (isBaby()) {
@@ -300,7 +299,7 @@ public class AbstractHorseEntity extends AnimalEntity implements ClientVehicle {
         }
     }
 
-    protected final InteractionResult undeadHorseInteract(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected final InteractionResult undeadHorseInteract(Hand hand, GeyserItemStack itemInHand) {
         if (!getFlag(EntityFlag.TAMED)) {
             return InteractionResult.PASS;
         } else if (isBaby()) {

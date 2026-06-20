@@ -44,7 +44,6 @@ import org.bstats.charts.DrilldownPie;
 import org.bstats.charts.SimplePie;
 import org.bstats.charts.SingleLineChart;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.util.EncryptionUtils;
 import org.geysermc.api.Geyser;
@@ -530,7 +529,7 @@ public class GeyserImpl implements GeyserApi, EventRegistrar {
     }
 
     @Override
-    public @NonNull List<GeyserSession> onlineConnections() {
+    public List<GeyserSession> onlineConnections() {
         return sessionManager.getAllSessions();
     }
 
@@ -545,22 +544,22 @@ public class GeyserImpl implements GeyserApi, EventRegistrar {
     }
 
     @Override
-    public @Nullable GeyserSession connectionByUuid(@NonNull UUID uuid) {
+    public @Nullable GeyserSession connectionByUuid(UUID uuid) {
         return this.sessionManager.getSessions().get(uuid);
     }
 
     @Override
-    public @Nullable GeyserSession connectionByXuid(@NonNull String xuid) {
+    public @Nullable GeyserSession connectionByXuid(String xuid) {
         return sessionManager.sessionByXuid(xuid);
     }
 
     @Override
-    public boolean isBedrockPlayer(@NonNull UUID uuid) {
+    public boolean isBedrockPlayer(UUID uuid) {
         return connectionByUuid(uuid) != null;
     }
 
     @Override
-    public boolean sendForm(@NonNull UUID uuid, @NonNull Form form) {
+    public boolean sendForm(UUID uuid, Form form) {
         Objects.requireNonNull(uuid);
         Objects.requireNonNull(form);
         GeyserSession session = connectionByUuid(uuid);
@@ -571,12 +570,12 @@ public class GeyserImpl implements GeyserApi, EventRegistrar {
     }
 
     @Override
-    public boolean sendForm(@NonNull UUID uuid, @NonNull FormBuilder<?, ?, ?> formBuilder) {
+    public boolean sendForm(UUID uuid, FormBuilder<?, ?, ?> formBuilder) {
         return sendForm(uuid, formBuilder.build());
     }
 
     @Override
-    public boolean transfer(@NonNull UUID uuid, @NonNull String address, int port) {
+    public boolean transfer(UUID uuid, String address, int port) {
         Objects.requireNonNull(uuid);
         GeyserSession session = connectionByUuid(uuid);
         if (session == null) {
@@ -662,7 +661,7 @@ public class GeyserImpl implements GeyserApi, EventRegistrar {
 
     @Override
     @SuppressWarnings("unchecked")
-    public <R extends T, T> @NonNull R provider(@NonNull Class<T> apiClass, @Nullable Object... args) {
+    public <R extends T, T> R provider(Class<T> apiClass, @Nullable Object... args) {
         ProviderSupplier provider = Registries.PROVIDERS.get(apiClass);
         if (provider == null) {
             throw new IllegalArgumentException("No provider found for " + apiClass);
@@ -706,17 +705,17 @@ public class GeyserImpl implements GeyserApi, EventRegistrar {
     }
 
     @Override
-    public @NonNull MinecraftVersion supportedJavaVersion() {
+    public MinecraftVersion supportedJavaVersion() {
         return new MinecraftVersionImpl(GameProtocol.getJavaMinecraftVersion(), GameProtocol.getJavaProtocolVersion());
     }
 
     @Override
-    public @NonNull List<MinecraftVersion> supportedBedrockVersions() {
+    public List<MinecraftVersion> supportedBedrockVersions() {
         return Collections.unmodifiableList(GameProtocol.SUPPORTED_BEDROCK_VERSIONS);
     }
 
     @Override
-    public @NonNull CommandSource consoleCommandSource() {
+    public CommandSource consoleCommandSource() {
         return getLogger();
     }
 
@@ -763,11 +762,11 @@ public class GeyserImpl implements GeyserApi, EventRegistrar {
     }
 
     @Nullable
-    public String authChainFor(@NonNull String bedrockName) {
+    public String authChainFor(String bedrockName) {
         return savedAuthChains.get(bedrockName);
     }
 
-    public void saveAuthChain(@NonNull String bedrockName, @NonNull String authChain) {
+    public void saveAuthChain(String bedrockName, String authChain) {
         if (!config().savedUserLogins().contains(bedrockName)) {
             // Do not save this login
             return;

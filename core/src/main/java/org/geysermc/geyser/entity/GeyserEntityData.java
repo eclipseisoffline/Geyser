@@ -26,7 +26,6 @@
 package org.geysermc.geyser.entity;
 
 import org.checkerframework.checker.index.qual.NonNegative;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.packet.EmotePacket;
 import org.geysermc.geyser.input.InputLocksFlag;
@@ -52,14 +51,14 @@ public class GeyserEntityData implements EntityData {
     }
 
     @Override
-    public @NonNull CompletableFuture<@Nullable GeyserEntity> entityByJavaId(@NonNegative int javaId) {
+    public CompletableFuture<@Nullable GeyserEntity> entityByJavaId(@NonNegative int javaId) {
         CompletableFuture<GeyserEntity> future = new CompletableFuture<>();
         session.ensureInEventLoop(() -> future.complete(session.getEntityCache().getEntityByJavaId(javaId)));
         return future;
     }
 
     @Override
-    public void showEmote(@NonNull GeyserPlayerEntity emoter, @NonNull String emoteId) {
+    public void showEmote(GeyserPlayerEntity emoter, String emoteId) {
         Objects.requireNonNull(emoter, "emoter must not be null!");
         Entity entity = (Entity) emoter;
         if (entity.getSession() != session) {
@@ -75,12 +74,12 @@ public class GeyserEntityData implements EntityData {
     }
 
     @Override
-    public @NonNull GeyserPlayerEntity playerEntity() {
+    public GeyserPlayerEntity playerEntity() {
         return session.getPlayerEntity();
     }
 
     @Override
-    public boolean lockMovement(boolean lock, @NonNull UUID owner) {
+    public boolean lockMovement(boolean lock, UUID owner) {
         Objects.requireNonNull(owner, "owner must not be null!");
         if (lock) {
             movementLockOwners.add(owner);

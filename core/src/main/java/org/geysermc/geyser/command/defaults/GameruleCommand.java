@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.command.defaults;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.util.TriState;
 import org.geysermc.geyser.command.GeyserCommand;
 import org.geysermc.geyser.command.GeyserCommandSource;
@@ -34,7 +33,7 @@ import org.incendo.cloud.context.CommandContext;
 
 public class GameruleCommand extends GeyserCommand {
 
-    public GameruleCommand(@NonNull String name, @NonNull String description, @NonNull String permission) {
+    public GameruleCommand(String name, String description, String permission) {
         super(name, description, permission, TriState.NOT_SET, true, true);
     }
 

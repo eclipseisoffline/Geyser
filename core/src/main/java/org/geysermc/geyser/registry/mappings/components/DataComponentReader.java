@@ -29,7 +29,6 @@ import com.google.gson.JsonElement;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.Accessors;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.item.custom.v2.CustomItemDefinition;
 import org.geysermc.geyser.api.item.custom.v2.component.ItemDataComponent;
 import org.geysermc.geyser.item.exception.InvalidCustomMappingsFileException;
@@ -43,7 +42,7 @@ public abstract class DataComponentReader<V> {
         this.type = type;
     }
 
-    protected abstract V readDataComponent(@NonNull JsonElement element, String... context) throws InvalidCustomMappingsFileException;
+    protected abstract V readDataComponent(JsonElement element, String... context) throws InvalidCustomMappingsFileException;
 
     void read(CustomItemDefinition.Builder builder, JsonElement element, String... context) throws InvalidCustomMappingsFileException {
         builder.component(type, readDataComponent(element, context));

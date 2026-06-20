@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.util;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
@@ -141,7 +140,7 @@ public class WebUtils {
      * @return Path to the downloaded pack file, or null if it was unable to be loaded
      */
     @SuppressWarnings("ResultOfMethodCallIgnored")
-    public static @NonNull Path downloadRemotePack(String url, boolean force) throws IOException {
+    public static Path downloadRemotePack(String url, boolean force) throws IOException {
         GeyserLogger logger = GeyserImpl.getInstance().getLogger();
         try {
             HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();

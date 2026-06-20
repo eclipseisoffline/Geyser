@@ -26,7 +26,6 @@
 package org.geysermc.geyser.registry.mappings.components.readers;
 
 import com.google.gson.JsonPrimitive;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.item.custom.v2.component.ItemDataComponent;
 import org.geysermc.geyser.item.exception.InvalidCustomMappingsFileException;
 import org.geysermc.geyser.registry.mappings.util.NodeReader;
@@ -38,7 +37,7 @@ public class BooleanComponentReader extends PrimitiveComponentReader<Boolean> {
     }
 
     @Override
-    protected Boolean readValue(@NonNull JsonPrimitive primitive, String... context) throws InvalidCustomMappingsFileException {
+    protected Boolean readValue(JsonPrimitive primitive, String... context) throws InvalidCustomMappingsFileException {
         return NodeReader.BOOLEAN.read(primitive, "reading component", context);
     }
 }

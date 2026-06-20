@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.command;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.GeyserLogger;
 import org.geysermc.geyser.session.GeyserSession;
@@ -79,12 +78,12 @@ public record CommandSourceConverter<S>(Class<S> senderType,
     }
 
     @Override
-    public @NonNull GeyserCommandSource map(@NonNull S base) {
+    public GeyserCommandSource map(S base) {
         return commandSourceLookup.apply(base);
     }
 
     @Override
-    public @NonNull S reverse(GeyserCommandSource source) throws IllegalArgumentException {
+    public S reverse(GeyserCommandSource source) throws IllegalArgumentException {
         Object handle = source.handle();
         if (senderType.isInstance(handle)) {
             return senderType.cast(handle); // one of the server platform implementations

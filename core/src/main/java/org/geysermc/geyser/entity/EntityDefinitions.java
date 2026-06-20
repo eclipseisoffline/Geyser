@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.entity;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
@@ -1310,7 +1309,7 @@ public final class EntityDefinitions {
         // entities would be initialized before this event is called
         GeyserImpl.getInstance().getEventBus().fire(new GeyserDefineEntityPropertiesEvent() {
             @Override
-            public GeyserFloatEntityProperty registerFloatProperty(@NonNull Identifier identifier, @NonNull Identifier propertyId, float min, float max, @Nullable Float defaultValue) {
+            public GeyserFloatEntityProperty registerFloatProperty(Identifier identifier, Identifier propertyId, float min, float max, @Nullable Float defaultValue) {
                 Objects.requireNonNull(identifier);
                 Objects.requireNonNull(propertyId);
                 if (propertyId.vanilla()) {
@@ -1322,7 +1321,7 @@ public final class EntityDefinitions {
             }
 
             @Override
-            public IntProperty registerIntegerProperty(@NonNull Identifier identifier, @NonNull Identifier propertyId, int min, int max, @Nullable Integer defaultValue) {
+            public IntProperty registerIntegerProperty(Identifier identifier, Identifier propertyId, int min, int max, @Nullable Integer defaultValue) {
                 Objects.requireNonNull(identifier);
                 Objects.requireNonNull(propertyId);
                 if (propertyId.vanilla()) {
@@ -1334,7 +1333,7 @@ public final class EntityDefinitions {
             }
 
             @Override
-            public BooleanProperty registerBooleanProperty(@NonNull Identifier identifier, @NonNull Identifier propertyId, boolean defaultValue) {
+            public BooleanProperty registerBooleanProperty(Identifier identifier, Identifier propertyId, boolean defaultValue) {
                 Objects.requireNonNull(identifier);
                 Objects.requireNonNull(propertyId);
                 if (propertyId.vanilla()) {
@@ -1346,7 +1345,7 @@ public final class EntityDefinitions {
             }
 
             @Override
-            public <E extends Enum<E>> EnumProperty<E> registerEnumProperty(@NonNull Identifier identifier, @NonNull Identifier propertyId, @NonNull Class<E> enumClass, @Nullable E defaultValue) {
+            public <E extends Enum<E>> EnumProperty<E> registerEnumProperty(Identifier identifier, Identifier propertyId, Class<E> enumClass, @Nullable E defaultValue) {
                 Objects.requireNonNull(identifier);
                 Objects.requireNonNull(propertyId);
                 Objects.requireNonNull(enumClass);
@@ -1359,7 +1358,7 @@ public final class EntityDefinitions {
             }
 
             @Override
-            public GeyserStringEnumProperty registerEnumProperty(@NonNull Identifier identifier, @NonNull Identifier propertyId, @NonNull List<String> values, @Nullable String defaultValue) {
+            public GeyserStringEnumProperty registerEnumProperty(Identifier identifier, Identifier propertyId, List<String> values, @Nullable String defaultValue) {
                 Objects.requireNonNull(identifier);
                 Objects.requireNonNull(propertyId);
                 Objects.requireNonNull(values);
@@ -1372,7 +1371,7 @@ public final class EntityDefinitions {
             }
 
             @Override
-            public Collection<GeyserEntityProperty<?>> properties(@NonNull Identifier identifier) {
+            public Collection<GeyserEntityProperty<?>> properties(Identifier identifier) {
                 Objects.requireNonNull(identifier);
                 var definition = Registries.JAVA_ENTITY_IDENTIFIERS.get(identifier.toString());
                 if (definition == null) {

@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.impl.camera;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.checkerframework.common.value.qual.IntRange;
 import org.cloudburstmc.math.vector.Vector3f;
@@ -91,7 +90,7 @@ public record GeyserCameraPosition(CameraFade cameraFade,
         }
 
         @Override
-        public CameraPosition.Builder position(@NonNull Vector3f position) {
+        public CameraPosition.Builder position(Vector3f position) {
             Objects.requireNonNull(position, "camera position cannot be null!");
             this.position = position;
             return this;

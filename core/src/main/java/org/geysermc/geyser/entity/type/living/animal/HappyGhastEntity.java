@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living.animal;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.math.TrigMath;
 import org.cloudburstmc.math.vector.Vector2f;
@@ -120,7 +119,7 @@ public class HappyGhastEntity extends AnimalEntity implements ClientVehicle {
 
     @NonNull
     @Override
-    protected InteractiveTag testMobInteraction(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (this.isBaby()) {
             return super.testMobInteraction(hand, itemInHand);
         } else {
@@ -149,7 +148,7 @@ public class HappyGhastEntity extends AnimalEntity implements ClientVehicle {
 
     @NonNull
     @Override
-    protected InteractionResult mobInteract(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (this.isBaby()) {
             return super.mobInteract(hand, itemInHand);
         } else {

@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.event;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.event.Event;
 import org.geysermc.event.FireResult;
 import org.geysermc.event.PostOrder;
@@ -46,11 +45,11 @@ public final class GeyserEventBus extends OwnedEventBusImpl<EventRegistrar, Even
         implements EventBus<EventRegistrar> {
     @Override
     protected <L, T extends Event, B extends OwnedSubscriber<EventRegistrar, T>> B makeSubscription(
-            @NonNull EventRegistrar owner,
-            @NonNull Class<T> eventClass,
-            @NonNull Subscribe subscribe,
-            @NonNull L listener,
-            @NonNull BiConsumer<L, T> handler) {
+            EventRegistrar owner,
+            Class<T> eventClass,
+            Subscribe subscribe,
+            L listener,
+            BiConsumer<L, T> handler) {
         return (B) new GeyserEventSubscriber<>(
                 owner, eventClass, subscribe.postOrder(), subscribe.ignoreCancelled(), listener, handler
         );
@@ -58,20 +57,20 @@ public final class GeyserEventBus extends OwnedEventBusImpl<EventRegistrar, Even
 
     @Override
     protected <T extends Event, B extends OwnedSubscriber<EventRegistrar, T>> B makeSubscription(
-            @NonNull EventRegistrar owner,
-            @NonNull Class<T> eventClass,
-            @NonNull Consumer<T> handler,
-            @NonNull PostOrder postOrder) {
+            EventRegistrar owner,
+            Class<T> eventClass,
+            Consumer<T> handler,
+            PostOrder postOrder) {
         return (B) new GeyserEventSubscriber<>(owner, eventClass, handler, postOrder);
     }
 
     @Override
     @NonNull
-    public <T extends Event> Set<? extends EventSubscriber<EventRegistrar, T>> subscribers(@NonNull Class<T> eventClass) {
+    public <T extends Event> Set<? extends EventSubscriber<EventRegistrar, T>> subscribers(Class<T> eventClass) {
         return castGenericSet(super.subscribers(eventClass));
     }
 
-    public void fireEventElseKick(@NonNull Event event, GeyserSession session) {
+    public void fireEventElseKick(Event event, GeyserSession session) {
         FireResult result = this.fire(event);
         if (!result.success()) {
             session.disconnect("Internal server error occurred! Please contact a server administrator.");

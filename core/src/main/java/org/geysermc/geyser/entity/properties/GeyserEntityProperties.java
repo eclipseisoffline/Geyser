@@ -30,7 +30,6 @@ import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.nbt.NbtMapBuilder;
@@ -65,7 +64,7 @@ public class GeyserEntityProperties {
         return mapBuilder.putString("type", entityType).build();
     }
 
-    public <T> void add(String entityType, @NonNull PropertyType<T, ? extends EntityProperty> property) {
+    public <T> void add(String entityType, PropertyType<T, ? extends EntityProperty> property) {
         if (!Registries.BEDROCK_ENTITY_PROPERTIES.get().isEmpty()) {
             throw new IllegalStateException("Cannot add properties outside the GeyserDefineEntityProperties event!");
         }
@@ -93,7 +92,7 @@ public class GeyserEntityProperties {
         propertyIndices.put(name, properties.size() - 1);
     }
 
-    public @NonNull List<PropertyType<?, ?>> getProperties() {
+    public List<PropertyType<?, ?>> getProperties() {
         return properties == null ? List.of() : properties;
     }
 
@@ -113,7 +112,7 @@ public class GeyserEntityProperties {
             this.identifier = identifier;
         }
 
-        public <T> Builder add(@NonNull PropertyType<T, ? extends EntityProperty> property) {
+        public <T> Builder add(PropertyType<T, ? extends EntityProperty> property) {
             Objects.requireNonNull(property, "property cannot be null!");
             if (properties == null) {
                 properties = new GeyserEntityProperties();

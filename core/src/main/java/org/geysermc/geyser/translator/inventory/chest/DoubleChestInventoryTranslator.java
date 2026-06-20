@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.translator.inventory.chest;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.nbt.NbtMapBuilder;
@@ -69,7 +68,7 @@ public class DoubleChestInventoryTranslator extends ChestInventoryTranslator<Con
      * Mirrors {@link BlockInventoryHolder#canReuseContainer(GeyserSession, Container, Container)}
      */
     @Override
-    public boolean canReuseInventory(GeyserSession session, @NonNull Inventory newInventory, @NonNull Inventory oldInventory) {
+    public boolean canReuseInventory(GeyserSession session, Inventory newInventory, Inventory oldInventory) {
         if (!super.canReuseInventory(session, newInventory, oldInventory) ||
             !(newInventory instanceof Container) ||
             !(oldInventory instanceof Container previous)

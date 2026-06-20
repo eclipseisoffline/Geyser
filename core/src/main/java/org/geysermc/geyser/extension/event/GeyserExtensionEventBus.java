@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.extension.event;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.event.Event;
 import org.geysermc.event.FireResult;
 import org.geysermc.event.PostOrder;
@@ -43,43 +42,43 @@ public record GeyserExtensionEventBus(EventBus<EventRegistrar> eventBus, Extensi
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void unsubscribe(@NonNull EventSubscriber<Extension, ? extends Event> subscription) {
+    public void unsubscribe(EventSubscriber<Extension, ? extends Event> subscription) {
         eventBus.unsubscribe((EventSubscriber) subscription);
     }
 
     @Override
-    public FireResult fire(@NonNull Event event) {
+    public FireResult fire(Event event) {
         return eventBus.fire(event);
     }
 
     @Override
-    public FireResult fireSilently(@NonNull Event event) {
+    public FireResult fireSilently(Event event) {
         return eventBus.fireSilently(event);
     }
 
     @Override
-    public @NonNull <T extends Event> Set<? extends EventSubscriber<EventRegistrar, T>> subscribers(@NonNull Class<T> eventClass) {
+    public <T extends Event> Set<? extends EventSubscriber<EventRegistrar, T>> subscribers(Class<T> eventClass) {
         return eventBus.subscribers(eventClass);
     }
 
     @Override
-    public void register(@NonNull Object listener) {
+    public void register(Object listener) {
         eventBus.register(extension, listener);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public <T extends Event, U extends Subscriber<T>> @NonNull U subscribe(
-            @NonNull Class<T> eventClass, @NonNull Consumer<T> consumer) {
+    public <T extends Event, U extends Subscriber<T>> U subscribe(
+            Class<T> eventClass, Consumer<T> consumer) {
         return eventBus.subscribe(extension, eventClass, consumer);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public <T extends Event, U extends Subscriber<T>> @NonNull U subscribe(
-            @NonNull Class<T> eventClass,
-            @NonNull Consumer<T> consumer,
-            @NonNull PostOrder postOrder
+    public <T extends Event, U extends Subscriber<T>> U subscribe(
+            Class<T> eventClass,
+            Consumer<T> consumer,
+            PostOrder postOrder
     ) {
         return eventBus.subscribe(extension, eventClass, consumer, postOrder);
     }

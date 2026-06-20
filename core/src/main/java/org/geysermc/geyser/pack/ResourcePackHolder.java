@@ -26,7 +26,6 @@
 package org.geysermc.geyser.pack;
 
 import lombok.With;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.pack.PackCodec;
 import org.geysermc.geyser.api.pack.ResourcePack;
 import org.geysermc.geyser.api.pack.ResourcePackManifest;
@@ -37,8 +36,8 @@ import java.util.UUID;
 
 @With
 public record ResourcePackHolder(
-    @NonNull GeyserResourcePack pack,
-    @NonNull OptionHolder optionHolder
+    GeyserResourcePack pack,
+    OptionHolder optionHolder
 ) {
 
     public static ResourcePackHolder of(GeyserResourcePack pack) {

@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.entity.properties.type.BooleanProperty;
 import org.geysermc.geyser.entity.properties.type.EnumProperty;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
@@ -80,7 +79,7 @@ public class CopperGolemEntity extends GolemEntity {
     }
 
     @Override
-    protected @NonNull InteractiveTag testMobInteraction(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (itemInHand.isEmpty() && !getMainHandItem().isEmpty()) {
             return InteractiveTag.DROP_ITEM;
         } else if (itemInHand.is(Items.SHEARS) && canBeSheared()) {
@@ -97,7 +96,7 @@ public class CopperGolemEntity extends GolemEntity {
     }
 
     @Override
-    protected @NonNull InteractionResult mobInteract(@NonNull Hand usedHand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractionResult mobInteract(Hand usedHand, GeyserItemStack itemInHand) {
         if ((itemInHand.isEmpty() && !getMainHandItem().isEmpty()) || (itemInHand.is(Items.SHEARS) && canBeSheared())) {
             return InteractionResult.SUCCESS;
         }

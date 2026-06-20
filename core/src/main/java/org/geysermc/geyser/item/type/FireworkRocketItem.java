@@ -28,7 +28,6 @@ package org.geysermc.geyser.item.type;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import it.unimi.dsi.fastutil.ints.IntArrays;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.nbt.NbtList;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.nbt.NbtMapBuilder;
@@ -51,7 +50,7 @@ public class FireworkRocketItem extends Item implements BedrockRequiresTagItem {
     }
 
     @Override
-    public void translateComponentsToBedrock(@NonNull GeyserSession session, @NonNull DataComponents components, @NonNull TooltipOptions tooltip, @NonNull BedrockItemBuilder builder) {
+    public void translateComponentsToBedrock(GeyserSession session, DataComponents components, TooltipOptions tooltip, BedrockItemBuilder builder) {
         super.translateComponentsToBedrock(session, components, tooltip, builder);
 
         Fireworks fireworks = components.get(DataComponentTypes.FIREWORKS);
@@ -123,7 +122,7 @@ public class FireworkRocketItem extends Item implements BedrockRequiresTagItem {
     }
 
     @Override
-    public void translateNbtToJava(@NonNull GeyserSession session, @NonNull NbtMap bedrockTag, @NonNull DataComponents components, @NonNull ItemMapping mapping) {
+    public void translateNbtToJava(GeyserSession session, NbtMap bedrockTag, DataComponents components, ItemMapping mapping) {
         super.translateNbtToJava(session, bedrockTag, components, mapping);
 
         NbtMap fireworksTag = bedrockTag.getCompound("Fireworks");
