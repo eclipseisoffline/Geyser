@@ -25,8 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living.animal.farm;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.SoundEvent;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
@@ -41,6 +39,7 @@ import org.geysermc.geyser.session.cache.tags.Tag;
 import org.geysermc.geyser.util.InteractionResult;
 import org.geysermc.geyser.util.InteractiveTag;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.player.Hand;
+import org.jspecify.annotations.Nullable;
 
 public class CowEntity extends TemperatureVariantAnimal {
 
@@ -48,9 +47,8 @@ public class CowEntity extends TemperatureVariantAnimal {
         super(context);
     }
 
-    @NonNull
     @Override
-    protected InteractiveTag testMobInteraction(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (getFlag(EntityFlag.BABY) || !itemInHand.is(Items.BUCKET)) {
             return super.testMobInteraction(hand, itemInHand);
         }
@@ -58,9 +56,8 @@ public class CowEntity extends TemperatureVariantAnimal {
         return InteractiveTag.MILK;
     }
 
-    @NonNull
     @Override
-    protected InteractionResult mobInteract(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (getFlag(EntityFlag.BABY) || !itemInHand.is(Items.BUCKET)) {
             return super.mobInteract(hand, itemInHand);
         }

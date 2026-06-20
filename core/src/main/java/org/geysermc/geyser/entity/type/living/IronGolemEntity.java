@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
@@ -47,9 +46,8 @@ public class IronGolemEntity extends GolemEntity {
         maxHealth = 100f;
     }
 
-    @NonNull
     @Override
-    protected InteractionResult mobInteract(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (itemInHand.is(Items.IRON_INGOT)) {
             if (health < maxHealth) {
                 // Healing the iron golem

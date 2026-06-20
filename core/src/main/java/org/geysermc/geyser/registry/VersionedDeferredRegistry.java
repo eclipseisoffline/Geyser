@@ -26,7 +26,6 @@
 package org.geysermc.geyser.registry;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.registry.loader.RegistryLoader;
 
 import java.util.function.Function;
@@ -60,7 +59,6 @@ public class VersionedDeferredRegistry<V> extends AbstractMappedDeferredRegistry
      * @return the closest value for the specified version
      * @throws IllegalArgumentException if no values exist at or above the given version
      */
-    @NonNull
     public V forVersion(int version) {
         return backingRegistry().forVersion(version);
     }

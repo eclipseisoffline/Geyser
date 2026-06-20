@@ -27,7 +27,6 @@ package org.geysermc.geyser.inventory.item;
 
 import lombok.Getter;
 import lombok.experimental.Accessors;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.item.Items;
 import org.geysermc.geyser.item.type.Item;
 import org.geysermc.geyser.registry.type.ItemMapping;
@@ -64,7 +63,6 @@ public class StoredItemMappings {
         this.writtenBook = load(itemMappings, Items.WRITTEN_BOOK);
     }
 
-    @NonNull
     private ItemMapping load(Map<Item, ItemMapping> itemMappings, Item item) {
         ItemMapping mapping = itemMappings.get(item);
         if (mapping == null) {

@@ -25,12 +25,12 @@
 
 package org.geysermc.geyser.translator.protocol.bedrock;
 
-import org.geysermc.mcprotocollib.protocol.data.game.ClientCommand;
-import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.ServerboundClientCommandPacket;
 import org.cloudburstmc.protocol.bedrock.packet.RespawnPacket;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
 import org.geysermc.geyser.translator.protocol.Translator;
+import org.geysermc.mcprotocollib.protocol.data.game.ClientCommand;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.ServerboundClientCommandPacket;
 
 @Translator(packet = RespawnPacket.class)
 public class BedrockRespawnTranslator extends PacketTranslator<RespawnPacket> {

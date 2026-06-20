@@ -26,9 +26,8 @@
 package org.geysermc.geyser.session.cache.registry;
 
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.session.GeyserSession;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Optional;
 
@@ -156,7 +155,7 @@ public record JavaRegistryKey<T>(Key registryKey, RegistryLookup<T> lookup) {
     }
 
     @Override
-    public @NonNull String toString() {
+    public String toString() {
         return "Java registry: " + registryKey;
     }
 }

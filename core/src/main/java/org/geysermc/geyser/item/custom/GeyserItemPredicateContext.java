@@ -26,8 +26,6 @@
 package org.geysermc.geyser.item.custom;
 
 import com.google.common.base.Suppliers;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.api.predicate.context.item.ChargedProjectile;
 import org.geysermc.geyser.api.predicate.context.item.ItemPredicateContext;
 import org.geysermc.geyser.api.util.Identifier;
@@ -44,6 +42,7 @@ import org.geysermc.mcprotocollib.protocol.data.game.item.component.ArmorTrim;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.CustomModelData;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponentTypes;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponents;
+import org.jspecify.annotations.Nullable;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -98,12 +97,12 @@ public record GeyserItemPredicateContext(Supplier<Identifier> dimensionSupplier,
     }
 
     @Override
-    public @NonNull List<ChargedProjectile> chargedProjectiles() {
+    public List<ChargedProjectile> chargedProjectiles() {
         return chargedProjectilesSupplier.get();
     }
 
     @Override
-    public @NonNull List<Identifier> components() {
+    public List<Identifier> components() {
         return componentsSupplier.get();
     }
 

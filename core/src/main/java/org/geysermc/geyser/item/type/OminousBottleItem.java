@@ -25,8 +25,6 @@
 
 package org.geysermc.geyser.item.type;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.geysermc.geyser.inventory.GeyserItemStack;
 import org.geysermc.geyser.registry.type.ItemMapping;
@@ -34,6 +32,7 @@ import org.geysermc.geyser.registry.type.ItemMappings;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponentTypes;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponents;
+import org.jspecify.annotations.Nullable;
 
 public class OminousBottleItem extends Item {
     public OminousBottleItem(String javaIdentifier, Builder builder) {
@@ -55,7 +54,7 @@ public class OminousBottleItem extends Item {
     }
 
     @Override
-    public @NonNull GeyserItemStack translateToJava(GeyserSession session, @NonNull ItemData itemData, @NonNull ItemMapping mapping, @NonNull ItemMappings mappings) {
+    public GeyserItemStack translateToJava(GeyserSession session, ItemData itemData, ItemMapping mapping, ItemMappings mappings) {
         // This item can be pulled from the creative inventory with amplifiers.
         GeyserItemStack itemStack = super.translateToJava(session, itemData, mapping, mappings);
         int damage = itemData.getDamage();

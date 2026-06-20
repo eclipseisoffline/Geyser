@@ -41,7 +41,6 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.nbt.NbtMapBuilder;
 import org.cloudburstmc.nbt.NbtType;
@@ -144,7 +143,6 @@ public class ItemRegistryPopulator {
 
     @FunctionalInterface
     interface Remapper {
-        @NonNull
         GeyserMappingItem remap(Item item, GeyserMappingItem mapping);
     }
 

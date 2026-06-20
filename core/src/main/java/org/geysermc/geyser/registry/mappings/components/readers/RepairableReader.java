@@ -26,7 +26,6 @@
 package org.geysermc.geyser.registry.mappings.components.readers;
 
 import com.google.gson.JsonElement;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaItemDataComponents;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaRepairable;
 import org.geysermc.geyser.api.util.Holders;
@@ -46,7 +45,7 @@ public class RepairableReader extends DataComponentReader<JavaRepairable> {
     }
 
     @Override
-    protected JavaRepairable readDataComponent(@NonNull JsonElement node, String... context) throws InvalidCustomMappingsFileException {
+    protected JavaRepairable readDataComponent(JsonElement node, String... context) throws InvalidCustomMappingsFileException {
         try {
             Identifier item = MappingsUtil.readOrThrow(node, "items", NodeReader.IDENTIFIER, context);
             return new JavaRepairableImpl(Holders.of(item));

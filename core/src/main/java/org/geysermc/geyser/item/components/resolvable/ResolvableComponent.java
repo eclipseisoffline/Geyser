@@ -25,10 +25,10 @@
 
 package org.geysermc.geyser.item.components.resolvable;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.session.cache.registry.JavaRegistryProvider;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponentType;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponents;
+import org.jspecify.annotations.Nullable;
 
 /**
  * A resolvable component is a default item component that has to be loaded into its MCPL equivalent when registering

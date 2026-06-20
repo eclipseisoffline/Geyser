@@ -26,7 +26,6 @@
 package org.geysermc.geyser.pack;
 
 import lombok.With;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.pack.PackCodec;
 import org.geysermc.geyser.api.pack.ResourcePack;
 import org.geysermc.geyser.api.pack.ResourcePackManifest;
@@ -35,9 +34,9 @@ import java.util.Objects;
 
 @With
 public record GeyserResourcePack(
-    @NonNull PackCodec codec,
-    @NonNull ResourcePackManifest manifest,
-    @NonNull String contentKey
+    PackCodec codec,
+    ResourcePackManifest manifest,
+    String contentKey
 ) implements ResourcePack {
 
     /**
@@ -77,7 +76,7 @@ public record GeyserResourcePack(
             return contentKey;
         }
 
-        public Builder contentKey(@NonNull String contentKey) {
+        public Builder contentKey(String contentKey) {
             Objects.requireNonNull(contentKey);
             this.contentKey = contentKey;
             return this;

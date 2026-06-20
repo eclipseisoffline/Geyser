@@ -31,8 +31,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.inventory.item.DyeColor;
@@ -62,6 +60,7 @@ import org.geysermc.mcprotocollib.protocol.data.game.recipe.display.slot.OnlyWit
 import org.geysermc.mcprotocollib.protocol.data.game.recipe.display.slot.SlotDisplay;
 import org.geysermc.mcprotocollib.protocol.data.game.recipe.display.slot.TagSlotDisplay;
 import org.geysermc.mcprotocollib.protocol.data.game.recipe.display.slot.WithAnyPotionSlotDisplay;
+import org.jspecify.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.List;
@@ -98,19 +97,19 @@ public class GeyserItemStack {
         this.bundleData = bundleData;
     }
 
-    public static @NonNull GeyserItemStack of(@NonNull GeyserSession session, int javaId, int amount) {
+    public static GeyserItemStack of(GeyserSession session, int javaId, int amount) {
         return of(session, javaId, amount, null);
     }
 
-    public static @NonNull GeyserItemStack of(@NonNull GeyserSession session, int javaId, int amount, @Nullable DataComponents components) {
+    public static GeyserItemStack of(GeyserSession session, int javaId, int amount, @Nullable DataComponents components) {
         return new GeyserItemStack(session, javaId, amount, components);
     }
 
-    public static @NonNull GeyserItemStack from(@NonNull GeyserSession session, @Nullable ItemStack itemStack) {
+    public static GeyserItemStack from(GeyserSession session, @Nullable ItemStack itemStack) {
         return itemStack == null ? EMPTY : new GeyserItemStack(session, itemStack.getId(), itemStack.getAmount(), itemStack.getDataComponentsPatch());
     }
 
-    public static @NonNull GeyserItemStack from(@NonNull GeyserSession session, @NonNull SlotDisplay slotDisplay) {
+    public static GeyserItemStack from(GeyserSession session, SlotDisplay slotDisplay) {
         // TODO possible code duplication with RecipeUtil#translateToOutput?
         return switch (slotDisplay) {
             case EmptySlotDisplay ignored -> GeyserItemStack.EMPTY;
@@ -210,7 +209,6 @@ public class GeyserItemStack {
         return components != null;
     }
 
-    @NonNull
     public DataComponents getOrCreateComponents() {
         if (components == null) {
             return components = new DataComponents(new HashMap<>());
@@ -228,7 +226,7 @@ public class GeyserItemStack {
      * @param <T> the value's type
      */
     @Nullable
-    public <T> T getComponent(@NonNull DataComponentType<T> type) {
+    public <T> T getComponent(DataComponentType<T> type) {
         // A data component patch may contain null values to remove base components
         // e.g. an elytra without the glider component
         if (components != null && components.contains(type)) {
@@ -238,7 +236,7 @@ public class GeyserItemStack {
         return asItem().getComponent(resolvableComponentGetter, type);
     }
 
-    public <T> T getComponentElseGet(@NonNull DataComponentType<T> type, Supplier<T> supplier) {
+    public <T> T getComponentElseGet(DataComponentType<T> type, Supplier<T> supplier) {
         T value = getComponent(type);
         return value == null ? supplier.get() : value;
     }

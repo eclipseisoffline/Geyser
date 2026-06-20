@@ -27,8 +27,6 @@ package org.geysermc.geyser.registry.populator;
 
 import com.google.common.collect.Multimap;
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.nbt.NbtMapBuilder;
 import org.cloudburstmc.nbt.NbtType;
@@ -79,6 +77,7 @@ import org.geysermc.mcprotocollib.protocol.data.game.item.component.SwingAnimati
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.ToolData;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.UseCooldown;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.UseEffects;
+import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -123,7 +122,7 @@ public class CustomItemRegistryPopulator {
         GeyserImpl.getInstance().eventBus().fire(new GeyserDefineCustomItemsEventImpl(customItems, nonVanillaCustomItems) {
 
             @Override
-            public void register(@NonNull Identifier identifier, @NonNull CustomItemDefinition definition) {
+            public void register(Identifier identifier, CustomItemDefinition definition) {
                 try {
                     validateVanillaOverride(identifier, definition, customItems, items);
                     customItems.get(identifier).add(definition);
@@ -133,7 +132,7 @@ public class CustomItemRegistryPopulator {
             }
 
             @Override
-            public void register(@NonNull NonVanillaCustomItemDefinition definition) {
+            public void register(NonVanillaCustomItemDefinition definition) {
                 if (definition.identifier().vanilla()) {
                     throw new CustomItemDefinitionRegisterException("Non-vanilla custom item definition (identifier=" + definition.identifier() + ") is attempting to masquerade as a vanilla Minecraft item!");
                 } else if (definition.bedrockIdentifier().vanilla()) {

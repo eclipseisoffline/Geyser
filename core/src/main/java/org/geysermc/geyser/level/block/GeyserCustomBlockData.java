@@ -25,10 +25,12 @@
 
 package org.geysermc.geyser.level.block;
 
-import it.unimi.dsi.fastutil.objects.*;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMaps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectLists;
 import lombok.RequiredArgsConstructor;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.Constants;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.block.custom.CustomBlockData;
@@ -38,6 +40,7 @@ import org.geysermc.geyser.api.block.custom.component.CustomBlockComponents;
 import org.geysermc.geyser.api.block.custom.property.CustomBlockProperty;
 import org.geysermc.geyser.api.block.custom.property.PropertyType;
 import org.geysermc.geyser.api.util.CreativeCategory;
+import org.jspecify.annotations.Nullable;
 
 import java.util.List;
 import java.util.Map;
@@ -95,12 +98,12 @@ public class GeyserCustomBlockData implements CustomBlockData {
     }
 
     @Override
-    public @NonNull String name() {
+    public String name() {
         return name;
     }
 
     @Override
-    public @NonNull String identifier() {
+    public String identifier() {
         return Constants.GEYSER_CUSTOM_NAMESPACE + ":" + name;
     }
 
@@ -125,22 +128,22 @@ public class GeyserCustomBlockData implements CustomBlockData {
     }
 
     @Override
-    public @NonNull Map<String, CustomBlockProperty<?>> properties() {
+    public Map<String, CustomBlockProperty<?>> properties() {
         return properties;
     }
 
     @Override
-    public @NonNull List<CustomBlockPermutation> permutations() {
+    public List<CustomBlockPermutation> permutations() {
         return permutations;
     }
 
     @Override
-    public @NonNull CustomBlockState defaultBlockState() {
+    public CustomBlockState defaultBlockState() {
         return new GeyserCustomBlockState(this, defaultProperties);
     }
 
     @Override
-    public CustomBlockState.@NonNull Builder blockStateBuilder() {
+    public CustomBlockState.Builder blockStateBuilder() {
         return new GeyserCustomBlockState.Builder(this);
     }
 
@@ -154,7 +157,7 @@ public class GeyserCustomBlockData implements CustomBlockData {
         private List<CustomBlockPermutation> permutations = ObjectLists.emptyList();
 
         @Override
-        public Builder name(@NonNull String name) {
+        public Builder name(String name) {
             this.name = name;
             return this;
         }
@@ -178,31 +181,31 @@ public class GeyserCustomBlockData implements CustomBlockData {
         }
 
         @Override
-        public Builder components(@NonNull CustomBlockComponents components) {
+        public Builder components(CustomBlockComponents components) {
             this.components = components;
             return this;
         }
 
         @Override
-        public Builder booleanProperty(@NonNull String propertyName) {
+        public Builder booleanProperty(String propertyName) {
             this.properties.put(propertyName, new GeyserCustomBlockProperty<>(propertyName, List.of((byte) 0, (byte) 1), PropertyType.booleanProp()));
             return this;
         }
 
         @Override
-        public Builder intProperty(@NonNull String propertyName, List<Integer> values) {
+        public Builder intProperty(String propertyName, List<Integer> values) {
             this.properties.put(propertyName, new GeyserCustomBlockProperty<>(propertyName, values, PropertyType.integerProp()));
             return this;
         }
 
         @Override
-        public Builder stringProperty(@NonNull String propertyName, List<String> values) {
+        public Builder stringProperty(String propertyName, List<String> values) {
             this.properties.put(propertyName, new GeyserCustomBlockProperty<>(propertyName, values, PropertyType.stringProp()));
             return this;
         }
 
         @Override
-        public Builder permutations(@NonNull List<CustomBlockPermutation> permutations) {
+        public Builder permutations(List<CustomBlockPermutation> permutations) {
             this.permutations = permutations;
             return this;
         }

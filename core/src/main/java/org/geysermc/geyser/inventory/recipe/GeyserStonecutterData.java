@@ -26,7 +26,7 @@
 package org.geysermc.geyser.inventory.recipe;
 
 import org.geysermc.mcprotocollib.protocol.data.game.item.ItemStack;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 
 /**
  * @param buttonId the button that needs to be pressed for Java Edition to accept this item.

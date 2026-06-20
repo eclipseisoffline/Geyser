@@ -26,7 +26,6 @@
 package org.geysermc.geyser.translator.protocol.java.level;
 
 import net.kyori.adventure.key.Key;
-import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.ClientboundCooldownPacket;
 import org.cloudburstmc.protocol.bedrock.packet.PlayerStartItemCooldownPacket;
 import org.geysermc.geyser.item.Items;
 import org.geysermc.geyser.item.type.Item;
@@ -34,6 +33,7 @@ import org.geysermc.geyser.registry.Registries;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
 import org.geysermc.geyser.translator.protocol.Translator;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.ClientboundCooldownPacket;
 
 @Translator(packet = ClientboundCooldownPacket.class)
 public class JavaCooldownTranslator extends PacketTranslator<ClientboundCooldownPacket> {

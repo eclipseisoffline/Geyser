@@ -28,7 +28,6 @@ package org.geysermc.geyser.translator.inventory;
 import it.unimi.dsi.fastutil.ints.IntIterator;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSet;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.data.definitions.BlockDefinition;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerId;
@@ -571,7 +570,7 @@ public class PlayerInventoryTranslator extends InventoryTranslator<PlayerInvento
     }
 
     @Override
-    public boolean canReuseInventory(GeyserSession session, @NonNull Inventory inventory, @NonNull Inventory previous) {
+    public boolean canReuseInventory(GeyserSession session, Inventory inventory, Inventory previous) {
         return true;
     }
 

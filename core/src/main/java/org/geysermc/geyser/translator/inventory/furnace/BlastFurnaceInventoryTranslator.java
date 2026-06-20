@@ -25,12 +25,12 @@
 
 package org.geysermc.geyser.translator.inventory.furnace;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerSlotType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerType;
 import org.geysermc.geyser.inventory.BedrockContainerSlot;
 import org.geysermc.geyser.inventory.Container;
 import org.geysermc.geyser.level.block.Blocks;
+import org.jspecify.annotations.Nullable;
 
 public class BlastFurnaceInventoryTranslator extends AbstractFurnaceInventoryTranslator {
     public BlastFurnaceInventoryTranslator() {

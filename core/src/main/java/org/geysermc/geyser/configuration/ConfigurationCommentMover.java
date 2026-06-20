@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.configuration;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.spongepowered.configurate.CommentedConfigurationNode;
 import org.spongepowered.configurate.ConfigurationNode;
 import org.spongepowered.configurate.ConfigurationVisitor;
@@ -37,7 +36,7 @@ public final class ConfigurationCommentMover implements ConfigurationVisitor.Sta
 
     private final CommentedConfigurationNode otherRoot;
 
-    private ConfigurationCommentMover(@NonNull CommentedConfigurationNode otherNode) {
+    private ConfigurationCommentMover(CommentedConfigurationNode otherNode) {
         this.otherRoot = otherNode;
     }
 
@@ -55,7 +54,7 @@ public final class ConfigurationCommentMover implements ConfigurationVisitor.Sta
         moveSingle(source, destination);
     }
 
-    private static void moveSingle(@NonNull CommentedConfigurationNode source, @NonNull CommentedConfigurationNode destination) {
+    private static void moveSingle(CommentedConfigurationNode source, CommentedConfigurationNode destination) {
         // Only transfer the comment, overriding if necessary
         String comment = source.comment();
         if (comment != null) {
@@ -71,7 +70,7 @@ public final class ConfigurationCommentMover implements ConfigurationVisitor.Sta
      * @param source the source of the comments, which must be the topmost parent of a tree
      * @param destination the destination of the comments, any node in a different tree
      */
-    public static void moveComments(@NonNull CommentedConfigurationNode source, @NonNull CommentedConfigurationNode destination) {
+    public static void moveComments(CommentedConfigurationNode source, CommentedConfigurationNode destination) {
         if (source.parent() != null) {
             throw new IllegalArgumentException("source is not the base of the tree it is within: " + source.path());
         }

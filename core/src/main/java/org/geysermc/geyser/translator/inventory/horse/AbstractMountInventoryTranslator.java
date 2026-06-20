@@ -26,8 +26,8 @@
 package org.geysermc.geyser.translator.inventory.horse;
 
 import org.geysermc.geyser.inventory.Container;
-import org.geysermc.geyser.inventory.updater.MountInventoryUpdater;
 import org.geysermc.geyser.inventory.updater.InventoryUpdater;
+import org.geysermc.geyser.inventory.updater.MountInventoryUpdater;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.inventory.BaseInventoryTranslator;
 

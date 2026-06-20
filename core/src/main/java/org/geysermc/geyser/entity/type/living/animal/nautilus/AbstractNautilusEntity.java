@@ -25,8 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living.animal.nautilus;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.math.TrigMath;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
@@ -52,6 +50,7 @@ import org.geysermc.mcprotocollib.protocol.data.game.entity.player.GameMode;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.player.Hand;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponentTypes;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.HolderSet;
+import org.jspecify.annotations.Nullable;
 
 public abstract class AbstractNautilusEntity extends TameableEntity implements ClientVehicle {
     private HolderSet repairableItems = null;
@@ -78,9 +77,8 @@ public abstract class AbstractNautilusEntity extends TameableEntity implements C
         repairableItems = stack.getComponent(DataComponentTypes.REPAIRABLE);
     }
 
-    @NonNull
     @Override
-    protected InteractiveTag testMobInteraction(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (getFlag(EntityFlag.ANGRY)) {
             return InteractiveTag.NONE;
         }

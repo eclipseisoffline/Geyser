@@ -30,7 +30,6 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectMaps;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.block.custom.CustomBlockData;
 import org.geysermc.geyser.api.block.custom.CustomBlockState;
 import org.geysermc.geyser.api.block.custom.property.CustomBlockProperty;
@@ -43,23 +42,23 @@ public class GeyserCustomBlockState implements CustomBlockState {
     Map<String, Object> properties;
 
     @Override
-    public @NonNull CustomBlockData block() {
+    public CustomBlockData block() {
         return block;
     }
 
     @Override
-    public @NonNull String name() {
+    public String name() {
         return block.name();
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T> @NonNull T property(@NonNull String propertyName) {
+    public <T> T property(String propertyName) {
         return (T) properties.get(propertyName);
     }
 
     @Override
-    public @NonNull Map<String, Object> properties() {
+    public Map<String, Object> properties() {
         return properties;
     }
 
@@ -69,19 +68,19 @@ public class GeyserCustomBlockState implements CustomBlockState {
         private final Object2ObjectMap<String, Object> properties = new Object2ObjectOpenHashMap<>();
 
         @Override
-        public Builder booleanProperty(@NonNull String propertyName, boolean value) {
+        public Builder booleanProperty(String propertyName, boolean value) {
             properties.put(propertyName, value ? (byte) 1 : (byte) 0);
             return this;
         }
 
         @Override
-        public Builder intProperty(@NonNull String propertyName, int value) {
+        public Builder intProperty(String propertyName, int value) {
             properties.put(propertyName, value);
             return this;
         }
 
         @Override
-        public Builder stringProperty(@NonNull String propertyName, @NonNull String value) {
+        public Builder stringProperty(String propertyName, String value) {
             properties.put(propertyName, value);
             return this;
         }

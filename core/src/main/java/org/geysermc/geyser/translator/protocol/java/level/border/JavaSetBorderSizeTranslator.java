@@ -25,11 +25,11 @@
 
 package org.geysermc.geyser.translator.protocol.java.level.border;
 
-import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.level.border.ClientboundSetBorderSizePacket;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.session.cache.WorldBorder;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
 import org.geysermc.geyser.translator.protocol.Translator;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.level.border.ClientboundSetBorderSizePacket;
 
 @Translator(packet = ClientboundSetBorderSizePacket.class)
 public class JavaSetBorderSizeTranslator extends PacketTranslator<ClientboundSetBorderSizePacket> {

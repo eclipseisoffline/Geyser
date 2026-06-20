@@ -25,12 +25,11 @@
 
 package org.geysermc.geyser.level.block;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.api.block.custom.CustomBlockPermutation;
 import org.geysermc.geyser.api.block.custom.NonVanillaCustomBlockData;
 import org.geysermc.geyser.api.block.custom.component.CustomBlockComponents;
 import org.geysermc.geyser.api.util.CreativeCategory;
+import org.jspecify.annotations.Nullable;
 
 import java.util.List;
 
@@ -47,12 +46,12 @@ public class GeyserNonVanillaCustomBlockData extends GeyserCustomBlockData imple
     }
 
     @Override
-    public @NonNull String identifier() {
+    public String identifier() {
         return this.namespace + ":" + super.name();
     }
 
     @Override
-    public @NonNull String namespace() {
+    public String namespace() {
         return this.namespace;
     }
 
@@ -60,13 +59,13 @@ public class GeyserNonVanillaCustomBlockData extends GeyserCustomBlockData imple
         private String namespace;
 
         @Override
-        public Builder namespace(@NonNull String namespace) {
+        public Builder namespace(String namespace) {
             this.namespace = namespace;
             return this;
         }
 
         @Override
-        public Builder name(@NonNull String name) {
+        public Builder name(String name) {
             return (Builder) super.name(name);
         }
 
@@ -86,27 +85,27 @@ public class GeyserNonVanillaCustomBlockData extends GeyserCustomBlockData imple
         }
 
         @Override
-        public Builder components(@NonNull CustomBlockComponents components) {
+        public Builder components(CustomBlockComponents components) {
             return (Builder) super.components(components);
         }
 
         @Override
-        public Builder booleanProperty(@NonNull String propertyName) {
+        public Builder booleanProperty(String propertyName) {
             return (Builder) super.booleanProperty(propertyName);
         }
 
         @Override
-        public Builder intProperty(@NonNull String propertyName, List<Integer> values) {
+        public Builder intProperty(String propertyName, List<Integer> values) {
             return (Builder) super.intProperty(propertyName, values);
         }
 
         @Override
-        public Builder stringProperty(@NonNull String propertyName, List<String> values) {
+        public Builder stringProperty(String propertyName, List<String> values) {
             return (Builder) super.stringProperty(propertyName, values);
         }
 
         @Override
-        public Builder permutations(@NonNull List<CustomBlockPermutation> permutations) {
+        public Builder permutations(List<CustomBlockPermutation> permutations) {
             return (Builder) super.permutations(permutations);
         }
 

@@ -27,7 +27,6 @@ package org.geysermc.geyser.registry.mappings.definition;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.item.custom.v2.CustomItemBedrockOptions;
 import org.geysermc.geyser.api.item.custom.v2.CustomItemDefinition;
 import org.geysermc.geyser.api.predicate.MinecraftPredicate;
@@ -105,7 +104,7 @@ public class SingleDefinitionReader implements ItemDefinitionReader {
         }
     }
 
-    private static void readPredicate(CustomItemDefinition.Builder builder, @NonNull JsonElement element, String baseContext) throws InvalidCustomMappingsFileException {
+    private static void readPredicate(CustomItemDefinition.Builder builder, JsonElement element, String baseContext) throws InvalidCustomMappingsFileException {
         String type = MappingsUtil.readOrThrow(element, "type", NodeReader.NON_EMPTY_STRING, "predicate", baseContext);
         String[] context = {type + " predicate", baseContext};
 

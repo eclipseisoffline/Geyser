@@ -26,7 +26,6 @@
 package org.geysermc.geyser.command;
 
 import lombok.AllArgsConstructor;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.incendo.cloud.CommandManager;
 import org.incendo.cloud.key.CloudKey;
 import org.incendo.cloud.permission.Permission;
@@ -59,7 +58,7 @@ public class GeyserPermission implements PredicatePermission<GeyserCommandSource
     private final CommandManager<GeyserCommandSource> manager;
 
     @Override
-    public @NonNull Result testPermission(@NonNull GeyserCommandSource source) {
+    public Result testPermission(GeyserCommandSource source) {
         if (bedrockOnly) {
             if (source.connection() == null) {
                 return new Result(Meta.NOT_BEDROCK);
@@ -78,7 +77,7 @@ public class GeyserPermission implements PredicatePermission<GeyserCommandSource
     }
 
     @Override
-    public @NonNull CloudKey<Void> key() {
+    public CloudKey<Void> key() {
         return CloudKey.cloudKey(permission);
     }
 
@@ -103,7 +102,7 @@ public class GeyserPermission implements PredicatePermission<GeyserCommandSource
         }
 
         @Override
-        public @NonNull Permission permission() {
+        public Permission permission() {
             return GeyserPermission.this;
         }
 

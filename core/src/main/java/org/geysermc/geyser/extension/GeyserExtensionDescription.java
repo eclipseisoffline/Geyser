@@ -27,7 +27,6 @@ package org.geysermc.geyser.extension;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.extension.ExtensionDescription;
 import org.geysermc.geyser.api.extension.exception.InvalidDescriptionException;
 import org.geysermc.geyser.text.GeyserLocale;
@@ -36,19 +35,22 @@ import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.CustomClassLoaderConstructor;
 
 import java.io.Reader;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Supplier;
 import java.util.regex.Pattern;
 
-public record GeyserExtensionDescription(@NonNull String id,
-                                         @NonNull String name,
-                                         @NonNull String main,
+public record GeyserExtensionDescription(String id,
+                                         String name,
+                                         String main,
                                          int humanApiVersion,
                                          int majorApiVersion,
                                          int minorApiVersion,
-                                         @NonNull String version,
-                                         @NonNull List<String> authors,
-                                         @NonNull Map<String, Dependency> dependencies) implements ExtensionDescription {
+                                         String version,
+                                         List<String> authors,
+                                         Map<String, Dependency> dependencies) implements ExtensionDescription {
 
     private static final Yaml YAML = new Yaml(new CustomClassLoaderConstructor(Source.class.getClassLoader(), new LoaderOptions()));
 
@@ -56,7 +58,6 @@ public record GeyserExtensionDescription(@NonNull String id,
     public static final Pattern NAME_PATTERN = Pattern.compile("^[A-Za-z_.-]+$");
     public static final Pattern API_VERSION_PATTERN = Pattern.compile("^\\d+\\.\\d+\\.\\d+$");
 
-    @NonNull
     public static GeyserExtensionDescription fromYaml(Reader reader) throws InvalidDescriptionException {
         Source source;
         try {
@@ -103,7 +104,6 @@ public record GeyserExtensionDescription(@NonNull String id,
         return new GeyserExtensionDescription(id, name, main, humanApi, majorApi, minorApi, version, authors, dependencies);
     }
 
-    @NonNull
     private static String require(Supplier<String> supplier, String name) throws InvalidDescriptionException {
         String value = supplier.get();
         if (value == null) {

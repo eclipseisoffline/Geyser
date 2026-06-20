@@ -25,14 +25,13 @@
 
 package org.geysermc.geyser.inventory;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import lombok.Getter;
+import lombok.Setter;
+import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.inventory.CrafterInventoryTranslator;
 import org.geysermc.geyser.translator.inventory.InventoryTranslator;
 import org.geysermc.mcprotocollib.protocol.data.game.inventory.ContainerType;
-import lombok.Getter;
-import lombok.Setter;
-import org.geysermc.geyser.GeyserImpl;
 import org.jetbrains.annotations.Range;
 
 @Getter
@@ -69,7 +68,7 @@ public class CrafterContainer extends Container {
     }
 
     @Override
-    public void setItem(int slot, @NonNull GeyserItemStack newItem, GeyserSession session) {
+    public void setItem(int slot, GeyserItemStack newItem, GeyserSession session) {
         if (slot == CrafterInventoryTranslator.JAVA_RESULT_SLOT) {
             // Result item probably won't be an item that needs to worry about net ID or lodestone compasses
             this.resultItem = newItem;

@@ -25,10 +25,10 @@
 
 package org.geysermc.geyser.translator.protocol.java.entity.player;
 
-import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.entity.player.ClientboundPlayerAbilitiesPacket;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
 import org.geysermc.geyser.translator.protocol.Translator;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.entity.player.ClientboundPlayerAbilitiesPacket;
 
 @Translator(packet = ClientboundPlayerAbilitiesPacket.class)
 public class JavaPlayerAbilitiesTranslator extends PacketTranslator<ClientboundPlayerAbilitiesPacket> {

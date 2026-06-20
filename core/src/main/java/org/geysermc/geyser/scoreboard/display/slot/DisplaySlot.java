@@ -25,8 +25,6 @@
 
 package org.geysermc.geyser.scoreboard.display.slot;
 
-import java.util.List;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.ScoreInfo;
 import org.cloudburstmc.protocol.bedrock.packet.RemoveObjectivePacket;
 import org.cloudburstmc.protocol.bedrock.packet.SetDisplayObjectivePacket;
@@ -37,6 +35,9 @@ import org.geysermc.geyser.scoreboard.UpdateType;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.mcprotocollib.protocol.data.game.scoreboard.ScoreboardPosition;
 import org.geysermc.mcprotocollib.protocol.data.game.scoreboard.TeamColor;
+import org.jspecify.annotations.Nullable;
+
+import java.util.List;
 
 public abstract class DisplaySlot {
     protected final GeyserSession session;

@@ -25,8 +25,8 @@
 
 package org.geysermc.geyser.level.chunk.bitarray;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.util.MathUtils;
+import org.jspecify.annotations.Nullable;
 
 public enum BitArrayVersion {
     V16(16, 2, null),

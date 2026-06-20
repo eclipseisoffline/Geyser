@@ -32,7 +32,6 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.socket.DatagramPacket;
 import lombok.RequiredArgsConstructor;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.netty.channel.raknet.RakServerChannel;
 import org.cloudburstmc.netty.channel.raknet.config.RakChannelOption;
 import org.geysermc.geyser.network.netty.GeyserServer;
@@ -50,7 +49,7 @@ public class RakConnectionRequestHandler extends ChannelInboundHandlerAdapter {
     private final GeyserServer server;
 
     @Override
-    public void channelRead(@NonNull ChannelHandlerContext ctx, @NonNull Object msg) {
+    public void channelRead(ChannelHandlerContext ctx, Object msg) {
         if (!(msg instanceof DatagramPacket packet)) {
             ctx.fireChannelRead(msg);
             return;

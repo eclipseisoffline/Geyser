@@ -31,13 +31,12 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.definitions.BlockDefinition;
 import org.cloudburstmc.protocol.bedrock.data.definitions.ItemDefinition;
 import org.geysermc.geyser.item.GeyserCustomMappingData;
 import org.geysermc.geyser.item.Items;
 import org.geysermc.geyser.item.type.Item;
+import org.jspecify.annotations.Nullable;
 
 @Value
 @Builder
@@ -79,7 +78,6 @@ public class ItemMapping {
     @Builder.Default
     boolean containsV1Mappings = false;
 
-    @NonNull
     Item javaItem;
 
     /**

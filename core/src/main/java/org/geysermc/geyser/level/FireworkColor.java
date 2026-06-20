@@ -28,7 +28,6 @@ package org.geysermc.geyser.level;
 import lombok.Getter;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.util.HSVLike;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.util.ColorUtils;
 
 import java.util.Locale;
@@ -82,7 +81,7 @@ public enum FireworkColor {
      * @return nearest named color. will always return a value
      * @since 4.0.0
      */
-    private static @NonNull FireworkColor nearestTo(final HSVLike any) {
+    private static FireworkColor nearestTo(final HSVLike any) {
         float matchedDistance = Float.MAX_VALUE;
         FireworkColor match = VALUES[0];
         for (final FireworkColor potential : VALUES) {

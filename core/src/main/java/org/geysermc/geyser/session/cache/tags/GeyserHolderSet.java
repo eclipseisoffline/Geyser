@@ -28,8 +28,6 @@ package org.geysermc.geyser.session.cache.tags;
 import it.unimi.dsi.fastutil.ints.IntArrays;
 import lombok.Data;
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.nbt.NbtMap;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.session.GeyserSession;
@@ -37,6 +35,7 @@ import org.geysermc.geyser.session.cache.TagCache;
 import org.geysermc.geyser.session.cache.registry.JavaRegistryKey;
 import org.geysermc.geyser.util.MinecraftKey;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.HolderSet;
+import org.jspecify.annotations.Nullable;
 
 import java.util.List;
 import java.util.Objects;
@@ -68,15 +67,15 @@ public final class GeyserHolderSet<T> {
         this(registry, IntArrays.EMPTY_ARRAY);
     }
 
-    public GeyserHolderSet(JavaRegistryKey<T> registry, int @NonNull [] holders) {
+    public GeyserHolderSet(JavaRegistryKey<T> registry, int [] holders) {
         this(registry, null, holders, null);
     }
 
-    public GeyserHolderSet(JavaRegistryKey<T> registry, @NonNull Tag<T> tagId) {
+    public GeyserHolderSet(JavaRegistryKey<T> registry, Tag<T> tagId) {
         this(registry, tagId, null, null);
     }
 
-    public GeyserHolderSet(JavaRegistryKey<T> registry, @NonNull List<T> inline) {
+    public GeyserHolderSet(JavaRegistryKey<T> registry, List<T> inline) {
         this(registry, null, null, inline);
     }
 
@@ -97,13 +96,13 @@ public final class GeyserHolderSet<T> {
     /**
      * Constructs a {@link GeyserHolderSet} from a MCPL HolderSet.
      */
-    public static <T> GeyserHolderSet<T> fromHolderSet(JavaRegistryKey<T> registry, @NonNull HolderSet holderSet) {
+    public static <T> GeyserHolderSet<T> fromHolderSet(JavaRegistryKey<T> registry, HolderSet holderSet) {
         // MCPL HolderSets don't have to support inline elements... for now (TODO CHECK ME)
         Tag<T> tag = holderSet.getLocation() == null ? null : new Tag<>(registry, holderSet.getLocation());
         return new GeyserHolderSet<>(registry, tag, holderSet.getHolders(), null);
     }
 
-    public boolean contains(@NonNull GeyserSession session, @Nullable T object) {
+    public boolean contains(GeyserSession session, @Nullable T object) {
         if (object == null) {
             return false;
         }

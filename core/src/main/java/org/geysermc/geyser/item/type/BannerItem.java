@@ -30,7 +30,6 @@ import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.Style;
 import net.kyori.adventure.text.format.TextColor;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.nbt.NbtList;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.nbt.NbtType;
@@ -203,7 +202,7 @@ public class BannerItem extends BlockItem {
     }
 
     @Override
-    public void translateComponentsToBedrock(@NonNull GeyserSession session, @NonNull DataComponents components, @NonNull TooltipOptions tooltip, @NonNull BedrockItemBuilder builder) {
+    public void translateComponentsToBedrock(GeyserSession session, DataComponents components, TooltipOptions tooltip, BedrockItemBuilder builder) {
         super.translateComponentsToBedrock(session, components, tooltip, builder);
 
         List<BannerPatternLayer> patterns = components.get(DataComponentTypes.BANNER_PATTERNS);
@@ -213,7 +212,7 @@ public class BannerItem extends BlockItem {
     }
 
     @Override
-    public void translateNbtToJava(@NonNull GeyserSession session, @NonNull NbtMap bedrockTag, @NonNull DataComponents components, @NonNull ItemMapping mapping) {
+    public void translateNbtToJava(GeyserSession session, NbtMap bedrockTag, DataComponents components, ItemMapping mapping) {
         super.translateNbtToJava(session, bedrockTag, components, mapping);
 
         if (bedrockTag.getInt("Type") == 1) {

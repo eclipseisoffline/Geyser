@@ -39,11 +39,10 @@ import net.minecraft.network.protocol.status.ServerboundStatusRequestPacket;
 import net.minecraft.resources.RegistryOps;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerStatusPacketListenerImpl;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.GeyserLogger;
 import org.geysermc.geyser.ping.GeyserPingInfo;
 import org.geysermc.geyser.ping.IGeyserPingPassthrough;
-import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 
 import java.net.InetSocketAddress;
 import java.util.Objects;
@@ -95,7 +94,7 @@ public class ModPingPassthrough implements IGeyserPingPassthrough {
         }
 
         @Override
-        public void send(@NonNull Packet<?> packet, @Nullable ChannelFutureListener channelFutureListener, boolean bl) {
+        public void send(Packet<?> packet, @Nullable ChannelFutureListener channelFutureListener, boolean bl) {
             if (packet instanceof ClientboundStatusResponsePacket(ServerStatus serverStatus)) {
                 status = serverStatus;
             }

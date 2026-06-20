@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living.animal.horse;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.AttributeData;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityEventType;
@@ -46,6 +45,7 @@ import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.Pose;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.type.BooleanEntityMetadata;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.type.ByteEntityMetadata;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.type.LongEntityMetadata;
+import org.jspecify.annotations.Nullable;
 
 public class CamelEntity extends AbstractHorseEntity implements ClientVehicle {
     public static final float SITTING_HEIGHT_DIFFERENCE = 1.43F;

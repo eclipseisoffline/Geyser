@@ -26,10 +26,10 @@
 package org.geysermc.geyser.api.event.lifecycle;
 
 import org.geysermc.event.Event;
-import org.geysermc.geyser.api.item.custom.v2.CustomItemDefinitionRegisterException;
 import org.geysermc.geyser.api.item.custom.CustomItemData;
 import org.geysermc.geyser.api.item.custom.NonVanillaCustomItemData;
 import org.geysermc.geyser.api.item.custom.v2.CustomItemDefinition;
+import org.geysermc.geyser.api.item.custom.v2.CustomItemDefinitionRegisterException;
 import org.geysermc.geyser.api.item.custom.v2.NonVanillaCustomItemDefinition;
 import org.geysermc.geyser.api.util.Identifier;
 import org.jetbrains.annotations.ApiStatus;

@@ -35,7 +35,16 @@ import org.geysermc.geyser.registry.Registries;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.text.GeyserLocale;
 import org.geysermc.geyser.text.MinecraftLocale;
-import org.geysermc.mcprotocollib.protocol.data.game.statistic.*;
+import org.geysermc.mcprotocollib.protocol.data.game.statistic.BreakBlockStatistic;
+import org.geysermc.mcprotocollib.protocol.data.game.statistic.BreakItemStatistic;
+import org.geysermc.mcprotocollib.protocol.data.game.statistic.CraftItemStatistic;
+import org.geysermc.mcprotocollib.protocol.data.game.statistic.CustomStatistic;
+import org.geysermc.mcprotocollib.protocol.data.game.statistic.DropItemStatistic;
+import org.geysermc.mcprotocollib.protocol.data.game.statistic.KillEntityStatistic;
+import org.geysermc.mcprotocollib.protocol.data.game.statistic.KilledByEntityStatistic;
+import org.geysermc.mcprotocollib.protocol.data.game.statistic.PickupItemStatistic;
+import org.geysermc.mcprotocollib.protocol.data.game.statistic.Statistic;
+import org.geysermc.mcprotocollib.protocol.data.game.statistic.UseItemStatistic;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -31,8 +31,6 @@ import com.google.common.cache.LoadingCache;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.skin.Cape;
 import org.geysermc.geyser.api.skin.Skin;
@@ -46,8 +44,10 @@ import org.geysermc.mcprotocollib.auth.GameProfile;
 import org.geysermc.mcprotocollib.auth.texture.Texture;
 import org.geysermc.mcprotocollib.auth.texture.TextureType;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.player.ResolvableProfile;
+import org.jspecify.annotations.Nullable;
 
-import java.awt.*;
+import java.awt.AlphaComposite;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
@@ -62,7 +62,7 @@ public class FakeHeadProvider {
             .maximumSize(10000)
             .build(new CacheLoader<>() {
                 @Override
-                public SkinData load(@NonNull FakeHeadEntry fakeHeadEntry) throws Exception {
+                public SkinData load(FakeHeadEntry fakeHeadEntry) throws Exception {
                     SkinData skinData = SkinProvider.getOrDefault(SkinProvider.requestSkinData(fakeHeadEntry.getEntity(), fakeHeadEntry.getSession()), null, 5);
 
                     if (skinData == null) {

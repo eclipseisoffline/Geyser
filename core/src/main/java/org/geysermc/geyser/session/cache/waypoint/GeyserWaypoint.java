@@ -27,7 +27,6 @@ package org.geysermc.geyser.session.cache.waypoint;
 
 import it.unimi.dsi.fastutil.Pair;
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.LocatorBarWaypoint;
@@ -43,6 +42,7 @@ import org.geysermc.geyser.skin.SkinProvider;
 import org.geysermc.geyser.util.MinecraftKey;
 import org.geysermc.mcprotocollib.protocol.data.game.level.waypoint.TrackedWaypoint;
 import org.geysermc.mcprotocollib.protocol.data.game.level.waypoint.WaypointData;
+import org.jspecify.annotations.Nullable;
 
 import java.awt.Color;
 import java.util.List;

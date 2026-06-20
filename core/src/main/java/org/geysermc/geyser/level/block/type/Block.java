@@ -28,8 +28,6 @@ package org.geysermc.geyser.level.block.type;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.data.definitions.BlockDefinition;
 import org.cloudburstmc.protocol.bedrock.packet.UpdateBlockPacket;
@@ -46,6 +44,7 @@ import org.geysermc.geyser.session.cache.tags.Tag;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.HolderSet;
 import org.geysermc.mcprotocollib.protocol.data.game.level.block.BlockEntityType;
 import org.intellij.lang.annotations.Subst;
+import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -64,7 +63,7 @@ public class Block {
     private final boolean requiresCorrectToolForDrops;
     private final @Nullable BlockEntityType blockEntityType;
     private final float destroyTime;
-    private final @NonNull PistonBehavior pushReaction;
+    private final PistonBehavior pushReaction;
     protected Item item = null;
     private int javaId = -1;
 
@@ -137,7 +136,6 @@ public class Block {
         return firstState;
     }
 
-    @NonNull
     public Key javaIdentifier() {
         return javaIdentifier;
     }
@@ -159,7 +157,6 @@ public class Block {
         return destroyTime;
     }
 
-    @NonNull
     public PistonBehavior pushReaction() {
         return this.pushReaction;
     }

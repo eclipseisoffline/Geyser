@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.item.type;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.item.TooltipOptions;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.item.BedrockItemBuilder;
@@ -37,7 +36,7 @@ public class WolfArmorItem extends Item {
     }
 
     @Override
-    public void translateComponentsToBedrock(@NonNull GeyserSession session, @NonNull DataComponents components, @NonNull TooltipOptions tooltip, @NonNull BedrockItemBuilder builder) {
+    public void translateComponentsToBedrock(GeyserSession session, DataComponents components, TooltipOptions tooltip, BedrockItemBuilder builder) {
         super.translateComponentsToBedrock(session, components, tooltip, builder);
 
         // Note that this is handled as of 1.21 in the ItemColors class.

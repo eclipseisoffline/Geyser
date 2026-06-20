@@ -28,7 +28,6 @@ package org.geysermc.geyser.session;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import net.kyori.adventure.text.Component;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.mcprotocollib.network.ClientSession;
 import org.geysermc.mcprotocollib.network.packet.Packet;
 
@@ -37,7 +36,7 @@ import org.geysermc.mcprotocollib.network.packet.Packet;
 public class DownstreamSession {
     private final ClientSession session;
 
-    public void sendPacket(@NonNull Packet packet) {
+    public void sendPacket(Packet packet) {
         this.session.send(packet);
     }
 

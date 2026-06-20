@@ -29,12 +29,11 @@ import net.minecraft.server.MinecraftServer;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLPaths;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.api.util.PlatformType;
 import org.geysermc.geyser.dump.BootstrapDumpInfo;
 import org.geysermc.geyser.platform.mod.GeyserModBootstrap;
 import org.geysermc.geyser.platform.mod.platform.GeyserModPlatform;
+import org.jspecify.annotations.Nullable;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -49,27 +48,27 @@ public class GeyserNeoForgePlatform implements GeyserModPlatform {
     }
 
     @Override
-    public @NonNull PlatformType platformType() {
+    public PlatformType platformType() {
         return PlatformType.NEOFORGE;
     }
 
     @Override
-    public @NonNull String configPath() {
+    public String configPath() {
         return "Geyser-NeoForge";
     }
 
     @Override
-    public @NonNull Path dataFolder(@NonNull String modId) {
+    public Path dataFolder(String modId) {
         return FMLPaths.CONFIGDIR.get().resolve(modId);
     }
 
     @Override
-    public @NonNull BootstrapDumpInfo dumpInfo(@NonNull MinecraftServer server) {
+    public BootstrapDumpInfo dumpInfo(MinecraftServer server) {
         return new GeyserNeoForgeDumpInfo(server);
     }
 
     @Override
-    public boolean testFloodgatePluginPresent(@NonNull GeyserModBootstrap bootstrap) {
+    public boolean testFloodgatePluginPresent(GeyserModBootstrap bootstrap) {
         if (ModList.get().isLoaded("floodgate")) {
             Path floodgateDataFolder = FMLPaths.CONFIGDIR.get().resolve("floodgate");
             bootstrap.loadFloodgate(floodgateDataFolder);
@@ -79,7 +78,7 @@ public class GeyserNeoForgePlatform implements GeyserModPlatform {
     }
 
     @Override
-    public @Nullable InputStream resolveResource(@NonNull String resource) {
+    public @Nullable InputStream resolveResource(String resource) {
         try {
             return container.getModInfo().getOwningFile().getFile().getContents().openFile(resource);
         } catch (IOException e) {

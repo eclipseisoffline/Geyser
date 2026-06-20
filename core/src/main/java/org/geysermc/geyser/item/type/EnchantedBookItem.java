@@ -27,7 +27,6 @@ package org.geysermc.geyser.item.type;
 
 import it.unimi.dsi.fastutil.ints.Int2IntMap;
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.nbt.NbtType;
 import org.geysermc.geyser.GeyserImpl;
@@ -52,7 +51,7 @@ public class EnchantedBookItem extends Item {
     }
 
     @Override
-    public void translateComponentsToBedrock(@NonNull GeyserSession session, @NonNull DataComponents components, @NonNull TooltipOptions tooltip, @NonNull BedrockItemBuilder builder) {
+    public void translateComponentsToBedrock(GeyserSession session, DataComponents components, TooltipOptions tooltip, BedrockItemBuilder builder) {
         super.translateComponentsToBedrock(session, components, tooltip, builder);
 
         List<NbtMap> bedrockEnchants = new ArrayList<>();
@@ -72,7 +71,7 @@ public class EnchantedBookItem extends Item {
     }
 
     @Override
-    public void translateNbtToJava(@NonNull GeyserSession session, @NonNull NbtMap bedrockTag, @NonNull DataComponents components, @NonNull ItemMapping mapping) {
+    public void translateNbtToJava(GeyserSession session, NbtMap bedrockTag, DataComponents components, ItemMapping mapping) {
         super.translateNbtToJava(session, bedrockTag, components, mapping);
 
         List<NbtMap> enchantmentTag = bedrockTag.getList("ench", NbtType.COMPOUND);

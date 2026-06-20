@@ -25,9 +25,9 @@
 
 package org.geysermc.geyser.item.custom.impl;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaUseCooldown;
 import org.geysermc.geyser.api.util.Identifier;
+import org.jspecify.annotations.Nullable;
 
 public record JavaUseCooldownImpl(
     float seconds,

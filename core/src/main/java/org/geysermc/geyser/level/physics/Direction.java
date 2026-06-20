@@ -27,7 +27,6 @@ package org.geysermc.geyser.level.physics;
 
 import lombok.Getter;
 import lombok.experimental.Accessors;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.geysermc.geyser.GeyserImpl;
 
@@ -92,7 +91,7 @@ public enum Direction {
         };
     }
 
-    public static @NonNull Direction fromMCPL(org.geysermc.mcprotocollib.protocol.data.game.entity.object.Direction mcpl) {
+    public static Direction fromMCPL(org.geysermc.mcprotocollib.protocol.data.game.entity.object.Direction mcpl) {
         for (Direction direction : VALUES) {
             if (direction.mcpl == mcpl) {
                 return direction;

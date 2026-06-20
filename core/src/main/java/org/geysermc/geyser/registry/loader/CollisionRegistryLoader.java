@@ -29,7 +29,6 @@ import it.unimi.dsi.fastutil.Pair;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.AllArgsConstructor;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.nbt.NbtList;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.nbt.NbtType;
@@ -43,6 +42,7 @@ import org.geysermc.geyser.translator.collision.CollisionRemapper;
 import org.geysermc.geyser.translator.collision.OtherCollision;
 import org.geysermc.geyser.translator.collision.SolidCollision;
 import org.geysermc.geyser.util.AnnotationUtils;
+import org.jspecify.annotations.Nullable;
 
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;

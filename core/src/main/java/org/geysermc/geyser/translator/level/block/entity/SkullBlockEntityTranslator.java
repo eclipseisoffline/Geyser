@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.translator.level.block.entity;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.nbt.NbtMapBuilder;
@@ -42,6 +41,7 @@ import org.geysermc.geyser.util.EntityUtils;
 import org.geysermc.mcprotocollib.auth.GameProfile;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.player.ResolvableProfile;
 import org.geysermc.mcprotocollib.protocol.data.game.level.block.BlockEntityType;
+import org.jspecify.annotations.Nullable;
 
 import java.util.List;
 import java.util.UUID;

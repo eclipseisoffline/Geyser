@@ -27,7 +27,7 @@ package org.geysermc.geyser.platform.standalone.gui;
 
 import lombok.Getter;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.regex.Pattern;
 
 public enum ANSIColor {

@@ -25,12 +25,11 @@
 
 package org.geysermc.geyser.pack.option;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.api.pack.ResourcePack;
 import org.geysermc.geyser.api.pack.option.PriorityOption;
 import org.geysermc.geyser.api.pack.option.ResourcePackOption;
 import org.geysermc.geyser.pack.GeyserResourcePack;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -66,10 +65,10 @@ public class OptionHolder extends HashMap<ResourcePackOption.Type, ResourcePackO
     }
 
     @SuppressWarnings("unchecked")
-    public static <T> T valueOrFallback(ResourcePackOption.@NonNull Type type,
+    public static <T> T valueOrFallback(ResourcePackOption.Type type,
                                         @Nullable OptionHolder sessionPackOptions,
-                                        @NonNull OptionHolder resourcePackOptions,
-                                        @NonNull T defaultValue) {
+                                        OptionHolder resourcePackOptions,
+                                        T defaultValue) {
         ResourcePackOption<?> option;
 
         // First: the session's options, if they exist
@@ -90,9 +89,9 @@ public class OptionHolder extends HashMap<ResourcePackOption.Type, ResourcePackO
         return defaultValue;
     }
 
-    public static @Nullable ResourcePackOption<?> optionByType(ResourcePackOption.@NonNull Type type,
+    public static @Nullable ResourcePackOption<?> optionByType(ResourcePackOption.Type type,
                                                      @Nullable OptionHolder sessionPackOptions,
-                                                     @NonNull OptionHolder resourcePackOptions) {
+                                                     OptionHolder resourcePackOptions) {
 
         // First: the session-specific options, if these exist
         if (sessionPackOptions != null) {

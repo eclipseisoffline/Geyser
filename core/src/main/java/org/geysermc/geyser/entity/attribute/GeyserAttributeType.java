@@ -27,8 +27,8 @@ package org.geysermc.geyser.entity.attribute;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.AttributeData;
+import org.jspecify.annotations.Nullable;
 
 @Getter
 @AllArgsConstructor

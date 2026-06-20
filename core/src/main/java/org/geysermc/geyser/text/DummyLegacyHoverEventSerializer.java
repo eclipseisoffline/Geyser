@@ -30,7 +30,6 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.HoverEvent;
 import net.kyori.adventure.text.serializer.json.LegacyHoverEventSerializer;
 import net.kyori.adventure.util.Codec;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
@@ -46,23 +45,23 @@ public final class DummyLegacyHoverEventSerializer implements LegacyHoverEventSe
     }
 
     @Override
-    public HoverEvent.@NonNull ShowItem deserializeShowItem(@NonNull Component input) {
+    public HoverEvent.ShowItem deserializeShowItem(Component input) {
         return dummyShowItem;
     }
 
     @Override
-    public HoverEvent.@NonNull ShowEntity deserializeShowEntity(@NonNull Component input,
+    public HoverEvent.ShowEntity deserializeShowEntity(Component input,
                                                                 Codec.Decoder<Component, String, ? extends RuntimeException> componentDecoder) {
         return dummyShowEntity;
     }
 
     @Override
-    public @NonNull Component serializeShowItem(HoverEvent.@NonNull ShowItem input) {
+    public Component serializeShowItem(HoverEvent.ShowItem input) {
         return Component.empty();
     }
 
     @Override
-    public @NonNull Component serializeShowEntity(HoverEvent.@NonNull ShowEntity input,
+    public Component serializeShowEntity(HoverEvent.ShowEntity input,
                                                   Codec.Encoder<Component, String, ? extends RuntimeException> componentEncoder) {
         return Component.empty();
     }

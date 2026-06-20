@@ -30,8 +30,6 @@ import com.google.common.cache.CacheBuilder;
 import it.unimi.dsi.fastutil.Pair;
 import lombok.Getter;
 import lombok.Setter;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.data.LevelEvent;
@@ -70,6 +68,7 @@ import org.geysermc.mcprotocollib.protocol.data.game.item.component.ToolData;
 import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.player.ServerboundAttackPacket;
 import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.player.ServerboundPlayerActionPacket;
 import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.player.ServerboundUseItemOnPacket;
+import org.jspecify.annotations.Nullable;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -306,7 +305,7 @@ public class BlockBreakHandler {
         }
     }
 
-    protected void handleStartBreak(@NonNull Vector3i position, @NonNull BlockState state, Direction blockFace, long tick) {
+    protected void handleStartBreak(Vector3i position, BlockState state, Direction blockFace, long tick) {
         GeyserItemStack item = session.getPlayerInventory().getItemInHand();
 
         // Account for fire - the client likes to hit the block behind.
@@ -360,7 +359,7 @@ public class BlockBreakHandler {
         }
     }
 
-    protected void handleContinueDestroy(@NonNull Vector3i position, @NonNull BlockState state, @NonNull Direction blockFace, boolean bedrockDestroyed, boolean sendParticles, long tick) {
+    protected void handleContinueDestroy(Vector3i position, BlockState state, Direction blockFace, boolean bedrockDestroyed, boolean sendParticles, long tick) {
         // Position mismatch == we break a new block! Bedrock won't send START_BREAK when continuously mining
         // That applies in creative mode too! (last test in 1.21.100)
         // Further: We should also "start" breaking te block anew if the held item changes.
@@ -608,7 +607,7 @@ public class BlockBreakHandler {
         return Objects.equals(stack.getComponents(), currentItemStack.getComponents());
     }
 
-    private @NonNull BlockState getCurrentBlockState(Vector3i position) {
+    private BlockState getCurrentBlockState(Vector3i position) {
         if (Objects.equals(position, currentBlockPos)) {
             if (updatedServerBlockStateId != null) {
                 BlockState updated = BlockState.of(updatedServerBlockStateId);

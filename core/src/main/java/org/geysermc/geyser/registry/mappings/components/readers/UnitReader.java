@@ -26,7 +26,6 @@
 package org.geysermc.geyser.registry.mappings.components.readers;
 
 import com.google.gson.JsonElement;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.item.custom.v2.component.ItemDataComponent;
 import org.geysermc.geyser.item.exception.InvalidCustomMappingsFileException;
 import org.geysermc.geyser.registry.mappings.components.DataComponentReader;
@@ -40,7 +39,7 @@ public class UnitReader<V> extends DataComponentReader<V> {
     }
 
     @Override
-    protected V readDataComponent(@NonNull JsonElement element, String... context) throws InvalidCustomMappingsFileException {
+    protected V readDataComponent(JsonElement element, String... context) throws InvalidCustomMappingsFileException {
         return instance;
     }
 }

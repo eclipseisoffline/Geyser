@@ -25,8 +25,8 @@
 
 package org.geysermc.geyser.registry;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.registry.loader.RegistryLoader;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Map;
 import java.util.Optional;

@@ -25,12 +25,12 @@
 
 package org.geysermc.geyser.translator.protocol.bedrock.entity.player;
 
-import org.geysermc.geyser.Permissions;
-import org.geysermc.mcprotocollib.protocol.data.game.setting.Difficulty;
 import org.cloudburstmc.protocol.bedrock.packet.SetDifficultyPacket;
+import org.geysermc.geyser.Permissions;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
 import org.geysermc.geyser.translator.protocol.Translator;
+import org.geysermc.mcprotocollib.protocol.data.game.setting.Difficulty;
 
 @Translator(packet = SetDifficultyPacket.class)
 public class BedrockSetDifficultyTranslator extends PacketTranslator<SetDifficultyPacket> {

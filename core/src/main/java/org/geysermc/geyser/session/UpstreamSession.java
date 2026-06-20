@@ -28,7 +28,6 @@ package org.geysermc.geyser.session;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.protocol.bedrock.BedrockServerSession;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.packet.BedrockPacket;
@@ -45,13 +44,13 @@ public class UpstreamSession {
     private boolean initialized = false;
     private Queue<BedrockPacket> postStartGamePackets = new ArrayDeque<>();
 
-    public void sendPacket(@NonNull BedrockPacket packet) {
+    public void sendPacket(BedrockPacket packet) {
         if (!isClosed()) {
             session.sendPacket(packet);
         }
     }
 
-    public void sendPacketImmediately(@NonNull BedrockPacket packet) {
+    public void sendPacketImmediately(BedrockPacket packet) {
         if (!isClosed()) {
             session.sendPacketImmediately(packet);
         }

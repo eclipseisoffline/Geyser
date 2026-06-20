@@ -27,7 +27,6 @@ package org.geysermc.geyser.event.type;
 
 import com.google.common.collect.Multimap;
 import com.google.common.collect.MultimapBuilder;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.event.lifecycle.GeyserDefineCustomItemsEvent;
 import org.geysermc.geyser.api.item.custom.CustomItemData;
@@ -60,29 +59,29 @@ public abstract class GeyserDefineCustomItemsEventImpl implements GeyserDefineCu
 
     @Override
     @Deprecated
-    public @NonNull Map<String, Collection<CustomItemData>> getExistingCustomItems() {
+    public Map<String, Collection<CustomItemData>> getExistingCustomItems() {
         return Collections.unmodifiableMap(deprecatedCustomItems.asMap());
     }
 
     @Override
-    public @NonNull Map<Identifier, Collection<CustomItemDefinition>> customItemDefinitions() {
+    public Map<Identifier, Collection<CustomItemDefinition>> customItemDefinitions() {
         return Collections.unmodifiableMap(customItems.asMap());
     }
 
     @Override
     @Deprecated
-    public @NonNull List<NonVanillaCustomItemData> getExistingNonVanillaCustomItems() {
+    public List<NonVanillaCustomItemData> getExistingNonVanillaCustomItems() {
         return Collections.unmodifiableList(this.deprecatedNonVanillaCustomItems);
     }
 
     @Override
-    public @NonNull Map<Identifier, Collection<NonVanillaCustomItemDefinition>> nonVanillaCustomItemDefinitions() {
+    public Map<Identifier, Collection<NonVanillaCustomItemDefinition>> nonVanillaCustomItemDefinitions() {
         return Collections.unmodifiableMap(nonVanillaCustomItems.asMap());
     }
 
     @Override
     @Deprecated
-    public boolean register(@NonNull String identifier, @NonNull CustomItemData customItemData) {
+    public boolean register(String identifier, CustomItemData customItemData) {
         try {
             Identifier vanillaItemIdentifier = Identifier.of(identifier);
             register(vanillaItemIdentifier, ((GeyserCustomItemData) customItemData).toDefinition(vanillaItemIdentifier).build());
@@ -96,7 +95,7 @@ public abstract class GeyserDefineCustomItemsEventImpl implements GeyserDefineCu
 
     @Override
     @Deprecated
-    public boolean register(@NonNull NonVanillaCustomItemData customItemData) {
+    public boolean register(NonVanillaCustomItemData customItemData) {
         try {
             register(((GeyserNonVanillaCustomItemData) customItemData).toDefinition().build());
             deprecatedNonVanillaCustomItems.add(customItemData);

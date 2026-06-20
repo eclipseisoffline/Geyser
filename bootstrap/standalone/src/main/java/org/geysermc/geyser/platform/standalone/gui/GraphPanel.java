@@ -27,8 +27,16 @@ package org.geysermc.geyser.platform.standalone.gui;
 
 import lombok.Setter;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.RenderingHints;
+import java.awt.Stroke;
 import java.io.Serial;
 import java.util.ArrayList;
 import java.util.Collection;

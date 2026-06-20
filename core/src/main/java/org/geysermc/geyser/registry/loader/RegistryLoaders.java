@@ -26,7 +26,6 @@
 package org.geysermc.geyser.registry.loader;
 
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.registry.type.UtilMappings;
 
 import java.util.List;
@@ -61,7 +60,7 @@ public final class RegistryLoaders {
      * @param <V> the value
      * @return a RegistryLoader wrapping the given Supplier
      */
-    public static <V> RegistryLoader<Object, V> empty(@NonNull Supplier<V> supplier) {
+    public static <V> RegistryLoader<Object, V> empty(Supplier<V> supplier) {
         return input -> supplier.get();
     }
 

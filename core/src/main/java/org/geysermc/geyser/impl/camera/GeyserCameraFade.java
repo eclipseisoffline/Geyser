@@ -25,11 +25,10 @@
 
 package org.geysermc.geyser.impl.camera;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.common.value.qual.IntRange;
 import org.geysermc.geyser.api.bedrock.camera.CameraFade;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.Objects;
 
 public record GeyserCameraFade(
@@ -46,7 +45,7 @@ public record GeyserCameraFade(
         private float fadeOutSeconds;
 
         @Override
-        public CameraFade.Builder color(@NonNull Color color) {
+        public CameraFade.Builder color(Color color) {
             Objects.requireNonNull(color, "color cannot be null!");
             this.color = color;
             return this;

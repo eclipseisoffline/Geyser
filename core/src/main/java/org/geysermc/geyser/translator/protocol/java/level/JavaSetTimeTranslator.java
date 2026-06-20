@@ -26,13 +26,13 @@
 package org.geysermc.geyser.translator.protocol.java.level;
 
 import net.kyori.adventure.key.Key;
+import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.session.cache.registry.JavaRegistries;
 import org.geysermc.geyser.session.cache.registry.JavaRegistry;
-import org.geysermc.mcprotocollib.protocol.data.game.level.ClockNetworkState;
-import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.level.ClientboundSetTimePacket;
-import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
 import org.geysermc.geyser.translator.protocol.Translator;
+import org.geysermc.mcprotocollib.protocol.data.game.level.ClockNetworkState;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.level.ClientboundSetTimePacket;
 
 @Translator(packet = ClientboundSetTimePacket.class)
 public class JavaSetTimeTranslator extends PacketTranslator<ClientboundSetTimePacket> {

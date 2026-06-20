@@ -25,8 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living.animal.tameable;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
@@ -43,6 +41,7 @@ import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.type.Boolea
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.type.ByteEntityMetadata;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.type.IntEntityMetadata;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.player.Hand;
+import org.jspecify.annotations.Nullable;
 
 public class CatEntity extends TameableEntity implements VariantIntHolder {
 
@@ -111,9 +110,8 @@ public class CatEntity extends TameableEntity implements VariantIntHolder {
         return ItemTag.CAT_FOOD;
     }
 
-    @NonNull
     @Override
-    protected InteractiveTag testMobInteraction(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         boolean tamed = getFlag(EntityFlag.TAMED);
         if (tamed && ownerBedrockId == session.getPlayerEntity().geyserId()) {
             // Toggle sitting
@@ -123,9 +121,8 @@ public class CatEntity extends TameableEntity implements VariantIntHolder {
         }
     }
 
-    @NonNull
     @Override
-    protected InteractionResult mobInteract(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         boolean tamed = getFlag(EntityFlag.TAMED);
         if (tamed && ownerBedrockId == session.getPlayerEntity().geyserId()) {
             return InteractionResult.SUCCESS;

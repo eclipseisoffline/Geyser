@@ -25,10 +25,9 @@
 
 package org.geysermc.geyser.entity.properties.type;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.api.entity.property.type.GeyserStringEnumProperty;
 import org.geysermc.geyser.api.util.Identifier;
+import org.jspecify.annotations.Nullable;
 
 import java.util.List;
 
@@ -60,7 +59,7 @@ public record StringEnumProperty(
     }
 
     @Override
-    public @NonNull String defaultValue() {
+    public String defaultValue() {
         return values.get(defaultIndex);
     }
 }

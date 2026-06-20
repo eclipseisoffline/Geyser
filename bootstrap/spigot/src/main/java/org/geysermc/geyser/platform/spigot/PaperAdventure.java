@@ -25,11 +25,11 @@
 
 package org.geysermc.geyser.platform.spigot;
 
-import org.geysermc.mcprotocollib.protocol.data.DefaultComponentSerializer;
 import net.kyori.adventure.text.Component;
 import org.bukkit.command.CommandSender;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.GeyserImpl;
+import org.geysermc.mcprotocollib.protocol.data.DefaultComponentSerializer;
+import org.jspecify.annotations.Nullable;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;

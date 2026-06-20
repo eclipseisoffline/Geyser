@@ -26,7 +26,6 @@
 package org.geysermc.geyser.item.custom.impl;
 
 import org.checkerframework.checker.index.qual.NonNegative;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.item.custom.v2.component.geyser.GeyserChargeable;
 import org.geysermc.geyser.api.util.Identifier;
 
@@ -37,7 +36,7 @@ import java.util.Objects;
 public record GeyserChargeableImpl(
     @NonNegative float maxDrawDuration,
     boolean chargeOnDraw,
-    @NonNull List<@NonNull Identifier> ammunition
+    List<Identifier> ammunition
 ) implements GeyserChargeable {
 
     public static class Builder implements GeyserChargeable.Builder {
@@ -61,7 +60,7 @@ public record GeyserChargeableImpl(
         }
 
         @Override
-        public GeyserChargeable.Builder ammunition(@NonNull Identifier ammunition) {
+        public GeyserChargeable.Builder ammunition(Identifier ammunition) {
             Objects.requireNonNull(ammunition, "ammunition cannot be null");
             if (this.ammunition.contains(ammunition)) {
                 throw new IllegalArgumentException("duplicate ammunition " + ammunition);

@@ -29,11 +29,11 @@ import com.google.gson.JsonSyntaxException;
 import io.netty.handler.codec.haproxy.HAProxyCommand;
 import io.netty.handler.codec.haproxy.HAProxyProxiedProtocol;
 import io.netty.util.NetUtil;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.nbt.util.VarInts;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.network.GameProtocol;
 import org.geysermc.geyser.util.JsonUtils;
+import org.jspecify.annotations.Nullable;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;

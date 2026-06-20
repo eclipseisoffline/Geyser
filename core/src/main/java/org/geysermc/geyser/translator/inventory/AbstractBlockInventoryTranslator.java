@@ -25,8 +25,6 @@
 
 package org.geysermc.geyser.translator.inventory;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerType;
 import org.geysermc.geyser.inventory.Container;
 import org.geysermc.geyser.inventory.Inventory;
@@ -36,6 +34,7 @@ import org.geysermc.geyser.inventory.updater.InventoryUpdater;
 import org.geysermc.geyser.level.block.type.Block;
 import org.geysermc.geyser.level.block.type.BlockState;
 import org.geysermc.geyser.session.GeyserSession;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Provided as a base for any inventory that requires a block for opening it
@@ -83,7 +82,7 @@ public abstract class AbstractBlockInventoryTranslator<Type extends Container> e
     }
 
     @Override
-    public boolean canReuseInventory(GeyserSession session, @NonNull Inventory newInventory, @NonNull Inventory previous) {
+    public boolean canReuseInventory(GeyserSession session, Inventory newInventory, Inventory previous) {
         if (super.canReuseInventory(session, newInventory, previous)
             && newInventory instanceof Container container
             && previous instanceof Container previousContainer

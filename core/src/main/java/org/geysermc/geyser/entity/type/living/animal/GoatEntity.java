@@ -25,8 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living.animal;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.SoundEvent;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
@@ -40,6 +38,7 @@ import org.geysermc.geyser.util.InteractionResult;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.Pose;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.type.BooleanEntityMetadata;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.player.Hand;
+import org.jspecify.annotations.Nullable;
 
 public class GoatEntity extends AnimalEntity {
     private static final float LONG_JUMPING_HEIGHT = 1.3f * 0.7f;
@@ -70,9 +69,8 @@ public class GoatEntity extends AnimalEntity {
 
     // TODO testMobInteraction?
 
-    @NonNull
     @Override
-    protected InteractionResult mobInteract(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (!getFlag(EntityFlag.BABY) && itemInHand.is(Items.BUCKET)) {
             session.playSoundEvent(isScreamer ? SoundEvent.MILK_SCREAMER : SoundEvent.MILK, bedrockPosition());
             return InteractionResult.SUCCESS;

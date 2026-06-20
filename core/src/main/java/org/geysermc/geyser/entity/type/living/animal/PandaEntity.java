@@ -25,8 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living.animal;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityEventType;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
@@ -41,6 +39,7 @@ import org.geysermc.geyser.util.InteractiveTag;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.type.ByteEntityMetadata;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.type.IntEntityMetadata;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.player.Hand;
+import org.jspecify.annotations.Nullable;
 
 public class PandaEntity extends AnimalEntity {
     private Gene mainGene = Gene.NORMAL;
@@ -92,18 +91,16 @@ public class PandaEntity extends AnimalEntity {
         return ItemTag.PANDA_FOOD;
     }
 
-    @NonNull
     @Override
-    protected InteractiveTag testMobInteraction(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (mainGene == Gene.WORRIED && session.isThunder()) {
             return InteractiveTag.NONE;
         }
         return super.testMobInteraction(hand, itemInHand);
     }
 
-    @NonNull
     @Override
-    protected InteractionResult mobInteract(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (mainGene == Gene.WORRIED && session.isThunder()) {
             // Huh!
             return InteractionResult.PASS;

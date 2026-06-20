@@ -28,9 +28,8 @@ package org.geysermc.geyser.registry.mappings.util;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonPrimitive;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.item.exception.InvalidCustomMappingsFileException;
+import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -119,7 +118,7 @@ public class MappingsUtil {
         return element.getAsJsonObject().get(name);
     }
 
-    private static @NonNull JsonElement getRequiredJsonElement(JsonElement object, String name, String... context) throws InvalidCustomMappingsFileException {
+    private static JsonElement getRequiredJsonElement(JsonElement object, String name, String... context) throws InvalidCustomMappingsFileException {
         if (!object.isJsonObject()) {
             throw new InvalidCustomMappingsFileException(formatTask(name), OBJECT_ERROR, context);
         }

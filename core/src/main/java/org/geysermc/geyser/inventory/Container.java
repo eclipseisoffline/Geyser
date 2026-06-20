@@ -26,13 +26,12 @@
 package org.geysermc.geyser.inventory;
 
 import lombok.Getter;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.level.block.type.Block;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.inventory.InventoryTranslator;
 import org.geysermc.mcprotocollib.protocol.data.game.inventory.ContainerType;
 import org.jetbrains.annotations.Range;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Combination of {@link Inventory} and {@link PlayerInventory}
@@ -68,7 +67,7 @@ public class Container extends Inventory {
     }
 
     @Override
-    public void setItem(int slot, @NonNull GeyserItemStack newItem, GeyserSession session) {
+    public void setItem(int slot, GeyserItemStack newItem, GeyserSession session) {
         if (slot < this.size) {
             super.setItem(slot, newItem, session);
         } else {

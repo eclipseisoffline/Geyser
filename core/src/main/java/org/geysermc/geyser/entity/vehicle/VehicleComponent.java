@@ -28,7 +28,6 @@ package org.geysermc.geyser.entity.vehicle;
 import it.unimi.dsi.fastutil.objects.ObjectDoublePair;
 import lombok.Getter;
 import lombok.Setter;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.math.TrigMath;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3d;
@@ -59,6 +58,7 @@ import org.geysermc.mcprotocollib.protocol.data.game.entity.Effect;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.attribute.AttributeType;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.type.EntityType;
 import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.level.ServerboundMoveVehiclePacket;
+import org.jspecify.annotations.Nullable;
 
 public class VehicleComponent<T extends Entity & ClientVehicle> {
     private static final ObjectDoublePair<Fluid> EMPTY_FLUID_PAIR = ObjectDoublePair.of(Fluid.EMPTY, 0.0);

@@ -26,10 +26,10 @@
 package org.geysermc.geyser.util;
 
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.api.util.Identifier;
 import org.geysermc.geyser.impl.IdentifierImpl;
 import org.intellij.lang.annotations.Subst;
+import org.jspecify.annotations.Nullable;
 
 public final class MinecraftKey {
 

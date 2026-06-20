@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.inventory.GeyserItemStack;
 import org.geysermc.geyser.session.cache.tags.ItemTag;
@@ -38,18 +37,16 @@ public class TadpoleEntity extends AbstractFishEntity {
         super(context);
     }
 
-    @NonNull
     @Override
-    protected InteractiveTag testMobInteraction(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (isFood(itemInHand)) {
             return InteractiveTag.FEED;
         }
         return super.testMobInteraction(hand, itemInHand);
     }
 
-    @NonNull
     @Override
-    protected InteractionResult mobInteract(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (isFood(itemInHand)) {
             //TODO particles
             return InteractionResult.SUCCESS;

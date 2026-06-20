@@ -26,8 +26,7 @@
 package org.geysermc.geyser.text;
 
 import net.kyori.adventure.text.renderer.TranslatableComponentRenderer;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 
 import java.text.MessageFormat;
 import java.util.Locale;
@@ -45,12 +44,12 @@ public class MinecraftTranslationRegistry extends TranslatableComponentRenderer<
 
     // Exists to maintain compatibility with Velocity's older Adventure version
     @Override
-    public @Nullable MessageFormat translate(@NonNull String key, @NonNull String locale) {
+    public @Nullable MessageFormat translate(String key, String locale) {
         return this.translate(key, null, locale);
     }
 
     @Override
-    protected @Nullable MessageFormat translate(@NonNull String key, @Nullable String fallback, @NonNull String locale) {
+    protected @Nullable MessageFormat translate(String key, @Nullable String fallback, String locale) {
         // Get the locale string
         String localeString = MinecraftLocale.getLocaleStringIfPresent(key, locale);
         if (localeString == null) {

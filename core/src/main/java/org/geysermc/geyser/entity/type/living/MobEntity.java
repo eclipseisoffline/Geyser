@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
@@ -148,13 +147,11 @@ public class MobEntity extends LivingEntity implements Leashable {
         return InteractionResult.PASS;
     }
 
-    @NonNull
-    protected InteractiveTag testMobInteraction(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         return InteractiveTag.NONE;
     }
 
-    @NonNull
-    protected InteractionResult mobInteract(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         return InteractionResult.PASS;
     }
 

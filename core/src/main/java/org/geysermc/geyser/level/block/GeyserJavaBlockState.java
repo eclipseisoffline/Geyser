@@ -1,10 +1,9 @@
 package org.geysermc.geyser.level.block;
 
 import org.checkerframework.checker.index.qual.NonNegative;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.api.block.custom.nonvanilla.JavaBlockState;
 import org.geysermc.geyser.api.block.custom.nonvanilla.JavaBoundingBox;
+import org.jspecify.annotations.Nullable;
 
 public class GeyserJavaBlockState implements JavaBlockState {
     String identifier;
@@ -28,7 +27,7 @@ public class GeyserJavaBlockState implements JavaBlockState {
     }
 
     @Override
-    public @NonNull String identifier() {
+    public String identifier() {
         return identifier;
     }
 
@@ -53,7 +52,7 @@ public class GeyserJavaBlockState implements JavaBlockState {
     }
 
     @Override
-    public @NonNull JavaBoundingBox[] collision() {
+    public JavaBoundingBox[] collision() {
         return collision;
     }
 
@@ -89,7 +88,7 @@ public class GeyserJavaBlockState implements JavaBlockState {
         private String pistonBehavior;
 
         @Override
-        public Builder identifier(@NonNull String identifier) {
+        public Builder identifier(String identifier) {
             this.identifier = identifier;
             return this;
         }
@@ -119,7 +118,7 @@ public class GeyserJavaBlockState implements JavaBlockState {
         }
 
         @Override
-        public Builder collision(@NonNull JavaBoundingBox[] collision) {
+        public Builder collision(JavaBoundingBox[] collision) {
             this.collision = collision;
             return this;
         }

@@ -27,8 +27,6 @@ package org.geysermc.geyser.item;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.item.custom.CustomItemData;
 import org.geysermc.geyser.api.item.custom.CustomItemOptions;
@@ -41,6 +39,7 @@ import org.geysermc.geyser.api.util.CreativeCategory;
 import org.geysermc.geyser.api.util.Identifier;
 import org.geysermc.geyser.api.util.TriState;
 import org.geysermc.geyser.item.custom.GeyserCustomItemDefinition;
+import org.jspecify.annotations.Nullable;
 
 import java.util.HashSet;
 import java.util.Locale;
@@ -90,7 +89,7 @@ public class GeyserCustomItemData implements CustomItemData {
     }
 
     @Override
-    public @NonNull String name() {
+    public String name() {
         return name;
     }
 
@@ -100,12 +99,12 @@ public class GeyserCustomItemData implements CustomItemData {
     }
 
     @Override
-    public @NonNull String displayName() {
+    public String displayName() {
         return displayName;
     }
 
     @Override
-    public @NonNull String icon() {
+    public String icon() {
         return icon;
     }
 
@@ -120,7 +119,7 @@ public class GeyserCustomItemData implements CustomItemData {
     }
 
     @Override
-    public @NonNull OptionalInt creativeCategory() {
+    public OptionalInt creativeCategory() {
         return this.creativeCategory;
     }
 
@@ -140,7 +139,7 @@ public class GeyserCustomItemData implements CustomItemData {
     }
 
     @Override
-    public @NonNull Set<String> tags() {
+    public Set<String> tags() {
         return tags;
     }
 
@@ -197,25 +196,25 @@ public class GeyserCustomItemData implements CustomItemData {
         protected Set<String> tags = new HashSet<>();
 
         @Override
-        public Builder name(@NonNull String name) {
+        public Builder name(String name) {
             this.name = name;
             return this;
         }
 
         @Override
-        public Builder customItemOptions(@NonNull CustomItemOptions customItemOptions) {
+        public Builder customItemOptions(CustomItemOptions customItemOptions) {
             this.customItemOptions = customItemOptions;
             return this;
         }
 
         @Override
-        public Builder displayName(@NonNull String displayName) {
+        public Builder displayName(String displayName) {
             this.displayName = displayName;
             return this;
         }
 
         @Override
-        public Builder icon(@NonNull String icon) {
+        public Builder icon(String icon) {
             this.icon = icon;
             return this;
         }

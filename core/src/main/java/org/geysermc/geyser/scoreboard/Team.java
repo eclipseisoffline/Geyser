@@ -27,14 +27,13 @@ package org.geysermc.geyser.scoreboard;
 
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.kyori.adventure.text.Component;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.entity.type.Entity;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.text.ChatColor;
 import org.geysermc.geyser.translator.text.MessageTranslator;
 import org.geysermc.mcprotocollib.protocol.data.game.scoreboard.NameTagVisibility;
 import org.geysermc.mcprotocollib.protocol.data.game.scoreboard.TeamColor;
+import org.jspecify.annotations.Nullable;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -48,7 +47,7 @@ public final class Team {
 
     private final Set<String> entities;
     private final Set<Entity> managedEntities;
-    private @NonNull NameTagVisibility nameTagVisibility = NameTagVisibility.ALWAYS;
+    private NameTagVisibility nameTagVisibility = NameTagVisibility.ALWAYS;
     private @Nullable TeamColor color;
 
     private String name;

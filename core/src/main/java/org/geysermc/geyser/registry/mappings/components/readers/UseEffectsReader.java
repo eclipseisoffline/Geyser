@@ -26,7 +26,6 @@
 package org.geysermc.geyser.registry.mappings.components.readers;
 
 import com.google.gson.JsonElement;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaItemDataComponents;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaUseEffects;
 import org.geysermc.geyser.item.custom.impl.JavaUseEffectsImpl;
@@ -42,7 +41,7 @@ public class UseEffectsReader extends DataComponentReader<JavaUseEffects> {
     }
 
     @Override
-    protected JavaUseEffects readDataComponent(@NonNull JsonElement element, String... context) throws InvalidCustomMappingsFileException {
+    protected JavaUseEffects readDataComponent(JsonElement element, String... context) throws InvalidCustomMappingsFileException {
         return new JavaUseEffectsImpl(
             MappingsUtil.readOrDefault(element, "speed_multiplier", NodeReader.boundedDouble(0.0, 1.0).andThen(Double::floatValue), 0.2F, context)
         );

@@ -28,8 +28,6 @@ package org.geysermc.geyser.event.type;
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import lombok.Getter;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.packet.ResourcePackStackPacket;
 import org.cloudburstmc.protocol.bedrock.packet.ResourcePacksInfoPacket;
 import org.geysermc.geyser.GeyserImpl;
@@ -46,6 +44,7 @@ import org.geysermc.geyser.pack.option.OptionHolder;
 import org.geysermc.geyser.registry.Registries;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.util.GeyserIntegratedPackUtil;
+import org.jspecify.annotations.Nullable;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;
@@ -82,12 +81,12 @@ public class SessionLoadResourcePacksEventImpl extends SessionLoadResourcePacksE
     }
 
     @Override
-    public @NonNull List<ResourcePack> resourcePacks() {
+    public List<ResourcePack> resourcePacks() {
         return packs.values().stream().map(ResourcePackHolder::resourcePack).toList();
     }
 
     @Override
-    public boolean register(@NonNull ResourcePack resourcePack) {
+    public boolean register(ResourcePack resourcePack) {
         try {
             register(resourcePack, PriorityOption.NORMAL);
         } catch (ResourcePackException e) {
@@ -98,7 +97,7 @@ public class SessionLoadResourcePacksEventImpl extends SessionLoadResourcePacksE
     }
 
     @Override
-    public void register(@NonNull ResourcePack resourcePack, @Nullable ResourcePackOption<?>... options) {
+    public void register(ResourcePack resourcePack, @Nullable ResourcePackOption<?>... options) {
         Objects.requireNonNull(resourcePack);
         if (!(resourcePack instanceof GeyserResourcePack pack)) {
             throw new ResourcePackException(ResourcePackException.Cause.UNKNOWN_IMPLEMENTATION);
@@ -116,7 +115,7 @@ public class SessionLoadResourcePacksEventImpl extends SessionLoadResourcePacksE
     }
 
     @Override
-    public void registerOptions(@NonNull UUID uuid, @NonNull ResourcePackOption<?>... options) {
+    public void registerOptions(UUID uuid, ResourcePackOption<?>... options) {
         Objects.requireNonNull(uuid, "uuid cannot be null");
         Objects.requireNonNull(options, "options cannot be null");
         ResourcePackHolder holder = packs.get(uuid);
@@ -128,7 +127,7 @@ public class SessionLoadResourcePacksEventImpl extends SessionLoadResourcePacksE
     }
 
     @Override
-    public Collection<ResourcePackOption<?>> options(@NonNull UUID uuid) {
+    public Collection<ResourcePackOption<?>> options(UUID uuid) {
         Objects.requireNonNull(uuid);
         ResourcePackHolder packHolder = packs.get(uuid);
         if (packHolder == null) {
@@ -145,7 +144,7 @@ public class SessionLoadResourcePacksEventImpl extends SessionLoadResourcePacksE
     }
 
     @Override
-    public @Nullable ResourcePackOption<?> option(@NonNull UUID uuid, ResourcePackOption.@NonNull Type type) {
+    public @Nullable ResourcePackOption<?> option(UUID uuid, ResourcePackOption.Type type) {
         Objects.requireNonNull(uuid);
         Objects.requireNonNull(type);
 
@@ -162,7 +161,7 @@ public class SessionLoadResourcePacksEventImpl extends SessionLoadResourcePacksE
     }
 
     @Override
-    public boolean unregister(@NonNull UUID uuid) {
+    public boolean unregister(UUID uuid) {
         sessionPackOptionOverrides.remove(uuid);
         return packs.remove(uuid) != null;
     }
@@ -172,7 +171,7 @@ public class SessionLoadResourcePacksEventImpl extends SessionLoadResourcePacksE
         session.setAllowVibrantVisuals(enabled);
     }
 
-    private void attemptRegisterOptions(@NonNull GeyserResourcePack pack, @Nullable ResourcePackOption<?>... options) {
+    private void attemptRegisterOptions(GeyserResourcePack pack, @Nullable ResourcePackOption<?>... options) {
         if (options == null) {
             return;
         }

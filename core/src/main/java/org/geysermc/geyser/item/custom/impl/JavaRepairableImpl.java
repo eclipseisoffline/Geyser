@@ -25,19 +25,18 @@
 
 package org.geysermc.geyser.item.custom.impl;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaRepairable;
 import org.geysermc.geyser.api.util.Holders;
 
 import java.util.Objects;
 
-public record JavaRepairableImpl(@NonNull Holders items) implements JavaRepairable {
+public record JavaRepairableImpl(Holders items) implements JavaRepairable {
 
     public static class Builder implements JavaRepairable.Builder {
         private Holders items;
 
         @Override
-        public Builder items(@NonNull Holders items) {
+        public Builder items(Holders items) {
             Objects.requireNonNull(items, "items cannot be null");
             this.items = items;
             return this;

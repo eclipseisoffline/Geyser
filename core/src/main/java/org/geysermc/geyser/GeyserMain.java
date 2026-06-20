@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser;
 
-import javax.swing.*;
+import javax.swing.JOptionPane;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;

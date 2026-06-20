@@ -26,11 +26,10 @@
 package org.geysermc.geyser.platform.mod.platform;
 
 import net.minecraft.server.MinecraftServer;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.api.util.PlatformType;
 import org.geysermc.geyser.dump.BootstrapDumpInfo;
 import org.geysermc.geyser.platform.mod.GeyserModBootstrap;
+import org.jspecify.annotations.Nullable;
 
 import java.io.InputStream;
 import java.nio.file.Path;
@@ -46,7 +45,6 @@ public interface GeyserModPlatform {
      *
      * @return the platform type of the mod platform
      */
-    @NonNull
     PlatformType platformType();
 
     /**
@@ -54,7 +52,6 @@ public interface GeyserModPlatform {
      *
      * @return the config path of the mod platform
      */
-    @NonNull
     String configPath();
 
     /**
@@ -62,8 +59,7 @@ public interface GeyserModPlatform {
      *
      * @return the data folder of the mod platform
      */
-    @NonNull
-    Path dataFolder(@NonNull String modId);
+    Path dataFolder(String modId);
 
     /**
      * Gets the dump info of the mod platform.
@@ -71,15 +67,14 @@ public interface GeyserModPlatform {
      * @param server the server to get the dump info from
      * @return the dump info of the mod platform
      */
-    @NonNull
-    BootstrapDumpInfo dumpInfo(@NonNull MinecraftServer server);
+    BootstrapDumpInfo dumpInfo(MinecraftServer server);
 
     /**
      * Tests if the Floodgate plugin is present on the mod platform.
      *
      * @return {@code true} if the Floodgate plugin is present on the mod platform, {@code false} otherwise
      */
-    boolean testFloodgatePluginPresent(@NonNull GeyserModBootstrap bootstrap);
+    boolean testFloodgatePluginPresent(GeyserModBootstrap bootstrap);
 
     /**
      * Resolves a resource from the mod jar.
@@ -88,5 +83,5 @@ public interface GeyserModPlatform {
      * @return the input stream of the resource
      */
     @Nullable
-    InputStream resolveResource(@NonNull String resource);
+    InputStream resolveResource(String resource);
 }

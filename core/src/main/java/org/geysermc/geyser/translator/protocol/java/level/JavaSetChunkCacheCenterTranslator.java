@@ -25,12 +25,12 @@
 
 package org.geysermc.geyser.translator.protocol.java.level;
 
-import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.level.ClientboundSetChunkCacheCenterPacket;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
 import org.geysermc.geyser.translator.protocol.Translator;
 import org.geysermc.geyser.util.ChunkUtils;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.level.ClientboundSetChunkCacheCenterPacket;
 
 @Translator(packet = ClientboundSetChunkCacheCenterPacket.class)
 public class JavaSetChunkCacheCenterTranslator extends PacketTranslator<ClientboundSetChunkCacheCenterPacket> {

@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.event.type;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.command.Command;
 import org.geysermc.geyser.api.event.lifecycle.GeyserDefineCommandsEvent;
 
@@ -40,7 +39,7 @@ public abstract class GeyserDefineCommandsEventImpl implements GeyserDefineComma
     }
 
     @Override
-    public @NonNull Map<String, Command> commands() {
+    public Map<String, Command> commands() {
         return this.commands;
     }
 }

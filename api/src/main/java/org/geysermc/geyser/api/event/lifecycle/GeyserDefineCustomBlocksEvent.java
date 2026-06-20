@@ -25,10 +25,10 @@
 
 package org.geysermc.geyser.api.event.lifecycle;
 
+import org.geysermc.event.Event;
 import org.geysermc.geyser.api.block.custom.CustomBlockData;
 import org.geysermc.geyser.api.block.custom.CustomBlockState;
 import org.geysermc.geyser.api.block.custom.nonvanilla.JavaBlockState;
-import org.geysermc.event.Event;
 
 /**
  * Called on Geyser's startup when looking for custom blocks. Custom blocks must be registered through this event.

@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.impl;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.predicate.DimensionPredicate;
 import org.geysermc.geyser.api.predicate.MinecraftPredicate;
 import org.geysermc.geyser.api.predicate.context.MinecraftPredicateContext;
@@ -34,7 +33,7 @@ import org.geysermc.geyser.api.util.Identifier;
 import java.util.Objects;
 
 @GeyserCoreProvided
-public record GeyserDimensionPredicate(@NonNull Identifier dimension, boolean negated) implements DimensionPredicate {
+public record GeyserDimensionPredicate(Identifier dimension, boolean negated) implements DimensionPredicate {
 
     public GeyserDimensionPredicate {
         Objects.requireNonNull(dimension, "dimension cannot be null");
@@ -46,7 +45,7 @@ public record GeyserDimensionPredicate(@NonNull Identifier dimension, boolean ne
     }
 
     @Override
-    public @NonNull MinecraftPredicate<MinecraftPredicateContext> negate() {
+    public MinecraftPredicate<MinecraftPredicateContext> negate() {
         return new GeyserDimensionPredicate(dimension, !negated);
     }
 }

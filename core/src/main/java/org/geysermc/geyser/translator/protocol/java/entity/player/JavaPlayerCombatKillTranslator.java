@@ -25,13 +25,13 @@
 
 package org.geysermc.geyser.translator.protocol.java.entity.player;
 
-import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.entity.player.ClientboundPlayerCombatKillPacket;
-import org.cloudburstmc.protocol.bedrock.packet.DeathInfoPacket;
 import net.kyori.adventure.text.Component;
+import org.cloudburstmc.protocol.bedrock.packet.DeathInfoPacket;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
 import org.geysermc.geyser.translator.protocol.Translator;
 import org.geysermc.geyser.translator.text.MessageTranslator;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.entity.player.ClientboundPlayerCombatKillPacket;
 
 @Translator(packet = ClientboundPlayerCombatKillPacket.class)
 public class JavaPlayerCombatKillTranslator extends PacketTranslator<ClientboundPlayerCombatKillPacket> {

@@ -35,7 +35,6 @@ import io.netty.channel.DefaultEventLoopGroup;
 import io.netty.channel.local.LocalAddress;
 import io.netty.util.concurrent.DefaultThreadFactory;
 import org.bukkit.Bukkit;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.GeyserBootstrap;
 import org.geysermc.geyser.network.netty.GeyserInjector;
 import org.geysermc.geyser.network.netty.LocalServerChannelWrapper;
@@ -121,7 +120,7 @@ public class GeyserSpigotInjector extends GeyserInjector {
                 .channel(LocalServerChannelWrapper.class)
                 .childHandler(new ChannelInitializer<>() {
                     @Override
-                    protected void initChannel(@NonNull Channel ch) throws Exception {
+                    protected void initChannel(Channel ch) throws Exception {
                         initChannel.invoke(childHandler, ch);
 
                         int index = ch.pipeline().names().indexOf("encoder");

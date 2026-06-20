@@ -25,13 +25,12 @@
 
 package org.geysermc.geyser.translator.item;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.nbt.NbtMapBuilder;
 import org.cloudburstmc.nbt.NbtType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.geysermc.geyser.registry.type.ItemMapping;
+import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +65,6 @@ public final class BedrockItemBuilder {
         return this;
     }
 
-    @NonNull
     public List<String> getOrCreateLore() {
         if (lore == null) {
             lore = new ArrayList<>();
@@ -88,7 +86,6 @@ public final class BedrockItemBuilder {
         return this;
     }
 
-    @NonNull
     public NbtMapBuilder getOrCreateNbt() {
         if (builder == null) {
             builder = NbtMap.builder();

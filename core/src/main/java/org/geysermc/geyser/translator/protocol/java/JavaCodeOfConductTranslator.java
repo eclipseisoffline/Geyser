@@ -26,11 +26,11 @@
 package org.geysermc.geyser.translator.protocol.java;
 
 import org.geysermc.cumulus.form.CustomForm;
-import org.geysermc.geyser.text.MinecraftLocale;
-import org.geysermc.geyser.util.CodeOfConductManager;
 import org.geysermc.geyser.session.GeyserSession;
+import org.geysermc.geyser.text.MinecraftLocale;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
 import org.geysermc.geyser.translator.protocol.Translator;
+import org.geysermc.geyser.util.CodeOfConductManager;
 import org.geysermc.mcprotocollib.protocol.packet.configuration.clientbound.ClientboundCodeOfConductPacket;
 
 @Translator(packet = ClientboundCodeOfConductPacket.class)

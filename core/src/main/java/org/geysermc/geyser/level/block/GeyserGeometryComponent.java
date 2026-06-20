@@ -26,9 +26,8 @@
 package org.geysermc.geyser.level.block;
 
 import lombok.RequiredArgsConstructor;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.api.block.custom.component.GeometryComponent;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Map;
 
@@ -43,7 +42,7 @@ public class GeyserGeometryComponent implements GeometryComponent {
     }
 
     @Override
-    public @NonNull String identifier() {
+    public String identifier() {
         return identifier;
     }
 
@@ -57,7 +56,7 @@ public class GeyserGeometryComponent implements GeometryComponent {
         private Map<String, String> boneVisibility;
 
         @Override
-        public Builder identifier(@NonNull String identifier) {
+        public Builder identifier(String identifier) {
             this.identifier = identifier;
             return this;
         }

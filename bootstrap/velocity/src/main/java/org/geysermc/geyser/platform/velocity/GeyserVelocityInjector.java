@@ -48,7 +48,6 @@ import io.netty.channel.nio.NioIoHandler;
 import io.netty.channel.uring.IoUringIoHandler;
 import io.netty.util.concurrent.DefaultThreadFactory;
 import io.netty.util.concurrent.ThreadAwareExecutor;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.GeyserBootstrap;
 import org.geysermc.geyser.network.netty.GeyserInjector;
 import org.geysermc.geyser.network.netty.IoHandlerWrapper;
@@ -125,7 +124,7 @@ public class GeyserVelocityInjector extends GeyserInjector {
             .channel(LocalServerChannelWrapper.class)
             .childHandler(new ChannelInitializer<>() {
                 @Override
-                protected void initChannel(@NonNull Channel ch) throws Exception {
+                protected void initChannel(Channel ch) throws Exception {
                     initChannel.invoke(channelInitializer, ch);
 
                     if (bootstrap.config().advanced().java().disableCompression() && GeyserVelocityCompressionDisabler.ENABLED) {

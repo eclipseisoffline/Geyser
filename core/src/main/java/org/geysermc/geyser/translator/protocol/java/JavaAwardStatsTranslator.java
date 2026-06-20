@@ -25,11 +25,11 @@
 
 package org.geysermc.geyser.translator.protocol.java;
 
-import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.ClientboundAwardStatsPacket;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
 import org.geysermc.geyser.translator.protocol.Translator;
 import org.geysermc.geyser.util.StatisticsUtils;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.ClientboundAwardStatsPacket;
 
 @Translator(packet = ClientboundAwardStatsPacket.class)
 public class JavaAwardStatsTranslator extends PacketTranslator<ClientboundAwardStatsPacket> {

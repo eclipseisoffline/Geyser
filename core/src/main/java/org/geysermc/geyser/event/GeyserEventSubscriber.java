@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.event;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.event.Event;
 import org.geysermc.event.PostOrder;
 import org.geysermc.event.subscribe.impl.OwnedSubscriberImpl;
@@ -38,20 +37,20 @@ import java.util.function.Consumer;
 public final class GeyserEventSubscriber<R extends EventRegistrar, E extends Event> extends OwnedSubscriberImpl<R, E>
         implements ExtensionEventSubscriber<E> {
     GeyserEventSubscriber(
-            @NonNull R owner,
-            @NonNull Class<E> eventClass,
-            @NonNull Consumer<E> handler,
-            @NonNull PostOrder postOrder) {
+            R owner,
+            Class<E> eventClass,
+            Consumer<E> handler,
+            PostOrder postOrder) {
         super(owner, eventClass, handler, postOrder);
     }
 
     <H> GeyserEventSubscriber(
-            @NonNull R owner,
-            @NonNull Class<E> eventClass,
-            @NonNull PostOrder postOrder,
+            R owner,
+            Class<E> eventClass,
+            PostOrder postOrder,
             boolean ignoreCancelled,
-            @NonNull H handlerInstance,
-            @NonNull BiConsumer<H, E> handler) {
+            H handlerInstance,
+            BiConsumer<H, E> handler) {
         super(owner, eventClass, postOrder, ignoreCancelled, handlerInstance, handler);
     }
 }

@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.inventory.GeyserItemStack;
@@ -44,9 +43,8 @@ public class AbstractFishEntity extends WaterEntity {
         setFlag(EntityFlag.HAS_GRAVITY, false);
     }
 
-    @NonNull
     @Override
-    protected InteractionResult mobInteract(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (EntityUtils.attemptToBucket(itemInHand)) {
             return InteractionResult.SUCCESS;
         } else {

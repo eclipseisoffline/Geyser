@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.pack.option;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.pack.ResourcePack;
 import org.geysermc.geyser.api.pack.ResourcePackManifest;
 import org.geysermc.geyser.api.pack.exception.ResourcePackException;
@@ -40,17 +39,17 @@ import java.util.Objects;
 public record GeyserSubpackOption(String subpackName) implements SubpackOption {
 
     @Override
-    public @NonNull Type type() {
+    public Type type() {
         return Type.SUBPACK;
     }
 
     @Override
-    public @NonNull String value() {
+    public String value() {
         return subpackName;
     }
 
     @Override
-    public void validate(@NonNull ResourcePack pack) {
+    public void validate(ResourcePack pack) {
         Objects.requireNonNull(pack);
 
         // Allow empty subpack names - they're the same as "none"

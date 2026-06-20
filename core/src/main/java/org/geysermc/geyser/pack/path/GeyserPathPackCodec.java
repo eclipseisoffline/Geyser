@@ -26,7 +26,6 @@
 package org.geysermc.geyser.pack.path;
 
 import lombok.RequiredArgsConstructor;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.pack.PathPackCodec;
 import org.geysermc.geyser.api.pack.ResourcePack;
@@ -49,13 +48,13 @@ public class GeyserPathPackCodec extends PathPackCodec {
     private long size = -1;
 
     @Override
-    public @NonNull Path path() {
+    public Path path() {
         this.checkLastModified();
         return this.path;
     }
 
     @Override
-    public byte @NonNull [] sha256() {
+    public byte [] sha256() {
         this.checkLastModified();
         if (this.sha256 != null) {
             return this.sha256;
@@ -79,17 +78,17 @@ public class GeyserPathPackCodec extends PathPackCodec {
     }
 
     @Override
-    public @NonNull SeekableByteChannel serialize() throws IOException {
+    public SeekableByteChannel serialize() throws IOException {
         return FileChannel.open(this.path);
     }
 
     @Override
-    protected ResourcePack.@NonNull Builder createBuilder() {
+    protected ResourcePack.Builder createBuilder() {
         return ResourcePackLoader.readPack(this.path);
     }
 
     @Override
-    protected @NonNull ResourcePack create() {
+    protected ResourcePack create() {
         return createBuilder().build();
     }
 

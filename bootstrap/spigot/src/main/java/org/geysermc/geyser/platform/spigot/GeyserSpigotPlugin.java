@@ -41,7 +41,6 @@ import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.FloodgateKeyLoader;
 import org.geysermc.geyser.GeyserBootstrap;
 import org.geysermc.geyser.GeyserImpl;
@@ -362,7 +361,7 @@ public class GeyserSpigotPlugin extends JavaPlugin implements GeyserBootstrap {
     }
 
     @Override
-    public @NonNull PlatformType platformType() {
+    public PlatformType platformType() {
         return PlatformType.SPIGOT;
     }
 
@@ -407,7 +406,7 @@ public class GeyserSpigotPlugin extends JavaPlugin implements GeyserBootstrap {
     }
 
     @Override
-    public @NonNull String getServerPlatform() {
+    public String getServerPlatform() {
         return Bukkit.getName();
     }
 
@@ -446,7 +445,6 @@ public class GeyserSpigotPlugin extends JavaPlugin implements GeyserBootstrap {
         return false;
     }
 
-    @NonNull
     @Override
     public String getServerBindAddress() {
         return Bukkit.getIp();

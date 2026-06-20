@@ -27,8 +27,7 @@ package org.geysermc.geyser.session.cache.registry;
 
 import net.kyori.adventure.key.Key;
 import org.checkerframework.checker.index.qual.NonNegative;
-import org.checkerframework.checker.nullness.qual.Nullable;
-import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Iterator;
 import java.util.List;
@@ -119,7 +118,7 @@ public interface JavaRegistry<T> extends Iterable<RegistryEntryData<T>> {
     }
 
     @Override
-    default @NonNull Iterator<RegistryEntryData<T>> iterator() {
+    default Iterator<RegistryEntryData<T>> iterator() {
         return entries().iterator();
     }
 

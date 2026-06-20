@@ -27,7 +27,6 @@ package org.geysermc.geyser.session.cache;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.math.GenericMath;
 import org.cloudburstmc.math.vector.Vector2d;
 import org.cloudburstmc.math.vector.Vector3d;
@@ -50,7 +49,7 @@ public class WorldBorder {
     private static final Color GROWING_WORLD_BORDER_COLOR = new Color(64, 255, 128);
 
     @Setter
-    private @NonNull Vector2d center = Vector2d.ZERO;
+    private Vector2d center = Vector2d.ZERO;
 
     /**
      * Progress through the current movement

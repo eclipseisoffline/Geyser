@@ -29,8 +29,6 @@ import lombok.Getter;
 import lombok.experimental.Accessors;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.nbt.NbtType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
@@ -61,6 +59,7 @@ import org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponen
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.HolderSet;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.ItemEnchantments;
 import org.jetbrains.annotations.UnmodifiableView;
+import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -144,9 +143,8 @@ public class Item {
      * the items' base components.
      * To add data components, use {@link GeyserItemStack#getOrCreateComponents()}.
      */
-    @NonNull
     @UnmodifiableView
-    public DataComponents gatherComponents(@NonNull ResolvableComponentGetter resolvableGetter, @Nullable DataComponents others) {
+    public DataComponents gatherComponents(ResolvableComponentGetter resolvableGetter, @Nullable DataComponents others) {
         // Start with the base components that always exist
         DataComponents base = baseComponents.clone();
         // Add resolvable base components when possible
@@ -175,7 +173,7 @@ public class Item {
      * to also query additional components that would override the default ones.
      */
     @Nullable
-    public <T> T getComponent(@NonNull ResolvableComponentGetter resolvableGetter, @NonNull DataComponentType<T> type) {
+    public <T> T getComponent(ResolvableComponentGetter resolvableGetter, DataComponentType<T> type) {
         if (resolvableComponentTypes.contains(type)) {
             DataComponents resolvedComponents = resolvableGetter.getResolvedComponents(this);
             // Can be null - same as above method
@@ -206,7 +204,7 @@ public class Item {
                 .count(Math.min(count, BEDROCK_MAX_STACK_SIZE));
     }
 
-    public @NonNull GeyserItemStack translateToJava(GeyserSession session, @NonNull ItemData itemData, @NonNull ItemMapping mapping, @NonNull ItemMappings mappings) {
+    public GeyserItemStack translateToJava(GeyserSession session, ItemData itemData, ItemMapping mapping, ItemMappings mappings) {
         return GeyserItemStack.of(session, javaId, itemData.getCount());
     }
 
@@ -217,7 +215,7 @@ public class Item {
     /**
      * Takes components from Java Edition and map them into Bedrock.
      */
-    public void translateComponentsToBedrock(GeyserSession session, @NonNull DataComponents components, @NonNull TooltipOptions tooltip, @NonNull BedrockItemBuilder builder) {
+    public void translateComponentsToBedrock(GeyserSession session, DataComponents components, TooltipOptions tooltip, BedrockItemBuilder builder) {
         if (session == null) {
             return;
         }
@@ -282,7 +280,7 @@ public class Item {
      * </ul>
      * Therefore, if translation cannot be achieved for a certain item, it is not necessarily bad.
      */
-    public void translateNbtToJava(GeyserSession session, @NonNull NbtMap bedrockTag, @NonNull DataComponents components, ItemMapping mapping) {
+    public void translateNbtToJava(GeyserSession session, NbtMap bedrockTag, DataComponents components, ItemMapping mapping) {
         // TODO see if any items from the creative menu need this
 //        CompoundTag displayTag = tag.get("display");
 //        if (displayTag != null) {
@@ -379,7 +377,6 @@ public class Item {
     /**
      * @return the block associated with this item, or air if nothing
      */
-    @NonNull
     public static Item byBlock(Block block) {
         return BLOCK_TO_ITEM.getOrDefault(block, Items.AIR);
     }

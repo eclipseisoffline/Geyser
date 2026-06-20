@@ -40,7 +40,6 @@ import net.raphimc.viaproxy.plugins.events.ViaProxyLoadedEvent;
 import net.raphimc.viaproxy.plugins.events.types.ITyped;
 import net.raphimc.viaproxy.protocoltranslator.viaproxy.ViaProxyConfig;
 import org.apache.logging.log4j.LogManager;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.GeyserBootstrap;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.GeyserLogger;
@@ -207,7 +206,7 @@ public class GeyserViaProxyPlugin extends ViaProxyPlugin implements GeyserBootst
     }
 
     @Override
-    public @NonNull PlatformType platformType() {
+    public PlatformType platformType() {
         return PlatformType.VIAPROXY;
     }
 
@@ -242,11 +241,10 @@ public class GeyserViaProxyPlugin extends ViaProxyPlugin implements GeyserBootst
     }
 
     @Override
-    public @NonNull String getServerPlatform() {
+    public String getServerPlatform() {
         return PlatformType.VIAPROXY.platformName();
     }
 
-    @NonNull
     @Override
     public String getServerBindAddress() {
         if (ViaProxy.getConfig().getBindAddress() instanceof InetSocketAddress socketAddress) {

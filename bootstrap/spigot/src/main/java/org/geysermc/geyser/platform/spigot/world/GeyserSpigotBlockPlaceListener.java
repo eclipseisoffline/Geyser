@@ -25,13 +25,13 @@
 
 package org.geysermc.geyser.platform.spigot.world;
 
-import org.cloudburstmc.math.vector.Vector3f;
-import org.cloudburstmc.protocol.bedrock.data.SoundEvent;
-import org.cloudburstmc.protocol.bedrock.packet.LevelSoundEventPacket;
 import lombok.AllArgsConstructor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.cloudburstmc.math.vector.Vector3f;
+import org.cloudburstmc.protocol.bedrock.data.SoundEvent;
+import org.cloudburstmc.protocol.bedrock.packet.LevelSoundEventPacket;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.level.block.type.Block;
 import org.geysermc.geyser.platform.spigot.world.manager.GeyserSpigotWorldManager;

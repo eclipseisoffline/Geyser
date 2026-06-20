@@ -25,8 +25,6 @@
 
 package org.geysermc.geyser.entity.type.living.animal.tameable;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.cloudburstmc.protocol.bedrock.packet.UpdateAttributesPacket;
@@ -54,6 +52,7 @@ import org.geysermc.mcprotocollib.protocol.data.game.entity.player.GameMode;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.player.Hand;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponentTypes;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.HolderSet;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Collections;
 import java.util.List;
@@ -151,9 +150,8 @@ public class WolfEntity extends TameableEntity implements VariantIntHolder {
         return !getFlag(EntityFlag.ANGRY);
     }
 
-    @NonNull
     @Override
-    protected InteractiveTag testMobInteraction(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractiveTag testMobInteraction(Hand hand, GeyserItemStack itemInHand) {
         if (getFlag(EntityFlag.ANGRY)) {
             return InteractiveTag.NONE;
         }
@@ -187,9 +185,8 @@ public class WolfEntity extends TameableEntity implements VariantIntHolder {
         return super.testMobInteraction(hand, itemInHand);
     }
 
-    @NonNull
     @Override
-    protected InteractionResult mobInteract(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
+    protected InteractionResult mobInteract(Hand hand, GeyserItemStack itemInHand) {
         if (ownerBedrockId == session.getPlayerEntity().geyserId() || getFlag(EntityFlag.TAMED)
                 || itemInHand.is(Items.BONE) && !getFlag(EntityFlag.ANGRY)) {
             // Sitting toggle or feeding; not angry

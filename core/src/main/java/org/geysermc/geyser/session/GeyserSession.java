@@ -49,8 +49,6 @@ import net.raphimc.minecraftauth.util.MinecraftAuth4To5Migrator;
 import org.checkerframework.checker.index.qual.NonNegative;
 import org.checkerframework.checker.index.qual.Positive;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.checkerframework.common.value.qual.IntRange;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector2i;
@@ -235,6 +233,7 @@ import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.player.Serv
 import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.player.ServerboundPlayerActionPacket;
 import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.player.ServerboundUseItemPacket;
 import org.geysermc.mcprotocollib.protocol.packet.login.serverbound.ServerboundCustomQueryAnswerPacket;
+import org.jspecify.annotations.Nullable;
 
 import java.net.InetSocketAddress;
 import java.time.Instant;
@@ -282,7 +281,6 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
     @Setter
     private String token;
 
-    @NonNull
     @Setter
     private volatile AbstractGeyserboundPacketHandler erosionHandler;
 
@@ -1606,7 +1604,7 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
     }
 
     @Override
-    public void sendMessage(@NonNull String message) {
+    public void sendMessage(String message) {
         TextPacket textPacket = new TextPacket();
         textPacket.setPlatformChatId("");
         textPacket.setSourceName("");
@@ -1689,7 +1687,7 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
     }
 
     @Override
-    public @NonNull String joinAddress() {
+    public String joinAddress() {
         String combined = Optional.ofNullable(clientData).orElseThrow().getServerAddress();
         int index = combined.lastIndexOf(":");
         return combined.substring(0, index);
@@ -1703,7 +1701,7 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
     }
 
     @Override
-    public void sendSkin(@NonNull UUID player, @NonNull SkinData skinData) {
+    public void sendSkin(UUID player, SkinData skinData) {
         Objects.requireNonNull(player, "player uuid must not be null!");
         Objects.requireNonNull(skinData, "skinData must not be null!");
 
@@ -1783,7 +1781,7 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
     }
 
     @Override
-    public boolean sendForm(@NonNull Form form) {
+    public boolean sendForm(Form form) {
         // First close any dialogs that are open. This won't execute the dialog's closing action.
         dialogManager.close();
         return doSendForm(form);
@@ -1792,11 +1790,11 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
     /**
      * Sends a form without first closing any open dialog. This should only be used by {@link org.geysermc.geyser.session.dialog.Dialog}s.
      */
-    public void sendDialogForm(@NonNull Form form) {
+    public void sendDialogForm(Form form) {
         doSendForm(form);
     }
 
-    private boolean doSendForm(@NonNull Form form) {
+    private boolean doSendForm(Form form) {
         // Close all currently open forms.
         if (formCache.hasFormOpen()) {
             closeForm();
@@ -1839,7 +1837,7 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
         resetTimeParameters();
     }
 
-    public @NonNull PlayerInventory getPlayerInventory() {
+    public PlayerInventory getPlayerInventory() {
         return this.playerInventoryHolder.inventory();
     }
 
@@ -1851,7 +1849,7 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
     }
 
     @Override
-    public boolean sendForm(@NonNull FormBuilder<?, ?, ?> formBuilder) {
+    public boolean sendForm(FormBuilder<?, ?, ?> formBuilder) {
         sendForm(formBuilder.build());
         return true;
     }
@@ -2342,7 +2340,7 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
      *
      * @param statistics Updated statistics values
      */
-    public void updateStatistics(@NonNull Object2IntMap<Statistic> statistics) {
+    public void updateStatistics(Object2IntMap<Statistic> statistics) {
         if (this.statistics.isEmpty()) {
             // Initialize custom statistics to 0, so that they appear in the form
             for (CustomStatistic customStatistic : CustomStatistic.values()) {
@@ -2442,7 +2440,7 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
     }
 
     @Override
-    public @NonNull String bedrockUsername() {
+    public String bedrockUsername() {
         return authData != null ? authData.name() : "unknown (pre-login)";
     }
 
@@ -2457,17 +2455,17 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
     }
 
     @Override
-    public @NonNull String xuid() {
+    public String xuid() {
         return authData.xuid();
     }
 
     @Override
-    public @NonNull String playFabId() {
+    public String playFabId() {
         return authData.playFabId();
     }
 
     @Override
-    public @NonNull String version() {
+    public String version() {
         if (clientData == null) {
             return "unknown";
         }
@@ -2475,7 +2473,7 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
     }
 
     @Override
-    public @NonNull BedrockPlatform platform() {
+    public BedrockPlatform platform() {
         if (clientData == null) {
             return BedrockPlatform.UNKNOWN;
         }
@@ -2483,17 +2481,17 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
     }
 
     @Override
-    public @NonNull String languageCode() {
+    public String languageCode() {
         return locale();
     }
 
     @Override
-    public @NonNull UiProfile uiProfile() {
+    public UiProfile uiProfile() {
         return UiProfile.values()[clientData.getUiProfile().ordinal()]; //todo
     }
 
     @Override
-    public @NonNull InputMode inputMode() {
+    public InputMode inputMode() {
         return InputMode.values()[inputCache.getInputMode().ordinal()]; //todo
     }
 
@@ -2504,7 +2502,7 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
 
     @SuppressWarnings("ConstantConditions") // Need to enforce the parameter annotations
     @Override
-    public boolean transfer(@NonNull String address, @IntRange(from = 0, to = 65535) int port) {
+    public boolean transfer(String address, @IntRange(from = 0, to = 65535) int port) {
         if (address == null || address.isBlank()) {
             throw new IllegalArgumentException("Server address cannot be null or blank");
         } else if (port < 0 || port > 65535) {
@@ -2518,17 +2516,17 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
     }
 
     @Override
-    public @NonNull CompletableFuture<@Nullable GeyserEntity> entityByJavaId(@NonNegative int javaId) {
+    public CompletableFuture<@Nullable GeyserEntity> entityByJavaId(@NonNegative int javaId) {
         return entities().entityByJavaId(javaId);
     }
 
     @Override
-    public void showEmote(@NonNull GeyserPlayerEntity emoter, @NonNull String emoteId) {
+    public void showEmote(GeyserPlayerEntity emoter, String emoteId) {
         entities().showEmote(emoter, emoteId);
     }
 
     @Override
-    public @NonNull GeyserPlayerEntity playerEntity() {
+    public GeyserPlayerEntity playerEntity() {
         return playerEntity;
     }
 
@@ -2560,17 +2558,17 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
     }
 
     @Override
-    public @NonNull CameraData camera() {
+    public CameraData camera() {
         return this.cameraData;
     }
 
     @Override
-    public @NonNull EntityData entities() {
+    public EntityData entities() {
         return this.entityData;
     }
 
     @Override
-    public void shakeCamera(float intensity, float duration, @NonNull CameraShake type) {
+    public void shakeCamera(float intensity, float duration, CameraShake type) {
         this.cameraData.shakeCamera(intensity, duration, type);
     }
 
@@ -2590,7 +2588,7 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
     }
 
     @Override
-    public @NonNull Set<String> fogEffects() {
+    public Set<String> fogEffects() {
         return this.cameraData.fogEffects();
     }
 

@@ -27,7 +27,6 @@ package org.geysermc.geyser.registry.mappings.components;
 
 import com.google.gson.JsonElement;
 import net.kyori.adventure.key.Key;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.item.custom.v2.CustomItemDefinition;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaItemDataComponents;
 import org.geysermc.geyser.api.util.Identifier;
@@ -55,7 +54,7 @@ import java.util.Map;
 public class DataComponentReaders {
     private static final Map<Key, DataComponentReader<?>> READERS = new HashMap<>();
 
-    public static void readDataComponent(CustomItemDefinition.Builder builder, String key, @NonNull JsonElement element, String baseContext) throws InvalidCustomMappingsFileException {
+    public static void readDataComponent(CustomItemDefinition.Builder builder, String key, JsonElement element, String baseContext) throws InvalidCustomMappingsFileException {
         // Component removal
         if (key.startsWith("!")) {
             builder.removeComponent(Identifier.of(key.substring(1)));

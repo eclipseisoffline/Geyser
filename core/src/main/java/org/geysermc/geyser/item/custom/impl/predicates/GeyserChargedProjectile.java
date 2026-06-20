@@ -26,13 +26,12 @@
 package org.geysermc.geyser.item.custom.impl.predicates;
 
 import org.checkerframework.checker.index.qual.Positive;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.predicate.context.item.ChargedProjectile;
 
 import java.util.Objects;
 
 public record GeyserChargedProjectile(
-    ChargedProjectile.@NonNull ChargeType type,
+    ChargedProjectile.ChargeType type,
     @Positive int count
 ) implements ChargedProjectile {
 

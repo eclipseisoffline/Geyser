@@ -25,18 +25,18 @@
 
 package org.geysermc.geyser.registry;
 
-import org.cloudburstmc.protocol.bedrock.packet.ServerboundDiagnosticsPacket;
-import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.ClientboundDelimiterPacket;
-import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.ClientboundTabListPacket;
-import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.level.ClientboundChunkBatchStartPacket;
-import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.level.ClientboundLightUpdatePacket;
 import io.netty.channel.EventLoop;
+import org.cloudburstmc.protocol.bedrock.packet.ServerboundDiagnosticsPacket;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.erosion.ErosionCancellationException;
 import org.geysermc.geyser.registry.loader.RegistryLoaders;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.text.GeyserLocale;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.ClientboundDelimiterPacket;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.ClientboundTabListPacket;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.level.ClientboundChunkBatchStartPacket;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.level.ClientboundLightUpdatePacket;
 
 import java.util.Collections;
 import java.util.IdentityHashMap;

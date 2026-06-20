@@ -28,16 +28,6 @@ package org.geysermc.geyser.skin;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
-import java.net.ConnectException;
-import java.net.UnknownHostException;
-import java.nio.charset.StandardCharsets;
-import java.util.Deque;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.TimeUnit;
-import javax.net.ssl.SSLException;
 import lombok.Getter;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 import org.geysermc.floodgate.pluginmessage.PluginMessageChannels;
@@ -50,6 +40,17 @@ import org.geysermc.geyser.util.JsonUtils;
 import org.geysermc.geyser.util.PluginMessageUtils;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
+
+import javax.net.ssl.SSLException;
+import java.net.ConnectException;
+import java.net.UnknownHostException;
+import java.nio.charset.StandardCharsets;
+import java.util.Deque;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 
 public final class FloodgateSkinUploader {
     private static final int MAX_QUEUED_ENTRIES = 500;

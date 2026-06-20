@@ -25,7 +25,7 @@
 
 package org.geysermc.geyser.inventory.item;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Locale;
 

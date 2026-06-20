@@ -26,7 +26,6 @@
 package org.geysermc.geyser.command;
 
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.protocol.bedrock.data.command.CommandData;
 import org.cloudburstmc.protocol.bedrock.data.command.CommandEnumConstraint;
 import org.cloudburstmc.protocol.bedrock.data.command.CommandEnumData;
@@ -184,7 +183,7 @@ public class CommandRegistry implements EventRegistrar {
         GeyserDefineCommandsEvent defineCommandsEvent = new GeyserDefineCommandsEventImpl(this.commands) {
 
             @Override
-            public void register(@NonNull Command command) {
+            public void register(Command command) {
                 if (!(command instanceof GeyserExtensionCommand extensionCommand)) {
                     throw new IllegalArgumentException("Expected GeyserExtensionCommand as part of command registration but got " + command + "! Did you use the Command builder properly?");
                 }
@@ -221,7 +220,6 @@ public class CommandRegistry implements EventRegistrar {
     /**
      * @return an immutable view of the root commands registered to this command registry
      */
-    @NonNull
     public Collection<String> rootCommands() {
         return cloud.rootCommands();
     }
@@ -233,7 +231,7 @@ public class CommandRegistry implements EventRegistrar {
         register(command, this.commands);
     }
 
-    private void registerExtensionCommand(@NonNull Extension extension, @NonNull GeyserCommand command) {
+    private void registerExtensionCommand(Extension extension, GeyserCommand command) {
         register(command, this.extensionCommands.computeIfAbsent(extension, e -> new HashMap<>()));
     }
 
@@ -314,8 +312,7 @@ public class CommandRegistry implements EventRegistrar {
      * @param locale the ideal locale that the description should be in
      * @return a description if found, otherwise an empty string. The locale is not guaranteed.
      */
-    @NonNull
-    public String description(@NonNull String command, @NonNull String locale) {
+    public String description(String command, String locale) {
         if (command.equals(DEFAULT_ROOT_COMMAND)) {
             return GeyserLocale.getPlayerLocaleString("geyser.command.root.geyser", locale);
         }
@@ -331,7 +328,7 @@ public class CommandRegistry implements EventRegistrar {
      * Dispatches a command into cloud and handles any thrown exceptions.
      * This method may or may not be blocking, depending on the {@link ExecutionCoordinator} in use by cloud.
      */
-    public void runCommand(@NonNull GeyserCommandSource source, @NonNull String command) {
+    public void runCommand(GeyserCommandSource source, String command) {
         cloud.commandExecutor().executeCommand(source, command);
     }
 

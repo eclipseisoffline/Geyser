@@ -29,8 +29,6 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import net.minecraft.server.MinecraftServer;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.FloodgateKeyLoader;
 import org.geysermc.geyser.GeyserBootstrap;
 import org.geysermc.geyser.GeyserImpl;
@@ -45,6 +43,7 @@ import org.geysermc.geyser.ping.IGeyserPingPassthrough;
 import org.geysermc.geyser.platform.mod.platform.GeyserModPlatform;
 import org.geysermc.geyser.platform.mod.world.GeyserModWorldManager;
 import org.geysermc.geyser.text.GeyserLocale;
+import org.jspecify.annotations.Nullable;
 
 import java.io.InputStream;
 import java.net.SocketAddress;
@@ -141,7 +140,7 @@ public abstract class GeyserModBootstrap implements GeyserBootstrap {
     }
 
     @Override
-    public @NonNull PlatformType platformType() {
+    public PlatformType platformType() {
         return this.platform.platformType();
     }
 
@@ -186,7 +185,6 @@ public abstract class GeyserModBootstrap implements GeyserBootstrap {
     }
 
     @SuppressWarnings("ConstantConditions") // Certain IDEA installations think that ip cannot be null
-    @NonNull
     @Override
     public String getServerBindAddress() {
         String ip = this.server.getLocalIp();
@@ -228,7 +226,7 @@ public abstract class GeyserModBootstrap implements GeyserBootstrap {
     }
 
     @Override
-    public @NonNull String getServerPlatform() {
+    public String getServerPlatform() {
         return server.getServerModName();
     }
 }

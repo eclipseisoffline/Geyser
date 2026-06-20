@@ -26,7 +26,6 @@
 package org.geysermc.geyser.command.standalone;
 
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.api.event.lifecycle.GeyserRegisterPermissionCheckersEvent;
 import org.geysermc.geyser.api.event.lifecycle.GeyserRegisterPermissionsEvent;
@@ -112,7 +111,7 @@ public class StandaloneCloudCommandManager extends CommandManager<GeyserCommandS
     }
 
     @Override
-    public boolean hasPermission(@NonNull GeyserCommandSource sender, @NonNull String permission) {
+    public boolean hasPermission(GeyserCommandSource sender, String permission) {
         // Note: the two GeyserCommandSources on Geyser-Standalone are GeyserLogger and GeyserSession
         // GeyserLogger#hasPermission always returns true
         // GeyserSession#hasPermission delegates to this method,

@@ -26,7 +26,6 @@
 package org.geysermc.geyser.translator.inventory;
 
 import it.unimi.dsi.fastutil.ints.IntSet;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerSlotType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.ItemStackRequest;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.ItemStackRequestSlotData;
@@ -35,7 +34,10 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.action
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.action.ItemStackRequestActionType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.action.TransferItemStackRequestAction;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.response.ItemStackResponse;
-import org.geysermc.geyser.inventory.*;
+import org.geysermc.geyser.inventory.BedrockContainerSlot;
+import org.geysermc.geyser.inventory.GeyserItemStack;
+import org.geysermc.geyser.inventory.SlotType;
+import org.geysermc.geyser.inventory.StonecutterContainer;
 import org.geysermc.geyser.inventory.click.Click;
 import org.geysermc.geyser.inventory.click.ClickPlan;
 import org.geysermc.geyser.inventory.recipe.GeyserStonecutterData;
@@ -45,6 +47,7 @@ import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.mcprotocollib.protocol.data.game.inventory.ContainerType;
 import org.geysermc.mcprotocollib.protocol.data.game.item.ItemStack;
 import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.inventory.ServerboundContainerButtonClickPacket;
+import org.jspecify.annotations.Nullable;
 
 public class StonecutterInventoryTranslator extends AbstractBlockInventoryTranslator<StonecutterContainer> {
     public StonecutterInventoryTranslator() {

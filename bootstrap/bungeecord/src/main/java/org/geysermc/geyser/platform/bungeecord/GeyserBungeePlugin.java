@@ -32,8 +32,6 @@ import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.config.ListenerInfo;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.protocol.ProtocolConstants;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.FloodgateKeyLoader;
 import org.geysermc.geyser.GeyserBootstrap;
 import org.geysermc.geyser.GeyserImpl;
@@ -52,6 +50,7 @@ import org.geysermc.geyser.util.metrics.MetricsPlatform;
 import org.incendo.cloud.CommandManager;
 import org.incendo.cloud.bungee.BungeeCommandManager;
 import org.incendo.cloud.execution.ExecutionCoordinator;
+import org.jspecify.annotations.Nullable;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -230,7 +229,7 @@ public class GeyserBungeePlugin extends Plugin implements GeyserBootstrap {
     }
 
     @Override
-    public @NonNull PlatformType platformType() {
+    public PlatformType platformType() {
         return PlatformType.BUNGEECORD;
     }
 
@@ -270,7 +269,7 @@ public class GeyserBungeePlugin extends Plugin implements GeyserBootstrap {
     }
 
     @Override
-    public @NonNull String getServerPlatform() {
+    public String getServerPlatform() {
         return getProxy().getName();
     }
 
@@ -280,7 +279,6 @@ public class GeyserBungeePlugin extends Plugin implements GeyserBootstrap {
         return this.geyserInjector.getServerSocketAddress();
     }
 
-    @NonNull
     @Override
     public String getServerBindAddress() {
         return findCompatibleListener().map(InetSocketAddress::getHostString).orElse("");

@@ -26,7 +26,6 @@
 package org.geysermc.geyser.registry.mappings.components.readers;
 
 import com.google.gson.JsonElement;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaItemDataComponents;
 import org.geysermc.geyser.api.item.custom.v2.component.java.JavaSwingAnimation;
 import org.geysermc.geyser.item.custom.impl.JavaSwingAnimationImpl;
@@ -42,7 +41,7 @@ public class SwingAnimationReader extends DataComponentReader<JavaSwingAnimation
     }
 
     @Override
-    protected JavaSwingAnimation readDataComponent(@NonNull JsonElement element, String... context) throws InvalidCustomMappingsFileException {
+    protected JavaSwingAnimation readDataComponent(JsonElement element, String... context) throws InvalidCustomMappingsFileException {
         return new JavaSwingAnimationImpl(MappingsUtil.readOrDefault(element, "duration", NodeReader.POSITIVE_INT, 6, context));
     }
 }

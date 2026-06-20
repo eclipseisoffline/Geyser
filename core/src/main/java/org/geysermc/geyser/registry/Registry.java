@@ -25,8 +25,9 @@
 
 package org.geysermc.geyser.registry;
 
-import java.util.function.Consumer;
 import org.geysermc.geyser.registry.loader.RegistryLoader;
+
+import java.util.function.Consumer;
 
 /**
  * A wrapper around a value which is loaded based on the output from the provided

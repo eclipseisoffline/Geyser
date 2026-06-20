@@ -25,11 +25,11 @@
 
 package org.geysermc.geyser.translator.protocol.java.title;
 
-import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.title.ClientboundClearTitlesPacket;
 import org.cloudburstmc.protocol.bedrock.packet.SetTitlePacket;
 import org.geysermc.geyser.session.GeyserSession;
 import org.geysermc.geyser.translator.protocol.PacketTranslator;
 import org.geysermc.geyser.translator.protocol.Translator;
+import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.title.ClientboundClearTitlesPacket;
 
 @Translator(packet = ClientboundClearTitlesPacket.class)
 public class JavaClearTitlesTranslator extends PacketTranslator<ClientboundClearTitlesPacket> {

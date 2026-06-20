@@ -25,8 +25,6 @@
 
 package org.geysermc.geyser.entity;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.geysermc.geyser.GeyserImpl;
@@ -70,11 +68,11 @@ import org.geysermc.geyser.entity.type.LivingEntity;
 import org.geysermc.geyser.entity.type.MinecartEntity;
 import org.geysermc.geyser.entity.type.OminousItemSpawnerEntity;
 import org.geysermc.geyser.entity.type.PaintingEntity;
+import org.geysermc.geyser.entity.type.ProjectileEntity;
 import org.geysermc.geyser.entity.type.SpawnerMinecartEntity;
 import org.geysermc.geyser.entity.type.TNTEntity;
 import org.geysermc.geyser.entity.type.TextDisplayEntity;
 import org.geysermc.geyser.entity.type.ThrowableEggEntity;
-import org.geysermc.geyser.entity.type.ProjectileEntity;
 import org.geysermc.geyser.entity.type.ThrowableItemEntity;
 import org.geysermc.geyser.entity.type.ThrownPotionEntity;
 import org.geysermc.geyser.entity.type.TridentEntity;
@@ -88,10 +86,7 @@ import org.geysermc.geyser.entity.type.living.CopperGolemEntity;
 import org.geysermc.geyser.entity.type.living.DolphinEntity;
 import org.geysermc.geyser.entity.type.living.GlowSquidEntity;
 import org.geysermc.geyser.entity.type.living.IronGolemEntity;
-import org.geysermc.geyser.entity.type.living.monster.cubemob.AbstractCubeEntity;
-import org.geysermc.geyser.entity.type.living.monster.cubemob.MagmaCubeEntity;
 import org.geysermc.geyser.entity.type.living.MobEntity;
-import org.geysermc.geyser.entity.type.living.monster.cubemob.SlimeEntity;
 import org.geysermc.geyser.entity.type.living.SnowGolemEntity;
 import org.geysermc.geyser.entity.type.living.SquidEntity;
 import org.geysermc.geyser.entity.type.living.TadpoleEntity;
@@ -112,12 +107,12 @@ import org.geysermc.geyser.entity.type.living.animal.RabbitEntity;
 import org.geysermc.geyser.entity.type.living.animal.SheepEntity;
 import org.geysermc.geyser.entity.type.living.animal.SnifferEntity;
 import org.geysermc.geyser.entity.type.living.animal.StriderEntity;
+import org.geysermc.geyser.entity.type.living.animal.TemperatureVariantAnimal;
 import org.geysermc.geyser.entity.type.living.animal.TropicalFishEntity;
 import org.geysermc.geyser.entity.type.living.animal.TurtleEntity;
 import org.geysermc.geyser.entity.type.living.animal.farm.ChickenEntity;
 import org.geysermc.geyser.entity.type.living.animal.farm.CowEntity;
 import org.geysermc.geyser.entity.type.living.animal.farm.PigEntity;
-import org.geysermc.geyser.entity.type.living.animal.TemperatureVariantAnimal;
 import org.geysermc.geyser.entity.type.living.animal.horse.AbstractHorseEntity;
 import org.geysermc.geyser.entity.type.living.animal.horse.CamelEntity;
 import org.geysermc.geyser.entity.type.living.animal.horse.CamelHuskEntity;
@@ -163,6 +158,9 @@ import org.geysermc.geyser.entity.type.living.monster.ZoglinEntity;
 import org.geysermc.geyser.entity.type.living.monster.ZombieEntity;
 import org.geysermc.geyser.entity.type.living.monster.ZombieVillagerEntity;
 import org.geysermc.geyser.entity.type.living.monster.ZombifiedPiglinEntity;
+import org.geysermc.geyser.entity.type.living.monster.cubemob.AbstractCubeEntity;
+import org.geysermc.geyser.entity.type.living.monster.cubemob.MagmaCubeEntity;
+import org.geysermc.geyser.entity.type.living.monster.cubemob.SlimeEntity;
 import org.geysermc.geyser.entity.type.living.monster.cubemob.SulfurCubeEntity;
 import org.geysermc.geyser.entity.type.living.monster.raid.PillagerEntity;
 import org.geysermc.geyser.entity.type.living.monster.raid.RaidParticipantEntity;
@@ -178,6 +176,7 @@ import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.MetadataTyp
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.type.BooleanEntityMetadata;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.type.FloatEntityMetadata;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.type.EntityType;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.List;
@@ -1310,7 +1309,7 @@ public final class EntityDefinitions {
         // entities would be initialized before this event is called
         GeyserImpl.getInstance().getEventBus().fire(new GeyserDefineEntityPropertiesEvent() {
             @Override
-            public GeyserFloatEntityProperty registerFloatProperty(@NonNull Identifier identifier, @NonNull Identifier propertyId, float min, float max, @Nullable Float defaultValue) {
+            public GeyserFloatEntityProperty registerFloatProperty(Identifier identifier, Identifier propertyId, float min, float max, @Nullable Float defaultValue) {
                 Objects.requireNonNull(identifier);
                 Objects.requireNonNull(propertyId);
                 if (propertyId.vanilla()) {
@@ -1322,7 +1321,7 @@ public final class EntityDefinitions {
             }
 
             @Override
-            public IntProperty registerIntegerProperty(@NonNull Identifier identifier, @NonNull Identifier propertyId, int min, int max, @Nullable Integer defaultValue) {
+            public IntProperty registerIntegerProperty(Identifier identifier, Identifier propertyId, int min, int max, @Nullable Integer defaultValue) {
                 Objects.requireNonNull(identifier);
                 Objects.requireNonNull(propertyId);
                 if (propertyId.vanilla()) {
@@ -1334,7 +1333,7 @@ public final class EntityDefinitions {
             }
 
             @Override
-            public BooleanProperty registerBooleanProperty(@NonNull Identifier identifier, @NonNull Identifier propertyId, boolean defaultValue) {
+            public BooleanProperty registerBooleanProperty(Identifier identifier, Identifier propertyId, boolean defaultValue) {
                 Objects.requireNonNull(identifier);
                 Objects.requireNonNull(propertyId);
                 if (propertyId.vanilla()) {
@@ -1346,7 +1345,7 @@ public final class EntityDefinitions {
             }
 
             @Override
-            public <E extends Enum<E>> EnumProperty<E> registerEnumProperty(@NonNull Identifier identifier, @NonNull Identifier propertyId, @NonNull Class<E> enumClass, @Nullable E defaultValue) {
+            public <E extends Enum<E>> EnumProperty<E> registerEnumProperty(Identifier identifier, Identifier propertyId, Class<E> enumClass, @Nullable E defaultValue) {
                 Objects.requireNonNull(identifier);
                 Objects.requireNonNull(propertyId);
                 Objects.requireNonNull(enumClass);
@@ -1359,7 +1358,7 @@ public final class EntityDefinitions {
             }
 
             @Override
-            public GeyserStringEnumProperty registerEnumProperty(@NonNull Identifier identifier, @NonNull Identifier propertyId, @NonNull List<String> values, @Nullable String defaultValue) {
+            public GeyserStringEnumProperty registerEnumProperty(Identifier identifier, Identifier propertyId, List<String> values, @Nullable String defaultValue) {
                 Objects.requireNonNull(identifier);
                 Objects.requireNonNull(propertyId);
                 Objects.requireNonNull(values);
@@ -1372,7 +1371,7 @@ public final class EntityDefinitions {
             }
 
             @Override
-            public Collection<GeyserEntityProperty<?>> properties(@NonNull Identifier identifier) {
+            public Collection<GeyserEntityProperty<?>> properties(Identifier identifier) {
                 Objects.requireNonNull(identifier);
                 var definition = Registries.JAVA_ENTITY_IDENTIFIERS.get(identifier.toString());
                 if (definition == null) {

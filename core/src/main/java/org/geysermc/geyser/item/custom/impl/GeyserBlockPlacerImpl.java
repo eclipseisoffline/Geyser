@@ -25,7 +25,6 @@
 
 package org.geysermc.geyser.item.custom.impl;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.geyser.api.item.custom.v2.component.geyser.GeyserBlockPlacer;
 import org.geysermc.geyser.api.util.Identifier;
 
@@ -41,7 +40,7 @@ public record GeyserBlockPlacerImpl(
         private boolean useBlockIcon;
 
         @Override
-        public Builder block(@NonNull Identifier block) {
+        public Builder block(Identifier block) {
             Objects.requireNonNull(block, "block cannot be null");
             this.block = block;
             return this;
