@@ -22,7 +22,8 @@ indra {
 }
 
 dependencies {
-    compileOnly("org.checkerframework:checker-qual:" + libs.checker.qual.get().version)
+    compileOnly(libs.checker.qual)
+    compileOnly(libs.jspecify)
 }
 
 repositories {
