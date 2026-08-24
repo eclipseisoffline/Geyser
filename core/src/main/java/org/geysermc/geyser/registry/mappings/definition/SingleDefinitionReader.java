@@ -138,6 +138,7 @@ public class SingleDefinitionReader implements ItemDefinitionReader {
         if (bedrockOptions == null) {
             return;
         }
+        JsonElement dyeableObject = bedrockOptions.getAsJsonObject().get("dyeable");
 
         String[] context = {"bedrock options", baseContext};
         MappingsUtil.readIfPresent(bedrockOptions, "icon", builder::icon, NodeReader.NON_EMPTY_STRING, context);
@@ -147,7 +148,12 @@ public class SingleDefinitionReader implements ItemDefinitionReader {
         MappingsUtil.readIfPresent(bedrockOptions, "creative_category", builder::creativeCategory, NodeReader.CREATIVE_CATEGORY, context);
         MappingsUtil.readIfPresent(bedrockOptions, "creative_group", builder::creativeGroup, NodeReader.NON_EMPTY_STRING, context);
         MappingsUtil.readArrayIfPresent(bedrockOptions, "tags", tags -> builder.tags(new HashSet<>(tags)), NodeReader.IDENTIFIER, context);
-        MappingsUtil.readIfPresent(bedrockOptions, "dyeable", builder::dyeable, NodeReader.HEX_INT, context);
+
+        if (dyeableObject != null) {
+            // Defaults to white to keep the object dyeable even without a user-specified default_color.
+            builder.dyeable(MappingsUtil.readOrDefault(dyeableObject, "default_color", NodeReader.HEX_INT, 0xFFFFFF, context));
+            MappingsUtil.readIfPresent(dyeableObject, "dyed_icon", builder::dyedIcon, NodeReader.NON_EMPTY_STRING, context);
+        }
 
         definitionBuilder.bedrockOptions(builder);
     }

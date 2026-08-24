@@ -52,6 +52,15 @@ public interface CustomItemBedrockOptions {
     @Nullable String icon();
 
     /**
+     * Gets the item's dyed icon, When not present, the item's default {@code icon} texture is used
+     *
+     * @return the item's dyed icon
+     * @see CustomItemDefinition#dyedIcon()
+     * @since 2.10.1
+     */
+    @Nullable String dyedIcon();
+
+    /**
      * If the item is allowed to be put into the offhand. Defaults to true.
      *
      * @return true if the item is allowed to be used in the offhand, false otherwise
@@ -141,6 +150,17 @@ public interface CustomItemBedrockOptions {
          */
         @This
         Builder icon(@Nullable String icon);
+
+        /**
+         * Sets the item's icon.
+         *
+         * @param dyedIcon the item's icon
+         * @see CustomItemBedrockOptions#dyedIcon()
+         * @return this builder
+         * @since 2.9.3
+         */
+        @This
+        Builder dyedIcon(@Nullable String dyedIcon);
 
         /**
          * Sets if the item is allowed to be put into the offhand.

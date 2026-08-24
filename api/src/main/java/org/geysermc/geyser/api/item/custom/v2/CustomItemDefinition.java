@@ -110,6 +110,17 @@ public interface CustomItemDefinition {
     String icon();
 
     /**
+     * The icon used for this item if it's marked as {@code dyeable}
+     *
+     * <p>If none is set in the item's Bedrock options, then the item's default icon is used.
+     *
+     * @return the icon shown to Bedrock players if the item is marked dyeable
+     * @see #icon()
+     * @since 2.10.1
+     */
+    String dyedIcon();
+
+    /**
      * The predicates that have to match for this item definition to be used. These predicates can access properties similar to the Java item model predicates.
      *
      * <p>When adding predicates, avoid chaining many predicates that use an OR expression - instead, set the {@link PredicateStrategy} of the definition to

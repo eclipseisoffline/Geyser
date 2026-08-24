@@ -447,6 +447,7 @@ public class CustomItemRegistryPopulator {
             NbtMap iconMap = NbtMap.builder()
                 .putCompound("textures", NbtMap.builder()
                     .putString("default", definition.icon())
+                    .putString("dyed", definition.dyedIcon())
                     .build())
                 .build();
             itemProperties.putCompound("minecraft:icon", iconMap);
