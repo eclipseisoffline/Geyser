@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019-2024 GeyserMC. http://geysermc.org
+ * Copyright (c) 2026 GeyserMC. http://geysermc.org
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,47 +23,20 @@
  * @link https://github.com/GeyserMC/Geyser
  */
 
-package org.geysermc.geyser.session.cache.registry;
+package org.geysermc.geyser.gametest.mixin;
 
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import org.jspecify.annotations.NonNull;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.server.network.config.SynchronizeRegistriesTask;
+import net.minecraft.server.packs.repository.KnownPack;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.gen.Invoker;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Spliterator;
+import java.util.Set;
 import java.util.function.Consumer;
 
-public class SimpleJavaRegistry<T> implements JavaRegistry<T> {
-    protected final ObjectArrayList<RegistryEntryData<T>> entries = new ObjectArrayList<>();
+@Mixin(SynchronizeRegistriesTask.class)
+public interface SynchronizeRegistriesTaskAccessor {
 
-    public void reset(List<RegistryEntryData<T>> entries) {
-        this.entries.clear();
-        this.entries.addAll(entries);
-        this.entries.trim();
-    }
-
-    @Override
-    public @NonNull Iterator<RegistryEntryData<T>> iterator() {
-        return entries.iterator();
-    }
-
-    @Override
-    public void forEach(Consumer<? super RegistryEntryData<T>> action) {
-        entries.forEach(action);
-    }
-
-    @Override
-    public Spliterator<RegistryEntryData<T>> spliterator() {
-        return entries.spliterator();
-    }
-
-    @Override
-    public List<RegistryEntryData<T>> entries() {
-        return entries;
-    }
-
-    @Override
-    public String toString() {
-        return entries.toString();
-    }
+    @Invoker
+    void invokeSendRegistries(final Consumer<Packet<?>> connection, final Set<KnownPack> negotiatedPacks);
 }

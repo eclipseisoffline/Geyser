@@ -59,6 +59,7 @@ import org.geysermc.geyser.level.block.type.Block;
 import org.geysermc.geyser.level.block.type.BlockState;
 import org.geysermc.geyser.level.block.type.FlowerPotBlock;
 import org.geysermc.geyser.registry.BlockRegistries;
+import org.geysermc.geyser.registry.java.BuiltInJavaRegistries;
 import org.geysermc.geyser.registry.populator.conversion.WildernessBoundConverter;
 import org.geysermc.geyser.registry.type.BlockMappings;
 import org.geysermc.geyser.registry.type.GeyserBedrockBlock;
@@ -240,8 +241,7 @@ public final class BlockRegistryPopulator {
             Block lastBlockSeen = null;
 
             // Stream isn't ideal.
-            List<Block> javaPottable = BlockRegistries.JAVA_BLOCKS.get()
-                    .parallelStream()
+            List<Block> javaPottable = BuiltInJavaRegistries.BLOCK.parallelStream()
                     .flatMap(block -> {
                         if (block instanceof FlowerPotBlock flowerPot && flowerPot.flower() != Blocks.AIR) {
                             return Stream.of(flowerPot.flower());

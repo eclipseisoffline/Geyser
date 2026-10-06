@@ -253,6 +253,10 @@ public final class VanillaEntities {
     public static final VanillaEntityType<BoatEntity> MANGROVE_BOAT;
     public static final VanillaEntityType<ChestBoatEntity> MANGROVE_CHEST_BOAT;
     public static final VanillaEntityType<MannequinEntity> MANNEQUIN;
+    /**
+     * Is only ever sent over the network within (non-vanilla) entity type tags.
+     */
+    public static final VanillaEntityType<Entity> MARKER;
     public static final VanillaEntityType<MinecartEntity> MINECART;
     public static final VanillaEntityType<MooshroomEntity> MOOSHROOM;
     public static final VanillaEntityType<ChestedHorseEntity> MULE;
@@ -707,6 +711,10 @@ public final class VanillaEntities {
             .addTranslator(MetadataTypes.RESOLVABLE_PROFILE, MannequinEntity::setProfile)
             .addTranslator(null) // Immovable
             .addTranslator(MetadataTypes.OPTIONAL_COMPONENT, MannequinEntity::setDescription)
+            .build();
+
+        MARKER = VanillaEntityType.inherited(null, entityBase)
+            .type(EntityType.MARKER)
             .build();
 
         PLAYER = VanillaEntityType.<PlayerEntity>inherited(null, avatarEntityBase)
@@ -1290,8 +1298,6 @@ public final class VanillaEntities {
                 .build(false); // Never sent over the network
 
         PLAYER_ENTITY_OFFSET = PLAYER.offset();
-
-        Registries.JAVA_ENTITY_IDENTIFIERS.get().put("minecraft:marker", null); // We don't need an entity definition for this as it is never sent over the network
     }
 
     private static VanillaEntityType<BoatEntity> buildBoat(EntityTypeBase<BoatEntity> base, EntityType EntityType, BoatEntity.BoatVariant variant) {

@@ -32,12 +32,16 @@ import org.cloudburstmc.nbt.NbtType;
 import org.geysermc.geyser.item.type.Item;
 import org.geysermc.geyser.level.block.type.BlockState;
 import org.geysermc.geyser.registry.Registries;
+import org.geysermc.geyser.registry.java.BuiltInJavaRegistries;
+import org.geysermc.geyser.registry.java.JavaRegistries;
+import org.geysermc.geyser.registry.java.JavaRegistryProvider;
+import org.geysermc.geyser.registry.java.reader.JavaRegistryReader;
 import org.geysermc.geyser.session.GeyserSession;
-import org.geysermc.geyser.session.cache.registry.JavaRegistries;
-import org.geysermc.geyser.session.cache.registry.RegistryEntryContext;
 import org.geysermc.geyser.util.MinecraftKey;
 import org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponentTypes;
 import org.geysermc.mcprotocollib.protocol.data.game.level.block.BlockEntityType;
+
+import java.util.Optional;
 
 @BlockEntity(type = BlockEntityType.DECORATED_POT)
 public class DecoratedPotBlockEntityTranslator extends BlockEntityTranslator {
@@ -67,6 +71,8 @@ public class DecoratedPotBlockEntityTranslator extends BlockEntityTranslator {
             return DEFAULT_BEDROCK_ITEM;
         }
 
+        JavaRegistryProvider registries = session.javaRegistries();
+
         // Check the component patch first: it may remove the provides_pottery_pattern component, or add it
         NbtMap components = stack.getCompound("components");
         if (!components.isEmpty()) {
@@ -76,22 +82,22 @@ public class DecoratedPotBlockEntityTranslator extends BlockEntityTranslator {
             }
             String pattern = components.getString(POTTERY_PATTERN_COMPONENT, null);
             if (pattern != null) {
-                Key bedrockItem = JavaRegistries.DECORATED_POT_PATTERN.value(session, MinecraftKey.key(pattern));
-                if (bedrockItem != null) {
-                    return bedrockItem.toString();
+                Optional<Key> bedrockItem = JavaRegistries.DECORATED_POT_PATTERN.get(registries, MinecraftKey.key(pattern));
+                if (bedrockItem.isPresent()) {
+                    return bedrockItem.get().toString();
                 }
                 return DEFAULT_BEDROCK_ITEM;
             }
         }
 
         // If no pattern was specified in the component patch, check the item's default components
-        Item item = Registries.JAVA_ITEM_IDENTIFIERS.get(stack.getString("id"));
-        if (item != null) {
-            Integer patternId = item.getComponent(session.getComponentCache(), DataComponentTypes.PROVIDES_POTTERY_PATTERN);
+        Optional<Item> item = BuiltInJavaRegistries.ITEM.get(MinecraftKey.key(stack.getString("id")));
+        if (item.isPresent()) {
+            Integer patternId = item.get().getComponent(session.getComponentCache(), DataComponentTypes.PROVIDES_POTTERY_PATTERN);
             if (patternId != null) {
-                Key bedrockItem = JavaRegistries.DECORATED_POT_PATTERN.value(session, patternId);
-                if (bedrockItem != null) {
-                    return bedrockItem.toString();
+                Optional<Key> bedrockItem = JavaRegistries.DECORATED_POT_PATTERN.get(registries, patternId);
+                if (bedrockItem.isPresent()) {
+                    return bedrockItem.get().toString();
                 }
                 return DEFAULT_BEDROCK_ITEM;
             }
@@ -101,7 +107,7 @@ public class DecoratedPotBlockEntityTranslator extends BlockEntityTranslator {
         return DEFAULT_BEDROCK_ITEM;
     }
 
-    public static Key readDecoratedPotPattern(RegistryEntryContext context) {
+    public static Key readDecoratedPotPattern(JavaRegistryReader.Context context) {
         // Connect the pattern to a bedrock item via asset ID - that way, if for some reason a non-vanilla pattern uses a vanilla asset ID, it'll still work
         Key assetId = MinecraftKey.key(context.dataAsMap().getString("asset_id"));
         return Registries.DECORATED_POT_ASSETS.getOrDefault(assetId, DEFAULT_PATTERN);

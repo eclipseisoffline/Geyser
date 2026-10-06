@@ -40,9 +40,9 @@ import org.geysermc.geyser.inventory.item.Potion;
 import org.geysermc.geyser.item.Items;
 import org.geysermc.geyser.item.hashing.data.FireworkExplosionShape;
 import org.geysermc.geyser.item.type.Item;
-import org.geysermc.geyser.registry.Registries;
+import org.geysermc.geyser.registry.java.BuiltInJavaRegistries;
 import org.geysermc.geyser.session.GeyserSession;
-import org.geysermc.geyser.session.cache.registry.JavaRegistries;
+import org.geysermc.geyser.registry.java.JavaRegistries;
 import org.geysermc.geyser.translator.item.BedrockItemBuilder;
 import org.geysermc.geyser.translator.item.ItemTranslator;
 import org.geysermc.geyser.translator.level.block.entity.SkullBlockEntityTranslator;
@@ -62,6 +62,7 @@ import org.geysermc.mcprotocollib.protocol.data.game.item.component.PotionConten
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 
 /**
@@ -99,18 +100,18 @@ public final class ItemStackParser {
             return Items.AIR_ID;
         }
 
-        Item item = Registries.JAVA_ITEM_IDENTIFIERS.get(identifier);
-        if (item == null) {
+        Optional<Item> item = BuiltInJavaRegistries.ITEM.get(MinecraftKey.key(identifier));
+        if (item.isEmpty()) {
             GeyserImpl.getInstance().getLogger().warning("Received unknown item ID " + identifier + " whilst parsing NBT item stack!");
             return Items.AIR_ID;
         }
-        return item.javaId();
+        return item.get().javaId();
     }
 
     private static ItemEnchantments parseEnchantments(GeyserSession session, NbtMap map) {
         Int2IntMap enchantments = new Int2IntOpenHashMap(map.size());
         for (Map.Entry<String, Object> entry : map.entrySet()) {
-            enchantments.put(JavaRegistries.ENCHANTMENT.networkId(session, MinecraftKey.key(entry.getKey())), (int) entry.getValue());
+            enchantments.put(JavaRegistries.ENCHANTMENT.getIdOrThrow(session.javaRegistries(), MinecraftKey.key(entry.getKey())), (int) entry.getValue());
         }
         return new ItemEnchantments(enchantments);
     }
@@ -129,7 +130,7 @@ public final class ItemStackParser {
                 Object pattern = layer.get("pattern");
                 Holder<BannerPatternLayer.BannerPattern> patternHolder;
                 if (pattern instanceof String id) {
-                    patternHolder = Holder.ofId(JavaRegistries.BANNER_PATTERN.networkId(session, MinecraftKey.key(id)));
+                    patternHolder = JavaRegistries.BANNER_PATTERN.wrapOrThrow(session, MinecraftKey.key(id));
                 } else {
                     NbtMap inline = (NbtMap) pattern;
                     Key assetId = MinecraftKey.key(inline.getString("asset_id"));

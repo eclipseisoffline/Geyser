@@ -29,11 +29,13 @@ import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.packet.AddPaintingPacket;
 import org.geysermc.geyser.entity.spawn.EntitySpawnContext;
 import org.geysermc.geyser.level.PaintingType;
-import org.geysermc.geyser.session.cache.registry.JavaRegistries;
+import org.geysermc.geyser.registry.java.JavaRegistries;
 import org.geysermc.mcprotocollib.protocol.data.game.Holder;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.PaintingVariant;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.type.ObjectEntityMetadata;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.object.Direction;
+
+import java.util.Optional;
 
 public class PaintingEntity extends HangingEntity {
     private static final double OFFSET = -0.46875;
@@ -70,16 +72,16 @@ public class PaintingEntity extends HangingEntity {
             despawnEntity();
         }
 
-        PaintingType type = session.getRegistryCache().registry(JavaRegistries.PAINTING_VARIANT).byId(paintingId);
-        if (type == null) {
+        Optional<PaintingType> type = JavaRegistries.PAINTING_VARIANT.get(session.javaRegistries(), paintingId);
+        if (type.isEmpty()) {
             return;
         }
 
         AddPaintingPacket addPaintingPacket = new AddPaintingPacket();
         addPaintingPacket.setUniqueEntityId(geyserId);
         addPaintingPacket.setRuntimeEntityId(geyserId);
-        addPaintingPacket.setMotive(type.getBedrockName());
-        addPaintingPacket.setPosition(fixOffset(type));
+        addPaintingPacket.setMotive(type.get().getBedrockName());
+        addPaintingPacket.setPosition(fixOffset(type.get()));
         addPaintingPacket.setDirection(switch (direction) {
             //TODO this doesn't seem right. Why did it work fine before?
             case SOUTH -> 0;

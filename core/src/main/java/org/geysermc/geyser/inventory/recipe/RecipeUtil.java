@@ -28,7 +28,6 @@ package org.geysermc.geyser.inventory.recipe;
 import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.Pair;
 import it.unimi.dsi.fastutil.ints.IntComparators;
-import it.unimi.dsi.fastutil.ints.IntList;
 import it.unimi.dsi.fastutil.ints.IntObjectMutablePair;
 import it.unimi.dsi.fastutil.ints.IntObjectPair;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
@@ -44,9 +43,10 @@ import org.geysermc.geyser.item.Items;
 import org.geysermc.geyser.item.type.BedrockRequiresTagItem;
 import org.geysermc.geyser.item.type.Item;
 import org.geysermc.geyser.registry.Registries;
+import org.geysermc.geyser.registry.java.BuiltInJavaRegistries;
 import org.geysermc.geyser.registry.type.ItemMapping;
 import org.geysermc.geyser.session.GeyserSession;
-import org.geysermc.geyser.session.cache.registry.JavaRegistries;
+import org.geysermc.geyser.registry.java.JavaRegistries;
 import org.geysermc.geyser.session.cache.tags.GeyserHolderSet;
 import org.geysermc.geyser.translator.item.ItemTranslator;
 import org.geysermc.mcprotocollib.protocol.data.game.item.ItemStack;
@@ -147,18 +147,18 @@ public class RecipeUtil {
             return Collections.singletonList(ItemDescriptorWithCount.fromItem(item));
         }
         if (slotDisplay instanceof TagSlotDisplay(HolderSet set)) {
-            IntList items = GeyserHolderSet.fromHolderSet(JavaRegistries.ITEM, set).resolveRaw(session.getTagCache()); // I don't like this...
-            if (items == null || items.isEmpty()) {
+            int[] items = GeyserHolderSet.fromMCPL(JavaRegistries.ITEM, set).resolveRawHolders(session.javaRegistries()); // I don't like this...
+            if (items == null || items.length == 0) {
                 return Collections.singletonList(ItemDescriptorWithCount.EMPTY);
-            } else if (items.size() == 1) {
-                return Collections.singletonList(fromItem(session, items.getInt(0)));
+            } else if (items.length == 1) {
+                return Collections.singletonList(fromItem(session, items[0]));
             } else {
                 // Cache is implemented as, presumably, an item tag will be used multiple times in succession
                 // (E.G. a chest with planks tags)
                 if (TAG_TO_ITEM_DESCRIPTOR_CACHE.get().firstInt() != session.protocolVersion()) {
                     TAG_TO_ITEM_DESCRIPTOR_CACHE.get().first(session.protocolVersion()).second().clear();
                 }
-                return TAG_TO_ITEM_DESCRIPTOR_CACHE.get().second().computeIfAbsent(items.toIntArray(), key -> {
+                return TAG_TO_ITEM_DESCRIPTOR_CACHE.get().second().computeIfAbsent(items, key -> {
                     List<ItemDescriptorWithCount> tagDescriptor = lookupBedrockTag(session, key);
                     if (tagDescriptor != null) {
                         return tagDescriptor;
@@ -203,10 +203,10 @@ public class RecipeUtil {
             return null;
         }
         if (slotDisplay instanceof ItemSlotDisplay(int item)) {
-            return Pair.of(Registries.JAVA_ITEMS.get(item), ItemTranslator.translateToBedrock(session, new ItemStack(item)));
+            return Pair.of(BuiltInJavaRegistries.ITEM.getOrThrow(item), ItemTranslator.translateToBedrock(session, new ItemStack(item)));
         }
         if (slotDisplay instanceof ItemStackSlotDisplay(ItemStack stack)) {
-            return Pair.of(Registries.JAVA_ITEMS.get(stack.getId()), ItemTranslator.translateToBedrock(session, stack));
+            return Pair.of(BuiltInJavaRegistries.ITEM.getOrThrow(stack.getId()), ItemTranslator.translateToBedrock(session, stack));
         }
         if (slotDisplay instanceof CompositeSlotDisplay(List<SlotDisplay> contents)) {
             // Just create the first display

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 GeyserMC. http://geysermc.org
+ * Copyright (c) 2024-2026 GeyserMC. http://geysermc.org
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,9 +23,35 @@
  * @link https://github.com/GeyserMC/Geyser
  */
 
-package org.geysermc.geyser.session.cache.registry;
+package org.geysermc.geyser.registry.java.reader;
 
 import net.kyori.adventure.key.Key;
+import org.geysermc.geyser.registry.java.JavaRegistryProvider;
+import org.geysermc.geyser.session.GeyserSession;
+import org.geysermc.mcprotocollib.protocol.data.game.RegistryEntry;
+import org.geysermc.mcprotocollib.protocol.packet.configuration.clientbound.ClientboundRegistryDataPacket;
 
-public record RegistryEntryData<T>(int id, Key key, T data) {
+import java.util.Optional;
+
+/**
+ * Expands {@link JavaRegistryReader.Context} with a {@link Key}. Used when parsing registry data from a {@link ClientboundRegistryDataPacket}.
+ *
+ * @param registries the {@link JavaRegistryProvider}
+ * @param entry the {@link RegistryEntry}
+ * @param session the {@link GeyserSession}
+ */
+public record RegistryEntryContext(JavaRegistryProvider registries, RegistryEntry entry, Optional<GeyserSession> session) implements JavaRegistryReader.Context {
+
+    /**
+     * @return the {@link Key} of this registry entry
+     */
+    public Key id() {
+        return entry.getId();
+    }
+
+    // Not annotated as nullable because data should never be null here
+    @Override
+    public Object data() {
+        return entry.getData();
+    }
 }
