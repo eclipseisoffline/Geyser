@@ -162,6 +162,16 @@ public final class GeyserEntityDataTypes {
     public static final GeyserEntityDataType<Float> ROTATE_RIDER_DEGREES =
         GeyserEntityDataType.create(Identifier.of("rotate_rider_by"), Float.class);
 
+    /**
+     * The text to show when the player is able to interact with the entity and is playing with touch-screen controls.
+     * This text is shown in the button shown to the player to interact with the entity.
+     *
+     * @see <a href="https://learn.microsoft.com/en-us/minecraft/creator/reference/content/entityreference/examples/entitycomponents/minecraftcomponent_interact?view=minecraft-bedrock-stable">Official documentation ({@code interact_text} property)</a>
+     * @since 2.12.2
+     */
+    public static final GeyserEntityDataType<String> INTERACT_TEXT =
+        GeyserEntityDataType.create(Identifier.of("interact_text"), String.class);
+
     @ApiStatus.Internal
     private GeyserEntityDataTypes() {
         // no-op

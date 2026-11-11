@@ -65,6 +65,7 @@ public final class EntityDataBehaviorRegistry {
         register(behaviors, tracked, GeyserEntityDataTypes.SEAT_LOCK_RIDER_ROTATION_DEGREES, EntityDataTypes.SEAT_LOCK_RIDER_ROTATION_DEGREES);
         register(behaviors, tracked, GeyserEntityDataTypes.SEAT_HAS_ROTATION, EntityDataTypes.SEAT_HAS_ROTATION);
         register(behaviors, tracked, GeyserEntityDataTypes.ROTATE_RIDER_DEGREES, EntityDataTypes.SEAT_ROTATION_OFFSET_DEGREES);
+        register(behaviors, tracked, GeyserEntityDataTypes.INTERACT_TEXT, EntityDataTypes.INTERACT_TEXT);
 
         // The vertical offset lives on the entity itself rather than as metadata, but it
         // still exposes a value (the effective offset) and an override (the API-set offset, if any).
@@ -114,8 +115,8 @@ public final class EntityDataBehaviorRegistry {
      */
     private static <T> void register(Map<GeyserEntityDataType<?>, EntityDataBehavior<?>> map,
                                      Set<EntityDataType<?>> tracked,
-                                     GeyserEntityDataType<T> type,
-                                     EntityDataType<T> bedrockType) {
+                                     GeyserEntityDataType<? extends T> type,
+                                     EntityDataType<? extends T> bedrockType) {
         map.put(type, new EntityDataBehavior<T>() {
             @Override
             public void set(@NonNull Entity entity, @Nullable T value) {

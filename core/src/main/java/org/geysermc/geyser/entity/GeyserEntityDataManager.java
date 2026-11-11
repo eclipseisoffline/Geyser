@@ -69,7 +69,7 @@ public final class GeyserEntityDataManager {
         dirtyMetadata.put(entityData, value);
     }
 
-    public <T> void updateOverride(@NonNull EntityDataType<T> entityData, @Nullable T value) {
+    public <T> void updateOverride(@NonNull EntityDataType<? extends T> entityData, @Nullable T value) {
         if (!EntityDataBehaviorRegistry.TRACKED_ENTITY_DATA.contains(entityData)) {
             throw new IllegalArgumentException("Entity data type not tracked: " + entityData.getClass().getSimpleName());
         }
@@ -87,7 +87,7 @@ public final class GeyserEntityDataManager {
     }
 
     @SuppressWarnings("unchecked")
-    public <T> @Nullable T override(EntityDataType<T> entityData) {
+    public <T> @Nullable T override(EntityDataType<? extends T> entityData) {
         if (!EntityDataBehaviorRegistry.TRACKED_ENTITY_DATA.contains(entityData)) {
             throw new IllegalArgumentException("Entity data type not tracked: " + entityData.getClass().getSimpleName());
         }
@@ -95,7 +95,7 @@ public final class GeyserEntityDataManager {
     }
 
     @SuppressWarnings("unchecked")
-    public <T> @Nullable T value(EntityDataType<T> entityData) {
+    public <T> @Nullable T value(EntityDataType<? extends T> entityData) {
         if (!EntityDataBehaviorRegistry.TRACKED_ENTITY_DATA.contains(entityData)) {
             throw new IllegalArgumentException("Entity data type not tracked: " + entityData.getClass().getSimpleName());
         }
